@@ -1,0 +1,54 @@
+﻿@model IEnumerable<W2W.ModelKBT.Entities.Article>
+@if (Model != null && Model.Count() > 0)
+{
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    
+
+        <div class="news-block">
+            <p class="title">@Resources.Resource.NewsTitle</p>
+            <ul>
+                @foreach (var article in Model.OrderByDescending(x => x.CreationDate).Take(3))
+                {
+                    <li>
+                        <img src="@Url.Action("img", "home", new { area = "", id=article.Image })" alt="">
+                        <a href="@Url.Action("news", "home", new { id = @article.id_object })" class="caption">
+                            @if (culture == "ru-RU")
+                            {
+                                @article.ObjectName
+                            }
+                            else
+                            {
+                                @article.ObjectNameEng
+                            }
+                        </a>
+                        <p class="date">@article.PublishDate.Value.ToShortDateString()</p>
+                    </li>
+                }
+            </ul>
+            <div class="swiper-container swiper-news-m">
+                <div class="swiper-wrapper">
+                    @foreach (var article in Model.OrderByDescending(x => x.CreationDate).Take(3))
+                    {
+                        <div class="swiper-slide">
+                            <div>
+                                <img src="@Url.Action("img", "home", new { area = "", id=article.Image })" alt="">
+                                <a href="@Url.Action("news", "home", new { id = @article.id_object })" class="caption">
+                                    @if (culture == "ru-RU")
+                                    {
+                                        @article.ObjectName
+                                    }
+                                    else
+                                    {
+                                        @article.ObjectNameEng
+                                    }
+                                </a>
+                                <p class="date">@article.PublishDate.Value.ToShortDateString()</p>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <a href="@Url.Action("news", "home")" class="page-link"><span data-text="@Resources.Resource.MoreNewsBtn">@Resources.Resource.MoreNewsBtn</span></a>
+        </div>
+    }

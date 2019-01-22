@@ -1,0 +1,153 @@
+﻿@{ 
+var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<footer>
+    <a class="scroll_up"></a>
+    <div class="wrap-footer">
+        <div class="top-block">
+            <ul class="menu">
+                <li>
+                    <a href="@Url.Action("about", "home", new { area = "" })" data-text="@Resources.Resource.menu_about">@Resources.Resource.menu_about</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("investments", "home", new { area = "" })" data-text="@Resources.Resource.menu_invest">@Resources.Resource.menu_invest</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("partnership", "home", new { area = "" })" data-text="@Resources.Resource.menu_partnership">@Resources.Resource.menu_partnership</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("news", "home", new { area = "" })" data-text="@Resources.Resource.menu_news">@Resources.Resource.menu_news</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("reviews", "home", new { area = "" })" data-text="@Resources.Resource.menu_reviews">@Resources.Resource.menu_reviews</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("faq", "home", new { area = "" })" data-text="@Resources.Resource.menu_faq">@Resources.Resource.menu_faq</a>
+                </li>
+            </ul>
+            <div class="lk-lang-block">
+                @Html.Action("UserInfo", "Home", new { area = "" })
+                <div class="lang">
+                    @if (culture == "ru-RU")
+                    {
+                        <a class="active">
+                            <img src="~/Content/img/ru.png" alt="">
+                            <span>RU</span>
+                        </a>
+                        <a href="@Url.Action("ChangeCulture", "home", new {lang = "en", area = ""})">
+                            <img src="~/Content/img/en.png" alt="">
+                            <span>EN</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("ChangeCulture", "home", new {lang = "ru", area = ""})">
+                            <img src="~/Content/img/ru.png" alt="">
+                            <span>RU</span>
+                        </a>
+                        <a class="active">
+                            <img src="~/Content/img/en.png" alt="">
+                            <span>EN</span>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="bottom-block">
+            <div>
+                <a href="/" class="logo">
+                    <img src="~/Content/img/footer-logo.png" alt="">
+                </a>
+                <p class="slogan">@Resources.Resource.footer_slogan1</p>
+                <div class="use">
+                    <img src="~/Content/img/use.png" alt="">
+                    <div class="wrap-a">
+                        @if (culture == "ru-RU")
+                        {
+                            <a href="~/Content/Пользовательское соглашение.pdf" target="blank">
+                                <span data-text="@Resources.Resource.TermsUse">@Resources.Resource.TermsUse</span>
+                            </a>
+                            <a href="~/Content/Политика конфиденциальности.pdf" target="blank">
+                                <span data-text="@Resources.Resource.PrivacyPolicy">@Resources.Resource.PrivacyPolicy</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="~/Content/User agreement.pdf" target="blank">
+                                <span data-text="@Resources.Resource.TermsUse">@Resources.Resource.TermsUse</span>
+                            </a>
+                            <a href="~/Content/Privacy policy.pdf" target="blank">
+                                <span data-text="@Resources.Resource.PrivacyPolicy">@Resources.Resource.PrivacyPolicy</span>
+                            </a>
+                        }
+                    </div>
+                </div>
+                <p class="slogan">@Resources.Resource.footer_slogan2</p>
+                <ul class="crypto">
+                    <li>
+                        <img src="~/Content/img/1.png" alt="">
+                    </li>
+                    <li>
+                        <img src="~/Content/img/2.png" alt="">
+                    </li>
+                    <li>
+                        <img src="~/Content/img/3.png" alt="">
+                    </li>
+                    <li>
+                        <img src="~/Content/img/4.png" alt="">
+                    </li>
+                    <li>
+                        <img src="~/Content/img/5.png" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="soc">
+                    <li>
+                        <a>
+                            <img src="~/Content/img/vk.png" alt="">
+                            <img src="~/Content/img/vk2.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="~/Content/img/fb.png" alt="">
+                            <img src="~/Content/img/fb2.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="~/Content/img/instagram.png" alt="">
+                            <img src="~/Content/img/instagram2.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="~/Content/img/youtube.png" alt="">
+                            <img src="~/Content/img/youtube2.png" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="~/Content/img/telegram.png" alt="">
+                            <img src="~/Content/img/telegram2.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+                <p class="slogan">@Resources.Resource.footer_slogan3</p>
+                <div class="wrap-flex-new">
+                    <div>
+                        <p class="slogan">@Resources.Resource.footer_slogan4</p>
+                        <a href="mailto:info@w2w.fund" class="email">
+                            <span data-text="info@w2w.fund">info@w2w.fund</span>
+                        </a>
+                        <a class="copyright">
+                            <img src="~/Content/img/copyright.png" alt="">@Resources.Resource.Copyright
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+

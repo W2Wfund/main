@@ -1,0 +1,1367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessRecovery" xml:space="preserve">
+    <value>Access recovery</value>
+  </data>
+  <data name="AccountBalance" xml:space="preserve">
+    <value>Account balance</value>
+  </data>
+  <data name="AccountBalances" xml:space="preserve">
+    <value>Account balances:</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="AddSum" xml:space="preserve">
+    <value>Add amount from personal account</value>
+  </data>
+  <data name="AgreementDate" xml:space="preserve">
+    <value>Agreement date</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="AmountComing" xml:space="preserve">
+    <value>Amount Coming</value>
+  </data>
+  <data name="AmountConsumption" xml:space="preserve">
+    <value>Amount Consumption</value>
+  </data>
+  <data name="AmountPaid" xml:space="preserve">
+    <value>Amount paid</value>
+  </data>
+  <data name="AmountPeriod" xml:space="preserve">
+    <value>Amount of income for the period</value>
+  </data>
+  <data name="AmountPeriod2" xml:space="preserve">
+    <value>Sum Consumption for the period</value>
+  </data>
+  <data name="AmountProgram" xml:space="preserve">
+    <value>The program sum</value>
+  </data>
+  <data name="AmountRecalculated" xml:space="preserve">
+    <value>Amount recalculated</value>
+  </data>
+  <data name="AmountRefunded" xml:space="preserve">
+    <value>Amount to be refunded</value>
+  </data>
+  <data name="AmountСurrency" xml:space="preserve">
+    <value>Amount in currency</value>
+  </data>
+  <data name="AmoutDeal" xml:space="preserve">
+    <value>The amount of the deal</value>
+  </data>
+  <data name="AppDateTermin" xml:space="preserve">
+    <value>Application Date for Termination</value>
+  </data>
+  <data name="AutoRenewal" xml:space="preserve">
+    <value>Autoextension</value>
+  </data>
+  <data name="AutoRenewalTable" xml:space="preserve">
+    <value>Autoextension</value>
+  </data>
+  <data name="AutoRenewalTitle" xml:space="preserve">
+    <value>When choosing this option, the contract is automatically extended for a year.</value>
+  </data>
+  <data name="AvailableTranslation" xml:space="preserve">
+    <value>Available for translation</value>
+  </data>
+  <data name="AvailableWithdrawal" xml:space="preserve">
+    <value>Available for withdrawal</value>
+  </data>
+  <data name="AvaRequired" xml:space="preserve">
+    <value>Acceptable image formats - jpg, png. Maximum file size - 2MB.</value>
+  </data>
+  <data name="BaseInfo" xml:space="preserve">
+    <value>Basic information</value>
+  </data>
+  <data name="BecomePartner" xml:space="preserve">
+    <value>Become a partner</value>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value>before</value>
+  </data>
+  <data name="Benefactors" xml:space="preserve">
+    <value>Benefactors</value>
+  </data>
+  <data name="Cancellation" xml:space="preserve">
+    <value>cancellation</value>
+  </data>
+  <data name="CashFlowItem" xml:space="preserve">
+    <value>Cash Flow Item</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="CharityProgramsTitle" xml:space="preserve">
+    <value>Charity programs</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Choose</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Combine" xml:space="preserve">
+    <value>Combine</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Is completed</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>confirm</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="ConfirmPasswordRequired" xml:space="preserve">
+    <value>Confirm password is required</value>
+  </data>
+  <data name="ConversionRate" xml:space="preserve">
+    <value>Conversion rate</value>
+  </data>
+  <data name="CopyLink" xml:space="preserve">
+    <value>Copy link</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>A country</value>
+  </data>
+  <data name="CreateNewPlace" xml:space="preserve">
+    <value>Create additional space</value>
+  </data>
+  <data name="CryptoWallets" xml:space="preserve">
+    <value>Cryptocurrency wallets</value>
+  </data>
+  <data name="CumulativeText" xml:space="preserve">
+    <value>Cumulative program:</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="CurrentYield" xml:space="preserve">
+    <value>Current yield</value>
+  </data>
+  <data name="DateBirth" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="DateCreat" xml:space="preserve">
+    <value>Date of issue</value>
+  </data>
+  <data name="DateFinish" xml:space="preserve">
+    <value>Expiration date</value>
+  </data>
+  <data name="DateOperation" xml:space="preserve">
+    <value>Date of operation</value>
+  </data>
+  <data name="DateReg" xml:space="preserve">
+    <value>Date of registration</value>
+  </data>
+  <data name="DepthLocation" xml:space="preserve">
+    <value>Depth of location</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="DownAva" xml:space="preserve">
+    <value>Download avatar</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailChange" xml:space="preserve">
+    <value>Email change</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Email is required</value>
+  </data>
+  <data name="EmailRequired2" xml:space="preserve">
+    <value>Invalid email field format</value>
+  </data>
+  <data name="EmailRequiredSms1" xml:space="preserve">
+    <value>A password has been sent to your email to perform the operation.</value>
+  </data>
+  <data name="EmailRequiredSms2" xml:space="preserve">
+    <value>Re-receive password via:</value>
+  </data>
+  <data name="ExpandStructure" xml:space="preserve">
+    <value>Expand the whole structure</value>
+  </data>
+  <data name="Facial" xml:space="preserve">
+    <value>facial</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Female</value>
+  </data>
+  <data name="Filtres" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="FinancPass" xml:space="preserve">
+    <value>Financial password</value>
+  </data>
+  <data name="FInvestInterest" xml:space="preserve">
+    <value>Investment percents</value>
+  </data>
+  <data name="FInvestmentAccount" xml:space="preserve">
+    <value>Investment account</value>
+  </data>
+  <data name="Fio" xml:space="preserve">
+    <value>Full name</value>
+  </data>
+  <data name="Fio2" xml:space="preserve">
+    <value>Name of partner</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="FirstNameRequired" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="FMarketingRewards" xml:space="preserve">
+    <value>Marketing rewards</value>
+  </data>
+  <data name="FPersonalAccount" xml:space="preserve">
+    <value>Personal account</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="GetPassBtn" xml:space="preserve">
+    <value>Get password</value>
+  </data>
+  <data name="IdentityVerification" xml:space="preserve">
+    <value>Identity verification</value>
+  </data>
+  <data name="IncomeContribution" xml:space="preserve">
+    <value>Income + contribution</value>
+  </data>
+  <data name="InEntryBtnText" xml:space="preserve">
+    <value>Entry</value>
+  </data>
+  <data name="InHeader" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="InRememberChkText" xml:space="preserve">
+    <value>Remember</value>
+  </data>
+  <data name="InterestInvestmentCaption1" xml:space="preserve">
+    <value>Interest on</value>
+  </data>
+  <data name="InterestInvestmentCaption2" xml:space="preserve">
+    <value>investment</value>
+  </data>
+  <data name="InvestAmount" xml:space="preserve">
+    <value>Investment sum</value>
+  </data>
+  <data name="InvestBtn" xml:space="preserve">
+    <value>Invest</value>
+  </data>
+  <data name="InvestedAmount" xml:space="preserve">
+    <value>Invested amount</value>
+  </data>
+  <data name="Investment" xml:space="preserve">
+    <value>investment</value>
+  </data>
+  <data name="InvestmentAccountCaption1" xml:space="preserve">
+    <value>Investment</value>
+  </data>
+  <data name="InvestmentAccountCaption2" xml:space="preserve">
+    <value>account</value>
+  </data>
+  <data name="InvestmentInterestAccount" xml:space="preserve">
+    <value>Investment Interest Account</value>
+  </data>
+  <data name="InvestTerm" xml:space="preserve">
+    <value>Investment term</value>
+  </data>
+  <data name="InvestTitle" xml:space="preserve">
+    <value>Investment</value>
+  </data>
+  <data name="InviterTxt" xml:space="preserve">
+    <value>Sponsor's login or ID</value>
+  </data>
+  <data name="InviterTxt2" xml:space="preserve">
+    <value>If you know the name of your sponsor, you can enter it.</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LastnameLogin" xml:space="preserve">
+    <value>Last name / login</value>
+  </data>
+  <data name="LettersThanks" xml:space="preserve">
+    <value>Letters of thanks</value>
+  </data>
+  <data name="LinkSoc" xml:space="preserve">
+    <value>Link to social network</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="lk_menu_1" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="lk_menu_10" xml:space="preserve">
+    <value>My partners</value>
+  </data>
+  <data name="lk_menu_11" xml:space="preserve">
+    <value>View tree</value>
+  </data>
+  <data name="lk_menu_12" xml:space="preserve">
+    <value>Partner Registration</value>
+  </data>
+  <data name="lk_menu_13" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="lk_menu_14" xml:space="preserve">
+    <value>Charity</value>
+  </data>
+  <data name="lk_menu_15" xml:space="preserve">
+    <value>Promotional materials</value>
+  </data>
+  <data name="lk_menu_2" xml:space="preserve">
+    <value>Invest</value>
+  </data>
+  <data name="lk_menu_3" xml:space="preserve">
+    <value>My investments</value>
+  </data>
+  <data name="lk_menu_4" xml:space="preserve">
+    <value>Cash</value>
+  </data>
+  <data name="lk_menu_5" xml:space="preserve">
+    <value>Operations history</value>
+  </data>
+  <data name="lk_menu_6" xml:space="preserve">
+    <value>Money transaction</value>
+  </data>
+  <data name="lk_menu_7" xml:space="preserve">
+    <value>Withdrawal of funds</value>
+  </data>
+  <data name="lk_menu_8" xml:space="preserve">
+    <value>Top up account</value>
+  </data>
+  <data name="lk_menu_9" xml:space="preserve">
+    <value>Structure</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginEmailIDRequired" xml:space="preserve">
+    <value>Enter your username, e-mail or ID</value>
+  </data>
+  <data name="LoginRequired" xml:space="preserve">
+    <value>Login is required</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>Male</value>
+  </data>
+  <data name="MarketingRewardsAccount" xml:space="preserve">
+    <value>Marketing Rewards Account</value>
+  </data>
+  <data name="MarketingRewardsCaption1" xml:space="preserve">
+    <value>Marketing</value>
+  </data>
+  <data name="MarketingRewardsCaption2" xml:space="preserve">
+    <value>rewards</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="MoneyTransactionTitle" xml:space="preserve">
+    <value>Money transaction</value>
+  </data>
+  <data name="MoreBtn" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="MoreNewsBtn" xml:space="preserve">
+    <value>More News</value>
+  </data>
+  <data name="MyInvestmentsBtn" xml:space="preserve">
+    <value>My investments</value>
+  </data>
+  <data name="MyInvestTitle" xml:space="preserve">
+    <value>My investments</value>
+  </data>
+  <data name="MyPartnersTitle" xml:space="preserve">
+    <value>My partners</value>
+  </data>
+  <data name="NewsTitle" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="NoFile" xml:space="preserve">
+    <value>No file selected</value>
+  </data>
+  <data name="NotChosen" xml:space="preserve">
+    <value>[not chosen]</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Number</value>
+  </data>
+  <data name="OnCheck" xml:space="preserve">
+    <value>On check</value>
+  </data>
+  <data name="OperationsHistoryTitle" xml:space="preserve">
+    <value>Operations History</value>
+  </data>
+  <data name="PartnerBtn" xml:space="preserve">
+    <value>Partner</value>
+  </data>
+  <data name="PartnerSearch" xml:space="preserve">
+    <value>Partner search</value>
+  </data>
+  <data name="PassportHomepage" xml:space="preserve">
+    <value>Passport Homepage</value>
+  </data>
+  <data name="PassportLbl1" xml:space="preserve">
+    <value>Sending is possible only after selecting all files. Available formats for loading: jpg, png, pdf.</value>
+  </data>
+  <data name="PassportLbl2" xml:space="preserve">
+    <value>Maximum upload file size is 2mb.</value>
+  </data>
+  <data name="PassportReg" xml:space="preserve">
+    <value>Passport page with registration</value>
+  </data>
+  <data name="PassportSelfi" xml:space="preserve">
+    <value>Selfie with passport</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Password is required</value>
+  </data>
+  <data name="PaymentNumber" xml:space="preserve">
+    <value>№ payment</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>Interest</value>
+  </data>
+  <data name="PeriodFrom" xml:space="preserve">
+    <value>Period from</value>
+  </data>
+  <data name="PersonalAccountBtn" xml:space="preserve">
+    <value>To personal account</value>
+  </data>
+  <data name="PersonalAccountCaption" xml:space="preserve">
+    <value>Personal account</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="PollsHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ProfileTitle" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="PromoTitle" xml:space="preserve">
+    <value>Promotional materials</value>
+  </data>
+  <data name="Recalculation" xml:space="preserve">
+    <value>recalculation</value>
+  </data>
+  <data name="RefillAmount" xml:space="preserve">
+    <value>Refill amount</value>
+  </data>
+  <data name="RefLinkText" xml:space="preserve">
+    <value>Personal referral link</value>
+  </data>
+  <data name="RegisterPartner" xml:space="preserve">
+    <value>Register partner</value>
+  </data>
+  <data name="RemoveAvatar" xml:space="preserve">
+    <value>Remove avatar</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="RestoreText" xml:space="preserve">
+    <value>Restore access</value>
+  </data>
+  <data name="Rewards" xml:space="preserve">
+    <value>rewards</value>
+  </data>
+  <data name="Saldo" xml:space="preserve">
+    <value>Balance</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="Selection" xml:space="preserve">
+    <value>Selection</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>Show all</value>
+  </data>
+  <data name="SignUpPartnerText" xml:space="preserve">
+    <value>Partner Registration</value>
+  </data>
+  <data name="SignUpText" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="StatusLbl" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="StatusTable" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="TerminationAgreement" xml:space="preserve">
+    <value>Termination Agreement</value>
+  </data>
+  <data name="TimeWallet" xml:space="preserve">
+    <value>One-time wallet address</value>
+  </data>
+  <data name="TimeWalletLbl" xml:space="preserve">
+    <value>temporary wallet address is valid for 15 minutes</value>
+  </data>
+  <data name="TopAccountTitle" xml:space="preserve">
+    <value>Top up account</value>
+  </data>
+  <data name="TopUpAccount" xml:space="preserve">
+    <value>Top up account</value>
+  </data>
+  <data name="ToSend" xml:space="preserve">
+    <value>To send</value>
+  </data>
+  <data name="TransferBtn" xml:space="preserve">
+    <value>Transfer</value>
+  </data>
+  <data name="Tree" xml:space="preserve">
+    <value>Tree</value>
+  </data>
+  <data name="UsernameId" xml:space="preserve">
+    <value>Username / ID</value>
+  </data>
+  <data name="Verified" xml:space="preserve">
+    <value>Verified</value>
+  </data>
+  <data name="ViewDisplay" xml:space="preserve">
+    <value>View display</value>
+  </data>
+  <data name="WalletAddress" xml:space="preserve">
+    <value>Wallet address</value>
+  </data>
+  <data name="WholeAmountBtn" xml:space="preserve">
+    <value>Whole amount</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Withdrawal of funds</value>
+  </data>
+  <data name="WithdrawBtn" xml:space="preserve">
+    <value>Withdraw</value>
+  </data>
+  <data name="Year1" xml:space="preserve">
+    <value>1 year</value>
+  </data>
+  <data name="Year2" xml:space="preserve">
+    <value>2 years</value>
+  </data>
+  <data name="Year3" xml:space="preserve">
+    <value>3 years</value>
+  </data>
+  <data name="YourId" xml:space="preserve">
+    <value>Login / ID:</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="AmountInvestment" xml:space="preserve">
+    <value>Amount of investment</value>
+  </data>
+  <data name="AmountPlace" xml:space="preserve">
+    <value>Sum of rewards for the place</value>
+  </data>
+  <data name="banner_1_desc" xml:space="preserve">
+    <value>We are glad to present to you full-fledged investment Platform Way to Wealth. Here you can realize yourself as the investor and increase greatly the capital</value>
+  </data>
+  <data name="banner_1_title_1" xml:space="preserve">
+    <value>Confidence</value>
+  </data>
+  <data name="banner_1_title_2" xml:space="preserve">
+    <value>in future</value>
+  </data>
+  <data name="banner_2_desc" xml:space="preserve">
+    <value>High and stable profitability it’s one of fundamental bases of the Way to Wealth Platform. An opportunity to trust in professionals in formation of capitalization of your assets, at the same time not to spend the personal time</value>
+  </data>
+  <data name="banner_2_title_1" xml:space="preserve">
+    <value>High profitability</value>
+  </data>
+  <data name="banner_2_title_2" xml:space="preserve">
+    <value>of invested funds</value>
+  </data>
+  <data name="banner_3_desc" xml:space="preserve">
+    <value>"Who owns the Information, owns the World," H. Rothschild. Way to Wealth Platform keeps track of the most important and significant news of the cryptocurrency world and provides to the Partners advantages in their decisions.</value>
+  </data>
+  <data name="banner_3_title_1" xml:space="preserve">
+    <value>Be aware of</value>
+  </data>
+  <data name="banner_3_title_2" xml:space="preserve">
+    <value>the latest news</value>
+  </data>
+  <data name="banner_4_desc" xml:space="preserve">
+    <value>Partner program of the Way to Wealth platform it’s unique plan of payments for each Partner. She allows to create to herself transparent passive income which is easy to predict and calculate</value>
+  </data>
+  <data name="banner_4_title_1" xml:space="preserve">
+    <value>The multilevel</value>
+  </data>
+  <data name="banner_4_title_2" xml:space="preserve">
+    <value>partner program</value>
+  </data>
+  <data name="Benefits" xml:space="preserve">
+    <value>Advantages</value>
+  </data>
+  <data name="BenefitsDesc" xml:space="preserve">
+    <value>Thanks to close ties with underwriters, we have exclusive opportunities which also help us to build work on the strategy of the IPO most successfully.</value>
+  </data>
+  <data name="CalcTitle" xml:space="preserve">
+    <value>Profitability calculator</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Experience</value>
+  </data>
+  <data name="ExperienceDesc" xml:space="preserve">
+    <value>Team of platform Way to Wealth has successful experience in the fund and crypto foreign exchange market including with IPO and ICO. At the expense have been created of it several own strategies.</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Feedback</value>
+  </data>
+  <data name="Feedbacklbl" xml:space="preserve">
+    <value>Leave your feedback</value>
+  </data>
+  <data name="footer_slogan1" xml:space="preserve">
+    <value>Way to Wealth platform is glad to give you an opportunity not only to earn the high fixed income, but also thanks to joint financial literacy, to build business together on the way of modern digital economy.</value>
+  </data>
+  <data name="footer_slogan2" xml:space="preserve">
+    <value>Replenishment and withdrawal of investment means is carried out in cryptocurrencies:</value>
+  </data>
+  <data name="footer_slogan3" xml:space="preserve">
+    <value>Information which is contained on this website and the video presentations has the general character. It is not council or the recommendation to invest in W2W. She has been prepared without taking into account your individual purposes, a financial situation or specific needs. Respectively, before adoption of the investment decision, you have to assess the own purposes, a financial situation and requirement.</value>
+  </data>
+  <data name="footer_slogan4" xml:space="preserve">
+    <value>All questions address</value>
+  </data>
+  <data name="menu_about" xml:space="preserve">
+    <value>About company</value>
+  </data>
+  <data name="menu_faq" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="menu_in" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="menu_invest" xml:space="preserve">
+    <value>Investments</value>
+  </data>
+  <data name="menu_kabinet" xml:space="preserve">
+    <value>Cabinet</value>
+  </data>
+  <data name="menu_news" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="menu_out" xml:space="preserve">
+    <value>Signout</value>
+  </data>
+  <data name="menu_partnership" xml:space="preserve">
+    <value>Partnership</value>
+  </data>
+  <data name="menu_reviews" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="menu_up" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="Opportunities" xml:space="preserve">
+    <value>Opportunities</value>
+  </data>
+  <data name="OpportunitiesDesc" xml:space="preserve">
+    <value>It is possible to participate in the IPO and highly profitable ICO with the capital not less than $100 000, but we cover this sum with own means therefore our clients have an opportunity to invest the sums, comfortable for them.</value>
+  </data>
+  <data name="PostBtn" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Privacy policy</value>
+  </data>
+  <data name="Programs" xml:space="preserve">
+    <value>programs</value>
+  </data>
+  <data name="ReviewAdd" xml:space="preserve">
+    <value>Add a review</value>
+  </data>
+  <data name="ReviewAll" xml:space="preserve">
+    <value>More reviews</value>
+  </data>
+  <data name="ReviewsTitle" xml:space="preserve">
+    <value>Reviews</value>
+  </data>
+  <data name="RiskDiversification1" xml:space="preserve">
+    <value>Risk</value>
+  </data>
+  <data name="RiskDiversification2" xml:space="preserve">
+    <value>Diversification</value>
+  </data>
+  <data name="RiskDiversificationDesc" xml:space="preserve">
+    <value>Thanks to professionalism of our team, portfolio risks are reduced as the most perspective projects are selected. Our analysts carefully approach the analysis of the markets. We use 3 directions in our hard work: trading, IPO, ICO. It allows to diversify risks of the company and our clients.</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="TermsUse" xml:space="preserve">
+    <value>User agreement</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="PassErrMess" xml:space="preserve">
+    <value>The Password field is not valid. The password must consist of a combination of uppercase and lowercase letters and numbers with a total length of at least 6 characters</value>
+  </data>
+  <data name="CaptchaIsEmpty" xml:space="preserve">
+    <value>Captcha answer cannot be empty</value>
+  </data>
+  <data name="CaptchaIsIncorrect" xml:space="preserve">
+    <value>Incorrect captcha answer</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Home page</value>
+  </data>
+  <data name="Camulative" xml:space="preserve">
+    <value>Camulative</value>
+  </data>
+  <data name="Invest" xml:space="preserve">
+    <value>Passive income</value>
+  </data>
+  <data name="Filled" xml:space="preserve">
+    <value>Filled</value>
+  </data>
+  <data name="RankJP" xml:space="preserve">
+    <value>J.P.</value>
+  </data>
+  <data name="RankLP" xml:space="preserve">
+    <value>L.P.</value>
+  </data>
+  <data name="RankP" xml:space="preserve">
+    <value>P.</value>
+  </data>
+  <data name="RankSP" xml:space="preserve">
+    <value>S.P.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>P.P.</value>
+  </data>
+  <data name="LevelValue" xml:space="preserve">
+    <value>Sum of level investments</value>
+  </data>
+  <data name="RewardsSum" xml:space="preserve">
+    <value>Sum of rewards</value>
+  </data>
+  <data name="StructRewards" xml:space="preserve">
+    <value>Sum of structure rewards</value>
+  </data>
+  <data name="StructValue" xml:space="preserve">
+    <value>Sum of structure investments</value>
+  </data>
+  <data name="AticleBonusInvestment" xml:space="preserve">
+    <value>Bonus investment</value>
+  </data>
+  <data name="AticleCamulativeReward" xml:space="preserve">
+    <value>Camulative reward</value>
+  </data>
+  <data name="AticleChangeInvestment" xml:space="preserve">
+    <value>Replenishment / change investment</value>
+  </data>
+  <data name="AticleOpeningTheInvestmentProgram" xml:space="preserve">
+    <value>Opening the investment program</value>
+  </data>
+  <data name="AticleOpeningTheCamulativeProgram" xml:space="preserve">
+    <value>Opening the camulative program</value>
+  </data>
+  <data name="AticleRefReward" xml:space="preserve">
+    <value>Referral reward</value>
+  </data>
+  <data name="AticleReplenishInvest" xml:space="preserve">
+    <value>Replenishment the investment program</value>
+  </data>
+  <data name="AticleReplenishment" xml:space="preserve">
+    <value>Replenishment</value>
+  </data>
+  <data name="AticleStructReward" xml:space="preserve">
+    <value>Structure reward</value>
+  </data>
+  <data name="AticleClosingTheInvestmentProgram" xml:space="preserve">
+    <value>Closing the investment program</value>
+  </data>
+  <data name="AticleTransferToInnerAccount" xml:space="preserve">
+    <value>Transfer to personal account</value>
+  </data>
+  <data name="AticleTransferToPartner" xml:space="preserve">
+    <value>Transfer to partner</value>
+  </data>
+  <data name="AticleWithdrawal" xml:space="preserve">
+    <value>Withdrawal</value>
+  </data>
+  <data name="LoginOrId" xml:space="preserve">
+    <value>ID / Login</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="AticlePercent" xml:space="preserve">
+    <value>Percents calculation</value>
+  </data>
+  <data name="ConfirmYourEmail" xml:space="preserve">
+    <value>Please, confirm your email</value>
+  </data>
+  <data name="LastNews" xml:space="preserve">
+    <value>Last news</value>
+  </data>
+  <data name="AccessRecoveryInformationSent" xml:space="preserve">
+    <value>Access recovery information sent to your email</value>
+  </data>
+  <data name="ConfirmationEmail" xml:space="preserve">
+    <value>Confirmation Email</value>
+  </data>
+  <data name="EmailIsConfirmed" xml:space="preserve">
+    <value>Email is confirmed</value>
+  </data>
+  <data name="ErrEmailIsAlreadyRegistred" xml:space="preserve">
+    <value>The Email is already registered</value>
+  </data>
+  <data name="ErrInviterNotFound" xml:space="preserve">
+    <value>Inviter not found</value>
+  </data>
+  <data name="ErrLinkExpired" xml:space="preserve">
+    <value>Link expired</value>
+  </data>
+  <data name="ErrLinkIsDamaged" xml:space="preserve">
+    <value>Link is damaged</value>
+  </data>
+  <data name="ErrLoginIsAlreadyRegistred" xml:space="preserve">
+    <value>The Login is already registered</value>
+  </data>
+  <data name="ErrPasswordsDoNotMatch" xml:space="preserve">
+    <value>Entered passwords do not match</value>
+  </data>
+  <data name="ErrUserIsNotFound" xml:space="preserve">
+    <value>User is not found</value>
+  </data>
+  <data name="ErrWrongLoginOrPassword" xml:space="preserve">
+    <value>Wrong login or password</value>
+  </data>
+  <data name="PasswordСhanged" xml:space="preserve">
+    <value>Password changed</value>
+  </data>
+  <data name="SignUpInformationSent" xml:space="preserve">
+    <value>A link has been sent to the specified email to complete the registration</value>
+  </data>
+  <data name="AticleCharity" xml:space="preserve">
+    <value>Charity</value>
+  </data>
+  <data name="Qualification" xml:space="preserve">
+    <value>Qualification</value>
+  </data>
+  <data name="StructureTitle" xml:space="preserve">
+    <value>View tree</value>
+  </data>
+  <data name="RankJPfull" xml:space="preserve">
+    <value>Junior partner</value>
+  </data>
+  <data name="RankLPfull" xml:space="preserve">
+    <value>Leading partner</value>
+  </data>
+  <data name="RankPfull" xml:space="preserve">
+    <value>Partner</value>
+  </data>
+  <data name="RankPPfull" xml:space="preserve">
+    <value>Prime partner</value>
+  </data>
+  <data name="RankSPfull" xml:space="preserve">
+    <value>Senior partner</value>
+  </data>
+  <data name="NotPaid" xml:space="preserve">
+    <value>NotPaid</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="MoneyIncome" xml:space="preserve">
+    <value>Cash inflow</value>
+  </data>
+  <data name="ProfileIsChanged" xml:space="preserve">
+    <value>Profile is changed</value>
+  </data>
+  <data name="RippleTagRequirement" xml:space="preserve">
+    <value>Be sure to specify the Destination Tag! Otherwise, we will not be able to recognize the source of payment.</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="DataCopied" xml:space="preserve">
+    <value>Data copied to clipboard</value>
+  </data>
+  <data name="Checking" xml:space="preserve">
+    <value>Checking</value>
+  </data>
+  <data name="DocumentsAreUploaded" xml:space="preserve">
+    <value>Documents are uploaded</value>
+  </data>
+  <data name="ErrUploading" xml:space="preserve">
+    <value>Error of uploading</value>
+  </data>
+  <data name="NotConfirmed" xml:space="preserve">
+    <value>Not confirmed</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Published</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Rejected</value>
+  </data>
+  <data name="Remainder" xml:space="preserve">
+    <value>Remainder</value>
+  </data>
+  <data name="UploadingOfDocuments" xml:space="preserve">
+    <value>Uploading of documents</value>
+  </data>
+  <data name="FinancialPassword" xml:space="preserve">
+    <value>Financial password</value>
+  </data>
+  <data name="Fund" xml:space="preserve">
+    <value>Fund</value>
+  </data>
+  <data name="IsCreateNewPlace" xml:space="preserve">
+    <value>Is create new place</value>
+  </data>
+  <data name="IsProlonged" xml:space="preserve">
+    <value>Is prolonged</value>
+  </data>
+  <data name="ReceiverLoginOrId" xml:space="preserve">
+    <value>Receiver login or id</value>
+  </data>
+  <data name="ValidRange" xml:space="preserve">
+    <value>{0} must be from {1:N0} to {2:N0}</value>
+  </data>
+  <data name="ValidRequired" xml:space="preserve">
+    <value>Field {0} is required</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>Wallet</value>
+  </data>
+  <data name="AvatarSuccessfullyUpdated" xml:space="preserve">
+    <value>Avatar successfully updated</value>
+  </data>
+  <data name="CouldNotUpdateAvatar" xml:space="preserve">
+    <value>Could not update avatar</value>
+  </data>
+  <data name="ErrAccountIsIncorrect" xml:space="preserve">
+    <value>Account is incorrect</value>
+  </data>
+  <data name="ErrFoundationNotFound" xml:space="preserve">
+    <value>Foundation not found</value>
+  </data>
+  <data name="ErrImgSize" xml:space="preserve">
+    <value>The image is too big. Max. size - 2 mb</value>
+  </data>
+  <data name="ErrInsufficientFun" xml:space="preserve">
+    <value>Insufficient funds in the account</value>
+  </data>
+  <data name="ErrLoginIsAlreadyUsed" xml:space="preserve">
+    <value>The login is already used</value>
+  </data>
+  <data name="ErrPasswordIsExpired" xml:space="preserve">
+    <value>Password is expired</value>
+  </data>
+  <data name="ErrPasswordIsIncorrect" xml:space="preserve">
+    <value>Password is incorrect</value>
+  </data>
+  <data name="ErrRecipientMatchesTheSender" xml:space="preserve">
+    <value>The recipient matches the sender.</value>
+  </data>
+  <data name="ErrRecipientNotFound" xml:space="preserve">
+    <value>Recipient not found</value>
+  </data>
+  <data name="ErrSumIsIncorrect" xml:space="preserve">
+    <value>Sum is incorrect</value>
+  </data>
+  <data name="InvestmentsAreUnited" xml:space="preserve">
+    <value>Investments are united</value>
+  </data>
+  <data name="OnlyImagesAllowed" xml:space="preserve">
+    <value>Only images are allowed.</value>
+  </data>
+  <data name="OperationCompleted" xml:space="preserve">
+    <value>Operation completed</value>
+  </data>
+  <data name="TerminationCancelation" xml:space="preserve">
+    <value>Termination cancelation</value>
+  </data>
+  <data name="TerminationConfirmation" xml:space="preserve">
+    <value>Termination confirmation</value>
+  </data>
+  <data name="UnionInvestments" xml:space="preserve">
+    <value>Union investments</value>
+  </data>
+  <data name="LetterFinancialPassword" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Dear user,&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;
+            Password for the transaction {0}.
+        &lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;The password is valid for 5 minutes.&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;Sincerely, the Way to Wealth platform team.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="LetterResetAccess" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Dear user,&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;
+            You have requested access recovery.
+        &lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;
+            Your login: {2}. Your new password: {3}
+        &lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;
+            To reset your password and regain access, click here:
+        &lt;/em&gt;
+    &lt;/p&gt;	
+	&lt;p&gt;
+        &lt;a href="{0}"&gt;{1}&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;If you have not requested password recovery on &lt;a href="w2w.fund"&gt;w2w.fund&lt;/a&gt;, maybe someone else entered your email address by mistake.&lt;/em&gt;
+		&lt;br&gt;
+		&lt;em&gt;
+			In this case, just ignore this message.
+		&lt;/em&gt;		
+    &lt;/p&gt;
+	
+    &lt;p&gt;
+        &lt;em&gt;Sincerely, the Way to Wealth platform team.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="LetterSignUp" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Dear user,&lt;/em&gt;
+    &lt;/p&gt;
+	 &lt;p&gt;
+        &lt;em&gt;Thank you for registering on the Way to Wealth platform.&lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;Your email address is listed as a registration on the Way to Wealth platform.&lt;/em&gt;
+    &lt;/p&gt;
+	
+	&lt;p&gt;
+        &lt;em&gt;Your account will be activated after clicking on the link &lt;a href="{0}"&gt;{1}&lt;/a&gt;&lt;/em&gt;
+    &lt;/p&gt;
+	
+	&lt;p&gt;
+        &lt;em&gt;Your login: {2}.&lt;/em&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;Your name: {3}.&lt;/em&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;Your password: {4}&lt;/em&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;Your sponsor: {5}&lt;/em&gt;
+	&lt;/p&gt;
+	
+    &lt;p&gt;
+        &lt;em&gt;
+            To always have access to your registration data, please save this email.
+        &lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;You have received this letter because Your e-mail address was specified during registration on the &lt;a href="w2w.fund"&gt;w2w.fund&lt;/a&gt;&lt;/em&gt;
+    &lt;/p&gt;
+	 &lt;p&gt;
+        &lt;em&gt;If you did not leave a request for registration on this site, just ignore the letter and delete it.&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;Sincerely, the Way to Wealth platform team.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="PersonalAccountCaption1_1" xml:space="preserve">
+    <value>Personal</value>
+  </data>
+  <data name="PersonalAccountCaption1_2" xml:space="preserve">
+    <value>account</value>
+  </data>
+  <data name="LoginNotify" xml:space="preserve">
+    <value>Logged in to your account</value>
+  </data>
+  <data name="LoginNotifyLetter" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Dear user, &lt;strong&gt;{0}&lt;/strong&gt;&lt;/em&gt;
+    &lt;/p&gt;
+	    &lt;p&gt;
+        &lt;em&gt;
+           We have recorded the login to your account, with the following data:
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;
+            &lt;strong&gt;Time:&lt;/strong&gt; {1}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;
+           &lt;strong&gt;IP address:&lt;/strong&gt; {2}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;
+            &lt;strong&gt;Web browser:&lt;/strong&gt; {3}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;
+            &lt;strong&gt;Country:&lt;/strong&gt; {4}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;	
+  
+    &lt;p&gt;
+        &lt;em&gt;If You are not the one who logged in, please ask contact us immediately &lt;a href="mailto:support@w2w.fund"&gt;support@w2w.fund&lt;/a&gt;.&lt;/em&gt;
+				
+    &lt;/p&gt;
+	
+    &lt;p&gt;
+        &lt;em&gt;Sincerely, the Way to Wealth platform team.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Undefined</value>
+  </data>
+  <data name="WithdrawalError" xml:space="preserve">
+    <value>Withdrawal error</value>
+  </data>
+  <data name="WithdrawalNotFriday" xml:space="preserve">
+    <value>Dear investor! &lt;br /&gt;Leaving a request for withdrawal is possible only on Fridays from 00:00 to 14:00  by Moscow time.</value>
+  </data>
+  <data name="ReviewAdded" xml:space="preserve">
+    <value>Review has been added and sent for review.</value>
+  </data>
+  <data name="ReviewAddedTitle" xml:space="preserve">
+    <value>Review has been added</value>
+  </data>
+  <data name="ReviewIsEmpty" xml:space="preserve">
+    <value>Enter review text!</value>
+  </data>
+  <data name="2FAChanged" xml:space="preserve">
+    <value>2FA settings changed!</value>
+  </data>
+  <data name="CodeDigit" xml:space="preserve">
+    <value>Verification Code</value>
+  </data>
+  <data name="CodeDigitRequired" xml:space="preserve">
+    <value>Field {0} is required</value>
+  </data>
+  <data name="DisableTwoFactorAuth" xml:space="preserve">
+    <value>Disable 2FA</value>
+  </data>
+  <data name="EnableTwoFactorAuth" xml:space="preserve">
+    <value>Enable 2FA</value>
+  </data>
+  <data name="GoogleAuth" xml:space="preserve">
+    <value>Google Authenticator</value>
+  </data>
+  <data name="GoogleAuthAlreadyEnabled" xml:space="preserve">
+    <value>Two Factor Autentification is already enabled on your account.</value>
+  </data>
+  <data name="GoogleAuthEnable1" xml:space="preserve">
+    <value>1. Add W2W.fund to Google Authenticator</value>
+  </data>
+  <data name="GoogleAuthEnable2" xml:space="preserve">
+    <value>Open Google Authenticator and add W2W.fund by scanning the QR Code to the right.</value>
+  </data>
+  <data name="GoogleAuthEnable3" xml:space="preserve">
+    <value>2. Enter the 6 digit code that Google Authenticator generates</value>
+  </data>
+  <data name="GoogleAuthEnable4" xml:space="preserve">
+    <value>Verify that W2W.fund is added correctly in Google Authenticator by entering the 6 digit code which Google Authenticator generates for W2W.fund below, and then click Enable 2FA.</value>
+  </data>
+  <data name="GoogleAuthEnterCode" xml:space="preserve">
+    <value>Enter 6 digits from Google Authenticator application to login in account.</value>
+  </data>
+  <data name="GoogleAuthIncorrectCode" xml:space="preserve">
+    <value>Incorrect code</value>
+  </data>
+  <data name="GoogleAuthTitle" xml:space="preserve">
+    <value>Two Factor Google Authentication Verification</value>
+  </data>
+  <data name="lk_menu_17" xml:space="preserve">
+    <value>2F Auth</value>
+  </data>
+  <data name="ManualSetupCode" xml:space="preserve">
+    <value>Manual Setup Code</value>
+  </data>
+  <data name="TwoFactorAuth" xml:space="preserve">
+    <value>Two Factor Authentification</value>
+  </data>
+</root>

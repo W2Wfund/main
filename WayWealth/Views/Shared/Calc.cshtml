@@ -1,0 +1,264 @@
+﻿@using System.Runtime.Remoting.Messaging
+@model WayWealth.Areas.lk.ViewModels.Home.InvestView
+@{
+    var program = ViewBag.Program as string;
+    var area = ViewContext.RouteData.DataTokens["area"];
+}
+<script type="text/javascript">
+    CP = {};
+    function calc() {
+
+        $('#sum1').val('');
+        $('#sum2').val('');
+
+        var s = $('#Sum').val() * 1;
+        var sum1 = Math.floor(s * CP.percent);
+        var sum2 = Math.floor(s + sum1);
+
+
+        $('#sum1').text('$ ' + sum1);
+        $('#sum1').attr("data-text", '$ ' + sum1);
+        $('#sum2').text('$ ' + sum2);
+        $('#sum2').attr("data-text", '$ ' + sum2);
+    }
+</script>
+
+<div class="btn-block">
+    <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#calc-content"
+       href="@Url.Action("calc", "home", new {program = "camulative", area=""})" class="camulative @(program.Equals("camulative", StringComparison.OrdinalIgnoreCase) ? "active" : "")"><span data-text="Camulative">Camulative</span></a>
+    <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#calc-content"
+       href="@Url.Action("calc", "home", new {program = "base", area=""})" class="@(program.Equals("base", StringComparison.OrdinalIgnoreCase) ? "active" : "")"><span data-text="Base">Base</span></a>
+    <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#calc-content"
+       href="@Url.Action("calc", "home", new {program = "optimal", area=""})" class="@(program.Equals("optimal", StringComparison.OrdinalIgnoreCase) ? "active" : "")"><span data-text="Optimal">Optimal</span></a>
+    <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#calc-content"
+       href="@Url.Action("calc", "home", new {program = "profi", area=""})" class="@(program.Equals("profi", StringComparison.OrdinalIgnoreCase) ? "active" : "")"><span data-text="Profi">Profi</span></a>
+</div>
+
+@using (Html.BeginForm("invest", "home", new { program = program, area = "lk" }, FormMethod.Post))
+{
+    if (program.Equals("base", StringComparison.OrdinalIgnoreCase))
+    {
+        <div class="amount-block">
+            <p class="subtitle">@Resources.Resource.InvestAmount</p>
+            <div id="amount-range-base" class="amount-pips"></div>
+            @*<div class="select-range">
+                    <img src="~/Areas/lk/Content/img/amount-range-icon2.png" alt="">
+                    <select id="slimSelect">
+                        @for (int i = 1000; i < 5000;)
+                        {
+                            <option value="@i">@i</option>
+                            i = i + 500;
+                        }
+                    </select>
+                </div>*@
+        </div>
+        <script>
+            $("#amount-range-base").slider({
+                min: 1000,
+                max: 4500,
+                step: 500,
+                value: @(Model!=null && Model.Sum > 0 ? Model.Sum : 1000),
+                create: function (event, ui) {
+                    var v = $(this).slider('value');
+                    setTimeout(function () {
+                        $(".ui-slider-tip").attr('data-text', v);
+                        $('#Sum').val(v);
+                        calc();
+                    }, 50);
+                },
+                slide: function (event, ui) {
+                    $(".ui-slider-tip").attr('data-text', ui.value);
+                    $('#Sum').val(ui.value);
+                    calc();
+                }
+            }).slider("pips");
+            //var mySelect = new SlimSelect({
+            //    select: '#slimSelect',
+            //    showSearch: false,
+            //    onChange: (info) => {
+            //        $('#Sum').val(info.value);
+            //    }
+            //});
+        </script>
+        <script>
+            CP.min = 1000;
+            CP.max = 4500;
+            CP.step = 500;
+            CP.percent = 0.3;
+        </script>
+    }
+    if (program.Equals("optimal", StringComparison.OrdinalIgnoreCase))
+    {
+        <div class="amount-block">
+            <p class="subtitle">@Resources.Resource.InvestAmount</p>
+            <div id="amount-range-optimal" class="amount-pips"></div>
+            @*<div class="select-range">
+                    <img src="~/Areas/lk/Content/img/amount-range-icon2.png" alt="">
+                    <select id="slimSelect">
+                        @for (int i = 5000; i < 10000;)
+                        {
+                            <option value="@i">@i</option>
+                            i = i + 500;
+                        }
+                    </select>
+                </div>*@
+        </div>
+        <script>
+            $("#amount-range-optimal").slider({
+                min: 5000,
+                max: 9500,
+                step: 500,
+                value: @(Model != null && Model.Sum > 0 ? Model.Sum : 5000),
+                create: function (event, ui) {
+                    var v = $(this).slider('value');
+                    setTimeout(function () {
+                        $(".ui-slider-tip").attr('data-text', v);
+                        $('#Sum').val(v);
+                        calc();
+                    }, 50);
+                },
+                slide: function (event, ui) {
+                    $(".ui-slider-tip").attr('data-text', ui.value);
+                    $('#Sum').val(ui.value);
+                    calc();
+                }
+            }).slider("pips");
+            //var mySelect = new SlimSelect({
+            //    select: '#slimSelect',
+            //    showSearch: false
+            //});
+        </script>
+        <script>
+            CP.min = 5000;
+            CP.max = 9500;
+            CP.step = 500;
+            CP.percent = 0.42;
+        </script>
+    }
+    if (program.Equals("profi", StringComparison.OrdinalIgnoreCase))
+    {
+        <div class="amount-block">
+            <p class="subtitle">@Resources.Resource.InvestAmount</p>
+            <div id="amount-range-profi" class="amount-pips"></div>
+            @*<div class="select-range">
+                    <img src="~/Areas/lk/Content/img/amount-range-icon2.png" alt="">
+                    <select id="slimSelect">
+                        @for (int i = 10000; i <= 100000;)
+                        {
+                            <option value="@i">@i</option>
+                            i = i + 1000;
+                        }
+                    </select>
+                </div>*@
+        </div>
+        <script>
+            $("#amount-range-profi").slider({
+                min: 10000,
+                max: 100000,
+                step: 10000,
+                value: @(Model != null && Model.Sum > 0 ? Model.Sum : 10000),
+                create: function (event, ui) {
+                    var v = $(this).slider('value');
+                    setTimeout(function () {
+                        $(".ui-slider-tip").attr('data-text', v);
+                        $('#Sum').val(v);
+                        calc();
+                    }, 50);
+                },
+                slide: function (event, ui) {
+                    $(".ui-slider-tip").attr('data-text', ui.value);
+                    $('#Sum').val(ui.value);
+                    calc();
+                }
+            }).slider("pips");
+            //var mySelect = new SlimSelect({
+            //    select: '#slimSelect',
+            //    showSearch: false
+            //});
+        </script>
+        <script>
+            CP.min = 10000;
+            CP.max = 100000;
+            CP.step = 1000;
+            CP.percent = 0.48;
+        </script>
+    }
+
+
+    if (!program.Equals("camulative", StringComparison.OrdinalIgnoreCase))
+    {
+        <div class="year-block">
+            <p class="lbl">@Resources.Resource.InvestAmount</p>
+            <div class="input input-range">
+                @Html.TextBoxFor(x => x.Sum, new { type = "number", min = "0", id = "Sum",
+                    onkeypress = "return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                })
+
+            </div>
+            <script type="text/javascript">
+                $('#Sum').on('input change paste', calc);
+            </script>
+            @*<div id="year-pips" class="year-pips"></div>
+                <script>
+                    var yearLbl = ["<span data-text='@Resources.Resource.Year1'>@Resources.Resource.Year1</span>", "<span data-text='@Resources.Resource.Year2'>@Resources.Resource.Year2</span>", "<span data-text='@Resources.Resource.Year3'>@Resources.Resource.Year3</span>"];
+                    $("#year-pips").slider({
+                        min: 1,
+                        max: 3,
+                        step: 1,
+                        value: 1
+                    }).slider("pips", { rest: "label", labels: yearLbl });
+                </script>*@
+            <div class="total-block">
+                <p>
+                    <span data-text="@Resources.Resource.AmountProgram">@Resources.Resource.AmountProgram</span>
+                    <b data-text="$ 0" id="sum1">$ 0</b>
+                </p>
+                <p>
+                    <span data-text="@Resources.Resource.IncomeContribution">@Resources.Resource.IncomeContribution</span>
+                    <b data-text="$ 0" id="sum2">$ 0</b>
+                </p>
+            </div>
+        </div>
+
+        if (area == "lk")
+        {
+            <div class="avtoprodleniye">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(x => x.IsProlonged)
+                    @Html.LabelFor(x => x.IsProlonged, @Resources.Resource.AutoRenewal, new { title = @Resources.Resource.AutoRenewalTitle })
+                    <div class="check"></div>
+                </div>
+            </div>
+        }
+
+        if (ViewBag.IsAllowCreateNewPlace)
+        {
+            <div class="avtoprodleniye">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(x => x.IsCreateNewPlace)
+                    @Html.LabelFor(x => x.IsCreateNewPlace, @Resources.Resource.CreateNewPlace)
+                    <div class="check"></div>
+                </div>
+            </div>
+        }
+    }
+    if (program.Equals("camulative", StringComparison.OrdinalIgnoreCase))
+    {
+        <div class="camulative-block">
+            @Html.HiddenFor(x => x.Sum, new { Value = "300" })
+            <div class="total-block">
+                <p>
+                    <span data-text="@Resources.Resource.AmountProgram">@Resources.Resource.AmountProgram</span>
+                    <b data-text="$ 300">$ 300</b>
+                </p>
+                <p>
+                    <span data-text="@Resources.Resource.IncomeContribution">@Resources.Resource.IncomeContribution</span>
+                    <b data-text="$ 3 100">$ 3 100</b>
+                </p>
+            </div>
+        </div>
+    }
+
+    <a onclick="$(this).closest('form').submit()" class="page-link" style="width: 220px;"><span data-text="@Resources.Resource.BecomePartner">@Resources.Resource.BecomePartner</span></a>
+}
+

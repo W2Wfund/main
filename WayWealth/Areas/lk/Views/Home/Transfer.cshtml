@@ -1,0 +1,120 @@
+﻿@model WayWealth.Areas.lk.ViewModels.Home.TransferView
+@{
+    ViewBag.Title = Resources.Resource.MoneyTransactionTitle;
+    Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+    TempData.Keep();
+}
+<script>
+    balances = {
+        "Остаток.ВнутреннийСчет": "@( TempData["Остаток.ВнутреннийСчет"])",
+        "Остаток.ИнвестиционныйСчет": "@(TempData["Остаток.ИнвестиционныйСчет"])",
+        "Остаток.Проценты": "@(TempData["Остаток.Проценты"])",
+        "Остаток.Вознаграждения": "@(TempData["Остаток.Вознаграждения"])"
+    };
+</script>
+<div class="perevod-block">
+    <p class="page-title">
+        <img src="~/Areas/lk/Content/img/toolbar-icon-4-2.png" alt="">@Resources.Resource.MoneyTransactionTitle
+    </p>
+    @*<div class="error-msg">
+        @Html.ValidationSummary(false)
+    </div>*@
+    <div class="btn-block">
+        <a class="page-link active"><span data-text="@Resources.Resource.PersonalAccountBtn">@Resources.Resource.PersonalAccountBtn</span></a>
+        <a href="@Url.Action("transfer2", "home")" class="page-link"><span data-text="@Resources.Resource.PartnerBtn">@Resources.Resource.PartnerBtn</span></a>
+    </div>
+
+    <div class="perevod-select">
+        <div class="tab-account active">
+            <p>@Resources.Resource.Score</p>
+            @Html.DropDownListFor(x => x.Account, new SelectListItem[]
+                 {
+                new SelectListItem { Text = Resources.Resource.InvestmentInterestAccount, Value = "Остаток.Проценты", Selected = true},
+                new SelectListItem { Text = Resources.Resource.MarketingRewardsAccount, Value = "Остаток.Вознаграждения"},
+                 }, new { id = "account", @class = "myslimSelect4" })
+            <script>
+                var mySlimSelect4 = new SlimSelect({
+                    select: '.myslimSelect4',
+                    showSearch: false,
+                    onChange: (info) => {
+                        if (balances) {
+                            $('#reminder').text(balances[info.value]);
+                        }
+                        $('#account_hidden').val(info.value);
+                        $('.sum_input').val("");
+                    }
+                })
+            </script>
+            <style>
+                .myslimSelect4 {
+                    max-width: 440px !important;
+                }
+
+                    .myslimSelect4 .ss-single-selected {
+                        font-size: 18px !important;
+                    }
+            </style>
+        </div>
+    </div>
+
+    <div class="form-block">
+
+        @using (Html.BeginForm("transfer", "home", FormMethod.Post, new { id = "form_perevod", area = "lk" }))
+        {
+            @Html.HiddenFor(x => x.Account, new { id = "account_hidden" })
+
+            <div class="wrap-bg-form">
+                <div class="dostupno">
+                    <p>
+                        <span data-text="@Resources.Resource.AvailableTranslation">@Resources.Resource.AvailableTranslation</span>
+                    </p>
+                    <b>$ <span id="reminder" class="reminder"></span></b>
+                </div>
+                <div class="wrap-input">
+                    <div class="input mr6">
+                        <span>@Resources.Resource.Amount</span>
+                        @Html.TextBoxFor(x => x.Sum, new { @class = "sum_input" })
+                        <a class="input_link js_transfer_all_sum">
+                            <img src="~/Areas/lk/Content/img/perevod-icon-btn.png" alt="">@Resources.Resource.WholeAmountBtn
+                        </a>
+                    </div>
+                    <div class="input">
+                        <span>@Resources.Resource.FinancPass</span>
+                        <div class="wrap-pass">
+
+                            @Html.PasswordFor(x => x.Password)
+                            <div class="sms">
+                                <b>@Resources.Resource.EmailRequiredSms1</b>
+                                <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
+                            </div>
+                        </div>
+                        <a class="input_link" id="gentp">@Resources.Resource.GetPassBtn</a>
+                    </div>
+                    <div class="sms sms-m">
+                        <b>@Resources.Resource.EmailRequiredSms1</b>
+                        <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
+                    </div>
+                </div>
+            </div>
+            <div class="textarea-block">
+                <p>@Resources.Resource.Description</p>
+                @Html.TextAreaFor(x => x.Desctiption)
+                @*<div class="wrap-check">
+                    <div class="checkbox">
+                        <input type="checkbox" id="check1" onchange="document.getElementById('submit_btn').disabled = !this.checked;">
+                        <label for="check1">Текст соглашения</label>
+                        <div class="check"></div>
+                    </div>
+                </div>*@
+            </div>
+            @*<button type="submit" class="page-link" form="form_perevod" disabled="disabled" id="submit_btn">
+                <span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span>
+            </button>*@
+              <button type="submit" class="page-link" form="form_perevod" id="submit_btn">
+                <span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span>
+            </button>
+        }
+    </div>
+
+</div>
+

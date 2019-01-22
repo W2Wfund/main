@@ -1,0 +1,65 @@
+﻿@model string
+@using W2W.ModelKBT.Entities
+@using WayWealth.Areas.lk.Helpers
+@{
+    var Items = ViewBag.Items as IEnumerable<Partner>;
+    var PageInfo = ViewBag.PageInfo as WayWealth.Areas.lk.ViewModels.PageInfo;
+}
+
+<div class="wrap-table">
+    <table class="table2">
+        <thead>
+            <tr>
+                <th>
+                    <p class="caption">
+                        <span data-text="@Resources.Resource.Fio2">@Resources.Resource.Fio2</span>
+                    </p>
+                </th>
+                @*<th>
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.DepthLocation">@Resources.Resource.DepthLocation</span>
+                        </p>
+                    </th>*@
+                <th>
+                    <p class="caption">
+                        <span data-text="@Resources.Resource.Choose">@Resources.Resource.Choose</span>
+                    </p>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Items != null && Items.Count() > 0)
+            {
+                foreach (var i in ViewBag.Items)
+                {
+                    <tr>
+                        <td>@i.ObjectName</td>
+                        @*<td>@i.id_object</td>*@
+                        <td>
+                            @Html.ActionLink(Resources.Resource.Choose, "Structure", new { RootId = @i.id_object })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+@if (PageInfo != null && PageInfo.TotalPages > 1)
+{
+    @Html.PageLinksAjax(PageInfo, null, x => Url.Action("_SearchMarketingPlaces", new
+    {
+        page = x,
+        searchText = Model
+    }), "#searchResults")
+}
+<a class="page-link close-modal-btn"><span data-text="@Resources.Resource.Close">@Resources.Resource.Close</span></a>
+
+<script type="text/javascript">
+    $('.close-modal-btn').click(function (event) {
+        $('.wrap-modal').removeClass('active');
+        $('#searchResults').empty();
+        $('body').removeClass('overflow');
+    });
+</script>
+
+

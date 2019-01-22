@@ -1,0 +1,184 @@
+﻿@{
+    ViewBag.Title = Resources.Resource.HomePage;
+}
+
+<div class="banner-block">
+    <div class="swiper-container swiper-banner">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" style="background-image: url(/Content/img/banner1.jpg);">
+                <div class="info">
+                    <p class="title">
+                        <span data-text="@Resources.Resource.banner_1_title_1">@Resources.Resource.banner_1_title_1</span>
+                        <span data-text="@Resources.Resource.banner_1_title_2">@Resources.Resource.banner_1_title_2</span>
+                    </p>
+                    <p class="desc">@Resources.Resource.banner_1_desc</p>
+                    <a href="@Url.Action("about", "home")" class="link"><span data-text="@Resources.Resource.MoreBtn">@Resources.Resource.MoreBtn</span></a>
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url(/Content/img/banner2.jpg);">
+                <div class="info">
+                    <p class="title">
+                        <span data-text="@Resources.Resource.banner_2_title_1">@Resources.Resource.banner_2_title_1</span>
+                        <span data-text="@Resources.Resource.banner_2_title_2">@Resources.Resource.banner_2_title_2</span>
+                    </p>
+                    <p class="desc">@Resources.Resource.banner_2_desc</p>
+                    <a href="@Url.Action("investments", "home")" class="link"><span data-text="@Resources.Resource.MoreBtn">@Resources.Resource.MoreBtn</span></a>
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url(/Content/img/banner3.jpg);">
+                <div class="info">
+                    <p class="title">
+                        <span data-text="@Resources.Resource.banner_3_title_1">@Resources.Resource.banner_3_title_1</span>
+                        <span data-text="@Resources.Resource.banner_3_title_2">@Resources.Resource.banner_3_title_2</span>
+                    </p>
+                    <p class="desc">@Resources.Resource.banner_3_desc</p>
+                    <a href="@Url.Action("news", "home")" class="link"><span data-text="@Resources.Resource.MoreBtn">@Resources.Resource.MoreBtn</span></a>
+                </div>
+            </div>
+            <div class="swiper-slide" style="background-image: url(/Content/img/banner4.jpg);">
+                <div class="info">
+                    <p class="title">
+                        <span data-text="@Resources.Resource.banner_4_title_1">@Resources.Resource.banner_4_title_1</span>
+                        <span data-text="@Resources.Resource.banner_4_title_2">@Resources.Resource.banner_4_title_2</span>
+                    </p>
+                    <p class="desc">@Resources.Resource.banner_4_desc</p>
+                    <a href="@Url.Action("partnership", "home")" class="link"><span data-text="@Resources.Resource.MoreBtn">@Resources.Resource.MoreBtn</span></a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<div class="calc-block">
+    <div class="calc">
+        <p class="title">@Resources.Resource.CalcTitle</p>
+        <div id="calc-content">
+            @Html.Action("Calc", "home", new { program = "base" })
+        </div>
+    </div>
+</div>
+
+<div class="about-block">
+    <p class="title">
+        <span data-text="@Resources.Resource.AboutTitle">@Resources.Resource.AboutTitle</span>
+    </p>
+    <ul>
+        <li>
+            <div class="img">
+                <img src="~/Content/img/about-icon-1.png" alt="">
+            </div>
+            <p class="caption">
+                <span data-text="@Resources.Resource.Experience">@Resources.Resource.Experience</span>
+            </p>
+            <p class="desc">@Resources.Resource.ExperienceDesc</p>
+        </li>
+        <li>
+            <div class="img">
+                <img src="~/Content/img/about-icon-2.png" alt="">
+            </div>
+            <p class="caption">
+                <span data-text="@Resources.Resource.RiskDiversification1">@Resources.Resource.RiskDiversification1</span>
+                <span data-text="@Resources.Resource.RiskDiversification2">@Resources.Resource.RiskDiversification2</span>
+            </p>
+            <p class="desc">@Resources.Resource.RiskDiversificationDesc</p>
+        </li>
+        <li>
+            <div class="img">
+                <img src="~/Content/img/about-icon-3.png" alt="">
+            </div>
+            <p class="caption">
+                <span data-text="@Resources.Resource.Benefits">@Resources.Resource.Benefits</span>
+            </p>
+            <p class="desc">@Resources.Resource.BenefitsDesc</p>
+        </li>
+        <li>
+            <div class="img">
+                <img src="~/Content/img/about-icon-4.png" alt="">
+            </div>
+            <p class="caption">
+                <span data-text="@Resources.Resource.Opportunities">@Resources.Resource.Opportunities</span>
+            </p>
+            <p class="desc">@Resources.Resource.OpportunitiesDesc</p>
+        </li>
+    </ul>
+    <a href="@Url.Action("about", "home")" class="page-link"><span data-text="@Resources.Resource.MoreBtn">@Resources.Resource.MoreBtn</span></a>
+</div>
+@Html.Action("_News", "Home")
+
+@Html.Action("_Reviews", "Home")
+<div class="time-block">
+    <div class="times">
+        <div id="myclock1"></div>
+        <div id="myclock2"></div>
+        <div id="myclock3"></div>
+        <div id="myclock4"></div>
+        <div id="myclock5"></div>
+        <div id="myclock6"></div>
+    </div>
+    <div class="icons">
+        <ul>
+            <li>
+                <img src="~/Content/img/icons-icon-1.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-2.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-3.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-4.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-5.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-6.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-7.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-8.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-9.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-10.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-11.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-12.png" alt="">
+            </li>
+            <li>
+                <img src="~/Content/img/icons-icon-13.png" alt="">
+            </li>
+        </ul>
+        <div class="swiper-container swiper-icons-m">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="~/Content/img/icons-icon-1.png" alt="">
+                    <img src="~/Content/img/icons-icon-2.png" alt="">
+                    <img src="~/Content/img/icons-icon-3.png" alt="">
+                    <img src="~/Content/img/icons-icon-4.png" alt="">
+                    <img src="~/Content/img/icons-icon-5.png" alt="">
+                    <img src="~/Content/img/icons-icon-6.png" alt="">
+                    <img src="~/Content/img/icons-icon-7.png" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <img src="~/Content/img/icons-icon-8.png" alt="">
+                    <img src="~/Content/img/icons-icon-9.png" alt="">
+                    <img src="~/Content/img/icons-icon-10.png" alt="">
+                    <img src="~/Content/img/icons-icon-11.png" alt="">
+                    <img src="~/Content/img/icons-icon-12.png" alt="">
+                    <img src="~/Content/img/icons-icon-13.png" alt="">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</div>

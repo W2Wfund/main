@@ -1,0 +1,41 @@
+﻿@model IEnumerable<W2W.ModelKBT.Entities.Promo>
+@{
+    ViewBag.Title = Resources.Resource.PromoTitle;
+    Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<div class="charity-block" style="height: 100%;">
+    <p class="page-title">
+        <img src="~/Areas/lk/Content/img/toolbar-icon-8.png" alt="">@Resources.Resource.PromoTitle
+    </p>
+    <div class="swiper-container swiper-charity3">
+        <div class="swiper-wrapper">
+            @foreach (var promo in Model)
+            {
+                <div class="swiper-slide">
+                    <div class="div">
+                        <div class="img">
+                            <img src="@Url.Action("img", "home", new { area = "", id=promo.Image })" alt="">
+                        </div>
+                        <p class="title">
+                            @if (culture == "ru-RU")
+                            {
+                                @promo.ObjectName
+                            }
+                            else
+                            {
+                                @promo.ObjectNameEng
+                            }
+                        </p>
+                        <a class="charity-dwl" href="@promo.DownloadFile" target="_Blank">
+                            <i></i>
+                            <span>@Resources.Resource.Download</span>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>

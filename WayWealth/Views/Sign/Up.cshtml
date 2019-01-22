@@ -1,0 +1,99 @@
+﻿@model WayWealth.ViewModels.Sign.UpView
+@using Recaptcha.Web.Mvc;
+@{
+    ViewBag.Title = Resources.Resource.SignUpText;
+    TempData.Keep();
+    string Inviter = TempData["Inviter"] as string;
+}
+
+
+<div class="reg-block">
+    @if (!string.IsNullOrWhiteSpace(Inviter))
+    {
+        <p class="page-title">@Resources.Resource.SignUpPartnerText</p>
+    }
+    else
+    {
+        <p class="page-title">@Resources.Resource.SignUpText</p>
+    }
+
+    @using (Html.BeginForm("up", "sign", new { inviter = Inviter }, FormMethod.Post, new { id = "reg-form" }))
+    {
+        <div class="wrap-id">
+            <div class="input mauto">
+                <p class="lbl">@Html.LabelFor(x => x.InviterTxt)</p>
+                @if (string.IsNullOrWhiteSpace(Inviter))
+                {
+                    @Html.TextBoxFor(x => x.InviterTxt)
+                }
+                else
+                {
+                    <p class="val">@TempData["inviterName"]</p>
+                }
+            </div>
+            @if (string.IsNullOrWhiteSpace(Inviter))
+            {
+                <p class="lbl">@Resources.Resource.InviterTxt2</p>
+            }
+        </div>
+        <div class="flex-input">
+            <div class="input">
+                @Html.LabelFor(x => x.LastName, new { @class = "lbl" })
+                @Html.TextBoxFor(x => x.LastName)
+                <div class="required-icon"></div>
+            </div>
+            <div class="input">
+                @Html.LabelFor(x => x.FirstName, new { @class = "lbl" })
+                @Html.TextBoxFor(x => x.FirstName)
+                <div class="required-icon"></div>
+                @*<p class="error-msg">@Html.ValidationMessageFor(m => m.FirstName)</p>*@
+            </div>
+            <div class="input">
+                @Html.LabelFor(x => x.MiddleName, new { @class = "lbl" })
+                @Html.TextBoxFor(x => x.MiddleName)
+            </div>
+        </div>
+        <div class="wrap-email">
+            <div class="input mauto">
+                @Html.LabelFor(x => x.Email, new { @class = "lbl" })
+                @Html.TextBoxFor(x => x.Email)
+                <div class="required-icon"></div>
+                @*<p class="error-msg">@Html.ValidationMessageFor(m => m.Email)</p>*@
+            </div>
+        </div>
+        <div class="flex-input-bg">
+            <div class="flex-input">
+                <div class="input">
+                    @Html.LabelFor(x => x.Login, new { @class = "lbl" })
+                    @Html.TextBoxFor(x => x.Login)
+                </div>
+                <div class="input">
+                    @Html.LabelFor(x => x.Password, new { @class = "lbl" })
+                    @Html.PasswordFor(x => x.Password)
+                    <div class="required-icon"></div>
+                    @*<p class="error-msg">@Html.ValidationMessageFor(m => m.Password)</p>*@
+                </div>
+                <div class="input">
+                    @Html.LabelFor(x => x.ConfirmPassword, new { @class = "lbl" })
+                    @Html.PasswordFor(x => x.ConfirmPassword)
+                    <div class="required-icon"></div>
+                    @*<p class="error-msg">@Html.ValidationMessageFor(m => m.ConfirmPassword)</p>*@
+                </div>
+            </div>
+        </div>
+        @*<div class="captcha"></div>*@
+        @Html.Recaptcha()
+        <button type="submit" class="page-link" form="reg-form">
+            <span data-text="@Resources.Resource.SignUpText">@Resources.Resource.SignUpText</span>
+        </button>
+        if (!ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary(false)
+        }
+    }
+
+    <div class="link-block">
+        <a href="@Url.Action("In", "Sign")">@Resources.Resource.InEntryBtnText</a>
+        <a href="@Url.Action("restore", "sign")">@Resources.Resource.RestoreText</a>
+    </div>
+</div>

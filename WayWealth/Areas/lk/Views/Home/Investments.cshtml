@@ -1,0 +1,332 @@
+﻿@model WayWealth.Areas.lk.ViewModels.Home.InvestmentsView
+@using System.Text
+@using W2W.ModelKBT.Entities
+
+@{
+    ViewBag.Title = Resources.Resource.MyInvestTitle;
+    Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+
+    var Investments = ViewBag.Investments as IEnumerable<Investment>;
+    var ExpectedPayments = ViewBag.ExpectedPayments as IEnumerable<InnerTransfer>;
+    var Terminated = ViewBag.Terminated as IEnumerable<Investment>;
+}
+<style>
+    .wrap-childTable {
+        max-width: 785px;
+        width: 100%;
+        max-height: 540px;
+        overflow-y: scroll;
+    }
+</style>
+<div class="invest-block">
+    <p class="page-title">
+        <img src="~/Areas/lk/Content/img/toolbar-icon-2.png" alt="">@Resources.Resource.MyInvestTitle
+    </p>
+    <div class="error-msg">
+        @Html.ValidationSummary()
+    </div>
+    <div class="filter-block">
+        @using (Html.BeginForm())
+        {
+            <div class="select-wrap mb30">
+                <p>@Resources.Resource.StatusLbl</p>
+                @Html.DropDownListFor(x => x.Status, new SelectListItem[]
+         {
+                new SelectListItem { Text = Resources.Resource.Completed, Value = Resources.Resource.Completed},
+                new SelectListItem { Text = Resources.Resource.Active, Value = Resources.Resource.Active},
+         }, Resources.Resource.NotChosen,  new { @class = "myslimSelect", id="status" })
+                <script>
+                    var mySlimSelect = new SlimSelect({
+                        select: '.myslimSelect',
+                        showSearch: false
+                    })
+                    $('#status').change(function () {
+                        $(this).closest('form').submit();
+                    })
+                </script>
+            </div>
+        }
+        <div class="add_sum">
+            <p>@Resources.Resource.AddSum</p>
+
+            @using (Html.BeginForm("UnionInvestments", "home", new { area = "lk" }, FormMethod.Post, new { id = "form_addSum" }))
+            {
+                <div class="input">
+                    <input type="text" name="sum">
+                </div>
+                <input type="hidden" name="investments" />
+                <button type="submit" class="page-link" form="form_addSum">
+                    <span data-text="@Resources.Resource.Combine">@Resources.Resource.Combine</span>
+                </button>
+            }
+        </div>
+    </div>
+    @if (Investments != null && Investments.Count() > 0)
+    {
+
+        <table class="mb30" data-tablesaw-mode="swipe" data-tablesaw-minimap>
+            <thead>
+                <tr>
+                    <th data-tablesaw-priority="1">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.Selection">@Resources.Resource.Selection</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="2">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.DateCreat">@Resources.Resource.DateCreat</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="3">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.DateFinish">@Resources.Resource.DateFinish</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="4">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.Amount">@Resources.Resource.Amount</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="5">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.StatusTable">@Resources.Resource.StatusTable</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="6">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.Program">@Resources.Resource.Program</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="7">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.AutoRenewalTable">@Resources.Resource.AutoRenewalTable</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="8"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Investment item in ViewBag.Investments)
+                {
+                    var status = item.Status;
+                    switch (item.Status)
+                    {
+                        case "Завершен":
+                            status = Resources.Resource.Completed;
+                            break;
+                        case "Активен":
+                            status = Resources.Resource.Active;
+                            break;
+                    }
+
+                    <tr>
+                        <td>
+                            @if (item.Status == "Активен")
+                            {
+                                <div class="checkbox">
+                                    <input type="checkbox" id="@("check" + item.id_object)" value="@item.id_object">
+                                    <label for="@("check" + item.id_object)"></label>
+                                    <div class="check"></div>
+                                </div>
+                            }
+                        </td>
+                        <td>
+                            <p>@item.StartDate.Value.ToShortDateString()</p>
+                        </td>
+                        <td>
+                            <p>@item.EndDate.Value.ToShortDateString()</p>
+                        </td>
+                        <td>
+                            <p>$ @item.Sum.Value.ToString("N2")</p>
+                        </td>
+                        <td>
+                            @if (item.Status == "Активен")
+                            {
+                                <p class="activen">@status</p>
+                            }
+                            else if (item.Status == "Завершен")
+                            {
+                                <p class="completed">@status</p>
+                            }
+                            else
+                            {
+                                <p><b>@status</b></p>
+                            }
+                        </td>
+                        <td>
+                            <p>@item.ProgramName</p>
+                        </td>
+                        <td>
+                            @if (item.Status != "Завершен")
+                            {
+                                if (item.IsProlonged ?? false)
+                                {
+                                    <a href="@Url.Action("SetProlonged", new { id = item.id_object, isProlonged = false })">
+                                        <img src="~/Areas/lk/Content/img/correct2.png" alt="">
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="@Url.Action("SetProlonged", new { id = item.id_object, isProlonged = true })">
+                                        @*<img src="~/Areas/lk/Content/img/close-menu.png" alt="">*@
+                                        <div class="checkbox">
+                                            <div class="check"></div>
+                                        </div>
+                                    </a>
+                                }
+                            }
+                        </td>
+                        <td class="btn_td">
+                            <a class="subtable_btn"></a>
+                        </td>
+                    </tr>
+                    <tr class="children-table">
+                        <td class="colspan" colspan="8">
+                            <div class="wrap-childTable">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <p class="caption">
+                                                    <span data-text="@Resources.Resource.Number">@Resources.Resource.Number</span>
+                                                </p>
+                                            </th>
+                                            <th>
+                                                <p class="caption">
+                                                    <span data-text="@Resources.Resource.Date">@Resources.Resource.Date</span>
+                                                </p>
+                                            </th>
+                                            <th>
+                                                <p class="caption">
+                                                    @*<span data-text="@Resources.Resource.CurrentYield">@Resources.Resource.CurrentYield</span>*@
+                                                </p>
+                                            </th>
+                                            <th>
+                                                <p class="caption">
+                                                    <span data-text="@Resources.Resource.Amount">@Resources.Resource.Amount</span>
+                                                </p>
+                                            </th>
+                                            <th>
+                                                <p class="caption">
+                                                    <span data-text="@Resources.Resource.StatusTable">@Resources.Resource.StatusTable</span>
+                                                </p>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            var number = 0;
+                                        }
+                                        @foreach (var payment in ExpectedPayments.Where(x => x.OrderId == item.id_object && x.PaymentStatus == "Оплачен").OrderBy(x => x.PaymentDate))
+                                        {
+                                            var paymentStatus = payment.PaymentStatus;
+                                            switch (payment.PaymentStatus)
+                                            {
+                                                case "Оплачен":
+                                                    paymentStatus = Resources.Resource.Paid;
+                                                    break;
+                                                case "Не оплачен":
+                                                    paymentStatus = Resources.Resource.NotPaid;
+                                                    break;
+                                            }
+
+                                            <tr>
+                                                <td>
+                                                    <p>@(++number)</p>
+                                                </td>
+                                                <td>
+                                                    <p>@payment.PaymentDate.Value.ToShortDateString()</p>
+                                                </td>
+                                                <td>
+                                                    <p></p>
+                                                </td>
+                                                <td>
+                                                    <p>$ @payment.PaymentSum.Value.ToString("N2")</p>
+                                                </td>
+                                                <td>
+                                                    @if (payment.PaymentStatus == "Оплачен")
+                                                    {
+                                                        <p class="completed">@paymentStatus</p>
+                                                    }
+                                                    else if (payment.PaymentStatus == "Не оплачен")
+                                                    {
+                                                        <p class="activen">@paymentStatus</p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p>@paymentStatus</p>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+
+    }
+
+    @if (Terminated != null && Terminated.Count() > 0)
+    {
+        <p class="subtitle">@Resources.Resource.TerminationAgreement</p>
+        <table class="table2" data-tablesaw-mode="swipe" data-tablesaw-minimap>
+            <thead>
+                <tr>
+                    <th data-tablesaw-priority="1">
+                        <p>@Resources.Resource.AgreementDate</p>
+                    </th>
+                    <th data-tablesaw-priority="2">
+                        <p>@Resources.Resource.AppDateTermin</p>
+                    </th>
+                    <th data-tablesaw-priority="3">
+                        <p>@Resources.Resource.AmoutDeal</p>
+                    </th>
+                    <th data-tablesaw-priority="4">
+                        <p>@Resources.Resource.AmountPaid %</p>
+                    </th>
+                    <th data-tablesaw-priority="5">
+                        <p>@Resources.Resource.AmountRefunded</p>
+                    </th>
+                   
+                    <th data-tablesaw-priority="8">
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Terminated)
+                {
+                    <tr>
+                        <td>
+                            <p>@item.StartDate.Value.ToShortDateString()</p>
+                        </td>
+                        <td>
+                            <p>@item.StatusChangedDate.Value.ToShortDateString()</p>
+                        </td>
+                        <td>
+                            <p>$ @item.Sum.Value.ToString("N2")</p>
+                        </td>
+                        <td>
+                            <p>$ @((item.SumIncome ?? 0).ToString("N2"))</p>
+                        </td>
+                        <td>
+                            <p>$ @item.RecalcSum.Value.ToString("N2")</p>
+                        </td>
+                       
+                        <td>
+                            <a class="page-link" href="@Url.Action("ConfirmTerminating", "home", new { area ="lk", investmentId  = @item.id_object} )"><span data-text="@Resources.Resource.Confirm">@Resources.Resource.Confirm</span></a>
+                            <a class="page-link cancel" href="@Url.Action("CancelTerminating", "home", new { area ="lk", investmentId  = @item.id_object} )"><span data-text="@Resources.Resource.Cancellation">@Resources.Resource.Cancellation</span></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

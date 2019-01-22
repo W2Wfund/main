@@ -1,0 +1,266 @@
+﻿@using WayWealth.Areas.lk.Helpers
+@model WayWealth.Areas.lk.ViewModels.Home.HistoryView
+@{
+    ViewBag.Title = Resources.Resource.OperationsHistoryTitle;
+    Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+    var articles = ViewBag.Articles as IEnumerable<W2W.ModelKBT.Entities.DictItem>;
+}
+<div class="history-block">
+    <p class="page-title">
+        <img src="~/Areas/lk/Content/img/toolbar-icon-2.png" alt="">@Resources.Resource.OperationsHistoryTitle
+    </p>
+
+    <div class="filter-block mb30">
+        <a class="filter-block-btn">
+            <img src="~/Areas/lk/Content/img/filter.png" alt=""><span>@Resources.Resource.Filtres</span>
+        </a>
+        @using (Html.BeginForm("history", "home", FormMethod.Post, new { id = "form_filter", @class = "form_flex" }))
+        {
+            <div class="select-wrap">
+                <p>@Resources.Resource.Account</p>
+                @Html.DropDownListFor(x => x.account, new[]{
+                        new SelectListItem {Text = Resources.Resource.ShowAll, Value = "all"},
+                        new SelectListItem {Text = Resources.Resource.FPersonalAccount, Value = "Остаток.ВнутреннийСчет"},
+                        new SelectListItem {Text = Resources.Resource.FInvestmentAccount, Value = "Остаток.ИнвестиционныйСчет"},
+                        new SelectListItem {Text = Resources.Resource.FInvestInterest, Value = "Остаток.Проценты"},
+                        new SelectListItem {Text = Resources.Resource.FMarketingRewards, Value = "Остаток.Вознаграждения"},
+                    }, new { @class = "myslimSelect2" })
+                <script>
+                    var mySlimSelect2 = new SlimSelect({
+                        select: '.myslimSelect2',
+                        showSearch: false
+                    })
+
+                    $('select[name="account"]').change(function () {
+                        $.ajax({
+                            method: "POST",
+                            url: "/lk/_PaymentArticles",
+                            data: { account: $(this).val(), article: "@Model.article" }
+                        }).done(function (data) {
+                            $('#article_wrapper').html(data);
+                        });
+                    });
+                </script>
+
+            </div>
+            <div class="date-wrap">
+                <p>@Resources.Resource.PeriodFrom</p>
+                @Html.TextBoxFor(x => x.begin, new { @class = "datapick datapicker_1", @autocomplete = "off" })
+                <p class="p2">@Resources.Resource.Before</p>
+                @Html.TextBoxFor(x => x.end, new { @class = "datapick datapicker_2", @autocomplete = "off" })
+            </div>
+            if (Request.Cookies["lang"] != null && Request.Cookies["lang"].Value == "en")
+            {
+                <script>
+                    $('.datapicker_1')
+                        .datepicker({
+                            firstDay: 1,
+                            dateFormat: 'dd.mm.yy'
+                        });
+                    $('.datapicker_2')
+                        .datepicker({
+                            firstDay: 1,
+                            dateFormat: 'dd.mm.yy'
+                        });
+                </script>
+            }
+            else
+            {
+                <script>
+                    $('.datapicker_1')
+                        .datepicker({
+                            monthNames: [
+                                'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь',
+                                'Октябрь', 'Ноябрь', 'Декабрь'
+                            ],
+                            dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                            firstDay: 1,
+                            dateFormat: 'dd.mm.yy'
+                        });
+                    $('.datapicker_2')
+                        .datepicker({
+                            monthNames: [
+                                'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь',
+                                'Октябрь', 'Ноябрь', 'Декабрь'
+                            ],
+                            dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                            firstDay: 1,
+                            dateFormat: 'dd.mm.yy'
+                        });
+                </script>
+            }
+            <div class="wrap-block">
+                <div class="select-wrap" id="article_wrapper">
+                    @Html.Partial("_PaymentArticles", Model)
+                </div>
+                <button type="submit" class="page-link" form="form_filter">
+                    <span data-text="@Resources.Resource.Search">@Resources.Resource.Search</span>
+                </button>
+            </div>
+        }
+
+        
+    </div>
+    @if (Model.Items != null)
+    {
+        <table class="table2 tcenter mb30" data-tablesaw-mode="swipe" data-tablesaw-minimap>
+            <thead>
+                <tr>
+                    <th data-tablesaw-priority="1">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.PaymentNumber">@Resources.Resource.PaymentNumber</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="2">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.DateOperation">@Resources.Resource.DateOperation</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="3">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.Description">@Resources.Resource.Description</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="4">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.AmountComing">@Resources.Resource.AmountComing</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="5">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.AmountConsumption">@Resources.Resource.AmountConsumption</span>
+                        </p>
+                    </th>
+                    <th data-tablesaw-priority="6">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.AccountBalance">@Resources.Resource.AccountBalance</span>
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Items)
+                {
+                    var desc = item.ObjectName;
+                    switch (item.PaymentArticle)
+                    {
+                        case "Пополнение счета":
+                            desc = Resources.Resource.AticleReplenishment;
+                            break;
+                        case "Открытие инвест программы":
+                            desc = Resources.Resource.AticleOpeningTheInvestmentProgram + " " + item.OrderProgramObjectName;
+                            break;
+                        case "Открытие накопит программы":
+                            desc = Resources.Resource.AticleOpeningTheCamulativeProgram + " " + "Camulative";
+                            break;
+                        case "Закрытие инвест программы":
+                            desc = Resources.Resource.AticleClosingTheInvestmentProgram + " " + item.OrderProgramObjectName;
+                            break;
+                        case "Вывод средств":
+                            desc = Resources.Resource.AticleWithdrawal;
+                            break;
+                        case "Перевод партнеру":
+                            desc = Resources.Resource.AticleTransferToPartner + " (" + (string.IsNullOrWhiteSpace(item.OrderLogin) ? item.OrderPersonalId.ToString() : item.OrderLogin) + ")";
+                            break;
+                        case "Пополнение/изменение инвест программы":
+                            desc = Resources.Resource.AticleChangeInvestment;
+                            break;
+                        case "Пополнение инвест программы":
+                            desc = Resources.Resource.AticleReplenishInvest;
+                            break;
+                        case "Бонусная инвест программа":
+                            desc = Resources.Resource.AticleBonusInvestment;
+                            break;
+                        case "Начисление процентов":
+                            desc = Resources.Resource.AticlePercent;
+                            break;
+                        case "Перевод на лицевой счет":
+                            desc = Resources.Resource.AticleTransferToInnerAccount;
+                            break;
+                        case "Реферальное вознаграждение":
+                            desc = Resources.Resource.AticleRefReward + " " + item.OrderObjectName;
+                            break;
+                        case "Вознаграждение по накопительной программе":
+                            desc = Resources.Resource.AticleCamulativeReward + " " + item.OrderObjectName;
+                            break;
+                        case "Вознаграждение со структуры":
+                            desc = Resources.Resource.AticleStructReward + " " + item.OrderObjectName;
+                            break;
+                        case "Благотворительность":
+                            desc = Resources.Resource.AticleCharity + " " + item.OrderObjectName;
+                            break;
+                    }
+
+
+
+
+                    <tr>
+                        <td>
+                            <p>@item.PaymentNumber</p>
+                        </td>
+                        <td>
+                            <p>@item.PaymentDate.Value.ToString("dd.MM.yyyy HH:mm")</p>
+                        </td>
+                        <td class="tleft">
+                            <p>@desc</p>
+                        </td>
+                        <td>
+                            <p>
+                                @{
+                                    if (item.PaymentDirection == "Приход")
+                                    {
+                                        @((item.PaymentSum ?? 0).ToString("N2"))
+                                    }
+                                }
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                @{
+                                    if (item.PaymentDirection == "Расход")
+                                    {
+                                        @((item.PaymentSum ?? 0).ToString("N2"))
+                                    }
+                                }
+                            </p>
+                        </td>
+                        <td>
+                            <p>@((item.AccountBalance ?? 0).ToString("N2"))</p>
+                        </td>
+                    </tr>
+                                    }
+            </tbody>
+        </table>
+                                    }
+    @if (Model.PageInfo != null && Model.PageInfo.TotalPages > 1)
+    {
+        @Html.PageLinks(Model.PageInfo, null, x => Url.Action("history", new
+   {
+       account = Model.account,
+       begin = Model.begin == null ? null : Model.begin.Value.ToShortDateString(),
+       end = Model.end == null ? null : Model.end.Value.ToShortDateString(),
+       article = Model.article,
+       page = x
+   }))
+    }
+    <div class="history-total">
+        <div>
+            <p>
+                <span data-text="@Resources.Resource.AmountPeriod">@Resources.Resource.AmountPeriod</span>
+            </p>
+            <b>$ @Model.TotalSumPrihod.ToString("N2")</b>
+        </div>
+        <div>
+            <p>
+                <span data-text="@Resources.Resource.AmountPeriod2">@Resources.Resource.AmountPeriod2</span>
+            </p>
+            <b>$ @Model.TotalSumRashod.ToString("N2")</b>
+        </div>
+        <div>
+            <p>
+                <span data-text="@Resources.Resource.Saldo">@Resources.Resource.Saldo</span>
+            </p>
+            <b>$ @Model.Saldo.ToString("N2")</b>
+        </div>
+    </div>
+</div>

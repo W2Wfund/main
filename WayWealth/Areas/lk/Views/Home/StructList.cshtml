@@ -1,0 +1,70 @@
+﻿@model StructureView
+@using W2W.ModelKBT.Entities
+@using WayWealth.Areas.lk.ViewModels.Home
+@{
+    Layout = "~/Areas/lk/Views/Home/_StructLayout.cshtml";
+    var Items = ViewBag.Items as IEnumerable<MarketingPlaceView>;
+    var first = Items.OrderBy(p => p.hash.Length).FirstOrDefault();
+
+    var Investments = ViewBag.Investments as Dictionary<uint, decimal>;
+    var Rewards = ViewBag.Rewards as Dictionary<uint, decimal>;
+    var LevelValue = ViewBag.LevelValue as Dictionary<int, decimal>;
+    var StructValue = ViewBag.StructValue as Dictionary<uint, decimal>;
+    var StructRewards = ViewBag.StructRewards as Dictionary<uint, decimal>;
+}
+
+<div class="tree-block">
+    @Html.Partial("_StructTools", Model)
+    <a class="all_tree_btn"><span data-text="@Resources.Resource.ExpandStructure">@Resources.Resource.ExpandStructure</span></a>
+    <div id="lists" class="lists-block">
+        @helper CreateItems(MarketingPlaceView place, IEnumerable<MarketingPlaceView> structure, int level,
+                                                                                        Dictionary<uint, decimal> investments,
+                                                                                        Dictionary<uint, decimal> rewards,
+                                                                                        Dictionary<int, decimal> levelvalue,
+                                                                                        Dictionary<uint, decimal> structvalue,
+                                                                                        Dictionary<uint, decimal> structrewards)
+        {
+                <ul>
+                    <li
+                       data-name="@place.ObjectName"
+                       data-deep="@level"
+                       data-filled="@place.FilledLevels"
+                       data-loginorid="@(string.IsNullOrWhiteSpace(place.PartnerLogin) ? place.PartnerPersonalId.ToString() : place.PartnerPersonalId.ToString() + " / " + place.PartnerLogin)"
+                       data-level-value="@((levelvalue.ContainsKey(level) ? levelvalue[level] : 0).ToString("N2"))"
+                       data-investments="@((investments.ContainsKey(place.PartnerId.Value) ? investments[place.PartnerId.Value] : 0).ToString("N2"))"
+                       data-rewards="@((rewards.ContainsKey(place.id_object) ? rewards[place.id_object] : 0 ).ToString("N2"))"
+                       data-struct-value="@((structvalue.ContainsKey(place.id_object) ? structvalue[place.id_object] : 0).ToString("N2"))"
+                       data-struct-rewards="@((structrewards.ContainsKey(place.id_object) ? structrewards[place.id_object] : 0).ToString("N2"))">
+                       @(string.IsNullOrWhiteSpace(place.Rank) ? place.ShortName : place.ShortName + " (" + place.Rank + ")")
+
+                        @if (structure.Any(x => x.id_parent == place.id_object))
+                        {
+                            var childs = structure
+                                .Where(p => p.id_parent == place.id_object)
+                                .OrderBy(p => p.SortPosition ?? 0);
+
+                            foreach (var child in childs)
+                            {
+                                @CreateItems(child, structure, level + 1, investments, rewards, levelvalue, structvalue, structrewards)
+                            }
+
+                        }
+                    </li>
+                </ul>
+}
+        @if (Items != null && Items.Count() > 0)
+        {
+            @CreateItems(Items.OrderBy(p => p.hash.Length).First(), Items, 0, Investments, Rewards, LevelValue, StructValue, StructRewards)
+        }
+    </div>
+</div>
+@if (Model.MarketingType == MarketingTypeView.Camulative)
+{
+    @Html.Partial("_StructCamulativeInfo")
+}
+else
+{
+    @Html.Partial("_StructInvestInfo")
+}
+
+

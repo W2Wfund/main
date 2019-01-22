@@ -1,0 +1,53 @@
+﻿@using W2W.ModelKBT.Entities
+@using WayWealth.Areas.lk.Helpers
+@using WayWealth.Areas.lk.ViewModels
+@{
+    ViewBag.Title = Resources.Resource.ReviewsTitle;
+    var Items = ViewBag.Items as IEnumerable<Partner>;
+    var PageInfo = ViewBag.PageInfo as PageInfo;
+}
+
+<div class="reviews-page">
+    <div class="reviews-bg">
+        <div class="reviews-content">
+            <p class="page-title">
+                <span data-text="@Resources.Resource.ReviewsTitle">@Resources.Resource.ReviewsTitle</span>
+            </p>
+            <div class="bread">
+                <a href="/">@Resources.Resource.HomePage</a>
+                <i>/</i>
+                <a>@Resources.Resource.ReviewsTitle</a>
+            </div>
+        </div>
+    </div>
+    <div class="reviews-content">
+
+        @if (Items != null)
+        {
+            <ul class="reviews-list">
+                @foreach (var item in Items.OrderByDescending(x=>x.ReviewDate))
+                {
+                    <li>
+                        <div class="img">
+                            @if (!string.IsNullOrWhiteSpace(item.Image))
+                            {
+                                <img src="@Url.Action("img", "home", new { area = "", id=item.Image })" alt="">
+                            }
+                            else
+                            {
+                                <img src="~/Content/img/default.png" alt="">
+                            }
+                        </div>
+                        <p class="caption">@PagingHelpers.GetAuthorReview(item.ObjectName)</p>
+                        <p class="desc">@item.Review</p>
+                    </li>
+                }
+            </ul>
+        }
+
+    </div>
+    @if (PageInfo != null && PageInfo.TotalPages > 1)
+    {
+        @Html.PageLinks(PageInfo, null, x => Url.Action("reviews", new { page = x }))
+    }
+</div>

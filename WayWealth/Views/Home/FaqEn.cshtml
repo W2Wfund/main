@@ -1,0 +1,450 @@
+﻿@{
+    ViewBag.Title = "Faq";
+}
+
+<div class="faq-page">
+    <div class="faq-banner">
+        <div class="faq-content">
+            <p class="page-title">
+                <span data-text="FAQ">FAQ</span>
+            </p>
+            <div class="bread">
+                <a href="/">Home page</a>
+                <i>/</i>
+                <a>FAQ</a>
+            </div>
+        </div>
+    </div>
+    <div class="faq-wrap">
+        <div class="faq-content">
+            <div class="faq-flex">
+                @*<ul class="faq-menu">
+                        <li class="active">
+                            <a data-id="answer-block-1">Регистрация аккаунта/личный кабинет</a>
+                        </li>
+                        <li>
+                            <a data-id="answer-block-2">Инвестиционная программа</a>
+                        </li>
+                        <li>
+                            <a data-id="answer-block-3">Пополнение/Вывод/Перевод средств</a>
+                        </li>
+                        <li>
+                            <a data-id="answer-block-4">Партнерам</a>
+                        </li>
+                    </ul>*@
+                <div class="faq-cont">
+                    <div class="answer-block-1 answer-block">
+                        <p class="caption">Account registration / personal account</p>
+                        <ul>
+                            <li class="active">
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">
+                                    How to register the account (with a referral link / without it) on the website of the platform and to get access to a private office?
+                                </a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        <b>Registration on the website of the platform is possible in three ways</b>
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            Registration on a referral link on the website of the platform is carried out by click-through, received at the Partner. You don't need to register ID or the login of the Partner, system automatically him will register to the respective field on a registration form.
+                                        </li>
+                                        <li>
+                                            Independent registration on the platform website with use of registration data of the Partner who has invited you. You need to receive at his ID which has told about the platform the Partner or Login in advance, and when filling registration cards to specify the obtained data in the respective field on a registration form.
+                                        </li>
+                                        <li>
+                                            Also perhaps independent registration without the instruction ID or the login of the partner, then according to rules of the platform, you will be registered under one of regional leading partners.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">Registration processing:</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        It is necessary to enter a referral link of the partner who has invited you, or the direct reference on the platform website into an address line of the browser.
+                                    </p>
+                                    <p>On the homepage of the website in the right top corner press the <b>registration</b> button</p>
+                                    <p>
+                                        In suggested you to a form of registration to fill:
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            1) to fill a full name
+                                        </li>
+                                        <li>
+                                            2) to specify your operating email
+                                        </li>
+                                        <li>
+                                            3) to specify the login (by default it is possible to leave your email. The minimum length is 4 symbols. (Admissible symbols: Latin letters, sign of underlining, figures)
+                                        </li>
+                                        <li>
+                                            4) to specify the password (the minimum length of 6 symbols. Latin + existence of a capital letter and figure)
+                                        </li>
+                                        <li>
+                                            5) to repeat the password
+                                        </li>
+                                        <li>
+                                            6) next you click the <b>Registration</b> button. On the e-mail address specified by you within 5-10 minutes the letter by the reference for registration confirmation will be sent. It is necessary to follow this link and to finish registration. If you haven't received the letter, then you should check the Spam folder. In case of lack of the letter write us the letter on <a style="color: #a67900; text-decoration: underline;" href="mailto:support@w2w.fund">support@w2w.fund</a>
+                                        </li>
+                                        <li>
+                                            7) enter your login (email) and the password, click the <b>Enter</b> button
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">May I register several accounts?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        We against deliberate creation of two and more personal accounts issued on identical personal data. If you want to increase the investments, then you can acquire at any time one of the presented investment packages and unite them with already existing programs, for receiving more favorable conditions.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">Verification</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        Verification of accounts on the Way to Wealth platform isn't obligatory. She is necessary only in case of detection of roguish actions concerning the Way to Wealth platform.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">How to verify the account?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        In a private office open the <b>Profile</b> menu and in the <b>Verification</b> block load the specified documents 
+                                        (<b>"Homepage of the passport"</b>, <b>"Page of the passport with a registration"</b>, <b>"Selfie with the passport"</b>). 
+                                        All photos have to be high quality.
+                                        All data in the document have to be read easily. On them also you have to be well visible, and your document. 
+                                        Click the <b>Send</b> button. Sending is possible only after the choice of all files. Available formats for loading: 
+                                        jpg, png, pdf. The maximum size of the loaded file of 2 MB. Processing of documents can last from 1 to 10 working days. 
+                                        If the user is verified, then he is given the status <b>"Is verified"</b>. If files are sent, but not checked yet, then the status 
+                                        <b>"On check"</b>.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">If you have forgotten or have lost the password for logging into the personal account?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        At logging into the personal account there is a reference <b>"Restore Access"</b>. Press it, enter the e-mail address specified at registration and the instruction for recovery of the password will be sent you
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="answer-block-2 answer-block">
+                        <p class="caption">Investment program</p>
+                        <ul>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">How to invest cryptographic assets in Way to Wealth?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        <b>Registration on the website of the platform is possible three to ways</b>
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            To begin to invest you need to pass into the section of Investment and to be defined what Investment package suits you – <a style="color: #a67900; text-decoration: underline;" href="@Url.Action("investments", "home")">Investment packages</a>.
+                                        </li>
+                                        <li>
+                                            <b>Step 1:</b> Fill up personal account in a private office.
+                                        </li>
+                                        <li>
+                                            <b>Step 2:</b> Choose the investment package suitable for you, to establish the term of investment and to click to Invest.
+                                        </li>
+                                        <li>
+                                            <b>Step 3:</b> After you have paid a package, from the next day your investment begins to work. On average the procedure of activation of an investment package takes 1 day.
+                                        </li>
+                                        <li>
+                                            <b>Step 4:</b> Get profit into your personal account.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">What min/max amount of investment?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        Acquiring any of the existing packages, you have an opportunity to increase its cost multiply of $500 for Base and Optimal packages. For a Profi package the frequency rate of the sum is $1000. Example:
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            <b>«Basic package»</b>: $1000; $1500; $2000; 2500; $3000; $3500; $4000; $4500.
+                                        </li>
+                                        <li>
+                                            <b>«Optimum package»</b>: $5000; $5500; $6000; $6500; $7000; $7500; $8000; $8500; $9000; $9500
+                                        </li>
+                                        <li>
+                                            <b>«Professional package»</b>: $10000; $11000 and so on up to $100.000;
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">What term do investments work?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        The company has three appearance of investment packages period of validity of 365 days with a possibility of prolongation. On expiration of a package you can remove a body of the investment from the platform.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">How many investment packages can be got?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        The platform allows you to open only one investment package, but you can at any time increase your investment by purchasing one of the presented investment packages and merging them with an already existing package, to obtain more favorable conditions.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">How is the accrual of profits?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        Charges of percent on the acquired Investment packages occurs daily. Already the first month later after opening of the investment program, you can remove every week the dividends added to you.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="answer-block-3 answer-block">
+                        <p class="caption">Replenishment/Conclusion/Money transfer</p>
+                        <ul>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">How to recharge of Way to Wealth?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        After you have registered a private office, you can choose a way of account replenishment, convenient for you, with use of the following cryptocurrencies: Bitcoin, Litecoin, Ethereum, BitcoinCash, Ripple
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            <b>Step 1:</b> In a private office pass into the <b>Money</b> menu and select the <b>Recharge</b> item below.
+                                        </li>
+                                        <li>
+                                            <b>Step 2:</b> Specify the desirable sum (in dollars) and cryptocurrency, convenient for you, for account replenishment. The platform will automatically calculate on the basis of a current rate the amount in the cryptocurrency chosen by you
+                                        </li>
+                                        <li>
+                                            <b>Step 3:</b> Further the address of a disposable purse will be offered you (1. public cryptographic key 2. A QR code) with the action limited on time 15 minutes.
+                                            <br /><br />
+                                            <b>*Pay Attention! The cryptocurrency address provided to you by system for replenishment can be used only once! Each new replenishment is carried out on again generated purse.</b>
+                                        </li>
+                                        <li>
+                                            <b>Step 4:</b> You copy this address for implementation of transaction of cryptocurrency from the personal purse or third-party payment service which isn't relating to the Way to Wealth platform.
+                                        </li>
+                                    </ol>
+                                    <b>*The request to transfer one transaction in accuracy such amount, as shown.</b>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">What is the time occupies replenishment of balance of your purse?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        Transaction confirmation time (at an ideal situation) is up to 20 minutes (at inclusion in two blocks) and 60 minutes (if operation is added to six elements of network). But with growth of load of network the number of the carried-out transactions exceeds block volume that leads to a delay of the transfers to blockchain of network. Time of carrying out small transactions with the minimum commission can drag on for 5-6 and more hours.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">May I make money transfers in the company to the partners?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        Yes, the platform provides for financial relations between partners / customers and enables you to receive and send funds:
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            1) In a private office pass into the <b>Money</b> menu, the <b>Money transfer</b> submenu.
+                                        </li>
+                                        <li>
+                                            2) Next you click to <b>"Partner" then it is required to specify the login or partner ID.</b>
+                                        </li>
+                                        <li>
+                                            3) Enter the required sum.
+                                        </li>
+                                        <li>
+                                            4) Request the financial password, having click the <b>Receive the Password</b> button. After clicking the status will appear: <b>"The password for operation commission is sent to your email"</b>. It is repeatedly possible to receive the password only in 5 min. Specify the password received on e-mail.
+                                        </li>
+                                        <li>
+                                            5) You click the <b>Translate</b> button. After pressing of means are charged off an account (<b>"The application for withdrawal of funds"</b> is created).
+                                        </li>
+                                        <li>
+                                            6) The user gets on the <b>History of Operations</b> page on the chosen account. Also the notice that the application for a conclusion is created is output and that means will arrive after verification of the application by the administrator.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">What replenishment and withdrawal of funds commission?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        For replenishment and withdrawal of funds from the account any in the way, convenient for you, the platform doesn't charge the fee, but the third-party sender can charge the fee when sending means. Please, specify about the possible commissions at payment departure. In case of replenishment via cryptocurrency exchangers consider their own tariffs. Before carrying out operation get acquainted with a tariff plan and terms of the exchange of the concrete exchanger. Consider volatility of a course.
+                                    </p>
+                                    <p>
+                                        At replenishment of your account by means of cryptocurrency in our system own course 
+                                        which can always be seen in a private office in the <b>“Cash” = “Recharge” or “Withdrawal of funds”</b>.
+                                    </p>
+                                    <b>* Rates of cryptocurrencies are appointed on the average value to purchase/sale among the large exchanges BTC/USD, LTC/USD, ETH/USD, BCH/USD, XRP/USD).</b>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">What should I do if I have carried out replenishment of balance, and means weren't enlisted?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <ol>
+                                        <li>
+                                            <b>Step 1.</b> Make sure that standard terms for transfer of means have already passed.
+                                        </li>
+                                        <li>
+                                            <b>Step 2.</b> Write the letter with comments to technical support of the platform <a style="color: #a67900; text-decoration: underline;" href="mailto:support@w2w.fund">support@w2w.fund</a> that the translation hasn't arrived into the account, having specified at the same time your login (email), a payment method, date, the sum, currency and a hash of transaction.
+                                        </li>
+                                        <li>
+                                            <b>Step 3.</b> Expect the answer. The administration of the platform will answer you within one working day.
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">How withdrawal of funds is carried out?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        Means can be removed once a week the first month later after acquisition of the investment program.
+                                        Withdrawal of funds is available from personal account.
+                                    </p>
+                                    <b>
+
+                                        * Withdrawal of funds it is carried out to the same address of a cryptopurse with which there was a replenishment of personal account.
+
+                                    </b>
+                                    <ol>
+                                        <li>
+                                            In a private office in the menu pass into the <b>Money</b> menu, the <b>Withdrawal of funds</b> submenu at the left
+                                        </li>
+                                        <li>
+                                            Specify the sum for a conclusion
+                                        </li>
+                                        <li>
+                                            In the dropping-out <b>Currency</b> list choose the required currency of your cryptopurse. After the choice, there is a converting, the sum specified by you at a current rate and the sum in the chosen currency which will arrive to you is shown.
+                                        </li>
+                                        <li>
+                                            Specify the address of your purse.
+                                        </li>
+                                        <li>
+                                            Request the financial password, having сlick the <b>Receive the Password</b> button. After pressing the status will appear: 
+                                            <b>"The password for operation commission is sent to your email"</b>. It is repeatedly possible to receive the password only in 
+                                            5 min. Specify the password received on e-mail.
+                                        </li>
+                                        <li>
+                                            Click the <b>transfer</b> money button. After clicking of means are charged off an account application is created for withdrawal.
+                                        </li>
+                                        <li>
+                                            The user gets on the <b>History of Operations</b> page on the chosen account.
+                                            Also the notice that the application for a conclusion is created is output and that means will arrive after verification of the application by Administration of the platform.
+
+                                        </li>
+                                    </ol>
+                                    <b>
+                                        * For safety any operations connected from Translations/replenishments/conclusions / means are initiated only through <b>"the financial password"</b>
+                                    </b>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="answer-block-4 answer-block">
+                        <p class="caption">To partners</p>
+                        <ul>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">How does the partner Way to Wealth program work?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        The MLM model of business is the cornerstone of promotion of the platform and she is implemented according to three programs:
+                                    </p>
+                                    <ol>
+                                        <li>
+                                            <b>«The referral program»</b>
+                                        </li>
+                                        <li>
+                                            <b>«The accumulative program»</b>
+                                        </li>
+                                        <li>
+                                            <b>«Program of Passive income»</b>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">Whether it is possible to begin to work in the company without own investment package?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        Yes, it is possible, the platform provides and gives the chance to those who want to realize themselves as the investor today, but has no enough means to acquire one of investment packages. It is possible to get "An accumulative package" for the minimum sum of $300 which will give it an opportunity to become the Way to Wealth Partner and to earn to itself own investment package!
+                                    </p>
+                                    <b>*Way to Wealth Partners have an opportunity to earn not only from own investments, but also from investments which have been made according to their recommendation (The referrals).</b>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">Where it is possible to take the referral link (ID inviting)?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        In a private office in the menu select the Desktop tab further to the right of an avatar at the left there is your referral link and number ID in system.
+                                    </p>
+                                </div>
+                            </li>
+                            <li>
+                                <img src="~/Content/img/faq-icon-q.png" alt="">
+                                <a class="answer-open">How to carry out viewing of the referrals?</a>
+                                <div class="answer">
+                                    <img src="~/Content/img/faq-icon-a.png" alt="">
+                                    <p>
+                                        In a private office in the menu select the tab <b>"Structure"</b> further in a drop-down menu at the left you choose <b>"My partners"</b>, 
+                                        if you want to see depth of structure that you choose <b>"Structure"</b> => <b>"Viewing of a tree"</b> => in the left top corner 
+                                        click on <b>"Expand the whole structure"</b>.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <p>
+                        <b>
+                            Dear partner / customer,  if you haven't found the answer to the question in the FAQ – Way to Wealth you can ask for the help in a chat of technical support (in the right bottom corner of the website) or to write the letter to administration of the website <a style="color: #a67900; text-decoration: underline;" href="mailto:support@w2w.fund">support@w2w.fund</a>.
+                        </b>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

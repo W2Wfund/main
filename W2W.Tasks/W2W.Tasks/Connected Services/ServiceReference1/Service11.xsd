@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="BuyCamulative">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="companyId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="marketingId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="partnerId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="sum" type="xs:decimal" />
+        <xs:element minOccurs="1" maxOccurs="1" name="date" type="xs:dateTime" />
+        <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuyCamulativeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="BuyCamulativeResult" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuyInvestment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="companyId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="camulativeMarketingId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="partnerId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="sum" type="xs:decimal" />
+        <xs:element minOccurs="1" maxOccurs="1" name="isProlonged" type="xs:boolean" />
+        <xs:element minOccurs="1" maxOccurs="1" name="isCreateNewPlace" type="xs:boolean" />
+        <xs:element minOccurs="1" maxOccurs="1" name="date" type="xs:dateTime" />
+        <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuyInvestmentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="BuyInvestmentResult" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PayInvestPercents">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="date" type="xs:dateTime" />
+        <xs:element minOccurs="1" maxOccurs="1" name="companyId" type="xs:unsignedInt" />
+        <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PayInvestPercentsResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="IsAllowCreateNewPlace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="marketingId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="partnerId" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsAllowCreateNewPlaceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="IsAllowCreateNewPlaceResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateTechPlace">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="companyId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="marketingId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="date" type="xs:dateTime" />
+        <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateTechPlaceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="CreateTechPlaceResult" type="xs:unsignedInt" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateBalances">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="UpdateBalancesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="UpdateBalancesResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmWithdrawal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_object" type="xs:unsignedInt" />
+        <xs:element minOccurs="0" maxOccurs="1" name="wallet" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="tag" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="comment" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ConfirmWithdrawalResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="CancelWithdrawal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="id_object" type="xs:unsignedInt" />
+        <xs:element minOccurs="0" maxOccurs="1" name="comment" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelWithdrawalResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="UnionInvestments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="companyId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="partnerId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="sum" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="investments" type="tns:ArrayOfUnsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="date" type="xs:dateTime" />
+        <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="ArrayOfUnsignedInt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="unsignedInt" type="xs:unsignedInt" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UnionInvestmentsResponse">
+    <xs:complexType />
+  </xs:element>
+  <xs:element name="TerminateInvestment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" maxOccurs="1" name="companyId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="partnerId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="investmentId" type="xs:unsignedInt" />
+        <xs:element minOccurs="1" maxOccurs="1" name="returnSum" type="xs:decimal" />
+        <xs:element minOccurs="1" maxOccurs="1" name="date" type="xs:dateTime" />
+        <xs:element minOccurs="0" maxOccurs="1" name="user" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TerminateInvestmentResponse">
+    <xs:complexType />
+  </xs:element>
+</xs:schema>

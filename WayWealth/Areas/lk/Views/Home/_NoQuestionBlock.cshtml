@@ -1,0 +1,23 @@
+﻿@model IEnumerable<W2W.ModelKBT.Entities.PollVariant>
+@{ 
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+
+<ul class="ul1">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a data-poll-variant-id="@item.id_object">
+                @if (culture == "ru-RU")
+                {
+                    @item.ObjectName
+                }
+                else
+                {
+                    @item.ObjectNameEng
+                }
+            </a>
+        </li>
+    }
+</ul>
+

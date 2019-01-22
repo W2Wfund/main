@@ -1,0 +1,821 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AD5B0BEE-4849-42D1-A8F2-8B225127F929}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WayWealth</RootNamespace>
+    <AssemblyName>WayWealth</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+    <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Binance.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Binance.Net.4.0.2\lib\netstandard2.0\Binance.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.4.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.4\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Web">
+      <HintPath>..\..\..\..\..\Common\Common.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="CryptoExchange.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CryptoExchange.Net.2.0.2\lib\netstandard2.0\CryptoExchange.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Authenticator, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleAuthenticator.1.2.1\lib\net45\Google.Authenticator.dll</HintPath>
+    </Reference>
+    <Reference Include="JWT, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\JWT.3.0.1\lib\net35\JWT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="KBTech.Lib, Version=1.1.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Common\KBTech.Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="MailKit, Version=2.1.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
+      <HintPath>..\packages\MailKit.2.1.0.3\lib\net45\MailKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MimeKit, Version=2.1.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
+      <HintPath>..\packages\MimeKit.2.1.0\lib\net45\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.3.1.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.3.3.1\lib\net45\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common.WebHost, Version=3.3.1.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Common.WebHost.3.3.1\lib\net45\Ninject.Web.Common.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=3.0.7.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.0.7\lib\net452\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Recaptcha.Web, Version=2.1.0.0, Culture=neutral, PublicKeyToken=171a6ec5fa4b1644, processorArchitecture=MSIL">
+      <HintPath>..\packages\RecaptchaNet.2.1.0\lib\net451\Recaptcha.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.5.4.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.5.4\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="SuperSocket.ClientEngine, Version=0.10.0.0, Culture=neutral, PublicKeyToken=ee9af13f57f00acc, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuperSocket.ClientEngine.Core.0.10.0\lib\net45\SuperSocket.ClientEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Specialized, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Specialized.4.3.0\lib\net46\System.Collections.Specialized.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.NameResolution, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.NameResolution.4.3.0\lib\net46\System.Net.NameResolution.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Security.4.3.0\lib\net46\System.Net.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Sockets, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebSocket4Net, Version=0.15.2.11, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebSocket4Net.0.15.2\lib\net45\WebSocket4Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\lk\Content\css\libs.min.css" />
+    <Content Include="Areas\lk\Content\css\main.css" />
+    <Content Include="Areas\lk\Content\fonts\Candarabold\Candarab.ttf" />
+    <Content Include="Areas\lk\Content\fonts\Candara\Candara.ttf" />
+    <Content Include="Areas\lk\Content\fonts\ElMessiriBold\ElMessiri-Bold.eot" />
+    <Content Include="Areas\lk\Content\fonts\ElMessiriBold\ElMessiri-Bold.ttf" />
+    <Content Include="Areas\lk\Content\fonts\ElMessiriBold\ElMessiri-Bold.woff" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Bold\OpenSans-Bold.svg" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Regular\OpenSans-Regular.svg" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.svg" />
+    <Content Include="Areas\lk\Content\img\1.png" />
+    <Content Include="Areas\lk\Content\img\2.png" />
+    <Content Include="Areas\lk\Content\img\3.png" />
+    <Content Include="Areas\lk\Content\img\4.png" />
+    <Content Include="Areas\lk\Content\img\5.png" />
+    <Content Include="Areas\lk\Content\img\all_tree_btn.png" />
+    <Content Include="Areas\lk\Content\img\amount-range-icon.png" />
+    <Content Include="Areas\lk\Content\img\amount-range-icon2.png" />
+    <Content Include="Areas\lk\Content\img\arrow-point-to-right.png" />
+    <Content Include="Areas\lk\Content\img\calendar.png" />
+    <Content Include="Areas\lk\Content\img\cancel-fileupload.png" />
+    <Content Include="Areas\lk\Content\img\charity-1.png" />
+    <Content Include="Areas\lk\Content\img\charity-2.png" />
+    <Content Include="Areas\lk\Content\img\charity-3.png" />
+    <Content Include="Areas\lk\Content\img\charity_letter_1.jpg" />
+    <Content Include="Areas\lk\Content\img\charity_letter_2.jpg" />
+    <Content Include="Areas\lk\Content\img\charity_letter_3.jpg" />
+    <Content Include="Areas\lk\Content\img\charity_letter_4.jpg" />
+    <Content Include="Areas\lk\Content\img\close-menu.png" />
+    <Content Include="Areas\lk\Content\img\copy-content.png" />
+    <Content Include="Areas\lk\Content\img\copyright.png" />
+    <Content Include="Areas\lk\Content\img\correct.png" />
+    <Content Include="Areas\lk\Content\img\correct2.png" />
+    <Content Include="Areas\lk\Content\img\correct3.png" />
+    <Content Include="Areas\lk\Content\img\download.png" />
+    <Content Include="Areas\lk\Content\img\en.png" />
+    <Content Include="Areas\lk\Content\img\fb.png" />
+    <Content Include="Areas\lk\Content\img\fb2.png" />
+    <Content Include="Areas\lk\Content\img\filter.png" />
+    <Content Include="Areas\lk\Content\img\footer-logo.png" />
+    <Content Include="Areas\lk\Content\img\footer-m.jpg" />
+    <Content Include="Areas\lk\Content\img\footer.jpg" />
+    <Content Include="Areas\lk\Content\img\info.png" />
+    <Content Include="Areas\lk\Content\img\instagram.png" />
+    <Content Include="Areas\lk\Content\img\instagram2.png" />
+    <Content Include="Areas\lk\Content\img\logo.png" />
+    <Content Include="Areas\lk\Content\img\minus.png" />
+    <Content Include="Areas\lk\Content\img\modal-error.png" />
+    <Content Include="Areas\lk\Content\img\modal-logo.png" />
+    <Content Include="Areas\lk\Content\img\news-block.jpg" />
+    <Content Include="Areas\lk\Content\img\news-item-img.png" />
+    <Content Include="Areas\lk\Content\img\open-menu.png" />
+    <Content Include="Areas\lk\Content\img\pagination-left.png" />
+    <Content Include="Areas\lk\Content\img\pagination-right.png" />
+    <Content Include="Areas\lk\Content\img\perevod-icon-btn.png" />
+    <Content Include="Areas\lk\Content\img\plus.png" />
+    <Content Include="Areas\lk\Content\img\profile-block-bg.jpg" />
+    <Content Include="Areas\lk\Content\img\profile.png" />
+    <Content Include="Areas\lk\Content\img\profile_ava.png" />
+    <Content Include="Areas\lk\Content\img\qr-code.png" />
+    <Content Include="Areas\lk\Content\img\reg-icon2.png" />
+    <Content Include="Areas\lk\Content\img\reg_icon.png" />
+    <Content Include="Areas\lk\Content\img\required.png" />
+    <Content Include="Areas\lk\Content\img\ru.png" />
+    <Content Include="Areas\lk\Content\img\scroll-btn-down-1.png" />
+    <Content Include="Areas\lk\Content\img\scroll-btn-down-2.png" />
+    <Content Include="Areas\lk\Content\img\scroll-btn-left-1.png" />
+    <Content Include="Areas\lk\Content\img\scroll-btn-left-2.png" />
+    <Content Include="Areas\lk\Content\img\scroll-btn-right-1.png" />
+    <Content Include="Areas\lk\Content\img\scroll-btn-right-2.png" />
+    <Content Include="Areas\lk\Content\img\scroll-btn-up-1.png" />
+    <Content Include="Areas\lk\Content\img\scroll-btn-up-2.png" />
+    <Content Include="Areas\lk\Content\img\scroll_up.png" />
+    <Content Include="Areas\lk\Content\img\select-arrow.png" />
+    <Content Include="Areas\lk\Content\img\select-arrow2.png" />
+    <Content Include="Areas\lk\Content\img\signIn.png" />
+    <Content Include="Areas\lk\Content\img\signOut.png" />
+    <Content Include="Areas\lk\Content\img\signOut2.png" />
+    <Content Include="Areas\lk\Content\img\swiper-arrow-left-1.png" />
+    <Content Include="Areas\lk\Content\img\swiper-arrow-left-2.png" />
+    <Content Include="Areas\lk\Content\img\swiper-arrow-right-1.png" />
+    <Content Include="Areas\lk\Content\img\swiper-arrow-right-2.png" />
+    <Content Include="Areas\lk\Content\img\table-arrow-left.png" />
+    <Content Include="Areas\lk\Content\img\table-arrow-right.png" />
+    <Content Include="Areas\lk\Content\img\telegram.png" />
+    <Content Include="Areas\lk\Content\img\telegram2.png" />
+    <Content Include="Areas\lk\Content\img\tiles_bg.jpg" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-1.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-2.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-3.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-4-1.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-4-2.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-4-3.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-4-4.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-4.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-5-1.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-5-2.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-5-3.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-5.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-6.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-7.png" />
+    <Content Include="Areas\lk\Content\img\toolbar-icon-8.png" />
+    <Content Include="Areas\lk\Content\img\tree-arrow.png" />
+    <Content Include="Areas\lk\Content\img\tree-arrow2.png" />
+    <Content Include="Areas\lk\Content\img\tree-icon.png" />
+    <Content Include="Areas\lk\Content\img\tree-icon2.png" />
+    <Content Include="Areas\lk\Content\img\tree-node.png" />
+    <Content Include="Areas\lk\Content\img\use.png" />
+    <Content Include="Areas\lk\Content\img\valuta-1.png" />
+    <Content Include="Areas\lk\Content\img\valuta-2.png" />
+    <Content Include="Areas\lk\Content\img\valuta-3.png" />
+    <Content Include="Areas\lk\Content\img\valuta-4.png" />
+    <Content Include="Areas\lk\Content\img\valuta-5.png" />
+    <Content Include="Areas\lk\Content\img\vk.png" />
+    <Content Include="Areas\lk\Content\img\vk2.png" />
+    <Content Include="Areas\lk\Content\img\youtube.png" />
+    <Content Include="Areas\lk\Content\img\youtube2.png" />
+    <Content Include="Areas\lk\Content\img\_tree-arrow.png" />
+    <Content Include="Areas\lk\Content\js\common.js" />
+    <Content Include="Areas\lk\Content\js\jquery.inputmask.bundle.min.js" />
+    <Content Include="Areas\lk\Content\js\scripts.min.js" />
+    <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\css\libs.min.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.svg" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.svg" />
+    <Content Include="Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.svg" />
+    <Content Include="Content\img\1.png" />
+    <Content Include="Content\img\2.png" />
+    <Content Include="Content\img\3.png" />
+    <Content Include="Content\img\4.png" />
+    <Content Include="Content\img\5.png" />
+    <Content Include="Content\img\about-bg.jpg" />
+    <Content Include="Content\img\about-block-4.png" />
+    <Content Include="Content\img\about-block-4_2.png" />
+    <Content Include="Content\img\about-block-4_3.png" />
+    <Content Include="Content\img\about-block-4_4.png" />
+    <Content Include="Content\img\about-block-4_5.png" />
+    <Content Include="Content\img\about-block-4_6.png" />
+    <Content Include="Content\img\about-block-4_7.png" />
+    <Content Include="Content\img\about-icon-1.png" />
+    <Content Include="Content\img\about-icon-2.png" />
+    <Content Include="Content\img\about-icon-3.png" />
+    <Content Include="Content\img\about-icon-4.png" />
+    <Content Include="Content\img\about-icon-bg.png" />
+    <Content Include="Content\img\about-logo.png" />
+    <Content Include="Content\img\about-page-icon-1.png" />
+    <Content Include="Content\img\about-page-icon-2.png" />
+    <Content Include="Content\img\about-page.jpg" />
+    <Content Include="Content\img\about-page2.jpg" />
+    <Content Include="Content\img\about-page3.jpg" />
+    <Content Include="Content\img\amount-range-icon.png" />
+    <Content Include="Content\img\amount-range-icon2.png" />
+    <Content Include="Content\img\arrow-point-to-right.png" />
+    <Content Include="Content\img\banner1.jpg" />
+    <Content Include="Content\img\banner2.jpg" />
+    <Content Include="Content\img\banner3.jpg" />
+    <Content Include="Content\img\banner4.jpg" />
+    <Content Include="Content\img\bitcoin-logo.png" />
+    <Content Include="Content\img\blockchain.png" />
+    <Content Include="Content\img\calc_bg.jpg" />
+    <Content Include="Content\img\close-menu.png" />
+    <Content Include="Content\img\copyright.png" />
+    <Content Include="Content\img\crypto.jpg" />
+    <Content Include="Content\img\crypto.png" />
+    <Content Include="Content\img\crypto2.jpg" />
+    <Content Include="Content\img\crypto3.jpg" />
+    <Content Include="Content\img\crypto4.jpg" />
+    <Content Include="Content\img\crypto5.jpeg" />
+    <Content Include="Content\img\crypto6.jpeg" />
+    <Content Include="Content\img\default.png" />
+    <Content Include="Content\img\en.png" />
+    <Content Include="Content\img\faq-icon-1.png" />
+    <Content Include="Content\img\faq-icon-a.png" />
+    <Content Include="Content\img\faq-icon-q.png" />
+    <Content Include="Content\img\faq-page-bg.jpg" />
+    <Content Include="Content\img\faq-page-header.jpg" />
+    <Content Include="Content\img\favicon.png" />
+    <Content Include="Content\img\fb.png" />
+    <Content Include="Content\img\fb2.png" />
+    <Content Include="Content\img\footer-logo.png" />
+    <Content Include="Content\img\footer-m.jpg" />
+    <Content Include="Content\img\footer.jpg" />
+    <Content Include="Content\img\hide.png" />
+    <Content Include="Content\img\icons-icon-1.png" />
+    <Content Include="Content\img\icons-icon-10.png" />
+    <Content Include="Content\img\icons-icon-11.png" />
+    <Content Include="Content\img\icons-icon-12.png" />
+    <Content Include="Content\img\icons-icon-13.png" />
+    <Content Include="Content\img\icons-icon-2.png" />
+    <Content Include="Content\img\icons-icon-3.png" />
+    <Content Include="Content\img\icons-icon-4.png" />
+    <Content Include="Content\img\icons-icon-5.png" />
+    <Content Include="Content\img\icons-icon-6.png" />
+    <Content Include="Content\img\icons-icon-7.png" />
+    <Content Include="Content\img\icons-icon-8.png" />
+    <Content Include="Content\img\icons-icon-9.png" />
+    <Content Include="Content\img\instagram.png" />
+    <Content Include="Content\img\instagram2.png" />
+    <Content Include="Content\img\invest-icon-1.png" />
+    <Content Include="Content\img\invest-icon-2.png" />
+    <Content Include="Content\img\invest-icon-3.png" />
+    <Content Include="Content\img\invest-icon-4.png" />
+    <Content Include="Content\img\invest-icon-5.png" />
+    <Content Include="Content\img\invest-icon-adv-1.png" />
+    <Content Include="Content\img\invest-icon-adv-2.png" />
+    <Content Include="Content\img\invest-icon-adv-3.png" />
+    <Content Include="Content\img\invest-icon-adv-4.png" />
+    <Content Include="Content\img\invest-icon-adv-5.png" />
+    <Content Include="Content\img\invest-page.jpg" />
+    <Content Include="Content\img\invest-strategiya.png" />
+    <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\news-bg.jpg" />
+    <Content Include="Content\img\news-block-bg.jpg" />
+    <Content Include="Content\img\news-img.jpg" />
+    <Content Include="Content\img\news-open-img.jpg" />
+    <Content Include="Content\img\news-page.jpg" />
+    <Content Include="Content\img\open-menu.png" />
+    <Content Include="Content\img\page-about-icon-1.png" />
+    <Content Include="Content\img\page-about-icon-2.png" />
+    <Content Include="Content\img\page-about-icon-3.png" />
+    <Content Include="Content\img\page-about-icon-4.png" />
+    <Content Include="Content\img\page-about-icon-5.png" />
+    <Content Include="Content\img\page-about-icon-bg.png" />
+    <Content Include="Content\img\pagination-left.png" />
+    <Content Include="Content\img\pagination-right.png" />
+    <Content Include="Content\img\partnership-1_2.png" />
+    <Content Include="Content\img\partnership_1.jpg" />
+    <Content Include="Content\img\partnership_2.jpg" />
+    <Content Include="Content\img\partnership_3.jpg" />
+    <Content Include="Content\img\partnership_3.png" />
+    <Content Include="Content\img\partnership_3_en.png" />
+    <Content Include="Content\img\partnership_4.png" />
+    <Content Include="Content\img\partnership_5.png" />
+    <Content Include="Content\img\partnership_5en.png" />
+    <Content Include="Content\img\partnership_6-2.png" />
+    <Content Include="Content\img\partnership_6-3.png" />
+    <Content Include="Content\img\partnership_6-4.png" />
+    <Content Include="Content\img\partnership_6-5.png" />
+    <Content Include="Content\img\partnership_6.png" />
+    <Content Include="Content\img\partnership_7.jpg" />
+    <Content Include="Content\img\partnership_7.png" />
+    <Content Include="Content\img\partnership_8.png" />
+    <Content Include="Content\img\partnership_8en.png" />
+    <Content Include="Content\img\partnership_9-2.png" />
+    <Content Include="Content\img\partnership_9-3.png" />
+    <Content Include="Content\img\partnership_9.png" />
+    <Content Include="Content\img\partnership_bg.jpg" />
+    <Content Include="Content\img\personal_1.jpg" />
+    <Content Include="Content\img\personal_2.jpg" />
+    <Content Include="Content\img\personal_3.jpg" />
+    <Content Include="Content\img\personal_4.jpg" />
+    <Content Include="Content\img\profile.png" />
+    <Content Include="Content\img\quotes.png" />
+    <Content Include="Content\img\reg-icon2.png" />
+    <Content Include="Content\img\reg_icon.png" />
+    <Content Include="Content\img\reviews-add.png" />
+    <Content Include="Content\img\reviews-bg.png" />
+    <Content Include="Content\img\reviews-img.png" />
+    <Content Include="Content\img\reviews-page-bg.jpg" />
+    <Content Include="Content\img\ru.png" />
+    <Content Include="Content\img\scroll_up.png" />
+    <Content Include="Content\img\select-arrow.png" />
+    <Content Include="Content\img\signIn.png" />
+    <Content Include="Content\img\signOut.png" />
+    <Content Include="Content\img\signOut2.png" />
+    <Content Include="Content\img\telegram.png" />
+    <Content Include="Content\img\telegram2.png" />
+    <Content Include="Content\img\tiles_bg.jpg" />
+    <Content Include="Content\img\use.png" />
+    <Content Include="Content\img\vk.png" />
+    <Content Include="Content\img\vk2.png" />
+    <Content Include="Content\img\youtube.png" />
+    <Content Include="Content\img\youtube2.png" />
+    <Content Include="Content\js\common.js" />
+    <Content Include="Content\js\scripts.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\lk\Views\Home\Investments.cshtml" />
+    <Content Include="Areas\lk\Content\fonts\Candarabold\Candarab.eot" />
+    <Content Include="Areas\lk\Content\fonts\Candarabold\Candarab.woff" />
+    <Content Include="Areas\lk\Content\fonts\Candara\Candara.eot" />
+    <Content Include="Areas\lk\Content\fonts\Candara\Candara.woff" />
+    <Content Include="RecaptchaNet.Readme.txt" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Areas\lk\Views\Home\TwoFactorAuth.cshtml" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <None Include="Service References\Marketing\configuration91.svcinfo" />
+    <None Include="Service References\Marketing\configuration.svcinfo">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Marketing\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\Marketing\Service11.disco" />
+    <Content Include="Views\Shared\Calc.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Polls.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Review.cshtml" />
+    <Content Include="Content\Политика конфиденциальности.pdf" />
+    <Content Include="Content\fonts\Candarabold\Candarab.eot" />
+    <Content Include="Content\fonts\Candarabold\Candarab.woff" />
+    <Content Include="Content\fonts\Candara\Candara.eot" />
+    <Content Include="Content\fonts\Candara\Candara.woff" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.eot" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.ttf" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.woff" />
+    <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.woff2" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.eot" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.ttf" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.woff" />
+    <Content Include="Content\fonts\OpenSans\Regular\OpenSans-Regular.woff2" />
+    <Content Include="Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.ttf" />
+    <Content Include="Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.woff" />
+    <Content Include="Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.woff2" />
+    <Content Include="Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold2.eot" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Bold\OpenSans-Bold.eot" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Bold\OpenSans-Bold.ttf" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Bold\OpenSans-Bold.woff" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Bold\OpenSans-Bold.woff2" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Regular\OpenSans-Regular.eot" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Regular\OpenSans-Regular.ttf" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Regular\OpenSans-Regular.woff" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\Regular\OpenSans-Regular.woff2" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.ttf" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.woff" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.woff2" />
+    <Content Include="Areas\lk\Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold2.eot" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\lk\Views\Home\_StructLayout.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_StructTools.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_StructInvestInfo.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_StructCamulativeInfo.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_PaymentArticles.cshtml" />
+    <Content Include="Content\Privacy policy.pdf" />
+    <Content Include="Content\Пользовательское соглашение.pdf" />
+    <Content Include="Content\User agreement.pdf" />
+    <Content Include="Areas\lk\Views\Home\_CharityDetails.cshtml" />
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\w2w.pubxml" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\lk\Controllers\HomeController.cs" />
+    <Compile Include="Areas\lk\Controllers\PaymentController.cs" />
+    <Compile Include="Areas\lk\Helpers\PagingHelpers.cs" />
+    <Compile Include="Areas\lk\lkAreaRegistration.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\CoinBaseService.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\Price.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\RateResponse.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\Rates.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\ApiResponse.cs" />
+    <Compile Include="Areas\lk\Models\Description.cs" />
+    <Compile Include="Areas\lk\Models\Extensions.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\Entities\Balance.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\Entities\BalanceChange.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\Entities\Payment.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\Enums\AccountPaymentFormat.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\Enums\AccountPaymentType.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\Request\AccountPaymentRequest.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\Request\IRequest.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\Response\AccountPaymentsResponse.cs" />
+    <Compile Include="Areas\lk\Models\Ripple\RippleService.cs" />
+    <Compile Include="Areas\lk\Services\PaymentService.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\CharityView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\HistoryView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\InvestmentsView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\InvestView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\MarketingPlaceView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\MarketingTypeView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\PartnersView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\ReplenishView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\SettingsView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\StructureView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\StructureViewType.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\TransactionPassword.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\Transfer2View.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\TransferView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\TwoFactorAuthView.cs" />
+    <Compile Include="Areas\lk\ViewModels\Home\WithdrawView.cs" />
+    <Compile Include="Areas\lk\ViewModels\PageInfo.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SignController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\JwtHelper.cs" />
+    <Compile Include="Helpers\MimeHelper.cs" />
+    <Compile Include="Helpers\UrlHelperExtensions.cs" />
+    <Compile Include="Infrastructure\Auth\AuthenticationService.cs" />
+    <Compile Include="Infrastructure\Auth\CustomPrincipal.cs" />
+    <Compile Include="Infrastructure\Auth\UserSerializeModel.cs" />
+    <Compile Include="Infrastructure\Mail\FakeMailService.cs" />
+    <Compile Include="Infrastructure\Mail\MailService.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\Charge.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\Event.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\MetaDataReplenish.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\Payment.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\Response.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\TimeLine.cs" />
+    <Compile Include="Areas\lk\Models\CoinBase\WebHook.cs" />
+    <Compile Include="Jobs\RippleIncomeChecker.cs" />
+    <Compile Include="Jobs\TaskSheduler.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resource.en.Designer.cs">
+      <DependentUpon>Resource.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Marketing\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Sign\InView.cs" />
+    <Compile Include="ViewModels\Sign\RestoreView.cs" />
+    <Compile Include="ViewModels\Sign\TwoFactorAuthenticateView.cs" />
+    <Compile Include="ViewModels\Sign\UpView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="Areas\lk\Views\web.config" />
+    <Content Include="Areas\lk\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\lk\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Sign\Up.cshtml" />
+    <Content Include="Views\Sign\_ViewStart.cshtml" />
+    <Content Include="Views\Sign\_Layout.cshtml" />
+    <Content Include="Views\Sign\In.cshtml" />
+    <Content Include="Content\fonts\Candarabold\Candarab.ttf" />
+    <Content Include="Content\fonts\Candara\Candara.ttf" />
+    <Content Include="Content\fonts\ElMessiriBold\ElMessiri-Bold.eot" />
+    <Content Include="Content\fonts\ElMessiriBold\ElMessiri-Bold.ttf" />
+    <Content Include="Content\fonts\ElMessiriBold\ElMessiri-Bold.woff" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Toolbar.cshtml" />
+    <Content Include="Views\Shared\_UserInfoNotAuth.cshtml" />
+    <Content Include="Views\Shared\_UserBalances.cshtml" />
+    <Content Include="Views\Shared\_UserInfoAuth.cshtml" />
+    <Content Include="Views\Sign\Restore.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_ProfileBlock.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_News.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_QuestionBlock.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_NoQuestionBlock.cshtml" />
+    <Content Include="Areas\lk\Views\Home\History.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Transfer.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Charity.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Promo.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Settings.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Transfer2.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Partners.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Withdraw.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Replenish.cshtml" />
+    <Content Include="Areas\lk\Views\Home\CryptoInvoice.cshtml" />
+    <Content Include="Areas\lk\Views\Home\StructTree.cshtml" />
+    <Content Include="Areas\lk\Views\Home\_SearchMarketingPlaces.cshtml" />
+    <Content Include="Areas\lk\Views\Home\StructList.cshtml" />
+    <Content Include="Areas\lk\Views\Home\Invest.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Investments.cshtml" />
+    <Content Include="Views\Home\Partnership.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\Reviews.cshtml" />
+    <Content Include="Views\Home\Faq.cshtml" />
+    <Content Include="Views\Home\_News.cshtml" />
+    <Content Include="Views\Home\_Reviews.cshtml" />
+    <Content Include="Views\Home\NewsOpen.cshtml" />
+    <Content Include="Views\Home\AboutEn.cshtml" />
+    <Content Include="Views\Home\InvestmentsEn.cshtml" />
+    <Content Include="Views\Home\PartnershipEn.cshtml" />
+    <Content Include="Views\Home\FaqEn.cshtml" />
+    <Content Include="Views\Home\_Layout.cshtml" />
+    <Content Include="Views\Home\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_BaseLayout.cshtml" />
+    <Content Include="Service References\Marketing\WayWealth.Marketing.BuyCamulativeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Marketing\WayWealth.Marketing.BuyInvestmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Marketing\WayWealth.Marketing.CancelWithdrawalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Marketing\WayWealth.Marketing.ConfirmWithdrawalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Marketing\WayWealth.Marketing.CreateTechPlaceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Marketing\WayWealth.Marketing.PayInvestPercentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Marketing\WayWealth.Marketing.TerminateInvestmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\Marketing\WayWealth.Marketing.UnionInvestmentsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\Marketing\Service11.wsdl" />
+    <None Include="Service References\Marketing\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Sign\TwoFactorAuthenticate.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\lk\Views\Payment\" />
+    <Folder Include="Logs\" />
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\Home\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\W2W.ModelKBT\W2W.ModelKBT.csproj">
+      <Project>{2b61b5d2-0997-47aa-96dd-5205e8cbd1cc}</Project>
+      <Name>W2W.ModelKBT</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Resource.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Marketing\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>15375</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:15375/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

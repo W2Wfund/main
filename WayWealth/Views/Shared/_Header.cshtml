@@ -1,0 +1,67 @@
+﻿@{ 
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<header>
+    <div class="top-block">
+        <a class="menu-btn">
+            <img src="~/Content/img/open-menu.png" alt="">
+            <img src="~/Content/img/close-menu.png" alt="">
+        </a>
+        <a href="/" class="logo">
+            <img src="~/Content/img/logo.png" alt="">
+        </a>
+        <ul class="menu">
+            <li class="">
+                <a href="@Url.Action("about", "home", new { area="" })" data-text="@Resources.Resource.menu_about">@Resources.Resource.menu_about</a>
+            </li>
+            <li>
+                <a href="@Url.Action("investments", "home", new { area="" })" data-text="@Resources.Resource.menu_invest">@Resources.Resource.menu_invest</a>
+            </li>
+            <li>
+                <a href="@Url.Action("partnership", "home", new { area="" })" data-text="@Resources.Resource.menu_partnership">@Resources.Resource.menu_partnership</a>
+            </li>
+            <li>
+                <a href="@Url.Action("news", "home", new { area="" })" data-text="@Resources.Resource.menu_news">@Resources.Resource.menu_news</a>
+            </li>
+            <li>
+                <a href="@Url.Action("reviews", "home", new { area="" })" data-text="@Resources.Resource.menu_reviews">@Resources.Resource.menu_reviews</a>
+            </li>
+            <li>
+                <a href="@Url.Action("faq", "home", new { area="" })" data-text="@Resources.Resource.menu_faq">@Resources.Resource.menu_faq</a>
+            </li>
+        </ul>
+        <div class="lk-lang-block">
+            @Html.Action("UserInfo", "home", new { area = "" })
+            <div class="lang">
+                @if (culture == "ru-RU")
+                {
+                    <a class="active">
+                        <img src="~/Content/img/ru.png" alt="">
+                        <span>RU</span>
+                    </a>
+                    <a href="@Url.Action("ChangeCulture", "home", new { lang = "en", area="" })">
+                        <img src="~/Content/img/en.png" alt="">
+                        <span>EN</span>
+                    </a>
+                }
+                else
+                {
+                    <a href="@Url.Action("ChangeCulture", "home" , new { lang = "ru", area="" })">
+                        <img src="~/Content/img/ru.png" alt="">
+                        <span>RU</span>
+                    </a>
+                    <a class="active">
+                        <img src="~/Content/img/en.png" alt="">
+                        <span>EN</span>
+                    </a>
+                }    
+            </div>
+        </div>
+    </div>
+    <div class="m-top-block top-block">
+        <div class="lk-lang-block">
+            @Html.Action("UserInfo", "home", new { area = "" })
+        </div>
+    </div>
+    @Html.Action("UserBalances", "home", new { area = "" })
+</header>

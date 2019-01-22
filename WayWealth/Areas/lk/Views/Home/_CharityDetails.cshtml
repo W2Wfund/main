@@ -1,0 +1,145 @@
+﻿@model uint
+@using WayWealth.Areas.lk.Helpers
+@{
+    var Payments = ViewBag.Payments as IEnumerable<W2W.ModelKBT.Entities.Payment>;
+    var PageInfo = ViewBag.PageInfo as WayWealth.Areas.lk.ViewModels.PageInfo;
+    var Letters = ViewBag.Letters as IEnumerable<W2W.ModelKBT.Entities.KbtFile>;
+    Layout = null;
+}
+<div>
+    @if (Payments != null && Payments.Count() > 0)
+    {
+        <p class="subtitle">@Resources.Resource.Benefactors</p>
+        <table class="table2">
+            <thead>
+                <tr>
+                    <th>
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.DateOperation">@Resources.Resource.DateOperation</span>
+                        </p>
+                    </th>
+                    <th>
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.Fio">@Resources.Resource.Fio</span>
+                        </p>
+                    </th>
+                    <th>
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.Amount">@Resources.Resource.Amount</span>
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Payments)
+                {
+                    <tr>
+                        <td>
+                            <p>@item.PaymentDate.Value.ToShortDateString()</p>
+                        </td>
+                        <td>
+                            <p>@item.PartnerObjectName</p>
+                        </td>
+                        <td>
+                            <p>@item.PaymentSum.Value.ToString("N2")</p>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    @if (PageInfo != null && PageInfo.TotalPages > 1)
+    {
+        @Html.PageLinksAjax(PageInfo, null, x => Url.Action("_CharityDetails", new
+        {
+            page = x,
+            foundId = Model
+        }), "#charitydetailscontainer")
+    }
+</div>
+<div>
+     @if (Letters != null && Letters.Count() > 0)
+     {
+        <p class="subtitle">@Resources.Resource.LettersThanks</p>
+     }
+    <div class="swiper-container swiper-charity2">
+        <div class="swiper-wrapper">
+            @if (Letters != null && Letters.Count() > 0)
+            {
+                int counter2 = 0;
+                int counter4 = 0;
+                
+                for (var i=0; i<Letters.Count(); i++)
+                {
+                    var item = Letters.ElementAt(i);
+                    var multiple4 = ((i + 1) % 4) == 0;
+                    var multiple2 = ((i + 1) % 2) == 0;
+                    if (counter4 == 0)
+                    {
+                        @:<div class="swiper-slide">
+                    }
+                    if (counter2 == 0)
+                    {
+                        @:<div>
+                    }
+                    <img src="@Url.Action("img", "home", new { area = "", id=item.Image })" alt="">
+                    if ((counter2 + 1) % 2 == 0)
+                    {
+                        @:</div>
+                        counter2 = 0;
+                    }
+                    else
+                    {
+                        counter2++;
+                    }
+                    if ((counter4 + 1) % 4 == 0)
+                    {
+                        @:</div>
+                        counter4 = 0;
+                    }
+                    else
+                    {
+                        counter4++;
+                    }
+                }
+            }
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+            
+    </div>
+    <div class="swiper-container swiper-charity2_2">
+        <div class="swiper-wrapper">
+            @if (Letters != null && Letters.Count() > 0)
+            {
+                foreach (var item in Letters)
+                {
+                    <div class="swiper-slide">
+                        <img src="@Url.Action("img", "home", new { area = "", id=item.Image })" alt="">
+                    </div>
+                }
+            }
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <script>
+        var swiper2 = new Swiper('.swiper-charity2', {
+            //loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        });
+        var swiper2_2 = new Swiper('.swiper-charity2_2', {
+            //loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            }
+        });
+    </script>
+</div>
+
+
+

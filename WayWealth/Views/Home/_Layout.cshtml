@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Version = 11;
+}
+@section HeadSection{
+    <link rel="stylesheet" href="~/Content/css/libs.min.css?v=@ViewBag.Version">
+    <link rel="stylesheet" href="~/Content/css/main.css?v=@ViewBag.Version">
+    <script src="~/Content/js/scripts.min.js?v=@ViewBag.Version"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src='//www.google.com/recaptcha/api.js'></script>
+}
+
+@RenderBody()
+
+@section FootSection{
+    <script src="~/Content/js/common.js?v=@ViewBag.Version"></script>
+}

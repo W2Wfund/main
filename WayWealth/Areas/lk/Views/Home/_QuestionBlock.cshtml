@@ -1,0 +1,31 @@
+﻿@model IEnumerable<W2W.ModelKBT.Entities.PollVariant>
+@{ 
+    var choise = ViewBag.Choise as W2W.ModelKBT.Entities.PollChoice;
+    var counts = Model.Sum(x => x.Count ?? 0);
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+<ul class="ul2">
+    @foreach (var item in Model)
+    {
+        decimal percent = 0;
+        decimal count = item.Count ?? 0;
+        if (counts > 0)
+        {
+            percent = count / counts;
+        }
+        <li>
+            <a style="width: @percent%; @(percent > 0?"padding: 0 28px;": "")">
+            <i>
+                @if (culture == "ru-RU")
+                {
+                    @item.ObjectName
+                }
+                else
+                {
+                    @item.ObjectNameEng
+                }
+            </i></a>
+            <span class="@(item.id_object == choise.PollVariantId ? "active" : "")">@(percent.ToString("P2"))</span>
+        </li>
+    }
+</ul>

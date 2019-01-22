@@ -1,0 +1,199 @@
+﻿@model WayWealth.Infrastructure.Auth.CustomPrincipal
+    @{
+        var site = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
+        
+    }
+
+<style type="text/css">
+    .bills-block ul li .info .price{
+        font-size:30px;
+    }
+    .bills-block .swiper-bills .swiper-slide > div .info .price {
+        font-size: 30px;
+    }
+</style>
+<div class="profile-block">
+    
+    
+    @if (!string.IsNullOrWhiteSpace(Model.Image))
+    {
+        <img class="ava" src="@Url.Action("img", "home", new { area = "", id=Model.Image })" alt="">
+    }
+
+        <div>
+            <p class="name">@Model.ObjectName</p>
+            <div class="wrap-p w250">
+                <p>
+                    @Resources.Resource.YourId <span><b>@(string.IsNullOrWhiteSpace(Model.Login) ? Model.PersonalId.ToString() : $"{Model.Login} / {Model.PersonalId.ToString()}")</b></span>
+                </p>
+                <a href="@Url.Action("replenish", "home")" class="ml20"><span data-text="@Resources.Resource.TopUpAccount">@Resources.Resource.TopUpAccount</span></a>
+            </div>
+            
+            @if (ViewBag.CamulativePlaceCount > 0)
+            {
+                <div class="wrap-p">
+                    <p>@Resources.Resource.RefLinkText</p>
+                </div>
+                <div class="wrap-p w250">
+                    <p>
+                        <b class="js-link">@(site + "reg/" + Model.PersonalId)</b>
+                    </p>
+                    <a title="@Resources.Resource.CopyLink" data-href="@(site + "reg/" + Model.PersonalId)" class="copy_link ml20">
+                        <img src="~/Areas/lk/Content/img/copy-content.png" alt="">
+                    </a>
+                    <a class="ml20" href="@Url.Action("up", "sign", new { inviter = Model.PersonalId, area = "" })">
+                        <span data-text="@Resources.Resource.RegisterPartner">@Resources.Resource.RegisterPartner</span>
+                    </a>
+
+                    <script>
+                        var copyEmailBtn = document.querySelector('.copy_link');
+                        copyEmailBtn.addEventListener('click', function (event) {
+                            var emailLink = document.querySelector('.js-link');
+                            var range = document.createRange();
+                            range.selectNode(emailLink);
+                            window.getSelection().addRange(range);
+
+                            try {
+                                var successful = document.execCommand('copy');
+                                var msg = successful ? 'successful' : 'unsuccessful';
+                                window.alert("@Resources.Resource.DataCopied");
+                            } catch (err) {
+                                console.log('Oops, unable to copy');
+                            }
+                            window.getSelection().removeAllRanges();
+                        });
+                    </script>
+                </div>
+            }
+            <div class="wrap-p">
+                <p>
+                    @Resources.Resource.CumulativeText <b>$ @(ViewBag.StructSavingsBalance.ToString("N2"))</b>
+                </p>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(ViewBag.Rank))
+            {
+                <div class="wrap-p">
+                    <p>
+                        @Resources.Resource.Qualification: <b>@ViewBag.Rank</b>
+                    </p>
+                </div>
+            }
+        </div>
+</div>
+<div class="bills-block">
+    <ul>
+        <li>
+            <div class="info">
+                <p class="caption">
+                    <span data-text="@Resources.Resource.PersonalAccountCaption1_1">@Resources.Resource.PersonalAccountCaption1_1</span>
+                    <span data-text="@Resources.Resource.PersonalAccountCaption1_2">@Resources.Resource.PersonalAccountCaption1_2</span>
+                </p>
+                <p class="price">$ @(Model.BalanceInner.ToString("N2"))</p>
+                <div class="btn-block">
+                    <a href="@Url.Action("invest", "home")"><span data-text="@Resources.Resource.InvestBtn">@Resources.Resource.InvestBtn</span></a>
+                    <a href="@Url.Action("withdraw", "home")"><span data-text="@Resources.Resource.WithdrawBtn">@Resources.Resource.WithdrawBtn</span></a>
+                    <a href="@Url.Action("transfer2", "home")"><span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="info">
+                <p class="caption">
+                    <span data-text="@Resources.Resource.InvestmentAccountCaption1">@Resources.Resource.InvestmentAccountCaption1</span>
+                    <span data-text="@Resources.Resource.InvestmentAccountCaption2">@Resources.Resource.InvestmentAccountCaption2</span>
+                </p>
+                <p class="price">$ @(Model.BalanceInvestments.ToString("N2"))</p>
+                <div class="btn-block">
+                    <a href="@Url.Action("investments", "home")"><span data-text="@Resources.Resource.MyInvestmentsBtn">@Resources.Resource.MyInvestmentsBtn</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="info">
+                <p class="caption">
+                    <span data-text="@Resources.Resource.InterestInvestmentCaption1">@Resources.Resource.InterestInvestmentCaption1</span>
+                    <span data-text="@Resources.Resource.InterestInvestmentCaption2">@Resources.Resource.InterestInvestmentCaption2</span>
+                </p>
+                <p class="price">$ @(Model.BalancePercents.ToString("N2"))</p>
+                <div class="btn-block">
+                    <a href="@Url.Action("transfer", "home")"><span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span></a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="info">
+                <p class="caption">
+                    <span data-text="@Resources.Resource.MarketingRewardsCaption1">@Resources.Resource.MarketingRewardsCaption1</span>
+                    <span data-text="@Resources.Resource.MarketingRewardsCaption2">@Resources.Resource.MarketingRewardsCaption2</span>
+                </p>
+                <p class="price">$ @(Model.BalanceRewards.ToString("N2"))</p>
+                <div class="btn-block">
+                    <a href="@Url.Action("transfer", "home")"><span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span></a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="swiper-container swiper-bills">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div>
+                    <div class="info">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.PersonalAccountCaption1_1">@Resources.Resource.PersonalAccountCaption1_1</span>
+                            <span data-text="@Resources.Resource.PersonalAccountCaption1_2">@Resources.Resource.PersonalAccountCaption1_2</span>
+                        </p>
+                        <p class="price">$ @(Model.BalanceInner.ToString("N2"))</p>
+                        <div class="btn-block">
+                            <a href="@Url.Action("invest", "home")"><span data-text="@Resources.Resource.InvestBtn">@Resources.Resource.InvestBtn</span></a>
+                            <a href="@Url.Action("withdraw", "home")"><span data-text="@Resources.Resource.WithdrawBtn">@Resources.Resource.WithdrawBtn</span></a>
+                            <a href="@Url.Action("transfer2", "home")"><span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <div class="info">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.InvestmentAccountCaption1">@Resources.Resource.InvestmentAccountCaption1</span>
+                            <span data-text="@Resources.Resource.InvestmentAccountCaption2">@Resources.Resource.InvestmentAccountCaption2</span>
+                        </p>
+                        <p class="price">$ @(Model.BalanceInvestments.ToString("N2"))</p>
+                        <div class="btn-block">
+                            <a href="@Url.Action("investments", "home")"><span data-text="@Resources.Resource.MyInvestmentsBtn">@Resources.Resource.MyInvestmentsBtn</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <div class="info">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.InterestInvestmentCaption1">@Resources.Resource.InterestInvestmentCaption1</span>
+                            <span data-text="@Resources.Resource.InterestInvestmentCaption2">@Resources.Resource.InterestInvestmentCaption2</span>
+                        </p>
+                        <p class="price">$ @(Model.BalancePercents.ToString("N2"))</p>
+                        <div class="btn-block">
+                            <a href="@Url.Action("transfer", "home")"><span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div>
+                    <div class="info">
+                        <p class="caption">
+                            <span data-text="@Resources.Resource.MarketingRewardsCaption1">@Resources.Resource.MarketingRewardsCaption1</span>
+                            <span data-text="@Resources.Resource.MarketingRewardsCaption2">@Resources.Resource.MarketingRewardsCaption2</span>
+                        </p>
+                        <p class="price">$ @(Model.BalanceRewards.ToString("N2"))</p>
+                        <div class="btn-block">
+                            <a href="@Url.Action("transfer", "home")"><span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+</div>

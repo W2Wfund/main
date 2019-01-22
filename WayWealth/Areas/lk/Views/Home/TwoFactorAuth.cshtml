@@ -1,0 +1,88 @@
+﻿@model WayWealth.Areas.lk.ViewModels.Home.TwoFactorAuthView
+@{
+    ViewBag.Title = Resources.Resource.TwoFactorAuth;
+}
+<div class="profile-page">
+    <p class="page-title">
+        <img src="~/Areas/lk/Content/img/toolbar-icon-6.png" alt="">@Resources.Resource.TwoFactorAuth
+    </p>
+
+    <div>
+        @if (ViewBag.GoogleAuthEnabled == true)
+        {
+
+            using (Html.BeginForm("TwoFactorAuth", "home", FormMethod.Post, new { @id = "form-base", @class = "form-base" }))
+            {
+                <p class="form-title">@Resources.Resource.GoogleAuth</p>
+                <div align="center">
+                    <p>@Resources.Resource.GoogleAuthAlreadyEnabled</p>
+                </div>
+                <br />
+
+                <div align="center">
+                    <div class="flex2 flex5">
+                        <div class="input2">
+                            <br />
+                            <p>@Resources.Resource.CodeDigit</p>
+                            @Html.TextBoxFor(x => x.CodeDigit)
+                        </div>
+                    </div>
+                    <div class="flex2 flex5">
+                        <button type="submit" class="page-link" form="form-base">
+                            <span data-text="@Resources.Resource.DisableTwoFactorAuth">@Resources.Resource.DisableTwoFactorAuth</span>
+                        </button>
+                    </div>
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        @Html.ValidationSummary(true)
+                    }
+                </div>
+
+            }
+        }
+
+            @if (ViewBag.GoogleAuthEnabled == false)
+            {
+                using (Html.BeginForm("TwoFactorAuth", "home", FormMethod.Post, new { @id = "form-base", @class = "form-base" }))
+                {
+                    <p class="form-title">@Resources.Resource.GoogleAuth</p>
+                    <div>
+                        <h3>@Resources.Resource.GoogleAuthEnable1</h3>
+                        <p>@Resources.Resource.GoogleAuthEnable2</p>
+                        <h3>@Resources.Resource.GoogleAuthEnable3</h3>
+                        <p>@Resources.Resource.GoogleAuthEnable4</p>
+                    </div>
+                    <br />
+                    <div align="center">
+                        <p>
+                            <img src="@ViewBag.BarcodeImageUrl" />
+                            <br /> @Resources.Resource.ManualSetupCode: @ViewBag.SetupCode
+                        </p>
+                    </div>
+
+                    <div align="center">
+                        <div class="flex2 flex5">
+                            <div class="input2">
+                                <br />
+                                <p>@Resources.Resource.CodeDigit</p>
+                                @Html.TextBoxFor(x => x.CodeDigit)
+                            </div>
+                        </div>
+                        <div class="flex2 flex5">
+                            <button type="submit" class="page-link" form="form-base">
+                                <span data-text="@Resources.Resource.EnableTwoFactorAuth">@Resources.Resource.EnableTwoFactorAuth</span>
+                            </button>
+                        </div>
+
+                        @if (!ViewData.ModelState.IsValid)
+                        {
+                            @Html.ValidationSummary(true)
+                        }
+                    </div>
+                }
+            }
+
+        </div>
+
+</div>

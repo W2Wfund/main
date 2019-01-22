@@ -1,0 +1,31 @@
+﻿@model WayWealth.ViewModels.Sign.RestoreView
+@using Recaptcha.Web.Mvc;
+@{
+    ViewBag.Title = Resources.Resource.AccessRecovery;
+}
+
+<div class="reg-block">
+    <p class="page-title">@Resources.Resource.AccessRecovery</p>
+    @using (Html.BeginForm("Restore", "Sign", FormMethod.Post, new { id = "reg-form" }))
+    {
+        <div class="wrap-id">
+            <div class="input mauto">
+                @Html.LabelFor(x => x.Login, new { @class = "lbl" })
+                @Html.TextBoxFor(x => x.Login)
+                <p class="error-msg">@Html.ValidationMessageFor(m => m.Login)</p>
+            </div>
+        </div>
+        @Html.Recaptcha()
+        <button type="submit" class="page-link" form="reg-form">
+            <span data-text="@Resources.Resource.Restore">@Resources.Resource.Restore</span>
+        </button>
+        if (!ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary(true)
+        }
+    }
+    <div class="link-block">
+        <a href="@Url.Action("In", "Sign")">@Resources.Resource.InEntryBtnText</a>
+        <a href="@Url.Action("Up", "Sign")">@Resources.Resource.SignUpText</a>
+    </div>
+</div>

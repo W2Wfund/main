@@ -1,0 +1,20 @@
+﻿@using Common.Web
+@{
+    var action = ViewContext.RouteData.Values["action"].ToString();
+    List<Notification> notifications = (List<Notification>)Session[Notification.Key] ?? new List<Notification>();
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>@ViewBag.Title - Way To Wealth</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    @RenderSection("HeadSection")
+</head>
+<body>
+    @RenderBody()
+    @RenderSection("FootSection")
+</body>
+</html>

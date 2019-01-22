@@ -1,0 +1,46 @@
+﻿@model WayWealth.Infrastructure.Auth.CustomPrincipal
+@{
+    ViewBag.Title = Resources.Resource.Feedback;
+    Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+}
+<div class="reviews-block">
+    <p class="page-title">@Resources.Resource.Feedback</p>
+    @if (string.IsNullOrWhiteSpace(Model.Review))
+    {
+        using (Html.BeginForm("review", "home", FormMethod.Post, new { id = "form-review", area = "lk" }))
+        {
+            <p>@Resources.Resource.Feedbacklbl</p>
+            @Html.TextAreaFor(x => x.Review)
+            <button type="submit" class="page-link" form="form-review">
+                <span data-text="@Resources.Resource.PostBtn">@Resources.Resource.PostBtn</span>
+            </button>
+        }
+    }
+    else
+    {
+        <div class="review">
+            <p class="date">@Model.ReviewDate.Value.ToShortDateString()</p>
+            <p class="desc">
+                @Model.Review
+            </p>
+            <p class="status">
+                @Resources.Resource.StatusLbl:
+                @if (Model.ReviewStatus == "Опубликован")
+                {
+                    <b>@Resources.Resource.Published</b>
+                }
+
+                @if (Model.ReviewStatus == "На проверке")
+                {
+                    <i>@Resources.Resource.Checking</i>
+                }
+
+                
+                @if (Model.ReviewStatus == "Отклонен")
+                {
+                    <i>@Resources.Resource.Rejected</i>
+                }
+            </p>
+        </div>
+    }
+</div>

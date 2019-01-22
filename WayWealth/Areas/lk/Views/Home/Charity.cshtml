@@ -1,0 +1,107 @@
+﻿@using WayWealth.Areas.lk.Helpers
+@model WayWealth.Areas.lk.ViewModels.Home.CharityView
+
+@{
+    ViewBag.Title = Resources.Resource.CharityProgramsTitle;
+    Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    TempData.Keep();
+    var Funds = TempData["Funds"] as IEnumerable<W2W.ModelKBT.Entities.Charity>;
+    var Reminder = (decimal)TempData["Reminder"];
+}
+<div class="charity-block">
+    <p class="page-title">
+        <img src="~/Areas/lk/Content/img/toolbar-icon-7.png" alt="">@Resources.Resource.CharityProgramsTitle
+    </p>
+    <div class="error-msg">
+        @Html.ValidationSummary(false)
+    </div>
+    <div class="swiper-container swiper-charity">
+        <div class="swiper-wrapper">
+            @foreach (var item in Funds)
+            {
+                <div class="swiper-slide">
+                    <div class="img">
+                        <img src="@Url.Action("img", "home", new { area = "", id=item.Image })" alt="">
+                    </div>
+                    <p class="title">
+                        @if (culture == "ru-RU")
+                        {
+                            @item.ObjectName
+                        }
+                        else
+                        {
+                            @item.ObjectNameEng
+                        }
+                    </p>
+                    <div class="desc">
+                        <p>
+                            @if (culture == "ru-RU")
+                            {
+                                @item.Comment
+                            }
+                            else
+                            {
+                                @item.CommentEng
+                            }
+                        </p>
+                    </div>
+                    <a data-ajax="true"
+                       data-ajax-mode="replace"
+                       data-ajax-update="#charitydetailscontainer"
+                       href="@Url.Action("_CharityDetails", new { foundId = item.id_object })"
+                       data-id="@item.id_object"
+                       class="@(Model != null && Model.FondId == item.id_object ? "charity-btn active" : "charity-btn")">
+                        <i></i>
+                        <span>@Resources.Resource.Choose</span>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="form-block">
+        @using (Html.BeginForm("charity", "home", FormMethod.Post, new { id = "form_perevod" }))
+        {
+            @Html.HiddenFor(x => x.FondId, new { id = "fondid" })
+            <div class="wrap-bg-form">
+                <div class="wrap-input">
+                    <div class="input mr6">
+                        <span>@Resources.Resource.Amount</span>
+                        <b style="display: none;"><span class="reminder">@Reminder</span></b>
+                        @Html.TextBoxFor(x => x.Sum, new { @class = "sum_input" })
+                        <a class="input_link js_transfer_all_sum">
+                            <img src="~/Areas/lk/Content/img/perevod-icon-btn.png" alt="">@Resources.Resource.WholeAmountBtn
+                        </a>
+                    </div>
+                    <div class="input">
+                        <span>@Resources.Resource.FinancPass</span>
+                        <div class="wrap-pass">
+                            @Html.PasswordFor(x => x.Password)
+                            <div class="sms">
+                                <b>@Resources.Resource.EmailRequiredSms1</b>
+                                <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
+                            </div>
+                        </div>
+                        <a class="input_link" id="gentp">@Resources.Resource.GetPassBtn</a>
+                    </div>
+                    <div class="sms sms-m">
+                        <b>@Resources.Resource.EmailRequiredSms1</b>
+                        <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
+                    </div>
+                </div>
+                <button type="submit" class="page-link" form="form_perevod">
+                    <span data-text="@Resources.Resource.ToSend">@Resources.Resource.ToSend</span>
+                </button>
+            </div>
+        }
+    </div>
+
+    <div class="charity-block">
+        <div class="charity-flex" id="charitydetailscontainer">
+            @Html.Action("_CharityDetails")
+        </div>
+    </div>
+</div>

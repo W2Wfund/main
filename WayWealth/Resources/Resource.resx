@@ -1,0 +1,1367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccessRecovery" xml:space="preserve">
+    <value>Восстановление доступа</value>
+  </data>
+  <data name="AccountBalance" xml:space="preserve">
+    <value>Остаток на счете</value>
+  </data>
+  <data name="AccountBalances" xml:space="preserve">
+    <value>Остатки на счетах:</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Активен</value>
+  </data>
+  <data name="AddSum" xml:space="preserve">
+    <value>Добавить сумму с лицевого счета</value>
+  </data>
+  <data name="AgreementDate" xml:space="preserve">
+    <value>Дата договора</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Сумма</value>
+  </data>
+  <data name="AmountComing" xml:space="preserve">
+    <value>Сумма Приход</value>
+  </data>
+  <data name="AmountConsumption" xml:space="preserve">
+    <value>Сумма Расход</value>
+  </data>
+  <data name="AmountPaid" xml:space="preserve">
+    <value>Сумма выплаченных</value>
+  </data>
+  <data name="AmountPeriod" xml:space="preserve">
+    <value>Сумма Приход за период</value>
+  </data>
+  <data name="AmountPeriod2" xml:space="preserve">
+    <value>Сумма Расход за период</value>
+  </data>
+  <data name="AmountProgram" xml:space="preserve">
+    <value>Сумма по программе</value>
+  </data>
+  <data name="AmountRecalculated" xml:space="preserve">
+    <value>Сумма пересчитанных</value>
+  </data>
+  <data name="AmountRefunded" xml:space="preserve">
+    <value>Сумма к возврату с учетом перерасчета</value>
+  </data>
+  <data name="AmountСurrency" xml:space="preserve">
+    <value>Сумма в валюте</value>
+  </data>
+  <data name="AmoutDeal" xml:space="preserve">
+    <value>Сумма договора</value>
+  </data>
+  <data name="AppDateTermin" xml:space="preserve">
+    <value>Дата заявки на расторжение</value>
+  </data>
+  <data name="AutoRenewal" xml:space="preserve">
+    <value>Автопродление</value>
+  </data>
+  <data name="AutoRenewalTable" xml:space="preserve">
+    <value>Автопродление</value>
+  </data>
+  <data name="AutoRenewalTitle" xml:space="preserve">
+    <value>При выборе данной опции договор автоматически пролонгируется на год</value>
+  </data>
+  <data name="AvailableTranslation" xml:space="preserve">
+    <value>Доступно для перевода</value>
+  </data>
+  <data name="AvailableWithdrawal" xml:space="preserve">
+    <value>Доступно для вывода</value>
+  </data>
+  <data name="AvaRequired" xml:space="preserve">
+    <value>Допустимые форматы изображений – jpg, png. Максимальный размер файла – 2мб.</value>
+  </data>
+  <data name="BaseInfo" xml:space="preserve">
+    <value>Базовая информация</value>
+  </data>
+  <data name="BecomePartner" xml:space="preserve">
+    <value>Стать партнером</value>
+  </data>
+  <data name="Before" xml:space="preserve">
+    <value>до</value>
+  </data>
+  <data name="Benefactors" xml:space="preserve">
+    <value>Благотворители</value>
+  </data>
+  <data name="Cancellation" xml:space="preserve">
+    <value>отмена</value>
+  </data>
+  <data name="CashFlowItem" xml:space="preserve">
+    <value>Статья ДС</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Смена пароля</value>
+  </data>
+  <data name="CharityProgramsTitle" xml:space="preserve">
+    <value>Благотворительные программы</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>Город</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="Combine" xml:space="preserve">
+    <value>Объединить</value>
+  </data>
+  <data name="Completed" xml:space="preserve">
+    <value>Завершен</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>подтвердить</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Повтор пароля</value>
+  </data>
+  <data name="ConfirmPasswordRequired" xml:space="preserve">
+    <value>Поле Повтор пароля обязательно</value>
+  </data>
+  <data name="ConversionRate" xml:space="preserve">
+    <value>Курс конвертации</value>
+  </data>
+  <data name="CopyLink" xml:space="preserve">
+    <value>Копировать ссылку</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Страна</value>
+  </data>
+  <data name="CreateNewPlace" xml:space="preserve">
+    <value>Создать дополнительное место</value>
+  </data>
+  <data name="CryptoWallets" xml:space="preserve">
+    <value>Кошельки криптовалют</value>
+  </data>
+  <data name="CumulativeText" xml:space="preserve">
+    <value>Накопительная программа:</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Валюта</value>
+  </data>
+  <data name="CurrentYield" xml:space="preserve">
+    <value>Доходность на текущий момент</value>
+  </data>
+  <data name="DateBirth" xml:space="preserve">
+    <value>Дата рождения</value>
+  </data>
+  <data name="DateCreat" xml:space="preserve">
+    <value>Дата оформления</value>
+  </data>
+  <data name="DateFinish" xml:space="preserve">
+    <value>Дата окончания</value>
+  </data>
+  <data name="DateOperation" xml:space="preserve">
+    <value>Дата операции</value>
+  </data>
+  <data name="DateReg" xml:space="preserve">
+    <value>Дата регистрации</value>
+  </data>
+  <data name="DepthLocation" xml:space="preserve">
+    <value>Глубина места</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="DownAva" xml:space="preserve">
+    <value>Загрузить аватар</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>Скачать</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EmailChange" xml:space="preserve">
+    <value>Смена Email</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Поле Email обязательно</value>
+  </data>
+  <data name="EmailRequired2" xml:space="preserve">
+    <value>Неверный формат поля Email</value>
+  </data>
+  <data name="EmailRequiredSms1" xml:space="preserve">
+    <value>На ваш email отправлен пароль для совершения операции</value>
+  </data>
+  <data name="EmailRequiredSms2" xml:space="preserve">
+    <value>Получить пароль повторно через:</value>
+  </data>
+  <data name="ExpandStructure" xml:space="preserve">
+    <value>Развернуть всю структуру</value>
+  </data>
+  <data name="Facial" xml:space="preserve">
+    <value>лицевой</value>
+  </data>
+  <data name="Female" xml:space="preserve">
+    <value>Ж</value>
+  </data>
+  <data name="Filtres" xml:space="preserve">
+    <value>Фильтры</value>
+  </data>
+  <data name="FinancPass" xml:space="preserve">
+    <value>Финансовый пароль</value>
+  </data>
+  <data name="FInvestInterest" xml:space="preserve">
+    <value>Проценты от инвестиций</value>
+  </data>
+  <data name="FInvestmentAccount" xml:space="preserve">
+    <value>Инвестиционный счет</value>
+  </data>
+  <data name="Fio" xml:space="preserve">
+    <value>ФИО</value>
+  </data>
+  <data name="Fio2" xml:space="preserve">
+    <value>ФИО партнера</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="FirstNameRequired" xml:space="preserve">
+    <value>Поле Имя обязательно</value>
+  </data>
+  <data name="FMarketingRewards" xml:space="preserve">
+    <value>Маркетинговые вознаграждения</value>
+  </data>
+  <data name="FPersonalAccount" xml:space="preserve">
+    <value>Лицевой счет</value>
+  </data>
+  <data name="Gender" xml:space="preserve">
+    <value>Пол</value>
+  </data>
+  <data name="GetPassBtn" xml:space="preserve">
+    <value>Получить пароль</value>
+  </data>
+  <data name="IdentityVerification" xml:space="preserve">
+    <value>Верификация личности</value>
+  </data>
+  <data name="IncomeContribution" xml:space="preserve">
+    <value>Ваш доход + Ваш вклад</value>
+  </data>
+  <data name="InEntryBtnText" xml:space="preserve">
+    <value>Вход</value>
+  </data>
+  <data name="InHeader" xml:space="preserve">
+    <value>Вход в личный кабинет</value>
+  </data>
+  <data name="InRememberChkText" xml:space="preserve">
+    <value>Запомнить</value>
+  </data>
+  <data name="InterestInvestmentCaption1" xml:space="preserve">
+    <value>Проценты от</value>
+  </data>
+  <data name="InterestInvestmentCaption2" xml:space="preserve">
+    <value>инвестиций</value>
+  </data>
+  <data name="InvestAmount" xml:space="preserve">
+    <value>Сумма инвестирования</value>
+  </data>
+  <data name="InvestBtn" xml:space="preserve">
+    <value>Инвестировать</value>
+  </data>
+  <data name="InvestedAmount" xml:space="preserve">
+    <value>Инвестированная сумма</value>
+  </data>
+  <data name="Investment" xml:space="preserve">
+    <value>инвестиционный</value>
+  </data>
+  <data name="InvestmentAccountCaption1" xml:space="preserve">
+    <value>Инвестиционный</value>
+  </data>
+  <data name="InvestmentAccountCaption2" xml:space="preserve">
+    <value>счет</value>
+  </data>
+  <data name="InvestmentInterestAccount" xml:space="preserve">
+    <value>Счет Процентов от инвестиций</value>
+  </data>
+  <data name="InvestTerm" xml:space="preserve">
+    <value>Срок инвестирования</value>
+  </data>
+  <data name="InvestTitle" xml:space="preserve">
+    <value>Инвестировать</value>
+  </data>
+  <data name="InviterTxt" xml:space="preserve">
+    <value>Логин или ID спонсора</value>
+  </data>
+  <data name="InviterTxt2" xml:space="preserve">
+    <value>Если вы знаете Логин или ID вашего спонcора, то можете указать его</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Фамилия</value>
+  </data>
+  <data name="LastnameLogin" xml:space="preserve">
+    <value>Фамилия / логин</value>
+  </data>
+  <data name="LettersThanks" xml:space="preserve">
+    <value>Письма благодарности</value>
+  </data>
+  <data name="LinkSoc" xml:space="preserve">
+    <value>Ссылка на соц. сеть</value>
+  </data>
+  <data name="List" xml:space="preserve">
+    <value>Список</value>
+  </data>
+  <data name="lk_menu_1" xml:space="preserve">
+    <value>Рабочий стол</value>
+  </data>
+  <data name="lk_menu_10" xml:space="preserve">
+    <value>Мои партнеры</value>
+  </data>
+  <data name="lk_menu_11" xml:space="preserve">
+    <value>Просмотр дерева</value>
+  </data>
+  <data name="lk_menu_12" xml:space="preserve">
+    <value>Регистрация партнера</value>
+  </data>
+  <data name="lk_menu_13" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="lk_menu_14" xml:space="preserve">
+    <value>Благотворительность</value>
+  </data>
+  <data name="lk_menu_15" xml:space="preserve">
+    <value>Рекламные материалы</value>
+  </data>
+  <data name="lk_menu_2" xml:space="preserve">
+    <value>Инвестировать</value>
+  </data>
+  <data name="lk_menu_3" xml:space="preserve">
+    <value>Мои инвестиции</value>
+  </data>
+  <data name="lk_menu_4" xml:space="preserve">
+    <value>Денежные средства</value>
+  </data>
+  <data name="lk_menu_5" xml:space="preserve">
+    <value>История операций</value>
+  </data>
+  <data name="lk_menu_6" xml:space="preserve">
+    <value>Перевод средств</value>
+  </data>
+  <data name="lk_menu_7" xml:space="preserve">
+    <value>Вывод средств</value>
+  </data>
+  <data name="lk_menu_8" xml:space="preserve">
+    <value>Пополнить счет</value>
+  </data>
+  <data name="lk_menu_9" xml:space="preserve">
+    <value>Структура</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="LoginEmailIDRequired" xml:space="preserve">
+    <value>Укажите ваш логин, e-mail или ID</value>
+  </data>
+  <data name="LoginRequired" xml:space="preserve">
+    <value>Поле Логин обязательно</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>М</value>
+  </data>
+  <data name="MarketingRewardsAccount" xml:space="preserve">
+    <value>Счет Маркетинговых вознаграждений</value>
+  </data>
+  <data name="MarketingRewardsCaption1" xml:space="preserve">
+    <value>Маркетинговые</value>
+  </data>
+  <data name="MarketingRewardsCaption2" xml:space="preserve">
+    <value>вознаграждения</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>Отчество</value>
+  </data>
+  <data name="MoneyTransactionTitle" xml:space="preserve">
+    <value>Перевод средств</value>
+  </data>
+  <data name="MoreBtn" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="MoreNewsBtn" xml:space="preserve">
+    <value>Еще новости</value>
+  </data>
+  <data name="MyInvestmentsBtn" xml:space="preserve">
+    <value>Мои инвестиции</value>
+  </data>
+  <data name="MyInvestTitle" xml:space="preserve">
+    <value>Мои инвестиции</value>
+  </data>
+  <data name="MyPartnersTitle" xml:space="preserve">
+    <value>Мои партнеры</value>
+  </data>
+  <data name="NewsTitle" xml:space="preserve">
+    <value>Новости</value>
+  </data>
+  <data name="NoFile" xml:space="preserve">
+    <value>Файл не выбран</value>
+  </data>
+  <data name="NotChosen" xml:space="preserve">
+    <value>[не выбрано]</value>
+  </data>
+  <data name="Number" xml:space="preserve">
+    <value>Номер</value>
+  </data>
+  <data name="OnCheck" xml:space="preserve">
+    <value>На проверке</value>
+  </data>
+  <data name="OperationsHistoryTitle" xml:space="preserve">
+    <value>История операций</value>
+  </data>
+  <data name="PartnerBtn" xml:space="preserve">
+    <value>Партнеру</value>
+  </data>
+  <data name="PartnerSearch" xml:space="preserve">
+    <value>Поиск партнера</value>
+  </data>
+  <data name="PassportHomepage" xml:space="preserve">
+    <value>Главная страница паспорта</value>
+  </data>
+  <data name="PassportLbl1" xml:space="preserve">
+    <value>Отправка возможна только после выбора всех файлов. Доступные форматы для загруки: jpg, png, pdf.</value>
+  </data>
+  <data name="PassportLbl2" xml:space="preserve">
+    <value>Максимальный размер загружаемого файла 2мб.</value>
+  </data>
+  <data name="PassportReg" xml:space="preserve">
+    <value>Страница паспорта с пропиской</value>
+  </data>
+  <data name="PassportSelfi" xml:space="preserve">
+    <value>Селфи с паспортом</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Поле Пароль обязательно</value>
+  </data>
+  <data name="PaymentNumber" xml:space="preserve">
+    <value>№ платежа</value>
+  </data>
+  <data name="Percent" xml:space="preserve">
+    <value>Проценты</value>
+  </data>
+  <data name="PeriodFrom" xml:space="preserve">
+    <value>Период от</value>
+  </data>
+  <data name="PersonalAccountBtn" xml:space="preserve">
+    <value>На лицевой счет</value>
+  </data>
+  <data name="PersonalAccountCaption" xml:space="preserve">
+    <value>Лицевой счет</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон</value>
+  </data>
+  <data name="PollsHeader" xml:space="preserve">
+    <value />
+  </data>
+  <data name="ProfileTitle" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="Program" xml:space="preserve">
+    <value>Программа</value>
+  </data>
+  <data name="PromoTitle" xml:space="preserve">
+    <value>Рекламные материалы</value>
+  </data>
+  <data name="Recalculation" xml:space="preserve">
+    <value>перерасчета</value>
+  </data>
+  <data name="RefillAmount" xml:space="preserve">
+    <value>Сумма пополнения</value>
+  </data>
+  <data name="RefLinkText" xml:space="preserve">
+    <value>Персональная реферальная ссылка</value>
+  </data>
+  <data name="RegisterPartner" xml:space="preserve">
+    <value>Зарегистрировать партнера</value>
+  </data>
+  <data name="RemoveAvatar" xml:space="preserve">
+    <value>Удалить аватар</value>
+  </data>
+  <data name="Restore" xml:space="preserve">
+    <value>Восстановить</value>
+  </data>
+  <data name="RestoreText" xml:space="preserve">
+    <value>Восстановить доступ</value>
+  </data>
+  <data name="Rewards" xml:space="preserve">
+    <value>вознаграждения</value>
+  </data>
+  <data name="Saldo" xml:space="preserve">
+    <value>Сальдо</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Счет</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>поиск</value>
+  </data>
+  <data name="Selection" xml:space="preserve">
+    <value>Выбор</value>
+  </data>
+  <data name="ShowAll" xml:space="preserve">
+    <value>Показать все</value>
+  </data>
+  <data name="SignUpPartnerText" xml:space="preserve">
+    <value>Регистрация партнера</value>
+  </data>
+  <data name="SignUpText" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="StatusLbl" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="StatusTable" xml:space="preserve">
+    <value>Статус</value>
+  </data>
+  <data name="TerminationAgreement" xml:space="preserve">
+    <value>Договора на расторжение</value>
+  </data>
+  <data name="TimeWallet" xml:space="preserve">
+    <value>Адрес одноразового кошелька</value>
+  </data>
+  <data name="TimeWalletLbl" xml:space="preserve">
+    <value>адрес временного кошелька действителен в течении 15 минут</value>
+  </data>
+  <data name="TopAccountTitle" xml:space="preserve">
+    <value>Пополнить счет</value>
+  </data>
+  <data name="TopUpAccount" xml:space="preserve">
+    <value>Пополнить счет</value>
+  </data>
+  <data name="ToSend" xml:space="preserve">
+    <value>Отправить</value>
+  </data>
+  <data name="TransferBtn" xml:space="preserve">
+    <value>Перевести</value>
+  </data>
+  <data name="Tree" xml:space="preserve">
+    <value>Дерево</value>
+  </data>
+  <data name="UsernameId" xml:space="preserve">
+    <value>Логин получателя / ID</value>
+  </data>
+  <data name="Verified" xml:space="preserve">
+    <value>Верифицирован</value>
+  </data>
+  <data name="ViewDisplay" xml:space="preserve">
+    <value>Вид отображения</value>
+  </data>
+  <data name="WalletAddress" xml:space="preserve">
+    <value>Адрес кошелька</value>
+  </data>
+  <data name="WholeAmountBtn" xml:space="preserve">
+    <value>Вся сумма</value>
+  </data>
+  <data name="WithdrawalTitle" xml:space="preserve">
+    <value>Вывод средств</value>
+  </data>
+  <data name="WithdrawBtn" xml:space="preserve">
+    <value>Вывести</value>
+  </data>
+  <data name="Year1" xml:space="preserve">
+    <value>1 год</value>
+  </data>
+  <data name="Year2" xml:space="preserve">
+    <value>2 года</value>
+  </data>
+  <data name="Year3" xml:space="preserve">
+    <value>3 года</value>
+  </data>
+  <data name="YourId" xml:space="preserve">
+    <value>Логин / ID:</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>О нас</value>
+  </data>
+  <data name="AmountInvestment" xml:space="preserve">
+    <value>Сумма инвестиций</value>
+  </data>
+  <data name="AmountPlace" xml:space="preserve">
+    <value>Сумма вознаграждений за место</value>
+  </data>
+  <data name="banner_1_desc" xml:space="preserve">
+    <value>Мы рады представить Вам полноценную инвестиционную платформу Way to Wealth, где вы можете реализовать себя в роли инвестора и преумножить свой капитал</value>
+  </data>
+  <data name="banner_1_title_1" xml:space="preserve">
+    <value>Уверенность</value>
+  </data>
+  <data name="banner_1_title_2" xml:space="preserve">
+    <value>в будущем</value>
+  </data>
+  <data name="banner_2_desc" xml:space="preserve">
+    <value>Высокая и стабильная доходность – одна из фундаментальных основ платформы Way to Wealth. Возможность довериться профессионалам в формировании капитализации ваших активов, не затрачивая своего личного времени</value>
+  </data>
+  <data name="banner_2_title_1" xml:space="preserve">
+    <value>Высокая доходность</value>
+  </data>
+  <data name="banner_2_title_2" xml:space="preserve">
+    <value>вложенных средств</value>
+  </data>
+  <data name="banner_3_desc" xml:space="preserve">
+    <value>Кто владеет информацией, тот владеет миром! (Н. Ротшильд). Платформа Way to Wealth отслеживает самые важные и значимые новости криптовалютного мира, предоставляя своим Партнерам преимущества в их решениях</value>
+  </data>
+  <data name="banner_3_title_1" xml:space="preserve">
+    <value>Будь в курсе</value>
+  </data>
+  <data name="banner_3_title_2" xml:space="preserve">
+    <value>последних новостей</value>
+  </data>
+  <data name="banner_4_desc" xml:space="preserve">
+    <value>Партнерская программа платформы Way to Wealth - это уникальный план выплат для каждого Партнера, позволяющий создать себе прозрачный пассивный доход, который легко спрогнозировать и просчитать.</value>
+  </data>
+  <data name="banner_4_title_1" xml:space="preserve">
+    <value>Многоуровневая</value>
+  </data>
+  <data name="banner_4_title_2" xml:space="preserve">
+    <value>партнерская программа</value>
+  </data>
+  <data name="Benefits" xml:space="preserve">
+    <value>Преимущества</value>
+  </data>
+  <data name="BenefitsDesc" xml:space="preserve">
+    <value>Благодаря тесным связям с андеррайтерами, у нас есть эксклюзивные возможности, которые также помогают нам выстроить работу по стратегиям IPO наиболее успешно.</value>
+  </data>
+  <data name="CalcTitle" xml:space="preserve">
+    <value>Калькулятор доходности</value>
+  </data>
+  <data name="Copyright" xml:space="preserve">
+    <value>Все права защищены</value>
+  </data>
+  <data name="Experience" xml:space="preserve">
+    <value>Опыт</value>
+  </data>
+  <data name="ExperienceDesc" xml:space="preserve">
+    <value>Команда Way to Wealth имеет успешныйиопыт работы как на фондовом так и на криптовалютном рынке и с IPO и с ICO в том числе, за счёт чего были сформированы несколько своих собственных стратегий.</value>
+  </data>
+  <data name="Feedback" xml:space="preserve">
+    <value>Отзыв</value>
+  </data>
+  <data name="Feedbacklbl" xml:space="preserve">
+    <value>Оставьте ваш отзыв</value>
+  </data>
+  <data name="footer_slogan1" xml:space="preserve">
+    <value>Платформа Way To Wealth рада предоставить Вам возможность не только зарабатывать высокий фиксированный доход, но и благодаря совместной финансовой грамотности, строить бизнес вместе по пути современной цифровой экономики</value>
+  </data>
+  <data name="footer_slogan2" xml:space="preserve">
+    <value>Пополнение и вывод инвестиционных средств осуществляется в криптовалютах:</value>
+  </data>
+  <data name="footer_slogan3" xml:space="preserve">
+    <value>Информация, содержащаяся на этом сайте, и видео-презентациях носит общий характер. Это не совет или рекомендация инвестировать в W2W. Она была подготовлена без учета ваших индивидуальных целей, финансовой ситуации или конкретных потребностей. Соответственно, перед принятием инвестиционного решения, Вы должны оценить свои собственные цели, финансовую ситуацию и потребность.</value>
+  </data>
+  <data name="footer_slogan4" xml:space="preserve">
+    <value>По всем вопросам обращайтесь</value>
+  </data>
+  <data name="menu_about" xml:space="preserve">
+    <value>О компании</value>
+  </data>
+  <data name="menu_faq" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="menu_in" xml:space="preserve">
+    <value>Войти</value>
+  </data>
+  <data name="menu_invest" xml:space="preserve">
+    <value>Инвестиции</value>
+  </data>
+  <data name="menu_kabinet" xml:space="preserve">
+    <value>Кабинет</value>
+  </data>
+  <data name="menu_news" xml:space="preserve">
+    <value>Новости</value>
+  </data>
+  <data name="menu_out" xml:space="preserve">
+    <value>Выйти</value>
+  </data>
+  <data name="menu_partnership" xml:space="preserve">
+    <value>Партнерство</value>
+  </data>
+  <data name="menu_reviews" xml:space="preserve">
+    <value>Отзывы</value>
+  </data>
+  <data name="menu_up" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Opportunities" xml:space="preserve">
+    <value>Возможности</value>
+  </data>
+  <data name="OpportunitiesDesc" xml:space="preserve">
+    <value>Участвовать в IPO и высокодоходных ICO можно с капиталом не менее 100 000$, но мы покрываем данную сумму собственными средствами, поэтому наши клиенты имеют возможность инвестировать комфортные для них суммы.</value>
+  </data>
+  <data name="PostBtn" xml:space="preserve">
+    <value>Опубликовать</value>
+  </data>
+  <data name="PrivacyPolicy" xml:space="preserve">
+    <value>Политика конфиденциальности</value>
+  </data>
+  <data name="Programs" xml:space="preserve">
+    <value>Программы</value>
+  </data>
+  <data name="ReviewAdd" xml:space="preserve">
+    <value>Добавить отзыв</value>
+  </data>
+  <data name="ReviewAll" xml:space="preserve">
+    <value>Еще отзывы</value>
+  </data>
+  <data name="ReviewsTitle" xml:space="preserve">
+    <value>Отзывы</value>
+  </data>
+  <data name="RiskDiversification1" xml:space="preserve">
+    <value>Диверсификация</value>
+  </data>
+  <data name="RiskDiversification2" xml:space="preserve">
+    <value>Рисков</value>
+  </data>
+  <data name="RiskDiversificationDesc" xml:space="preserve">
+    <value>Благодаря профессионализму нашей команды, риски портфеля снижаются, так как отбираются наиболее перспективные проекты. Наши аналитики тщательно подходят к анализу рынков. Мы используем 3 направления в нашей нелегкой работе: трейдинг, IPO и ICO, что позволяет диверсифицировать риски компании и наших клиентов.</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Масштаб</value>
+  </data>
+  <data name="TermsUse" xml:space="preserve">
+    <value>Пользовательское соглашение</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="PassErrMess" xml:space="preserve">
+    <value>Недопустимое значение поля "Пароль". Пароль должен состоять из комбинации латинских букв верхнего и нижнего регистров, цифр общей длинной не менее6 символов (пример, uE2x32)</value>
+  </data>
+  <data name="CaptchaIsEmpty" xml:space="preserve">
+    <value>Подтвердите что вы не робот</value>
+  </data>
+  <data name="CaptchaIsIncorrect" xml:space="preserve">
+    <value>Вы не подтвердили что не робот</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>Главная</value>
+  </data>
+  <data name="Camulative" xml:space="preserve">
+    <value>Накопительная</value>
+  </data>
+  <data name="Invest" xml:space="preserve">
+    <value>Пассивного дохода</value>
+  </data>
+  <data name="Filled" xml:space="preserve">
+    <value>Заполнено</value>
+  </data>
+  <data name="RankJP" xml:space="preserve">
+    <value>М.П.</value>
+  </data>
+  <data name="RankLP" xml:space="preserve">
+    <value>В.П.</value>
+  </data>
+  <data name="RankP" xml:space="preserve">
+    <value>П.</value>
+  </data>
+  <data name="RankPP" xml:space="preserve">
+    <value>П.П.</value>
+  </data>
+  <data name="RankSP" xml:space="preserve">
+    <value>С.П.</value>
+  </data>
+  <data name="LevelValue" xml:space="preserve">
+    <value>Сумма инвестиций уровня</value>
+  </data>
+  <data name="RewardsSum" xml:space="preserve">
+    <value>Сумма вознаграждения</value>
+  </data>
+  <data name="StructRewards" xml:space="preserve">
+    <value>Сумма вознаграждений со структуры</value>
+  </data>
+  <data name="StructValue" xml:space="preserve">
+    <value>Сумма инвестиций структуры</value>
+  </data>
+  <data name="AticleBonusInvestment" xml:space="preserve">
+    <value>Бонусная инвест программа</value>
+  </data>
+  <data name="AticleCamulativeReward" xml:space="preserve">
+    <value>Вознаграждение по накопительной программе</value>
+  </data>
+  <data name="AticleChangeInvestment" xml:space="preserve">
+    <value>Пополнение/изменение инвест программы</value>
+  </data>
+  <data name="AticleOpeningTheInvestmentProgram" xml:space="preserve">
+    <value>Открытие инвест программы</value>
+  </data>
+  <data name="AticleOpeningTheCamulativeProgram" xml:space="preserve">
+    <value>Открытие накопительной программы</value>
+  </data>
+  <data name="AticleRefReward" xml:space="preserve">
+    <value>Реферальное вознаграждение</value>
+  </data>
+  <data name="AticleReplenishInvest" xml:space="preserve">
+    <value>Пополнение инвест программы</value>
+  </data>
+  <data name="AticleReplenishment" xml:space="preserve">
+    <value>Пополнение счета</value>
+  </data>
+  <data name="AticleStructReward" xml:space="preserve">
+    <value>Вознаграждение со структуры</value>
+  </data>
+  <data name="AticleClosingTheInvestmentProgram" xml:space="preserve">
+    <value>Закрытие инвест программы</value>
+  </data>
+  <data name="AticleTransferToInnerAccount" xml:space="preserve">
+    <value>Перевод на лицевой счет</value>
+  </data>
+  <data name="AticleTransferToPartner" xml:space="preserve">
+    <value>Перевод партнеру</value>
+  </data>
+  <data name="AticleWithdrawal" xml:space="preserve">
+    <value>Вывод средств</value>
+  </data>
+  <data name="LoginOrId" xml:space="preserve">
+    <value>ID / Логин</value>
+  </data>
+  <data name="Account" xml:space="preserve">
+    <value>Счет</value>
+  </data>
+  <data name="AticlePercent" xml:space="preserve">
+    <value>Начисление процентов</value>
+  </data>
+  <data name="ConfirmYourEmail" xml:space="preserve">
+    <value>Подвтердите ваш Email</value>
+  </data>
+  <data name="LastNews" xml:space="preserve">
+    <value>Последние новости</value>
+  </data>
+  <data name="AccessRecoveryInformationSent" xml:space="preserve">
+    <value>На ваш email отправлена информация для восстановления доступа</value>
+  </data>
+  <data name="ConfirmationEmail" xml:space="preserve">
+    <value>Подтверждение Email</value>
+  </data>
+  <data name="EmailIsConfirmed" xml:space="preserve">
+    <value>Email подтвержден</value>
+  </data>
+  <data name="ErrEmailIsAlreadyRegistred" xml:space="preserve">
+    <value>Указанным Email уже зарегистрирован</value>
+  </data>
+  <data name="ErrInviterNotFound" xml:space="preserve">
+    <value>Спонсор не найден</value>
+  </data>
+  <data name="ErrLinkExpired" xml:space="preserve">
+    <value>Срок действия ссылки закончился</value>
+  </data>
+  <data name="ErrLinkIsDamaged" xml:space="preserve">
+    <value>Ссылка повреждена</value>
+  </data>
+  <data name="ErrLoginIsAlreadyRegistred" xml:space="preserve">
+    <value>Указанным Логин уже зарегистрирован</value>
+  </data>
+  <data name="ErrPasswordsDoNotMatch" xml:space="preserve">
+    <value>Введенные пароли не совпадают</value>
+  </data>
+  <data name="ErrUserIsNotFound" xml:space="preserve">
+    <value>Пользователь не найден</value>
+  </data>
+  <data name="ErrWrongLoginOrPassword" xml:space="preserve">
+    <value>Неверный логин или пароль</value>
+  </data>
+  <data name="PasswordСhanged" xml:space="preserve">
+    <value>Пароль изменен</value>
+  </data>
+  <data name="SignUpInformationSent" xml:space="preserve">
+    <value>На указанный email отправлена ссылка для завершения регистрации</value>
+  </data>
+  <data name="AticleCharity" xml:space="preserve">
+    <value>Благотворительность</value>
+  </data>
+  <data name="Qualification" xml:space="preserve">
+    <value>Квалификация</value>
+  </data>
+  <data name="StructureTitle" xml:space="preserve">
+    <value>Просмотр дерева</value>
+  </data>
+  <data name="RankJPfull" xml:space="preserve">
+    <value>Младший партнер</value>
+  </data>
+  <data name="RankLPfull" xml:space="preserve">
+    <value>Ведущий партнер</value>
+  </data>
+  <data name="RankPfull" xml:space="preserve">
+    <value>Партнер</value>
+  </data>
+  <data name="RankPPfull" xml:space="preserve">
+    <value>Премьер</value>
+  </data>
+  <data name="RankSPfull" xml:space="preserve">
+    <value>Старший партнер</value>
+  </data>
+  <data name="NotPaid" xml:space="preserve">
+    <value>Не начислен</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Начислен</value>
+  </data>
+  <data name="MoneyIncome" xml:space="preserve">
+    <value>Поступление денежных средств</value>
+  </data>
+  <data name="ProfileIsChanged" xml:space="preserve">
+    <value>Профиль изменен</value>
+  </data>
+  <data name="RippleTagRequirement" xml:space="preserve">
+    <value>Обязательно указывайте Destination Tag! Иначе мы не сможем распознать источник платежа</value>
+  </data>
+  <data name="Notification" xml:space="preserve">
+    <value>Уведолмение</value>
+  </data>
+  <data name="DataCopied" xml:space="preserve">
+    <value>Данные скопированы в буфер обмена</value>
+  </data>
+  <data name="Checking" xml:space="preserve">
+    <value>На проверке</value>
+  </data>
+  <data name="DocumentsAreUploaded" xml:space="preserve">
+    <value>Документы загружены</value>
+  </data>
+  <data name="ErrUploading" xml:space="preserve">
+    <value>Ошибка загрузки</value>
+  </data>
+  <data name="NotConfirmed" xml:space="preserve">
+    <value>Не подтвержден</value>
+  </data>
+  <data name="Published" xml:space="preserve">
+    <value>Опубликован</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Отклонен</value>
+  </data>
+  <data name="Remainder" xml:space="preserve">
+    <value>Остаток</value>
+  </data>
+  <data name="UploadingOfDocuments" xml:space="preserve">
+    <value>Загрузка документов</value>
+  </data>
+  <data name="FinancialPassword" xml:space="preserve">
+    <value>Финансовый пароль</value>
+  </data>
+  <data name="Fund" xml:space="preserve">
+    <value>Фонд</value>
+  </data>
+  <data name="IsCreateNewPlace" xml:space="preserve">
+    <value>Создать доп место</value>
+  </data>
+  <data name="IsProlonged" xml:space="preserve">
+    <value>Автопролонгация</value>
+  </data>
+  <data name="ReceiverLoginOrId" xml:space="preserve">
+    <value>Логин получателя / ID</value>
+  </data>
+  <data name="ValidRange" xml:space="preserve">
+    <value>{0} должна быть от {1:N0} до {2:N0}</value>
+  </data>
+  <data name="ValidRequired" xml:space="preserve">
+    <value>Поле {0} обязательно</value>
+  </data>
+  <data name="Wallet" xml:space="preserve">
+    <value>Кошелек</value>
+  </data>
+  <data name="AvatarSuccessfullyUpdated" xml:space="preserve">
+    <value>Аватар успешно обновлен</value>
+  </data>
+  <data name="CouldNotUpdateAvatar" xml:space="preserve">
+    <value>Не удалось обновить аватар</value>
+  </data>
+  <data name="ErrAccountIsIncorrect" xml:space="preserve">
+    <value>Неверно указан счет</value>
+  </data>
+  <data name="ErrFoundationNotFound" xml:space="preserve">
+    <value>Фонд не найден</value>
+  </data>
+  <data name="ErrImgSize" xml:space="preserve">
+    <value>Изображение слишком большое. Макс. размер - 2 мб</value>
+  </data>
+  <data name="ErrInsufficientFun" xml:space="preserve">
+    <value>Недостаточно средств на счете</value>
+  </data>
+  <data name="ErrLoginIsAlreadyUsed" xml:space="preserve">
+    <value>Указанный Логин уже используется</value>
+  </data>
+  <data name="ErrPasswordIsExpired" xml:space="preserve">
+    <value>Срок действия пароля закончился</value>
+  </data>
+  <data name="ErrPasswordIsIncorrect" xml:space="preserve">
+    <value>Пароль указан неверно</value>
+  </data>
+  <data name="ErrRecipientMatchesTheSender" xml:space="preserve">
+    <value>Получатель совпадает с отправителем</value>
+  </data>
+  <data name="ErrRecipientNotFound" xml:space="preserve">
+    <value>Получатель не найден</value>
+  </data>
+  <data name="ErrSumIsIncorrect" xml:space="preserve">
+    <value>Неверно указана сумма</value>
+  </data>
+  <data name="InvestmentsAreUnited" xml:space="preserve">
+    <value>Инвестиции объеденены</value>
+  </data>
+  <data name="OnlyImagesAllowed" xml:space="preserve">
+    <value>Допустимы только изображения</value>
+  </data>
+  <data name="OperationCompleted" xml:space="preserve">
+    <value>Операция выполнена</value>
+  </data>
+  <data name="TerminationCancelation" xml:space="preserve">
+    <value>Отмена расторжения</value>
+  </data>
+  <data name="TerminationConfirmation" xml:space="preserve">
+    <value>Подтверждение расторжения</value>
+  </data>
+  <data name="UnionInvestments" xml:space="preserve">
+    <value>Объединение инвестиций</value>
+  </data>
+  <data name="LetterFinancialPassword" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;
+            Пароль для совершения операции {0}.
+        &lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;Пароль действителен в течении 5  минут.&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="LetterResetAccess" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
+    &lt;/p&gt;
+	    &lt;p&gt;
+        &lt;em&gt;
+            Вы запросили восстановление доступа.
+        &lt;/em&gt;
+    &lt;/p&gt;
+	    &lt;p&gt;
+        &lt;em&gt;
+            Ваш логин: {2}. Ваш новый пароль: {3}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;	
+    &lt;p&gt;
+        &lt;em&gt;
+            Чтобы сбросить пароль и восстановить доступ, перейдите по этой ссылке:
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;a href="{0}"&gt;{1}&lt;/a&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;Если вы не запрашивали восстановление пароля на &lt;a href="w2w.fund"&gt;w2w.fund&lt;/a&gt;, возможно, кто-то другой по ошибке указал ваш адрес электронной почты.&lt;/em&gt;
+		&lt;br&gt;
+		&lt;em&gt;
+			В этом случае просто проигнорируйте данное сообщение.
+		&lt;/em&gt;		
+    &lt;/p&gt;
+	
+    &lt;p&gt;
+        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="LetterSignUp" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
+    &lt;/p&gt;
+	 &lt;p&gt;
+        &lt;em&gt;Благодарим Вас за регистрацию на платформе Way to Wealth.&lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;Ваш адрес электронной почты указали в качестве регистрационного на платформе Way to Wealth.&lt;/em&gt;
+    &lt;/p&gt;
+	
+	&lt;p&gt;
+        &lt;em&gt;Ваш аккаунт будет активирован после перехода  по ссылке &lt;a href="{0}"&gt;{1}&lt;/a&gt;&lt;/em&gt;
+    &lt;/p&gt;
+	
+	&lt;p&gt;
+        &lt;em&gt;Ваш логин: {2}.&lt;/em&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;Ваше имя: {3}.&lt;/em&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;Ваш пароль: {4}&lt;/em&gt;
+	&lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;Ваш спонсор: {5}&lt;/em&gt;
+	&lt;/p&gt;
+	
+    &lt;p&gt;
+        &lt;em&gt;
+            Чтобы всегда иметь доступ к своим регистрационным данным, пожалуйста, сохраните это письмо.
+        &lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;Вы получили это письмо, так как Ваш e-mail адрес был указан при регистрации на сайте &lt;a href="w2w.fund"&gt;w2w.fund&lt;/a&gt;&lt;/em&gt;
+    &lt;/p&gt;
+	 &lt;p&gt;
+        &lt;em&gt;Если Вы не оставляли заявку на регистрацию на этом сайте, просто проигнорируйте письмо и удалите его.&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="PersonalAccountCaption1_1" xml:space="preserve">
+    <value>Лицевой</value>
+  </data>
+  <data name="PersonalAccountCaption1_2" xml:space="preserve">
+    <value>счет</value>
+  </data>
+  <data name="LoginNotify" xml:space="preserve">
+    <value>Зафиксирован вход в Вашу учетную запись</value>
+  </data>
+  <data name="LoginNotifyLetter" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Уважаемый пользователь, &lt;strong&gt;{0}&lt;/strong&gt;&lt;/em&gt;
+    &lt;/p&gt;
+	    &lt;p&gt;
+        &lt;em&gt;
+            Мы зафиксировали вход в вашу учетную запись, со следующими данными:
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;
+            &lt;strong&gt;Время:&lt;/strong&gt; {1}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;
+            &lt;strong&gt;IP-адрес:&lt;/strong&gt; {2}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;
+            &lt;strong&gt;Браузер:&lt;/strong&gt; {3}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;
+	&lt;p&gt;
+        &lt;em&gt;
+            &lt;strong&gt;Страна:&lt;/strong&gt; {4}&lt;/p&gt;
+        &lt;/em&gt;
+    &lt;/p&gt;	
+  
+    &lt;p&gt;
+        &lt;em&gt;Если Вы не тот кто вошел в систему, пожалуйста, просим немедленно связаться с нами &lt;a href="mailto:support@w2w.fund"&gt;support@w2w.fund&lt;/a&gt;.&lt;/em&gt;
+				
+    &lt;/p&gt;
+	
+    &lt;p&gt;
+        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="Undefined" xml:space="preserve">
+    <value>Неопределено</value>
+  </data>
+  <data name="WithdrawalError" xml:space="preserve">
+    <value>Ошибка вывода</value>
+  </data>
+  <data name="WithdrawalNotFriday" xml:space="preserve">
+    <value>Уважаемый инвестор! &lt;br /&gt;Оставить заявку на вывод средств возможно только по пятницам с 00:00 до 14:00 по Московскому времени.</value>
+  </data>
+  <data name="ReviewAdded" xml:space="preserve">
+    <value>Отзыв успешно добавлен и отправлен на проверку.</value>
+  </data>
+  <data name="ReviewAddedTitle" xml:space="preserve">
+    <value>Отзыв добавлен</value>
+  </data>
+  <data name="ReviewIsEmpty" xml:space="preserve">
+    <value>Введите текст отзыва!</value>
+  </data>
+  <data name="2FAChanged" xml:space="preserve">
+    <value>Настройки двухфакторной аутентификации изменены!</value>
+  </data>
+  <data name="CodeDigit" xml:space="preserve">
+    <value>Код подтверждения</value>
+  </data>
+  <data name="CodeDigitRequired" xml:space="preserve">
+    <value>Поле {0} обязательно</value>
+  </data>
+  <data name="DisableTwoFactorAuth" xml:space="preserve">
+    <value>Отключить 2FA</value>
+  </data>
+  <data name="EnableTwoFactorAuth" xml:space="preserve">
+    <value>Включить 2FA</value>
+  </data>
+  <data name="GoogleAuth" xml:space="preserve">
+    <value>Google Authenticator</value>
+  </data>
+  <data name="GoogleAuthAlreadyEnabled" xml:space="preserve">
+    <value>Двухфакторная аутентификация уже была подключена на Вашем аккаунте.</value>
+  </data>
+  <data name="GoogleAuthEnable1" xml:space="preserve">
+    <value>1. Добавьте W2W.fund в приложение Google Authenticator</value>
+  </data>
+  <data name="GoogleAuthEnable2" xml:space="preserve">
+    <value>Откройте приложение Google Authenticator и добавьте W2W.fund отсканировав  QR код на странице ниже.</value>
+  </data>
+  <data name="GoogleAuthEnable3" xml:space="preserve">
+    <value>2. Введите 6 чисел, которые были сгенерированы приложением Google Authenticator </value>
+  </data>
+  <data name="GoogleAuthEnable4" xml:space="preserve">
+    <value>Проверьте, что после ввода 6 чисел W2W.fund корректно добавлен в приложение Google Authenticator, и нажмите кнопку Включить 2FA.</value>
+  </data>
+  <data name="GoogleAuthEnterCode" xml:space="preserve">
+    <value>Для входа в аккаунт введите код подтверждения из приложения Google Authentificator.</value>
+  </data>
+  <data name="GoogleAuthIncorrectCode" xml:space="preserve">
+    <value>Введен неправильный код</value>
+  </data>
+  <data name="GoogleAuthTitle" xml:space="preserve">
+    <value>Двух-факторная аутентификация (подтверждение)</value>
+  </data>
+  <data name="lk_menu_17" xml:space="preserve">
+    <value>2F Авторизация</value>
+  </data>
+  <data name="ManualSetupCode" xml:space="preserve">
+    <value>Код ручной установки</value>
+  </data>
+  <data name="TwoFactorAuth" xml:space="preserve">
+    <value>Двухфакторная аутентификация</value>
+  </data>
+</root>

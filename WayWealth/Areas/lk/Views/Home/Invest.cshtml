@@ -1,0 +1,19 @@
+﻿@model WayWealth.Areas.lk.ViewModels.Home.InvestView
+@{
+    TempData.Keep();
+
+    ViewBag.Title = "Invest";
+    Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+}
+<div class="calc-block">
+    <p class="page-title"><img src="~/Areas/lk/Content/img/toolbar-icon-2.png" alt="">@Resources.Resource.InvestTitle</p>
+    @if (!ViewData.ModelState.IsValid)
+    {
+    <div class="error-msg" style="text-align: center;margin-bottom: 10px;color: red;">
+        @Html.ValidationSummary(true)
+    </div>
+    }
+    <div id="calc-content">
+        @Html.Partial("Calc", Model)
+    </div>
+</div>

@@ -1,0 +1,106 @@
+﻿@model WayWealth.Areas.lk.ViewModels.Home.ReplenishView
+@using KBTech.Integration.Merchant.CoinBase
+@{
+    ViewBag.Title = Resources.Resource.TopAccountTitle;
+    Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+    TempData.Keep();
+}
+
+<div class="perevod-block">
+    <p class="page-title">
+        <img src="~/Areas/lk/Content/img/toolbar-icon-4-4.png" alt="">@Resources.Resource.TopAccountTitle
+    </p>
+    <div class="error-msg" style="color:red;margin-bottom:10px">
+        @Html.ValidationSummary(false)
+    </div>
+    <div class="form-block">
+        @using (Html.BeginForm("Replenish", "Home", FormMethod.Post, new {id = "form_vivod"}))
+        {
+            <div class="valuta">
+                <div>
+                    <img src="~/Areas/lk/Content/img/valuta-1.png" alt="">
+                    <p>Bitcoin</p>
+                    <b>- $ @(Convert.ToDecimal(TempData["btc_usd"]).ToString("N2"))</b>
+                </div>
+                <div>
+                    <img src="~/Areas/lk/Content/img/valuta-2.png" alt="">
+                    <p>Ethereum</p>
+                    <b>- $ @(Convert.ToDecimal(TempData["eth_usd"]).ToString("N2"))</b>
+                </div>
+                <div>
+                    <img src="~/Areas/lk/Content/img/valuta-3.png" alt="">
+                    <p>Litecoin</p>
+                    <b>- $ @(Convert.ToDecimal(TempData["ltc_usd"]).ToString("N2"))</b>
+                </div>
+                <div>
+                    <img src="~/Areas/lk/Content/img/valuta-4.png" alt="">
+                    <p>Bitcoin Cash</p>
+                    <b>- $ @(Convert.ToDecimal(TempData["bch_usd"]).ToString("N2"))</b>
+                </div>
+                <div>
+                    <img src="~/Areas/lk/Content/img/valuta-5.png" alt="">
+                    <p>Ripple</p>
+                    <b>- $ @(Convert.ToDecimal(TempData["xrp_usd"]).ToString("N2"))</b>
+                </div>
+            </div>
+            <div class="wrap-bg-form popolnit">
+                <div class="input">
+                    <span>@Resources.Resource.Amount</span>
+                    @Html.TextBoxFor(x => x.Sum, new { @class = "sum_input" })
+                    <span>$</span>
+                </div>
+                <div class="input">
+                    <span>@Resources.Resource.Currency</span>
+                    @Html.DropDownListFor(x => x.Currency, new SelectListItem[]
+                    {
+                        new SelectListItem { Text = "Bitcoin",Value = "BTC"},
+                        new SelectListItem { Text = "Ethereum",Value = "ETH"},
+                        new SelectListItem { Text = "Litecoin",Value = "LTC"},
+                        new SelectListItem { Text = "BitcoinCash",Value = "BCH"},
+                        new SelectListItem { Text = "Ripple",Value = "XRP"},
+                    }, Resources.Resource.NotChosen, new { id = "crypptoaccount", @class = "myslimSelect5" })
+                    <script>
+                        var mySlimSelect5 = new SlimSelect({
+                            select: '.myslimSelect5',
+                            showSearch: false,
+                            onChange: calc
+                        })
+
+                        $('.sum_input').on('input change paste', calc);
+                        function calc() {
+                            $('.crypptoconvert').html('');
+                            var s = $('.sum_input').val().replace(',', '.');
+                            var rate = 0.0;
+
+                            var curr = $('#crypptoaccount').val();
+                            if (curr == 'BTC') {
+                                rate = @(TempData["usd_btc"].ToString().Replace(',','.')) * 1.0;
+                            }
+                            else if (curr == 'ETH') {
+                                rate = @(TempData["usd_eth"].ToString().Replace(',', '.')) * 1.0;
+                            }
+                            else if (curr == 'LTC') {
+                                rate = @(TempData["usd_ltc"].ToString().Replace(',', '.')) * 1.0;
+                            }
+                            else if (curr == 'BCH') {
+                                rate = @(TempData["usd_bch"].ToString().Replace(',', '.')) * 1.0;
+                            }
+                            else if (curr == 'XRP') {
+                                rate = @(TempData["usd_xrp"].ToString().Replace(',', '.')) * 1.0;
+                            }
+
+                            var total = Math.round(s * rate * 1000000) / 1000000;
+                            if (total > 0) {
+                                $('.crypptoconvert').html(total + ' ' + '<span>' + curr + '</span>');
+                            }
+                        }
+                    </script>
+                    <p class="crypptoconvert"></p>
+                </div>
+            </div>
+            <button type="submit" class="page-link" form="form_vivod">
+                <span data-text="@Resources.Resource.TopUpAccount">@Resources.Resource.TopUpAccount</span>
+            </button>
+        }
+    </div>
+</div>

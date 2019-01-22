@@ -1,0 +1,92 @@
+﻿@using W2W.ModelKBT.Entities
+@{
+    var Article = ViewBag.Article as Article;
+    var Items = ViewBag.Items as IEnumerable<Article>;
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+    if (culture == "ru-RU")
+    {
+        ViewBag.Title = Article.ObjectName;
+    }
+    else
+    {
+        ViewBag.Title = Article.ObjectNameEng;
+    }
+}
+
+<div class="news-page">
+    <div class="news-bg">
+        <div class="news-content">
+            <p class="page-title">
+                <span data-text="@Resources.Resource.NewsTitle">@Resources.Resource.NewsTitle</span>
+            </p>
+            <div class="bread">
+                <a href="/">@Resources.Resource.HomePage</a>
+                <i>/</i>
+                <a href="@Url.Action("news", "home")">@Resources.Resource.NewsTitle</a>
+                <i>/</i>
+                <a>
+                    @if (culture == "ru-RU")
+                    {
+                        @Article.ObjectName
+                    }
+                    else
+                    {
+                        @Article.ObjectNameEng
+                    }
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="news-content">
+        <div class="news-open">
+            <div>
+                <p class="date">@Article.PublishDate.Value.ToShortDateString()</p>
+                <p class="page-title">
+                    @if (culture == "ru-RU")
+                    {
+                        @Article.ObjectName
+                    }
+                    else
+                    {
+                        @Article.ObjectNameEng
+                    }
+                </p>
+                <div class="desc">
+                    @if (culture == "ru-RU")
+                    {
+                        @Html.Raw(Article.Text)
+                    }
+                    else
+                    {
+                        @Html.Raw(Article.TextEng)
+                    }
+                </div>
+            </div>
+            <div class="list-news">
+                <p class="subtitle">@Resources.Resource.LastNews</p>
+                <ul>
+                    @foreach (var a in Items.OrderByDescending(x => x.CreationDate).Take(3))
+                    {
+                        <li>
+                            <a href="@Url.Action("news", "home", new {id=a.id_object})">
+                                <img src="@Url.Action("img", "home", new { area = "", id=a.Image })" alt="" />
+                                @*<img src="@Url.RouteUrl("default", new { action="img", area = "", id=a.Image })" alt="" />*@
+                                <b>
+                                    @if (culture == "ru-RU")
+                                    {
+                                        @a.ObjectName
+                                    }
+                                    else
+                                    {
+                                        @a.ObjectNameEng
+                                    }
+                                </b>
+                                <p>@a.PublishDate.Value.ToShortDateString()</p>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

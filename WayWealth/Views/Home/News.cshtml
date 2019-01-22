@@ -1,0 +1,54 @@
+﻿@using W2W.ModelKBT.Entities
+@using WayWealth.Areas.lk.Helpers
+@using WayWealth.Areas.lk.ViewModels
+@{
+    ViewBag.Title = Resources.Resource.NewsTitle;
+    var Items = ViewBag.Items as IEnumerable<Article>;
+    var PageInfo = ViewBag.PageInfo as PageInfo;
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+}
+
+<div class="news-page">
+    <div class="news-bg">
+        <div class="news-content">
+            <p class="page-title">
+                <span data-text="@Resources.Resource.NewsTitle">@Resources.Resource.NewsTitle</span>
+            </p>
+            <div class="bread">
+                <a href="/">@Resources.Resource.HomePage</a>
+                <i>/</i>
+                <a>@Resources.Resource.NewsTitle</a>
+            </div>
+        </div>
+    </div>
+    @if (Items != null)
+    {
+        <div class="news-content">
+            <ul class="news-list">
+                @foreach (var item in Items.OrderByDescending(x => x.CreationDate))
+                {
+                    <li>
+                        <a href="@Url.Action("news", "home", new {id= item.id_object})">
+                            <img src="@Url.Action("img", "home", new { area = "", id=item.Image })" alt="">
+                            <b>
+                                @if (culture == "ru-RU")
+                                {
+                                    @item.ObjectName
+                                }
+                                else
+                                {
+                                    @item.ObjectNameEng
+                                }
+                            </b>
+                            <p>@item.PublishDate.Value.ToShortDateString()</p>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    @if (PageInfo != null && PageInfo.TotalPages > 1)
+    {
+        @Html.PageLinks(PageInfo, null, x => Url.Action("news", new { page = x }))
+    }
+</div>

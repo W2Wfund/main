@@ -1,0 +1,70 @@
+﻿@using Common.Web
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var action = ViewContext.RouteData.Values["action"].ToString();
+    List<Notification> notifications = (List<Notification>)Session[Notification.Key] ?? new List<Notification>();
+    ViewBag.Version = 11;
+}
+
+@section HeadSection{
+    <link rel="stylesheet" href="~/Areas/lk/Content/css/libs.min.css?v=@ViewBag.Version">
+    <link rel="stylesheet" href="~/Areas/lk/Content/css/main.css?v=@ViewBag.Version">
+    <script src="~/Areas/lk/Content/js/scripts.min.js?v=@ViewBag.Version"></script>
+    <style type="text/css">
+        .g-recaptcha > div {
+            margin: 0 auto;
+        }
+
+        .validation-summary-errors {
+            color: red;
+            margin: 10px auto;
+            text-align: center;
+        }
+    </style>
+}
+@if (!User.Identity.IsAuthenticated)
+{
+    @RenderBody()
+}
+else
+{
+    <div class="wrap-content">
+        @Html.Partial("_Toolbar")
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+}
+
+
+@section FootSection{
+    @if (notifications.Count > 0)
+    {
+        <div class="wrap-modal active">
+            @foreach (var item in notifications.ToList())
+            {
+                <div class="modal modal_2">
+                    <img class="logo" src="~/Areas/lk/Content/img/modal-logo.png" alt="">
+                    @if (item.IsSuccess)
+                    {
+                        <img src="~/Areas/lk/Content/img/correct3.png" class="modal-icon" alt="">
+                    }
+                    else
+                    {
+                        <img src="~/Areas/lk/Content/img/modal-error.png" class="modal-icon" alt="">
+                    }
+
+                    <b>@Html.Raw(item.Message)</b>
+                    <a class="page-link close-modal-btn"><span data-text="@Resources.Resource.Close">@Resources.Resource.Close</span></a>
+                </div>
+                notifications.Remove(item);
+            }
+        </div>
+
+    }
+
+
+
+    <script src="~/Areas/lk/Content/js/common.js?v=@ViewBag.Version"></script>
+}

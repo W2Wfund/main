@@ -1,0 +1,23 @@
+﻿@model WayWealth.Infrastructure.Auth.CustomPrincipal
+
+<div class="bottom-block">
+    <div class="flex">
+        <i>@Resources.Resource.AccountBalances <img src="~/Content/img/arrow-point-to-right.png" alt=""></i>
+        <p>
+            <span>@Resources.Resource.Facial.ToLower()</span>
+            <b>$ @(Model.BalanceInner.ToString("N2")) </b>
+        </p>
+        <p>
+            <span>@Resources.Resource.Investment.ToLower()</span>
+            <b>$ @(Model.BalanceInvestments.ToString("N2"))</b>
+        </p>
+        <p>
+            <span>@Resources.Resource.Percent.ToLower()</span>
+            <b>$ @(Model.BalancePercents.ToString("N2"))</b>
+        </p>
+        <p>
+            <span>@Resources.Resource.Rewards.ToLower()</span>
+            <b>$ @(Model.BalanceRewards.ToString("N2"))</b>
+        </p>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<W2W.ModelKBT.Entities.Article>
+@if (Model != null && Model.Count() > 0)
+{
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
+
+    <div class="news-block">
+        <p class="title-block">@Resources.Resource.NewsTitle</p>
+        <ul>
+            @foreach (var article in Model.OrderByDescending(x => x.CreationDate).Take(3))
+            {
+                <li>
+                    <img src="@Url.Action("img", "home", new { area = "", id=article.Image })" alt="">
+                    <p class="caption">
+                        @if (culture == "ru-RU")
+                        {
+                            @article.ObjectName
+                        }
+                        else
+                        {
+                            @article.ObjectNameEng
+                        }
+                    </p>
+                    <p class="desc">
+                        @if (culture == "ru-RU")
+                        {
+                            @article.Desc
+                        }
+                        else
+                        {
+                            @article.DescEng
+                        }
+                    </p>
+                    <a href="@Url.Action("news", "home", new {id=@article.id_object, area=""})" class="page-link"><span data-text="@Resources.Resource.MoreBtn">@Resources.Resource.MoreBtn</span></a>
+                </li>
+            }
+        </ul>
+        <div class="swiper-container swiper-news">
+            <div class="swiper-wrapper">
+                @foreach (var article in Model.OrderByDescending(x => x.CreationDate).Take(3))
+                {
+                    <div class="swiper-slide">
+                        <div>
+                            <img src="@Url.Action("img", "home", new { area = "", id=article.Image })" alt="">
+                            <p class="caption">
+                                @if (culture == "ru-RU")
+                                {
+                                    @article.ObjectName
+                                }
+                                else
+                                {
+                                    @article.ObjectNameEng
+                                }
+                            </p>
+                            <p class="desc">
+                                @if (culture == "ru-RU")
+                                {
+                                    @article.Desc
+                                }
+                                else
+                                {
+                                    @article.DescEng
+                                }
+                            </p>
+                            <a href="@Url.Action("news", "home", new {id=@article.id_object, area=""})" class="page-link"><span data-text="@Resources.Resource.MoreBtn">@Resources.Resource.MoreBtn</span></a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <a href="@Url.Action("news", "home", new { area = "" })" class="page-link"><span data-text="@Resources.Resource.MoreNewsBtn">@Resources.Resource.MoreNewsBtn</span></a>
+    </div>
+}

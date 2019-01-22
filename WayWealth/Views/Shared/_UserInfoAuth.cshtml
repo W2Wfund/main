@@ -1,0 +1,15 @@
+﻿@model WayWealth.Infrastructure.Auth.CustomPrincipal
+
+<a class="signOut" href="@Url.Action("Out", "Sign", new { area=""})">
+    <div class="img"></div><span data-text="@Resources.Resource.menu_out">@Resources.Resource.menu_out</span>
+</a>
+<a class="lkName" href="@Url.Action("index", "home", new { area = "lk" })">
+    <img src="~/Content/img/profile.png" alt="">
+    <p>
+        <span>@Resources.Resource.menu_kabinet</span>
+        <i>
+            @Model.FirstName @(!string.IsNullOrWhiteSpace(Model.LastName) ? Model.LastName.Substring(0, 1) : string.Empty) 
+            @(!string.IsNullOrWhiteSpace(Model.MiddleName) ? Model.MiddleName.Substring(0, 1) : string.Empty)
+        </i>
+    </p>
+</a>
