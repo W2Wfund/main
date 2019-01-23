@@ -452,7 +452,7 @@ namespace WayWealth.Areas.lk.Controllers
                     if ((DateTime.Now - tp.GenerateDate).TotalMinutes > 20)
                         throw new Exception(Resources.Resource.ErrPasswordIsExpired);
 
-                    if (model.Sum < 0)
+                    if (model.Sum < 0 || model.Sum < 100)
                         throw new Exception(Resources.Resource.ErrSumIsIncorrect);
 
                     var partner = DataService.GetPartner(this.User.id_object);

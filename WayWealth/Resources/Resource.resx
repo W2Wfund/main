@@ -1114,7 +1114,7 @@
     <value>Получатель не найден</value>
   </data>
   <data name="ErrSumIsIncorrect" xml:space="preserve">
-    <value>Неверно указана сумма</value>
+    <value>Неверно указана сумма. Минимальная сумма к выводу - 100$.</value>
   </data>
   <data name="InvestmentsAreUnited" xml:space="preserve">
     <value>Инвестиции объеденены</value>

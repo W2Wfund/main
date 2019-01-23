@@ -82,7 +82,7 @@
             </div>
         </div>
         @*<div class="captcha"></div>*@
-        @Html.Recaptcha()
+        @Html.Recaptcha(useSsl: Recaptcha.Web.SslBehavior.AlwaysUseSsl)
         <button type="submit" class="page-link" form="reg-form">
             <span data-text="@Resources.Resource.SignUpText">@Resources.Resource.SignUpText</span>
         </button>

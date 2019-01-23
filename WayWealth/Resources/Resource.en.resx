@@ -1114,7 +1114,7 @@
     <value>Recipient not found</value>
   </data>
   <data name="ErrSumIsIncorrect" xml:space="preserve">
-    <value>Sum is incorrect</value>
+    <value>Sum is incorrect. Minimal withdrawal amount - 100$.</value>
   </data>
   <data name="InvestmentsAreUnited" xml:space="preserve">
     <value>Investments are united</value>
