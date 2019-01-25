@@ -16,7 +16,7 @@ namespace W2W.Tasks
             {
                 client.PayInvestPercents(DateTime.Today, 5, "taskm");
             }
-            
+
 
         }
     }

@@ -24,7 +24,7 @@ namespace WayWealth.Infrastructure.Auth
 
         public string Image { get; set; }
 
-        public string Review { get; set; }
+        //public string Review { get; set; }
         public string ReviewStatus { get; set; }
         public DateTime? ReviewDate { get; set; }
 

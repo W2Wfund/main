@@ -1720,7 +1720,7 @@ namespace WayWealth.Areas.lk.Controllers
 
 
         [HttpGet]
-        public ActionResult Review() => View(User);
+        public ActionResult Review() => View(DataService.GetPartner(this.User.id_object));
 
         [HttpPost]
         public ActionResult Review(string review)

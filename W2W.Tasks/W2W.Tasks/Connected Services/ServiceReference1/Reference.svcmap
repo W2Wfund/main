@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6249ccc7-603c-48b6-a8d2-19b6cc403c47" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5543494d-3846-49b6-949b-fc9c706a129e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,12 +19,12 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://marketing.w2w.fund/Service1.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://marketing.w2w.fund/Service1.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service11.wsdl" MetadataType="Wsdl" ID="041ff959-ecc7-43a3-81f2-6400723c3b08" SourceId="1" SourceUrl="https://marketing.w2w.fund/Service1.svc?wsdl" />
-    <MetadataFile FileName="Service11.disco" MetadataType="Disco" ID="4fe2a611-20b1-4401-802c-0fcbd1de5601" SourceId="1" SourceUrl="https://marketing.w2w.fund/Service1.svc?disco" />
-    <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="2b8301ce-ac65-4373-8a2a-6d15d2f5ac00" SourceId="1" SourceUrl="https://marketing.w2w.fund/Service1.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="1ad25fad-1c19-437f-9396-0d082e4c4449" SourceId="1" SourceUrl="https://marketing.w2w.fund/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="a37a6683-69d3-4f21-8627-edbc86deb6a0" SourceId="1" SourceUrl="https://marketing.w2w.fund/Service1.svc?disco" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="339ad3ea-f92f-40a0-b04f-14a3c91ff496" SourceId="1" SourceUrl="https://marketing.w2w.fund/Service1.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
