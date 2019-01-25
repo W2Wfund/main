@@ -1,5 +1,6 @@
 ﻿@{
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 }
 @section HeadSection{
     @RenderSection("HeadSection")
@@ -13,28 +14,32 @@
     @RenderSection("FootSection")
 }
 
-<!-- Start of LiveChat (www.livechatinc.com) code -->
-<script type="text/javascript">
-window.__lc = window.__lc || {};
-window.__lc.license = 10448732;
-(function() {
-  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
-  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-})();
-</script>
-<noscript>
-<a href="https://www.livechatinc.com/chat-with/10448732/">Chat with us</a>,
-powered by <a href="https://www.livechatinc.com/?welcome" rel="noopener" target="_blank">LiveChat</a>
-</noscript>
-<!-- End of LiveChat code -->
+@if (culture == "en-EN")
+{
+    <!-- BEGIN JIVOSITE CODE {literal} -->
+    <script type='text/javascript'>
+        (function () { var widget_id = 'GUgydEbrTF'; var d = document; var w = window; function l() { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/' + widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss); } if (d.readyState == 'complete') { l(); } else { if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })();
+    </script>
+    <!-- {/literal} END JIVOSITE CODE -->
+}
+
+@if (culture == "ru-RU")
+{
+    <!-- BEGIN JIVOSITE CODE {literal} -->
+    <script type='text/javascript'>
+        (function () { var widget_id = 'PVkEhZf3We'; var d = document; var w = window; function l() { var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/' + widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss); } if (d.readyState == 'complete') { l(); } else { if (w.attachEvent) { w.attachEvent('onload', l); } else { w.addEventListener('load', l, false); } } })();
+    </script>
+    <!-- {/literal} END JIVOSITE CODE -->
+}
+
+
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131358321-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'UA-131358321-1');
+    gtag('config', 'UA-131358321-1');
 </script>

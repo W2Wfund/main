@@ -122,6 +122,8 @@ namespace WayWealth.Controllers
                         AuthenticationService.Login(model.Login, model.Password, model.IsPersistent);
 
                         return Redirect(returnUrl ?? Url.Action("index", "home", new { area = "lk" }));
+
+
                     }
                     else
                     {
