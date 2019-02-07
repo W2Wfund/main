@@ -25,13 +25,13 @@
 
 <div class="btn-block">
     <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#calc-content"
-       href="@Url.Action("calc", "home", new {program = "camulative", area=""})" class="camulative @(program.Equals("camulative", StringComparison.OrdinalIgnoreCase) ? "active" : "")"><span data-text="Camulative">Camulative</span></a>
+       href="@Url.Action("calc", "home", new {program = "camulative", area=""})" class="camulative @(program.Equals("camulative", StringComparison.OrdinalIgnoreCase) ? "active" : "")">Camulative</a>
     <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#calc-content"
-       href="@Url.Action("calc", "home", new {program = "base", area=""})" class="@(program.Equals("base", StringComparison.OrdinalIgnoreCase) ? "active" : "")"><span data-text="Base">Base</span></a>
+       href="@Url.Action("calc", "home", new {program = "base", area=""})" class="@(program.Equals("base", StringComparison.OrdinalIgnoreCase) ? "active" : "")">Base</a>
     <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#calc-content"
-       href="@Url.Action("calc", "home", new {program = "optimal", area=""})" class="@(program.Equals("optimal", StringComparison.OrdinalIgnoreCase) ? "active" : "")"><span data-text="Optimal">Optimal</span></a>
+       href="@Url.Action("calc", "home", new {program = "optimal", area=""})" class="@(program.Equals("optimal", StringComparison.OrdinalIgnoreCase) ? "active" : "")">Optimal</a>
     <a data-ajax="true" data-ajax-mode="replace" data-ajax-update="#calc-content"
-       href="@Url.Action("calc", "home", new {program = "profi", area=""})" class="@(program.Equals("profi", StringComparison.OrdinalIgnoreCase) ? "active" : "")"><span data-text="Profi">Profi</span></a>
+       href="@Url.Action("calc", "home", new {program = "profi", area=""})" class="@(program.Equals("profi", StringComparison.OrdinalIgnoreCase) ? "active" : "")">Profi</a>
 </div>
 
 @using (Html.BeginForm("invest", "home", new { program = program, area = "lk" }, FormMethod.Post))
@@ -61,15 +61,21 @@
                 create: function (event, ui) {
                     var v = $(this).slider('value');
                     setTimeout(function () {
-                        $(".ui-slider-tip").attr('data-text', v);
                         $('#Sum').val(v);
                         calc();
                     }, 50);
                 },
                 slide: function (event, ui) {
-                    $(".ui-slider-tip").attr('data-text', ui.value);
-                    $('#Sum').val(ui.value);
-                    calc();
+                    setTimeout(function () {
+                        $('#Sum').val(ui.value);
+                        calc();
+                    }, 50);
+                },
+                change: function (event, ui) {
+                    setTimeout(function () {
+                        $('#Sum').val(ui.value);
+                        calc();
+                    }, 50);
                 }
             }).slider("pips");
             //var mySelect = new SlimSelect({
@@ -112,15 +118,21 @@
                 create: function (event, ui) {
                     var v = $(this).slider('value');
                     setTimeout(function () {
-                        $(".ui-slider-tip").attr('data-text', v);
                         $('#Sum').val(v);
                         calc();
                     }, 50);
                 },
                 slide: function (event, ui) {
-                    $(".ui-slider-tip").attr('data-text', ui.value);
-                    $('#Sum').val(ui.value);
-                    calc();
+                    setTimeout(function () {
+                        $('#Sum').val(ui.value);
+                        calc();
+                    }, 50);
+                },
+                change: function (event, ui) {
+                    setTimeout(function () {
+                        $('#Sum').val(ui.value);
+                        calc();
+                    }, 50);
                 }
             }).slider("pips");
             //var mySelect = new SlimSelect({
@@ -160,15 +172,21 @@
                 create: function (event, ui) {
                     var v = $(this).slider('value');
                     setTimeout(function () {
-                        $(".ui-slider-tip").attr('data-text', v);
                         $('#Sum').val(v);
                         calc();
                     }, 50);
                 },
                 slide: function (event, ui) {
-                    $(".ui-slider-tip").attr('data-text', ui.value);
-                    $('#Sum').val(ui.value);
-                    calc();
+                    setTimeout(function () {
+                        $('#Sum').val(ui.value);
+                        calc();
+                    }, 50);
+                },
+                change: function (event, ui) {
+                    setTimeout(function () {
+                        $('#Sum').val(ui.value);
+                        calc();
+                    }, 50);
                 }
             }).slider("pips");
             //var mySelect = new SlimSelect({
@@ -210,12 +228,12 @@
                 </script>*@
             <div class="total-block">
                 <p>
-                    <span data-text="@Resources.Resource.AmountProgram">@Resources.Resource.AmountProgram</span>
-                    <b data-text="$ 0" id="sum1">$ 0</b>
+                    @Resources.Resource.AmountProgram
+                    <b id="sum1">$ 0</b>
                 </p>
                 <p>
-                    <span data-text="@Resources.Resource.IncomeContribution">@Resources.Resource.IncomeContribution</span>
-                    <b data-text="$ 0" id="sum2">$ 0</b>
+                    @Resources.Resource.IncomeContribution
+                    <b id="sum2">$ 0</b>
                 </p>
             </div>
         </div>
@@ -248,17 +266,18 @@
             @Html.HiddenFor(x => x.Sum, new { Value = "300" })
             <div class="total-block">
                 <p>
-                    <span data-text="@Resources.Resource.AmountProgram">@Resources.Resource.AmountProgram</span>
-                    <b data-text="$ 300">$ 300</b>
+                    @Resources.Resource.AmountProgram
+                    <b>$ 300</b>
                 </p>
                 <p>
-                    <span data-text="@Resources.Resource.IncomeContribution">@Resources.Resource.IncomeContribution</span>
-                    <b data-text="$ 3 100">$ 3 100</b>
+                    @Resources.Resource.IncomeContribution
+                    <b>$ 3 100</b>
                 </p>
             </div>
         </div>
     }
-
-    <a onclick="$(this).closest('form').submit()" class="page-link" style="width: 220px;"><span data-text="@Resources.Resource.BecomePartner">@Resources.Resource.BecomePartner</span></a>
+    <div class="text-center">
+        <a onclick="$(this).closest('form').submit()" class="btn btn-grad btn-lg">@Resources.Resource.BecomePartner</a>
+    </div>
 }
 

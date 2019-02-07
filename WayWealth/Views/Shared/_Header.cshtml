@@ -3,10 +3,6 @@
 }
 <header>
     <div class="top-block">
-        <a class="menu-btn">
-            <img src="~/Content/img/open-menu.png" alt="">
-            <img src="~/Content/img/close-menu.png" alt="">
-        </a>
         <a href="/" class="logo">
             <img src="~/Content/img/logo.png" alt="">
         </a>
@@ -46,17 +42,21 @@
                 }
                 else
                 {
-                    <a href="@Url.Action("ChangeCulture", "home" , new { lang = "ru", area="" })">
-                        <img src="~/Content/img/ru.png" alt="">
-                        <span>RU</span>
-                    </a>
                     <a class="active">
                         <img src="~/Content/img/en.png" alt="">
                         <span>EN</span>
                     </a>
-                }    
+                    <a href="@Url.Action("ChangeCulture", "home" , new { lang = "ru", area="" })">
+                        <img src="~/Content/img/ru.png" alt="">
+                        <span>RU</span>
+                    </a>
+                }
             </div>
         </div>
+        <a class="menu-btn">
+            <i class="icon ion-md-menu"></i>
+            <i class="icon ion-md-close"></i>
+        </a>
     </div>
     <div class="m-top-block top-block">
         <div class="lk-lang-block">

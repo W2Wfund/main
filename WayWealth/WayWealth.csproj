@@ -324,6 +324,7 @@
     <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_777777_256x240.png" />
     <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_cc0000_256x240.png" />
     <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\css\ionicons.css" />
     <Content Include="Content\css\libs.min.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\fonts\OpenSans\Bold\OpenSans-Bold.svg" />
@@ -356,9 +357,13 @@
     <Content Include="Content\img\amount-range-icon.png" />
     <Content Include="Content\img\amount-range-icon2.png" />
     <Content Include="Content\img\arrow-point-to-right.png" />
+    <Content Include="Content\img\banner1-new.jpg" />
     <Content Include="Content\img\banner1.jpg" />
+    <Content Include="Content\img\banner2-new.jpg" />
     <Content Include="Content\img\banner2.jpg" />
+    <Content Include="Content\img\banner3-new.jpg" />
     <Content Include="Content\img\banner3.jpg" />
+    <Content Include="Content\img\banner4-new.jpg" />
     <Content Include="Content\img\banner4.jpg" />
     <Content Include="Content\img\bitcoin-logo.png" />
     <Content Include="Content\img\blockchain.png" />
@@ -745,6 +750,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\lk\Views\Payment\" />
+    <Folder Include="Content\fonts\App_LocalResources\" />
     <Folder Include="Logs\" />
     <Folder Include="Models\" />
     <Folder Include="ViewModels\Home\" />
