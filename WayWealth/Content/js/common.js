@@ -44,26 +44,40 @@ $(function() {
 	// 	},
 	// 	speed: 500
 	// });
-	var swiper6 = new Swiper('.swiper-news-m', {
-		spaceBetween: 10,
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
+    var swiper6 = new Swiper('.swiper-news-m', {
+        autoHeight: true,
+        slidesPerView: 3,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 1
+            }
+        }
 	});
-	var swiper6 = new Swiper('.swiper-reviews-m', {
-		spaceBetween: 10,
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-	});
-	var swiper7 = new Swiper('.swiper-icons-m', {
-		pagination: {
-			el: '.swiper-pagination',
-			clickable: true,
-		},
-	});
+    var swiper6 = new Swiper('.swiper-reviews-m', {
+        autoHeight: true,
+        slidesPerView: 3,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 1
+            }
+        }
+    });
+    var swiper7 = new Swiper('.swiper-icons-m', {
+        autoplay: {
+            delay: 2000,
+        },
+        speed: 2000,
+        slidesPerView: 'auto',
+        loop: true
+    });
 	var swiper8 = new Swiper('.swiper-invest-block-3-m', {
 		pagination: {
 			el: '.swiper-pagination',
@@ -161,55 +175,9 @@ $(function() {
 	//	rest: "label",
 	//	labels: yearLbl
 	//});
-	
-	$('#myclock1').thooClock({
-		size:200,
-		showNumerals:true,
-		brandText:'NEW-YORK',
-		hourCorrection:'-7',
-		brandText2:'',
-		onEverySecond:function(){}
-	});
-	$('#myclock2').thooClock({
-		size:200,
-		showNumerals:true,
-		brandText:'MOSCOW',
-		hourCorrection:'0',
-		brandText2:'',
-		onEverySecond:function(){}
-	});
-	$('#myclock3').thooClock({
-		size:200,
-		showNumerals:true,
-		brandText:'BERLIN',
-		hourCorrection:'-1',
-		brandText2:'',
-		onEverySecond:function(){}
-	});
-	$('#myclock4').thooClock({
-		size:200,
-		showNumerals:true,
-		brandText:'HONG KONG',
-		hourCorrection: '+5',
-		brandText2:'',
-		onEverySecond:function(){}
-	});
-	$('#myclock5').thooClock({
-		size:200,
-		showNumerals:true,
-		brandText:'TOKYO',
-		hourCorrection: '+6',
-		brandText2:'',
-		onEverySecond:function(){}
-	});
-	$('#myclock6').thooClock({
-		size:200,
-		showNumerals:true,
-		brandText:'LONDON',
-		hourCorrection: '-2',
-		brandText2:'',
-		onEverySecond:function(){}
-	});
+
+    $('.band-clock').bandClock({
+    });
 
 	$('.lk-lang-block .lang a.active').click(function(event) {
 		$(this).parent('div').toggleClass('active');
@@ -292,9 +260,8 @@ $(function() {
         $('header .top-block').toggleClass('active');
 	});
 	$('header .bottom-block i').click(function(event) {
-		$(this).toggleClass('active');
-		$(this).parent().toggleClass('active');
-		$(this).parent().children('p').slideToggle(500);
+        $(this).parent().toggleClass('active');
+        $(this).siblings('p').stop().slideToggle();
 	});
 	$('.banner-block').waypoint(function(){
 		$('.banner-block .swiper-slide .info').addClass('on');
@@ -450,12 +417,6 @@ $(function() {
 	}, {
 		offset:'80%'
 	});
-	function animationSize(){
-		if ($(window).width() > '992'){
-		}
-	}
-	$(window).load(animationSize);
-	$(window).resize(animationSize);
 
 	$('.scroll_up').click(function(event) {
 		$('body,html').animate({
@@ -475,4 +436,8 @@ $(document).ready(function () {
     if ($('body').find('.signOut').hasClass('signOut')) {
         $('body').addClass('in-lk');
     }
+});
+
+$(window).scroll(function () {
+    $(document).scrollTop() > 1000 ? $(".scroll_up").addClass("active") : $(".scroll_up").removeClass("active");
 });

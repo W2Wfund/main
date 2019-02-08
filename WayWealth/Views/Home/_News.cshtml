@@ -5,50 +5,47 @@
     
 
         <div class="news-block">
-            <p class="title">@Resources.Resource.NewsTitle</p>
-            <ul>
-                @foreach (var article in Model.OrderByDescending(x => x.CreationDate).Take(3))
-                {
-                    <li>
-                        <img src="@Url.Action("img", "home", new { area = "", id=article.Image })" alt="">
-                        <a href="@Url.Action("news", "home", new { id = @article.id_object })" class="caption">
-                            @if (culture == "ru-RU")
-                            {
-                                @article.ObjectName
-                            }
-                            else
-                            {
-                                @article.ObjectNameEng
-                            }
-                        </a>
-                        <p class="date">@article.PublishDate.Value.ToShortDateString()</p>
-                    </li>
-                }
-            </ul>
-            <div class="swiper-container swiper-news-m">
-                <div class="swiper-wrapper">
-                    @foreach (var article in Model.OrderByDescending(x => x.CreationDate).Take(3))
-                    {
-                        <div class="swiper-slide">
-                            <div>
-                                <img src="@Url.Action("img", "home", new { area = "", id=article.Image })" alt="">
-                                <a href="@Url.Action("news", "home", new { id = @article.id_object })" class="caption">
-                                    @if (culture == "ru-RU")
-                                    {
-                                        @article.ObjectName
-                                    }
-                                    else
-                                    {
-                                        @article.ObjectNameEng
-                                    }
-                                </a>
-                                <p class="date">@article.PublishDate.Value.ToShortDateString()</p>
+            <div class="container">
+                <h2 class="section-title">@Resources.Resource.NewsTitle</h2>
+                <div class="swiper-container swiper-news-m">
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-wrapper">
+                        @foreach (var article in Model.OrderByDescending(x => x.CreationDate).Take(3))
+                        {
+                            <div class="swiper-slide">
+                                <div>
+                                    <div class="img-box">
+                                        <img src="@Url.Action("img", "home", new { area = "", id=article.Image })" alt="">
+                                    </div>
+                                    <a href="@Url.Action("news", "home", new { id = @article.id_object })" class="caption">
+                                        @if (culture == "ru-RU")
+                                        {
+                                            @article.ObjectName
+                                        }
+                                        else
+                                        {
+                                            @article.ObjectNameEng
+                                        }
+                                    </a>
+                                    <p class="date"><i class="ion ion-md-calendar"></i>@article.PublishDate.Value.ToShortDateString()</p>
+                                    <a href="@Url.Action("news", "home", new { id = @article.id_object })" class="btn btn-bordered">
+                                        @if (culture == "ru-RU")
+                                        {
+                                            @Resources.Resource.MoreBtn
+                                        }
+                                        else
+                                        {
+                                            @Resources.Resource.MoreBtn
+                                        }
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
-                <div class="swiper-pagination"></div>
+                <div class="text-center">
+                    <a href="@Url.Action("news", "home")" class="btn btn-grad btn-lg">@Resources.Resource.MoreNewsBtn</a>
+                </div>
             </div>
-            <a href="@Url.Action("news", "home")" class="page-link"><span data-text="@Resources.Resource.MoreNewsBtn">@Resources.Resource.MoreNewsBtn</span></a>
         </div>
     }

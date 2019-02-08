@@ -2,33 +2,12 @@
 @using WayWealth.Areas.lk.Helpers
 
 <div class="reviews-block">
-    <div class="reviews">
-        <p class="title">
-            <span data-text="@Resources.Resource.ReviewsTitle">@Resources.Resource.ReviewsTitle</span>
-        </p>
-        <ul>
-            @foreach (var rev in Model.OrderByDescending(x => x.ReviewDate).Take(3))
-            {
-                <li>
-                    <div class="img">
-                        @if (!string.IsNullOrWhiteSpace(rev.Image))
-                        {
-                            <img src="@Url.Action("img", "home", new { area = "", id=rev.Image })" alt="">
-                        }
-                        else
-                        {
-                            <img src="~/Content/img/default.png" alt="">
-                        }
-                    </div>
-
-                    <p class="caption">
-                        @PagingHelpers.GetAuthorReview(rev.ObjectName)
-                    </p>
-                    <p class="desc">@rev.Review</p>
-                </li>
-            }
-        </ul>
-        <div class="swiper-container swiper-reviews-m">
+    <div class="container">
+        <h2 class="section-title yellow">
+            @Resources.Resource.ReviewsTitle
+        </h2>
+        <div class="swiper-container light swiper-reviews-m">
+            <div class="swiper-pagination"></div>
             <div class="swiper-wrapper">
                 @foreach (var rev in Model.OrderByDescending(x => x.CreationDate).Take(3))
                 {
@@ -41,20 +20,23 @@
                                 }
                                 else
                                 {
-                                    <img src="~/Content/img/default.png" alt="">
+                                    <img src="~/Content/img/default-dark.jpg" alt="">
                                 }
                             </div>
-                            <p class="caption">@rev.ObjectName</p>
-                            <p class="desc">@rev.Review</p>
+                            <div class="rev-text">
+                                <p class="caption">@rev.ObjectName</p>
+                                @rev.Review
+                            </div>
                         </div>
                     </div>
                 }
             </div>
-            <div class="swiper-pagination"></div>
         </div>
-        <a href="@Url.Action("reviews", "home")" class="page-link"><span data-text="@Resources.Resource.ReviewAll">@Resources.Resource.ReviewAll</span></a>
-        <a class="reviews-add" href="@Url.Action("review", "home", new {area="lk"})">
-            <img src="~/Content/img/reviews-add.png" alt=""><span>@Resources.Resource.ReviewAdd</span>
-        </a>
+        <div class="text-center">
+            <a href="@Url.Action("reviews", "home")" class="btn btn-grad btn-lg">@Resources.Resource.ReviewAll</a><br>
+            <a class="btn btn-bordered light" href="@Url.Action("review", "home", new {area="lk"})">
+                <i class="ion ion-ios-add"></i>@Resources.Resource.ReviewAdd
+            </a>
+        </div>
     </div>
 </div>
