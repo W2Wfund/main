@@ -4,28 +4,34 @@
     ViewBag.Title = Resources.Resource.AccessRecovery;
 }
 
-<div class="reg-block">
-    <p class="page-title">@Resources.Resource.AccessRecovery</p>
-    @using (Html.BeginForm("Restore", "Sign", FormMethod.Post, new { id = "reg-form" }))
-    {
-        <div class="wrap-id">
-            <div class="input mauto">
-                @Html.LabelFor(x => x.Login, new { @class = "lbl" })
-                @Html.TextBoxFor(x => x.Login)
-                <p class="error-msg">@Html.ValidationMessageFor(m => m.Login)</p>
-            </div>
+<div class="white-bg">
+    <div class="container">
+        <div class="reg-block sign-block">
+            <h2 class="section-title">@Resources.Resource.AccessRecovery</h2>
+            @using (Html.BeginForm("Restore", "Sign", FormMethod.Post, new { id = "reg-form" }))
+            {
+                <div class="wrap-id">
+                    <div class="input mauto form-group">
+                        @Html.LabelFor(x => x.Login, new { @class = "lbl" })
+                        @Html.TextBoxFor(x => x.Login)
+                        <p class="error-msg">@Html.ValidationMessageFor(m => m.Login)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Recaptcha()
+                </div>
+                <button type="submit" class="btn btn-grad btn-block" form="reg-form">
+                    @Resources.Resource.Restore
+                </button>
+                if (!ViewData.ModelState.IsValid)
+                {
+                    @Html.ValidationSummary(true)
+                }
+            }
         </div>
-        @Html.Recaptcha()
-        <button type="submit" class="page-link" form="reg-form">
-            <span data-text="@Resources.Resource.Restore">@Resources.Resource.Restore</span>
-        </button>
-        if (!ViewData.ModelState.IsValid)
-        {
-            @Html.ValidationSummary(true)
-        }
-    }
-    <div class="link-block">
-        <a href="@Url.Action("In", "Sign")">@Resources.Resource.InEntryBtnText</a>
-        <a href="@Url.Action("Up", "Sign")">@Resources.Resource.SignUpText</a>
+        <div class="reg-link-block">
+            <a href="@Url.Action("In", "Sign")" class="btn btn-bordered btn-sm">@Resources.Resource.InEntryBtnText</a>
+            <a href="@Url.Action("Up", "Sign")" class="btn btn-bordered btn-sm">@Resources.Resource.SignUpText</a>
+        </div>
     </div>
 </div>

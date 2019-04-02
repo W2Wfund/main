@@ -4,34 +4,6 @@ var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 <footer>
     <a class="scroll_up"><i class="ion ion-ios-arrow-up"></i></a>
     <div class="container">
-        <div class="logo-block">
-            <a href="/" class="logo">
-                <img src="~/Content/img/footer-logo.png" alt="">
-            </a>
-            <div class="secure">
-                <img src="~/Content/img/use.png" alt="">
-                <div class="foot-conf">
-                    @if (culture == "ru-RU")
-                    {
-                        <a href="~/Content/Пользовательское соглашение.pdf" target="blank">
-                            @Resources.Resource.TermsUse
-                        </a>
-                        <a href="~/Content/Политика конфиденциальности.pdf" target="blank">
-                            @Resources.Resource.PrivacyPolicy
-                        </a>
-                    }
-                    else
-                    {
-                        <a href="~/Content/User agreement.pdf" target="blank">
-                            @Resources.Resource.TermsUse
-                        </a>
-                        <a href="~/Content/Privacy policy.pdf" target="blank">
-                            @Resources.Resource.PrivacyPolicy
-                        </a>
-                    }
-                </div>
-            </div>
-        </div>
         <ul class="menu">
             <li>
                 <a href="@Url.Action("about", "home", new { area = "" })">@Resources.Resource.menu_about</a>
@@ -45,67 +17,100 @@ var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
             <li>
                 <a href="@Url.Action("news", "home", new { area = "" })">@Resources.Resource.menu_news</a>
             </li>
-            <li>
-                <a href="@Url.Action("reviews", "home", new { area = "" })">@Resources.Resource.menu_reviews</a>
-            </li>
+            @*<li>
+            <a href="@Url.Action("reviews", "home", new { area = "" })">@Resources.Resource.menu_reviews</a>
+        </li>*@
             <li>
                 <a href="@Url.Action("faq", "home", new { area = "" })">@Resources.Resource.menu_faq</a>
             </li>
         </ul>
-        <p class="text">@Resources.Resource.footer_slogan1</p>
-        <p class="text">@Resources.Resource.footer_slogan2</p>
-        <ul class="crypto">
-            <li>
-                <img src="~/Content/img/1.png" alt="">
-            </li>
-            <li>
-                <img src="~/Content/img/2.png" alt="">
-            </li>
-            <li>
-                <img src="~/Content/img/3.png" alt="">
-            </li>
-            <li>
-                <img src="~/Content/img/4.png" alt="">
-            </li>
-            <li>
-                <img src="~/Content/img/5.png" alt="">
-            </li>
-        </ul>
-        <p class="text">@Resources.Resource.footer_slogan3</p>
-        <ul class="soc">
-            <li>
-                <a>
-                    <i class="ion ion-logo-vk"></i>
+        <div class="flex">
+            <div>
+                <a href="/" class="logo">
+                    <img src="~/Content/img/footer-logo.png" alt="">
                 </a>
-            </li>
-            <li>
-                <a>
-                    <i class="ion ion-logo-facebook"></i>
+                <p class="text">@Resources.Resource.footer_slogan1</p>
+                <div class="secure">
+                    <img src="~/Content/img/use.png" alt="">
+                    <div class="foot-conf">
+                        @if (culture == "ru-RU")
+                        {
+                            <a href="~/Content/Пользовательское соглашение.pdf" target="blank">
+                                @Resources.Resource.TermsUse
+                            </a>
+                            <a href="~/Content/Политика конфиденциальности.pdf" target="blank">
+                                @Resources.Resource.PrivacyPolicy
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="~/Content/User agreement.pdf" target="blank">
+                                @Resources.Resource.TermsUse
+                            </a>
+                            <a href="~/Content/Privacy policy.pdf" target="blank">
+                                @Resources.Resource.PrivacyPolicy
+                            </a>
+                        }
+                    </div>
+                </div>
+                <p class="text">@Resources.Resource.footer_slogan2</p>
+                <ul class="crypto">
+                    <li>
+                        <img src="~/Content/img/1.png" alt="">
+                    </li>
+                    <li>
+                        <img src="~/Content/img/2.png" alt="">
+                    </li>
+                    <li>
+                        <img src="~/Content/img/3.png" alt="">
+                    </li>
+                    <li>
+                        <img src="~/Content/img/4.png" alt="">
+                    </li>
+                    <li>
+                        <img src="~/Content/img/5.png" alt="">
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="soc">
+                    <li>
+                        <a>
+                            <i class="ion ion-logo-vk"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="ion ion-logo-facebook"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="ion ion-logo-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <i class="ion ion-logo-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <img src="~/Content/img/telegram-logo.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+                <p class="text">@Resources.Resource.footer_slogan3</p>
+                <p class="text white">@Resources.Resource.footer_slogan4</p>
+                <a href="mailto:info@w2w.fund" class="email">
+                    <i class="ion ion-ios-mail"></i>info@w2w.fund
                 </a>
-            </li>
-            <li>
-                <a>
-                    <i class="ion ion-logo-instagram"></i>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <i class="ion ion-logo-youtube"></i>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <img src="~/Content/img/telegram-logo.png" alt="">
-                </a>
-            </li>
-        </ul>
-        <p class="text white">@Resources.Resource.footer_slogan4</p>
-        <a href="mailto:info@w2w.fund" class="email">
-            <i class="ion ion-ios-mail"></i>info@w2w.fund
-        </a>
+                <p class="text">
+                    <span>©</span> @Resources.Resource.Copyright
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="bottom-foot">
-        <span>©</span> @Resources.Resource.Copyright
-    </div>
+    
 </footer>
 

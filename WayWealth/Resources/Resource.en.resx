@@ -202,7 +202,7 @@
     <value>Benefactors</value>
   </data>
   <data name="Cancellation" xml:space="preserve">
-    <value>cancellation</value>
+    <value>Cancel</value>
   </data>
   <data name="CashFlowItem" xml:space="preserve">
     <value>Cash Flow Item</value>
@@ -229,7 +229,7 @@
     <value>Is completed</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>confirm</value>
+    <value>Confirm</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirm Password</value>
@@ -1363,5 +1363,8 @@
   </data>
   <data name="TwoFactorAuth" xml:space="preserve">
     <value>Two Factor Authentification</value>
+  </data>
+  <data name="SelectInvestSumm" xml:space="preserve">
+    <value>Select investment amount</value>
   </data>
 </root>

@@ -5,15 +5,50 @@
     ViewBag.Title = "Invest";
     Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
 }
-<div class="calc-block">
-    <p class="page-title"><img src="~/Areas/lk/Content/img/toolbar-icon-2.png" alt="">@Resources.Resource.InvestTitle</p>
-    @if (!ViewData.ModelState.IsValid)
-    {
-    <div class="error-msg" style="text-align: center;margin-bottom: 10px;color: red;">
-        @Html.ValidationSummary(true)
-    </div>
-    }
-    <div id="calc-content">
-        @Html.Partial("Calc", Model)
+
+<div class="white-bg h-100">
+    <div class="container">
+        <form id="invest-inner-form">
+            <h2 class="inner-title">@Resources.Resource.InvestTitle</h2>
+            <div class="form-group form-group-inline">
+                <label>@Resources.Resource.SelectInvestSumm</label>
+                <div class="form-group-select">
+                    <select>
+                        <option selected disabled>@Resources.Resource.SelectInvestSumm</option>
+                        <option>100 $</option>
+                        <option>500 $</option>
+                        <option>1 000 $</option>
+                        <option>3 000 $</option>
+                        <option>5 000 $</option>
+                        <option>7 000 $</option>
+                        <option>10 000 $</option>
+                        <option>15 000 $</option>
+                        <option>20 000 $</option>
+                    </select>
+                    <i class="ion-ios-arrow-down"></i>
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-grad btn-sm m-b-30 btn-invest-show">@Resources.Resource.InvestTitle</button>
+            </div>
+            <div class="invest-inner-accept">
+                <div class="info-block"><!------------Текст в блоке исправить на корректный и перенести в языковые файлы!!!!!------------>
+                    <i class="ion-ios-information"></i>
+                    <strong>Внимание!</strong> После подтверждения выбранная сумма будет переведена на инвестиционный счет и заблокирована для вывода на год.
+                </div>
+                <button type="button" class="btn btn-grad btn-sm m-r-10">@Resources.Resource.Confirm</button>
+                <button type="button" class="btn btn-bordered btn-sm btn-invest-hide">@Resources.Resource.Cancellation</button>
+            </div>
+        </form>
     </div>
 </div>
+<script>
+    $('.btn-invest-show').click(function () {
+        $(this).stop().hide();
+        $('.invest-inner-accept').show();
+    });
+    $('.btn-invest-hide').click(function () {
+        $('.btn-invest-show').show();
+        $('.invest-inner-accept').hide();
+    });
+</script>

@@ -28,8 +28,8 @@ namespace WayWealth.Areas.lk.Helpers
                 firstTag.MergeAttribute("href", pageUrl(pageInfo.PageNumber - 1));
             }
             firstTag.MergeAttribute("rel", "nofollow");
-            var firstI = new TagBuilder("img");
-            firstI.MergeAttribute("src", "/Areas/lk/Content/img/pagination-left.png");
+            var firstI = new TagBuilder("i");
+            firstI.AddCssClass("ion-ios-arrow-back");
             firstTag.InnerHtml += firstI.ToString();
             first.InnerHtml += firstTag.ToString();
             root.InnerHtml += first.ToString();
@@ -73,8 +73,8 @@ namespace WayWealth.Areas.lk.Helpers
             }
             lastTag.MergeAttribute("rel", "nofollow");
 
-            var lastI = new TagBuilder("img");
-            lastI.MergeAttribute("src", "/Areas/lk/Content/img/pagination-right.png");
+            var lastI = new TagBuilder("i");
+            lastI.AddCssClass("ion-ios-arrow-forward");
             lastTag.InnerHtml += lastI.ToString();
             last.InnerHtml += lastTag.ToString();
             root.InnerHtml += last.ToString();
@@ -102,8 +102,8 @@ namespace WayWealth.Areas.lk.Helpers
                 firstTag.MergeAttribute("data-ajax-update", container);
             }
             firstTag.MergeAttribute("rel", "nofollow");
-            var firstI = new TagBuilder("img");
-            firstI.MergeAttribute("src", "/Areas/lk/Content/img/pagination-left.png");
+            var firstI = new TagBuilder("i");
+            firstI.AddCssClass("ion-ios-arrow-back");
             firstTag.InnerHtml += firstI.ToString();
             first.InnerHtml += firstTag.ToString();
             root.InnerHtml += first.ToString();
@@ -150,8 +150,8 @@ namespace WayWealth.Areas.lk.Helpers
             }
             lastTag.MergeAttribute("rel", "nofollow");
 
-            var lastI = new TagBuilder("img");
-            lastI.MergeAttribute("src", "/Areas/lk/Content/img/pagination-right.png");
+            var lastI = new TagBuilder("i");
+            lastI.AddCssClass("ion-ios-arrow-forward");
             lastTag.InnerHtml += lastI.ToString();
             last.InnerHtml += lastTag.ToString();
             root.InnerHtml += last.ToString();

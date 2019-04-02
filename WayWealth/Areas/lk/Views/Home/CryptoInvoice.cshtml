@@ -5,79 +5,84 @@
     ViewBag.Title = Resources.Resource.TopAccountTitle;
     Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
 }
-<div class="perevod-block">
-    <p class="page-title">
-        <img src="~/Areas/lk/Content/img/toolbar-icon-4-4.png" alt="">@Resources.Resource.TopAccountTitle
-    </p>
-    <div class="popolnit-step-2">
-        <div class="wrap-p">
-            <span>@Resources.Resource.TimeWallet</span>
-            <p>
-                <span class="js-link">@Model.TempAddress</span>
-                <a class="copy_link" data-href="@Model.TempAddress" title="@Resources.Resource.CopyLink">
-                    <img src="~/Areas/lk/Content/img/copy-content.png" alt="">
-                </a>
-            </p>
+<div class="white-bg h-100">
+    <div class="container">
+        <div class="perevod-block">
+            <h2 class="inner-title">
+                @Resources.Resource.TopAccountTitle
+            </h2>
+            <div class="popolnit-step-2">
+                <div>
+                    <span>@Resources.Resource.TimeWallet</span>
+                    <p>
+                        <span class="js-link m-t-10">@Model.TempAddress</span>
+                        <a class="copy_link btn btn-bordered btn-xs m-t-10" data-href="@Model.TempAddress" title="@Resources.Resource.CopyLink">
+                            <i class="ion-md-copy"></i>
+                        </a>
+                    </p>
 
-            <script>
-                var copyEmailBtn = document.querySelector('.copy_link');
-                copyEmailBtn.addEventListener('click', function (event) {
-                    var emailLink = document.querySelector('.js-link');
-                    var range = document.createRange();
-                    range.selectNode(emailLink);
-                    window.getSelection().addRange(range);
+                    <script>
+                        var copyEmailBtn = document.querySelector('.copy_link');
+                        copyEmailBtn.addEventListener('click', function (event) {
+                            var emailLink = document.querySelector('.js-link');
+                            var range = document.createRange();
+                            range.selectNode(emailLink);
+                            window.getSelection().addRange(range);
 
-                    try {
-                        var successful = document.execCommand('copy');
-                        var msg = successful ? 'successful' : 'unsuccessful';
-                        window.alert("@Resources.Resource.DataCopied");
-                    } catch (err) {
-                        console.log('Oops, unable to copy');
+                            try {
+                                var successful = document.execCommand('copy');
+                                var msg = successful ? 'successful' : 'unsuccessful';
+                                window.alert("@Resources.Resource.DataCopied");
+                            } catch (err) {
+                                console.log('Oops, unable to copy');
+                            }
+                            window.getSelection().removeAllRanges();
+                        });
+                    </script>
+                </div>
+                <div class="qr-code">
+                    <img src="https://bitaps.com/api/qrcode/png/@(HttpUtility.UrlEncode(Model.TempAddress))" />
+                </div>
+
+                <div>
+                    <div class="flex popolnit-step-2-block">
+                        @if (Model.Currency == "XRP")
+                        {
+                            <div class="wrap-p" style="margin-bottom: 15px;">
+                                <span>Destination Tag</span>
+                                <p>
+                                    <span class="">@Model.id_object.ToString().PadLeft(9, '0')</span>
+                                </p>
+                            </div>
+                        }
+                        <div class="wrap-p">
+                            <span>@Resources.Resource.AmountСurrency</span>
+                            <p>@Model.CurrencySum.Value.ToString("N6") @Model.Currency</p>
+                        </div>
+                        <div class="wrap-p">
+                            <span>@Resources.Resource.ConversionRate</span>
+                            <p>1 @Model.Currency = $ @((Model.PaymentSum.Value / Model.CurrencySum.Value).ToString("N2"))</p>
+                        </div>
+                        <div class="wrap-p">
+                            <span>@Resources.Resource.RefillAmount</span>
+                            <p>$ @Model.PaymentSum</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-block">
+                    <i class="ion-ios-information"></i>
+                    @if (Model.Currency == "XRP")
+                    {
+                        <p>@Resources.Resource.TimeWalletLbl. @Resources.Resource.RippleTagRequirement</p>
                     }
-                    window.getSelection().removeAllRanges();
-                });
-            </script>
-        </div>
-        <div class="qr-code">
-            @*<img src="~/Areas/lk/Content/img/qr-code.png" alt="">*@
-            <img src="https://bitaps.com/api/qrcode/png/@(HttpUtility.UrlEncode(Model.TempAddress))" />
-        </div>
-        @if (Model.Currency == "XRP")
-        {
-            <div class="wrap-p" style="margin-bottom: 15px;">
-                <span>Destination Tag</span>
-                <p>
-                    <span class="">@Model.id_object.ToString().PadLeft(9, '0')</span>
-                </p>
-            </div>
-        }
-
-        <div class="flex">
-            <div class="wrap-p">
-                <span>@Resources.Resource.AmountСurrency</span>
-                <p>@Model.CurrencySum.Value.ToString("N6") @Model.Currency</p>
-            </div>
-            <div class="wrap-p">
-                <span>@Resources.Resource.ConversionRate</span>
-                <p>1 @Model.Currency = $ @((Model.PaymentSum.Value / Model.CurrencySum.Value).ToString("N2"))</p>
-            </div>
-            <div class="wrap-p">
-                <span>@Resources.Resource.RefillAmount</span>
-                <p>$ @Model.PaymentSum</p>
+                    else
+                    {
+                        <p>@Resources.Resource.TimeWalletLbl</p>
+                    }
+                </div>
+                <a href="@Url.Action("Replenish", "Home")" class="btn btn-bordered btn-sm">@Resources.Resource.Cancellation</a>
             </div>
         </div>
-        <div class="wrap-i">
-            <img src="~/Areas/lk/Content/img/info.png" alt="">
-            @if (Model.Currency == "XRP")
-            {
-            <i>@Resources.Resource.TimeWalletLbl. @Resources.Resource.RippleTagRequirement</i>
-            }
-            else
-            {
-                <i>@Resources.Resource.TimeWalletLbl</i>
-            }
-            
-        </div>
-        <a href="@Url.Action("Replenish", "Home")" class="page-link"><span data-text="@Resources.Resource.Cancellation">@Resources.Resource.Cancellation</span></a>
     </div>
 </div>

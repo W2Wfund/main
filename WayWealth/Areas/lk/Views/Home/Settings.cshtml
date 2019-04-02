@@ -6,278 +6,317 @@
     var Countries = TempData["Countries"] as IEnumerable<W2W.ModelKBT.Entities.DictItem>;
     var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 }
-<div class="profile-page">
-    <p class="page-title">
-        <img src="~/Areas/lk/Content/img/toolbar-icon-6.png" alt="">@Resources.Resource.ProfileTitle
-    </p>
+<div class="white-bg h-100">
+    <div class="container">
+        <div class="profile-page">
+            <h2 class="inner-title">
+                @Resources.Resource.ProfileTitle
+            </h2>
 
-    @using (Html.BeginForm("Settings", "Home", FormMethod.Post, new { @id = "form-base", @class = "form-base" }))
-    {
-        <p class="form-title">@Resources.Resource.BaseInfo</p>
-        <div class="flex @(Model.VerificationStatus == "Верифицирован" ? "veritif-on" : "") @(Model.VerificationStatus == "На проверке" ? "veritif-on proverka" : "")">
-            <div class="login">
-                <p>@Resources.Resource.Login</p>
-                <div class="input">
-                    @Html.TextBoxFor(x => x.Login)
-                    @*<div class="required-icon"></div>*@
-                </div>
-            </div>
-            <div class="ava">
-                @if (!string.IsNullOrWhiteSpace(Model.Image))
-                {
-                    <img src="@Url.Action("img", "home", new { area = "", id=Model.Image })" alt="">
-                }
-                <div class="info">
-                    <div class="btn-wrap">
-                        <div class="fileupload">
-                            <i>@Resources.Resource.DownAva</i>
-                            <input type="file" class="upload_ava" accept="image/jpeg, image/png">
-                        </div>
-                        <a class="delete_ava">@Resources.Resource.RemoveAvatar</a>
-                    </div>
-                    <p>@Resources.Resource.AvaRequired</p>
-                </div>
-            </div>
-            <div class="verif">
-                <p>@Resources.Resource.IdentityVerification</p>
-                @if (Model.VerificationStatus == "Верифицирован")
-                {
-                    <b>@Resources.Resource.Verified</b>
-                }
-                else if (Model.VerificationStatus == "На проверке")
-                {
-                    <i>@Resources.Resource.OnCheck</i>
-                }
-                else
-                {
-                    <i>@Resources.Resource.NotConfirmed</i>
-                }
-            </div>
-        </div>
-        <div class="flex2">
-            <div class="input2 mr20">
-                <p>@Resources.Resource.LastName</p>
-                @Html.TextBoxFor(x => x.LastName)
-                <div class="required-icon"></div>
-            </div>
-            <div class="input2 mr20">
-                <p>@Resources.Resource.FirstName</p>
-                @Html.TextBoxFor(x => x.FirstName)
-                <div class="required-icon"></div>
-            </div>
-            <div class="input2">
-                <p>@Resources.Resource.MiddleName</p>
-                @Html.TextBoxFor(x => x.MiddleName)
-            </div>
-        </div>
-        <div class="flex2 flex3">
-            <div class="input2 mr20">
-                <p>@Resources.Resource.Gender</p>
-
-                @Html.DropDownListFor(x => x.Gender, new SelectListItem[]
-                          {
-                    new SelectListItem { Text = Resources.Resource.Male, Value = "Мужской"},
-                    new SelectListItem { Text = Resources.Resource.Female, Value = "Женский"},
-
-                          }, Resources.Resource.NotChosen, new { @class = "myslimSelect7" })
-                <script>
-                    var mySlimSelect = new SlimSelect({
-                        select: '.myslimSelect7',
-                        showSearch: false
-                    })
-                </script>
-                <style>
-                    .myslimSelect7 {
-                        max-width: 100%;
-                    }
-                </style>
-            </div>
-            <div class="input2 mr20">
-                <p>@Resources.Resource.Country</p>
-                @Html.DropDownListFor(x => x.Country, new SelectList(Countries, "Value", "ObjectName"),
-                         Resources.Resource.NotChosen, new { @class = "myslimSelect8" })
-
-
-
-
-
-                <script>
-                    var mySlimSelect = new SlimSelect({
-                        select: '.myslimSelect8',
-                        showSearch: false
-                    })
-                </script>
-                <style>
-                    .myslimSelect8 {
-                        max-width: 100%;
-                    }
-                </style>
-            </div>
-            <div class="input2">
-                <p>@Resources.Resource.City</p>
-                @Html.TextBoxFor(x => x.City)
-            </div>
-        </div>
-        <div class="flex2 flex4">
-            <div class="input2 mr20">
-                <p>@Resources.Resource.DateBirth</p>
-                @Html.TextBoxFor(x => x.BirthDate, "{0:dd.MM.yyyy}", new { @class = "datapick datapicker_1" })
-            </div>
-            <div class="input2">
-                <script type="text/javascript" src="~/Areas/lk/Content/js/jquery.inputmask.bundle.min.js"></script>
-                <p>@Resources.Resource.Phone</p>
-                @Html.TextBoxFor(x => x.PhoneNumber)
-                <script>
-                    //$('#PhoneNumber').inputmask("+9 999 999 99 99");
-                    //$('#PhoneNumber').inputmask("+9{1,3} 9{3,4} 999 99 99");
-                    //$('#PhoneNumber').inputmask("+L{3,16}");
-                    Inputmask({ regex: "\\+[\\d-\\(\\)]{0,16}" }).mask('#PhoneNumber');
-                </script>
-            </div>
-        </div>
-        <div class="flex2 flex5">
-            <div class="input2">
-                <p>@Resources.Resource.LinkSoc</p>
-                @Html.TextBoxFor(x => x.SocNetworkLink)
-            </div>
-        </div>
-        @*if (!ViewData.ModelState.IsValid)
-        {
-            <div style="text-align:center;color:red;margin-top:10px">
-                @Html.ValidationSummary(false)
-            </div>
-        }*@
-        <button type="submit" class="page-link" form="form-base">
-            <span data-text="@Resources.Resource.Save">@Resources.Resource.Save</span>
-        </button>
-    }
-    <div class="flex jcsb mb50">
-        @using (Html.BeginForm("ChangePassword", "Home", FormMethod.Post, new { id = "form_pass", @class = "form_pass" }))
-        {
-            <p class="caption">@Resources.Resource.ChangePassword</p>
-            <div class="input">
-                <p>@Resources.Resource.Password</p>
-                @Html.PasswordFor(x => x.NewPassword)
-            </div>
-            <div class="input">
-                <p>@Resources.Resource.ConfirmPassword</p>
-                @Html.PasswordFor(x => x.PasswordRepeat)
-            </div>
-            <button type="submit" class="page-link" form="form_pass">
-                <span data-text="@Resources.Resource.ChangePassword">@Resources.Resource.ChangePassword</span>
-            </button>
-        }
-        @using (Html.BeginForm("ChangeEmail", "Home", FormMethod.Post, new { id = "form_email", @class = "form_email" }))
-        {
-            <p class="caption">@Resources.Resource.EmailChange</p>
-            <div class="input">
-                <p>@Resources.Resource.Email</p>
-                @Html.TextBoxFor(x => x.Email)
-            </div>
-            <div class="input">
-                <p>@Resources.Resource.Password</p>
-                @Html.PasswordFor(x => x.Password)
-            </div>
-            <button type="submit" class="page-link" form="form_email">
-                <span data-text="@Resources.Resource.EmailChange">@Resources.Resource.EmailChange</span>
-            </button>
-        }
-    </div>
-
-    @using (Html.BeginForm("SaveWallets", "home", FormMethod.Post, new { area = "lk", id = "wallets-form", @class = "wallets-form", style="margin-bottom:15px;" }))
-    {
-        <div class="wallets">
-            <p class="caption">@Resources.Resource.CryptoWallets</p>
-            <ul>
-                <li class="active">
-                    <a data-id="#AccountBitcoin">
-                        <img src="~/Areas/lk/Content/img/valuta-1.png" alt=""><span>Bitcoin</span><i></i>
-                    </a>
-                    @Html.HiddenFor(x => x.AccountBitcoin, new { id = "AccountBitcoin" })
-                </li>
-                <li>
-                    <a data-id="#AccountEthereum">
-                        <img src="~/Areas/lk/Content/img/valuta-2.png" alt=""><span>Ethereum</span><i></i>
-                    </a>
-                    @Html.HiddenFor(x => x.AccountEthereum, new { id = "AccountEthereum" })
-                </li>
-                <li>
-                    <a data-id="#AccountLitecoin">
-                        <img src="~/Areas/lk/Content/img/valuta-3.png" alt=""><span>Litecoin</span><i></i>
-                    </a>
-                    @Html.HiddenFor(x => x.AccountLitecoin, new { id = "AccountLitecoin" })
-                </li>
-                <li>
-                    <a data-id="#AccountBitcoinCash">
-                        <img src="~/Areas/lk/Content/img/valuta-4.png" alt=""><span>Bitcoin Cash</span><i></i>
-                    </a>
-                    @Html.HiddenFor(x => x.AccountBitcoinCash, new { id = "AccountBitcoinCash" })
-                </li>
-                <li>
-                    <a data-id="#AccountRipple">
-                        <img src="~/Areas/lk/Content/img/valuta-5.png" alt=""><span>Ripple</span><i></i>
-                    </a>
-                    @Html.HiddenFor(x => x.AccountRipple, new { id = "AccountRipple" })
-                </li>
-            </ul>
-            <input type="text" class="wallets-inp" value="@Model.AccountBitcoin" data-id="#AccountBitcoin">
-        </div>
-        <button type="submit" class="page-link" form="wallets-form">
-            <span data-text="@Resources.Resource.Save">@Resources.Resource.Save</span>
-        </button>
-    }
-
-
-
-    @if (Model.VerificationStatus == "Не подтвержден" || string.IsNullOrWhiteSpace(Model.VerificationStatus))
-    {
-        <div class="verification-block">
-            @using (Html.BeginForm("Verification", "Home", FormMethod.Post, new { id = "passport_form", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("Settings", "Home", FormMethod.Post, new { @id = "form-base", @class = "form-base" }))
             {
-                <p class="title">@Resources.Resource.IdentityVerification</p>
-                <div class="flex">
-                    <div class="file-input mr20">
-                        <p>@Resources.Resource.NoFile</p>
-                        <div class="wrap">
-                            <img id="passport_1" src="" alt="">
-                            <a class="cancel-fileupload"></a>
-                            <div class="file">
-                                <i>@Resources.Resource.PassportHomepage</i>
-                                @Html.TextBoxFor(x => x.Passport1, new { type = "file" })
+                <h3 class="inner-subtitle">@Resources.Resource.BaseInfo</h3>
+                <div class="flex profile-flex-1 @(Model.VerificationStatus == "Верифицирован" ? "veritif-on" : "") @(Model.VerificationStatus == "На проверке" ? "veritif-on proverka" : "")">
+                    <div class="ava">
+                        @if (!string.IsNullOrWhiteSpace(Model.Image))
+                        {
+                            <img src="@Url.Action("img", "home", new { area = "", id=Model.Image })" alt="">
+                        }
+                        <div>
+                            <div class="fileupload btn btn-grad btn-sm">
+                                @Resources.Resource.DownAva
+                                <input type="file" class="upload_ava" accept="image/jpeg, image/png">
+                            </div>
+                            <a class="delete_ava btn btn-bordered btn-sm">@Resources.Resource.RemoveAvatar</a>
+                            <p>@Resources.Resource.AvaRequired</p>
+                        </div>
+                    </div>
+                    <div class="verif">
+                        <p>@Resources.Resource.IdentityVerification</p>
+                        @if (Model.VerificationStatus == "Верифицирован")
+                        {
+                            <b>@Resources.Resource.Verified</b>
+                        }
+                        else if (Model.VerificationStatus == "На проверке")
+                        {
+                            <b>@Resources.Resource.OnCheck</b>
+                        }
+                        else
+                        {
+                            <b>@Resources.Resource.NotConfirmed</b>
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="reg-block-inviter">
+                        <div class="form-group">
+                            <label>@Resources.Resource.Login</label>
+                            @Html.TextBoxFor(x => x.Login)
+                        </div>
+                    </div>
+                    <div class="flex flex-3">
+                        <div>
+                            <div class="form-group required">
+                                <label>@Resources.Resource.LastName</label>
+                                @Html.TextBoxFor(x => x.LastName)
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group required">
+                                <label>@Resources.Resource.FirstName</label>
+                                @Html.TextBoxFor(x => x.FirstName)
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.MiddleName</label>
+                                @Html.TextBoxFor(x => x.MiddleName)
                             </div>
                         </div>
                     </div>
-                    <div class="file-input w315 mr20">
-                        <p>@Resources.Resource.NoFile</p>
-                        <div class="wrap">
-                            <img id="passport_2" src="" alt="">
-                            <a class="cancel-fileupload"></a>
-                            <div class="file">
-                                <i>@Resources.Resource.PassportReg</i>
-                                @Html.TextBoxFor(x => x.Passport2, new { type = "file" })
+                    <div class="flex flex-3">
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.Gender</label>
+                                <div class="form-group-select">
+                                    @Html.DropDownListFor(x => x.Gender, new SelectListItem[]
+                                          {
+                                    new SelectListItem { Text = Resources.Resource.Male, Value = "Мужской"},
+                                    new SelectListItem { Text = Resources.Resource.Female, Value = "Женский"},
+
+                                          }, Resources.Resource.NotChosen, new { @class = "myslimSelect7" })
+                                    <i class="ion-ios-arrow-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.Country</label>
+                                <div class="form-group-select">
+                                    @Html.DropDownListFor(x => x.Country, new SelectList(Countries, "Value", "ObjectName"),
+                                         Resources.Resource.NotChosen, new { @class = "myslimSelect8" })
+                                    <i class="ion-ios-arrow-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.City</label>
+                                @Html.TextBoxFor(x => x.City)
                             </div>
                         </div>
                     </div>
-                    <div class="file-input">
-                        <p>@Resources.Resource.NoFile</p>
-                        <div class="wrap">
-                            <img id="passport_3" src="" alt="">
-                            <a class="cancel-fileupload"></a>
-                            <div class="file">
-                                <i>@Resources.Resource.PassportSelfi</i>
-                                @Html.TextBoxFor(x => x.Passport3, new { type = "file" })
+                    <div class="flex flex-3">
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.DateBirth</label>
+                                @Html.TextBoxFor(x => x.BirthDate, "{0:dd.MM.yyyy}", new { @class = "datapick datapicker_1" })
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <script type="text/javascript" src="~/Areas/lk/Content/js/jquery.inputmask.bundle.min.js"></script>
+                                <label>@Resources.Resource.Phone</label>
+                                @Html.TextBoxFor(x => x.PhoneNumber)
+                                <script>
+                                    Inputmask({ regex: "\\+[\\d-\\(\\)]{0,16}" }).mask('#PhoneNumber');
+                                </script>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.LinkSoc</label>
+                                @Html.TextBoxFor(x => x.SocNetworkLink)
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="desc">
-                    <p>@Resources.Resource.PassportLbl1</p>
-                    <p>@Resources.Resource.PassportLbl2</p>
+                <div class="text-center m-b-30">
+                    <button type="submit" class="btn btn-grad btn-sm" form="form-base">
+                        @Resources.Resource.Save
+                    </button>
                 </div>
-                <button type="submit" class="page-link" form="passport_form">
-                    <span data-text="@Resources.Resource.ToSend">@Resources.Resource.ToSend</span>
-                </button>
+
+
+
+
+
+            }
+            <h3 class="inner-subtitle">
+                @Resources.Resource.ChangePassword
+            </h3>
+            @using (Html.BeginForm("ChangePassword", "Home", FormMethod.Post, new { id = "form_pass", @class = "form_pass" }))
+            {
+                <div class="row">
+                    <div class="flex flex-2">
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.Password</label>
+                                @Html.PasswordFor(x => x.NewPassword)
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.ConfirmPassword</label>
+                                @Html.PasswordFor(x => x.PasswordRepeat)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center m-b-30">
+                    <button type="submit" class="btn btn-grad btn-sm" form="form_pass">
+                        <span data-text="@Resources.Resource.ChangePassword">@Resources.Resource.ChangePassword</span>
+                    </button>
+                </div>
+            }
+            <h3 class="inner-subtitle">
+                @Resources.Resource.EmailChange
+            </h3>
+            @using (Html.BeginForm("ChangeEmail", "Home", FormMethod.Post, new { id = "form_email", @class = "form_email" }))
+            {
+                <div class="row">
+                    <div class="flex flex-2">
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.Email</label>
+                                @Html.TextBoxFor(x => x.Email)
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.Password</label>
+                                @Html.PasswordFor(x => x.Password)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center m-b-30">
+                    <button type="submit" class="btn btn-grad btn-sm" form="form_email">
+                        <span data-text="@Resources.Resource.EmailChange">@Resources.Resource.EmailChange</span>
+                    </button>
+                </div>
+            }
+
+
+
+
+            @using (Html.BeginForm("SaveWallets", "home", FormMethod.Post, new { area = "lk", id = "wallets-form", @class = "wallets-form", style = "margin-bottom:15px;" }))
+            {
+                <div class="wallets">
+                    <h3 class="inner-subtitle">@Resources.Resource.CryptoWallets</h3>
+                    <div class="text-center">
+                        <div class="text-left">
+                            <ul>
+                                <li class="active">
+                                    <a data-id="#AccountBitcoin">
+                                        <img src="~/Areas/lk/Content/img/valuta-1.png" alt=""><span>Bitcoin</span>
+                                    </a>
+                                    @Html.HiddenFor(x => x.AccountBitcoin, new { id = "AccountBitcoin" })
+                                </li>
+                                <li>
+                                    <a data-id="#AccountEthereum">
+                                        <img src="~/Areas/lk/Content/img/valuta-2.png" alt=""><span>Ethereum</span>
+                                    </a>
+                                    @Html.HiddenFor(x => x.AccountEthereum, new { id = "AccountEthereum" })
+                                </li>
+                                <li>
+                                    <a data-id="#AccountLitecoin">
+                                        <img src="~/Areas/lk/Content/img/valuta-3.png" alt=""><span>Litecoin</span>
+                                    </a>
+                                    @Html.HiddenFor(x => x.AccountLitecoin, new { id = "AccountLitecoin" })
+                                </li>
+                                <li>
+                                    <a data-id="#AccountBitcoinCash">
+                                        <img src="~/Areas/lk/Content/img/valuta-4.png" alt=""><span>Bitcoin Cash</span>
+                                    </a>
+                                    @Html.HiddenFor(x => x.AccountBitcoinCash, new { id = "AccountBitcoinCash" })
+                                </li>
+                                <li>
+                                    <a data-id="#AccountRipple">
+                                        <img src="~/Areas/lk/Content/img/valuta-5.png" alt=""><span>Ripple</span>
+                                    </a>
+                                    @Html.HiddenFor(x => x.AccountRipple, new { id = "AccountRipple" })
+                                </li>
+                            </ul>
+                            <div>
+                                <input type="text" class="wallets-inp" value="@Model.AccountBitcoin" data-id="#AccountBitcoin">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center m-b-30">
+                    <button type="submit" class="btn btn-grad btn-sm" form="wallets-form">
+                        @Resources.Resource.Save
+                    </button>
+                </div>
+            }
+
+
+
+            @if (Model.VerificationStatus == "Не подтвержден" || string.IsNullOrWhiteSpace(Model.VerificationStatus))
+            {
+                <div>
+                    @using (Html.BeginForm("Verification", "Home", FormMethod.Post, new { id = "passport_form", enctype = "multipart/form-data" }))
+                    {
+                        <h3 class="inner-subtitle">@Resources.Resource.IdentityVerification</h3>
+                        <div class="verification-block">
+                            <div class="row">
+                                <div class="flex flex-3">
+                                    <div>
+                                        <div class="form-group">
+                                            <label>@Resources.Resource.NoFile</label>
+                                            <div class="wrap">
+                                                <img id="passport_1" src="" alt="">
+                                                <a class="cancel-fileupload"><i class="ion-ios-trash"></i></a>
+                                            </div>
+                                            <div class="file btn btn-bordered btn-xs btn-block">
+                                                @Resources.Resource.PassportHomepage
+                                                @Html.TextBoxFor(x => x.Passport1, new { type = "file" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-group">
+                                            <label>@Resources.Resource.NoFile</label>
+                                            <div class="wrap">
+                                                <img id="passport_2" src="" alt="">
+                                                <a class="cancel-fileupload"><i class="ion-ios-trash"></i></a>
+                                            </div>
+                                            <div class="file btn btn-bordered btn-xs btn-block">
+                                                @Resources.Resource.PassportReg
+                                                @Html.TextBoxFor(x => x.Passport2, new { type = "file" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="form-group">
+                                            <label>@Resources.Resource.NoFile</label>
+                                            <div class="wrap">
+                                                <img id="passport_3" src="" alt="">
+                                                <a class="cancel-fileupload"><i class="ion-ios-trash"></i></a>
+                                            </div>
+                                            <div class="file btn btn-bordered btn-xs btn-block">
+                                                @Resources.Resource.PassportSelfi
+                                                @Html.TextBoxFor(x => x.Passport3, new { type = "file" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>@Resources.Resource.PassportLbl1</p>
+                                <p>@Resources.Resource.PassportLbl2</p>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center m-b-30">
+                            <button type="submit" class="btn btn-grad btn-sm" form="passport_form">
+                                <span data-text="@Resources.Resource.ToSend">@Resources.Resource.ToSend</span>
+                            </button>
+                        </div>
+                    }
+                </div>
             }
         </div>
-    }
+    </div>
 </div>

@@ -202,7 +202,7 @@
     <value>Благотворители</value>
   </data>
   <data name="Cancellation" xml:space="preserve">
-    <value>отмена</value>
+    <value>Отмена</value>
   </data>
   <data name="CashFlowItem" xml:space="preserve">
     <value>Статья ДС</value>
@@ -229,7 +229,7 @@
     <value>Завершен</value>
   </data>
   <data name="Confirm" xml:space="preserve">
-    <value>подтвердить</value>
+    <value>Подтвердить</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Повтор пароля</value>
@@ -616,7 +616,7 @@
     <value>Счет</value>
   </data>
   <data name="Search" xml:space="preserve">
-    <value>поиск</value>
+    <value>Поиск</value>
   </data>
   <data name="Selection" xml:space="preserve">
     <value>Выбор</value>
@@ -1363,5 +1363,8 @@
   </data>
   <data name="TwoFactorAuth" xml:space="preserve">
     <value>Двухфакторная аутентификация</value>
+  </data>
+  <data name="SelectInvestSumm" xml:space="preserve">
+    <value>Выберите сумму инвестиции</value>
   </data>
 </root>

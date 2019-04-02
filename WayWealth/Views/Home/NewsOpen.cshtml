@@ -14,34 +14,34 @@
 }
 
 <div class="news-page">
-    <div class="news-bg">
-        <div class="news-content">
-            <p class="page-title">
-                <span data-text="@Resources.Resource.NewsTitle">@Resources.Resource.NewsTitle</span>
-            </p>
-            <div class="bread">
-                <a href="/">@Resources.Resource.HomePage</a>
-                <i>/</i>
-                <a href="@Url.Action("news", "home")">@Resources.Resource.NewsTitle</a>
-                <i>/</i>
-                <a>
-                    @if (culture == "ru-RU")
-                    {
-                        @Article.ObjectName
-                    }
-                    else
-                    {
-                        @Article.ObjectNameEng
-                    }
-                </a>
-            </div>
+    <div class="inner-page-top" style="background-image: url(/Content/img/inner-page-top-news.jpg)">
+        <div class="container">
+            <h2>@Resources.Resource.NewsTitle</h2>
         </div>
     </div>
-    <div class="news-content">
+    <div class="bread">
+        <div class="container">
+            <a href="/">@Resources.Resource.HomePage</a>
+            <i>/</i>
+            <a href="@Url.Action("news", "home")">@Resources.Resource.NewsTitle</a>
+            <i>/</i>
+            <span>
+                @if (culture == "ru-RU")
+                {
+                    @Article.ObjectName
+                }
+                else
+                {
+                    @Article.ObjectNameEng
+                }
+            </span>
+        </div>
+    </div>
+    <div class="container">
         <div class="news-open">
-            <div>
-                <p class="date">@Article.PublishDate.Value.ToShortDateString()</p>
-                <p class="page-title">
+            <div class="news-open-full">
+                <time class="date"><i class="ion ion-md-calendar"></i>@Article.PublishDate.Value.ToShortDateString()</time>
+                <h2 class="news-full-title">
                     @if (culture == "ru-RU")
                     {
                         @Article.ObjectName
@@ -50,7 +50,7 @@
                     {
                         @Article.ObjectNameEng
                     }
-                </p>
+                </h2>
                 <div class="desc">
                     @if (culture == "ru-RU")
                     {
@@ -62,28 +62,27 @@
                     }
                 </div>
             </div>
-            <div class="list-news">
-                <p class="subtitle">@Resources.Resource.LastNews</p>
+            <div class="list-news-full">
+                <h3>@Resources.Resource.LastNews</h3>
                 <ul>
                     @foreach (var a in Items.OrderByDescending(x => x.CreationDate).Take(3))
                     {
-                        <li>
-                            <a href="@Url.Action("news", "home", new {id=a.id_object})">
-                                <img src="@Url.Action("img", "home", new { area = "", id=a.Image })" alt="" />
-                                @*<img src="@Url.RouteUrl("default", new { action="img", area = "", id=a.Image })" alt="" />*@
-                                <b>
-                                    @if (culture == "ru-RU")
-                                    {
-                                        @a.ObjectName
-                                    }
-                                    else
-                                    {
-                                        @a.ObjectNameEng
-                                    }
-                                </b>
-                                <p>@a.PublishDate.Value.ToShortDateString()</p>
-                            </a>
-                        </li>
+                    <li>
+                        <div class="img-box">
+                            <img src="@Url.Action("img", "home", new { area = "", id=a.Image })" alt="" />
+                        </div>
+                        <a href="@Url.Action("news", "home", new {id=a.id_object})" class="link">
+                            @if (culture == "ru-RU")
+                            {
+                                @a.ObjectName
+                            }
+                            else
+                            {
+                                @a.ObjectNameEng
+                            }
+                        </a>
+                        <time class="date"><i class="ion ion-md-calendar"></i>@a.PublishDate.Value.ToShortDateString()</time>
+                    </li>
                     }
                 </ul>
             </div>

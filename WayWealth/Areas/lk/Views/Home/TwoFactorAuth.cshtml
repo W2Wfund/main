@@ -2,87 +2,86 @@
 @{
     ViewBag.Title = Resources.Resource.TwoFactorAuth;
 }
-<div class="profile-page">
-    <p class="page-title">
-        <img src="~/Areas/lk/Content/img/toolbar-icon-6.png" alt="">@Resources.Resource.TwoFactorAuth
-    </p>
+<div class="white-bg h-100">
+    <div class="container">
+        <div class="profile-page two-factor-auth-inner">
+            <h2 class="inner-title">
+                @Resources.Resource.TwoFactorAuth
+            </h2>
 
-    <div>
-        @if (ViewBag.GoogleAuthEnabled == true)
-        {
-
-            using (Html.BeginForm("TwoFactorAuth", "home", FormMethod.Post, new { @id = "form-base", @class = "form-base" }))
-            {
-                <p class="form-title">@Resources.Resource.GoogleAuth</p>
-                <div align="center">
-                    <p>@Resources.Resource.GoogleAuthAlreadyEnabled</p>
-                </div>
-                <br />
-
-                <div align="center">
-                    <div class="flex2 flex5">
-                        <div class="input2">
-                            <br />
-                            <p>@Resources.Resource.CodeDigit</p>
-                            @Html.TextBoxFor(x => x.CodeDigit)
-                        </div>
-                    </div>
-                    <div class="flex2 flex5">
-                        <button type="submit" class="page-link" form="form-base">
-                            <span data-text="@Resources.Resource.DisableTwoFactorAuth">@Resources.Resource.DisableTwoFactorAuth</span>
-                        </button>
-                    </div>
-
-                    @if (!ViewData.ModelState.IsValid)
-                    {
-                        @Html.ValidationSummary(true)
-                    }
-                </div>
-
-            }
-        }
-
-            @if (ViewBag.GoogleAuthEnabled == false)
-            {
-                using (Html.BeginForm("TwoFactorAuth", "home", FormMethod.Post, new { @id = "form-base", @class = "form-base" }))
+            <div>
+                @if (ViewBag.GoogleAuthEnabled == true)
                 {
-                    <p class="form-title">@Resources.Resource.GoogleAuth</p>
-                    <div>
-                        <h3>@Resources.Resource.GoogleAuthEnable1</h3>
-                        <p>@Resources.Resource.GoogleAuthEnable2</p>
-                        <h3>@Resources.Resource.GoogleAuthEnable3</h3>
-                        <p>@Resources.Resource.GoogleAuthEnable4</p>
-                    </div>
-                    <br />
-                    <div align="center">
-                        <p>
-                            <img src="@ViewBag.BarcodeImageUrl" />
-                            <br /> @Resources.Resource.ManualSetupCode: @ViewBag.SetupCode
-                        </p>
-                    </div>
 
-                    <div align="center">
-                        <div class="flex2 flex5">
-                            <div class="input2">
-                                <br />
-                                <p>@Resources.Resource.CodeDigit</p>
-                                @Html.TextBoxFor(x => x.CodeDigit)
+                    using (Html.BeginForm("TwoFactorAuth", "home", FormMethod.Post, new { @id = "form-base", @class = "form-base" }))
+                    {
+                        <h3 class="inner-subtitle">@Resources.Resource.GoogleAuth</h3>
+                        <div class="text-center m-b-30">
+                            @Resources.Resource.GoogleAuthAlreadyEnabled
+                        </div>
+                        <div class="row">
+                            <div class="reg-block-inviter">
+                                <div class="form-group">
+                                    <label>@Resources.Resource.CodeDigit</label>
+                                    @Html.TextBoxFor(x => x.CodeDigit)
+                                </div>
                             </div>
                         </div>
-                        <div class="flex2 flex5">
-                            <button type="submit" class="page-link" form="form-base">
-                                <span data-text="@Resources.Resource.EnableTwoFactorAuth">@Resources.Resource.EnableTwoFactorAuth</span>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-grad m-b-30" form="form-base">
+                                @Resources.Resource.DisableTwoFactorAuth
                             </button>
                         </div>
-
-                        @if (!ViewData.ModelState.IsValid)
-                        {
-                            @Html.ValidationSummary(true)
-                        }
-                    </div>
+                        <p>
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                @Html.ValidationSummary(true)
+                            }
+                        </p>
+                    }
                 }
-            }
+
+                @if (ViewBag.GoogleAuthEnabled == false)
+                {
+                    using (Html.BeginForm("TwoFactorAuth", "home", FormMethod.Post, new { @id = "form-base", @class = "form-base" }))
+                    {
+                        <h3 class="inner-subtitle">@Resources.Resource.GoogleAuth</h3>
+                        <div>
+                            <p class="m-b-30"><big><strong>@Resources.Resource.GoogleAuthEnable1</strong></big></p>
+                            <p class="m-b-30">@Resources.Resource.GoogleAuthEnable2</p>
+                            <p class="m-b-30"><big><strong>@Resources.Resource.GoogleAuthEnable3</strong></big></p>
+                            <p class="m-b-30">@Resources.Resource.GoogleAuthEnable4</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="m-b-30">
+                                <img src="@ViewBag.BarcodeImageUrl" />
+                            </p>
+                            <p class="m-b-30">@Resources.Resource.ManualSetupCode: <strong style="word-break: break-all;">@ViewBag.SetupCode</strong></p>
+                        </div>
+                        <div class="row">
+                            <div class="reg-block-inviter">
+                                <div class="form-group">
+                                    <label>@Resources.Resource.CodeDigit</label>
+                                    @Html.TextBoxFor(x => x.CodeDigit)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-grad m-b-30" form="form-base">
+                                @Resources.Resource.EnableTwoFactorAuth
+                            </button>
+                        </div>
+                        <p>
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                @Html.ValidationSummary(true)
+                            }
+                        </p>
+                    }
+                }
+
+            </div>
 
         </div>
-
+    </div>
 </div>

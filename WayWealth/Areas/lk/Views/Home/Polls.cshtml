@@ -3,25 +3,27 @@
     var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 }
 <div class="question-block">
-    <div class="swiper-container swiper-question">
-        <div class="swiper-wrapper">
-            @foreach (var item in Model)
-            {
-                <div class="swiper-slide">
-                    <p class="caption">
-                        @if (culture == "ru-RU")
-                        {
-                            @item.ObjectName
-                        }
-                        else
-                        {
-                            @item.ObjectNameEng
-                        }
-                    </p>
-                    @Html.Action("QuestionBlock", "Home", new { pollId = item.id_object })
-                </div>
-            }
+    <div class="container question-block-container">
+        <div class="swiper-container swiper-question">
+            <div class="swiper-wrapper">
+                @foreach (var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <h3>
+                            @if (culture == "ru-RU")
+                            {
+                                @item.ObjectName
+                            }
+                            else
+                            {
+                                @item.ObjectNameEng
+                            }
+                        </h3>
+                        @Html.Action("QuestionBlock", "Home", new { pollId = item.id_object })
+                    </div>
+                }
+            </div>
+            <div class="swiper-pagination"></div>
         </div>
-        <div class="swiper-pagination"></div>
     </div>
 </div>

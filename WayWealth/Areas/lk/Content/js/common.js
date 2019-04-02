@@ -1,21 +1,54 @@
 $(function () {
-    $('.lk-lang-block .lang a.active').click(function (event) {
-        $(this).parent('div').addClass('active');
+    $(document).ready(function () {
+        if ($(window).width() < 1200) {
+            $('header .menu').append($('.toolbar'));
+        }
+        else {
+            $('.toolbar').prependTo($('.wrap-content'));
+        }
     });
-    $('.menu-btn').click(function (event) {
-        $(this).toggleClass('active');
-        $('header .menu').slideToggle(300);
-        $('.toolbar').slideToggle(300);
+
+    $(window).resize(function () {
+        if ($(window).width() < 1200) {
+            $('header .menu').append($('.toolbar'));
+        }
+        else {
+            $('.toolbar').prependTo($('.wrap-content'));
+        }
     });
+
+    $(window).scroll(function () {
+        $(document).scrollTop() > 1000 ? $(".scroll_up").addClass("active") : $(".scroll_up").removeClass("active");
+    });
+
+    $('.lk-lang-block .lang a.active').click(function () {
+        $(this).parent('div').toggleClass('active');
+    });
+
+    $('body').click(function (e) {
+        if (!($(e.target).closest('.lang').hasClass('lang') || $(e.target).hasClass('lang'))) {
+            $('.lang').removeClass('active');
+        }
+
+        if (!($(e.target).closest('.menu').hasClass('menu') || $(e.target).hasClass('menu') || $(e.target).hasClass('menu-btn'))) {
+            $('header .top-block').removeClass('active');
+        }
+    });
+
+    $('.menu-btn').click(function () {
+        $('header .top-block').toggleClass('active');
+    });
+
     $('header .bottom-block i').click(function (event) {
-        $(this).toggleClass('active');
         $(this).parent().toggleClass('active');
-        $(this).parent().children('p').slideToggle(500);
+        $(this).siblings('p').stop().slideToggle();
     });
+
     function animationSize() {
         if ($(window).width() > '992') {
         }
     }
+
     $(window).load(animationSize);
     $(window).resize(animationSize);
 
@@ -135,16 +168,16 @@ $(function () {
 
     $('.verification-block input[type="file"]').change(function (event) {
         var files = $(this).val();
-        var img = $(this).parent().parent().children('img').attr('id');
+        var img = $(this).closest('.form-group').find('img').attr('id');
         if (files.length > 0) {
-            $(this).parent().parent().parent().addClass('active');
+            $(this).closest('.form-group').addClass('active');
             readURL(this, '#' + img);
         }
     });
     $('.cancel-fileupload').click(function (event) {
-        $(this).parent().parent().removeClass('active');
-        $(this).parent().children('img').attr('src', '');
-        $(this).parent().children('div').children('input').val('');
+        $(this).closest('.form-group').removeClass('active');
+        $(this).closest('.form-group').find('img').attr('src', '');
+        $(this).closest('.form-group').find('input').val('');
     });
     function readURL(input, img) {
         if (input.files && input.files[0]) {
@@ -188,29 +221,21 @@ $(function () {
             }
         }
     });
-    var swiper4 = new Swiper('.swiper-bills', {
-        slidesPerView: 2,
-        pagination: {
-            el: '.swiper-pagination',
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 1
-            }
-        }
-    });
     var swiper5 = new Swiper('.swiper-news', {
-        slidesPerView: 2,
+        autoHeight: true,
+        slidesPerView: 3,
         pagination: {
             el: '.swiper-pagination',
+            clickable: true
         },
         breakpoints: {
-            740: {
+            768: {
                 slidesPerView: 1
             }
         }
     });
     var swiper6 = new Swiper('.swiper-question', {
+        autoHeight: true,
         pagination: {
             el: '.swiper-pagination',
             clickable: true
@@ -243,21 +268,24 @@ $(function () {
         }
     });
 
-    $('.close-modal-btn').click(function (event) {
-        $(this).closest('.modal').remove();
-        if ($('.wrap-modal .modal').length == 0)
-        {
-            $('.wrap-modal').removeClass('active');
+    $('.close-modal-btn').click(function (e) {
+        $('.wrap-modal').fadeOut();
+        $('#searchResults').empty();
+        setTimeout(function () {
+            $(e.target).closest('.modal').remove();
+        },600);
+    });
+
+    $('.wrap-modal').click(function (e) {
+        if ($(e.target).hasClass('wrap-modal')) {
+            $('.wrap-modal').fadeOut();
             $('#searchResults').empty();
-            $('body').removeClass('overflow');
+            setTimeout(function () {
+                $(e.target).find('.modal').remove();
+            }, 600);
         }
     });
 
-    /*$('.close-modal-btn').click(function (event) {
-        $('.wrap-modal').removeClass('active');
-        $('#searchResults').empty();
-        $('body').removeClass('overflow');
-    });*/
     $('.tree2 .item .flex').click(function (event) {
         $(this).toggleClass('active');
         $(this).parent().parent().children('ul').toggleClass('active');
@@ -392,17 +420,8 @@ $(function () {
     });
 
 
-
-    //$('#account').change(function () {
-    //    if (balances) {
-    //        $('#reminder').text(balances[$(this).val()]);
-    //    }
-    //    $('#account_hidden').val($(this).val());
-    //    $('.sum_input').val("");
-    //});
-
     if ($('span').is('#reminder'))
-        $('#reminder').text(balances["Остаток.Проценты"]);
+        $('#reminder').text(Number(balances["Остаток.Проценты"].replace(/\,/g, '.')).toFixed(2));
 
     if ($('input').is('#account_hidden'))
         $('#account_hidden').val("Остаток.Проценты");
@@ -429,6 +448,7 @@ $(function () {
         //var countDownDate = new Date(new Date().getTime() + 10000).getTime();
         var btn = this;
         $(btn).css('visibility', 'hidden');
+        $('.sms').fadeIn();
         
         // Update the count down every 1 second
         var x = setInterval(function () {
@@ -485,8 +505,7 @@ $(function () {
                 searchText: searchText
             },
             success: function (data) {
-                $('body').addClass('overflow');
-                $('.wrap-modal').addClass('active');
+                $('.wrap-modal').fadeIn();
                 $('#searchResults').empty();
                 $('#searchResults').append(data);
             }

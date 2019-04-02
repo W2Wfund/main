@@ -6,94 +6,100 @@
     string Inviter = TempData["Inviter"] as string;
 }
 
-
-<div class="reg-block">
-    @if (!string.IsNullOrWhiteSpace(Inviter))
-    {
-        <p class="page-title">@Resources.Resource.SignUpPartnerText</p>
-    }
-    else
-    {
-        <p class="page-title">@Resources.Resource.SignUpText</p>
-    }
-
-    @using (Html.BeginForm("up", "sign", new { inviter = Inviter }, FormMethod.Post, new { id = "reg-form" }))
-    {
-        <div class="wrap-id">
-            <div class="input mauto">
-                <p class="lbl">@Html.LabelFor(x => x.InviterTxt)</p>
-                @if (string.IsNullOrWhiteSpace(Inviter))
+<div class="white-bg">
+    <div class="container">
+        <div class="reg-block">
+            <h2 class="section-title">
+                @if (!string.IsNullOrWhiteSpace(Inviter))
                 {
-                    @Html.TextBoxFor(x => x.InviterTxt)
+                    @Resources.Resource.SignUpPartnerText
                 }
                 else
                 {
-                    <p class="val">@TempData["inviterName"]</p>
+                    @Resources.Resource.SignUpText
                 }
-            </div>
-            @if (string.IsNullOrWhiteSpace(Inviter))
+            </h2>
+            
+
+            @using (Html.BeginForm("up", "sign", new { inviter = Inviter }, FormMethod.Post, new { id = "reg-form" }))
             {
-                <p class="lbl">@Resources.Resource.InviterTxt2</p>
+            <div class="row">
+                <div class="reg-block-inviter">
+                    <div class="input mauto form-group">
+                        @Html.LabelFor(x => x.InviterTxt)
+                        @if (string.IsNullOrWhiteSpace(Inviter))
+                        {
+                            @Html.TextBoxFor(x => x.InviterTxt)
+                            <p class="inviter">@Resources.Resource.InviterTxt2</p>
+                        }
+                        else
+                        {
+                            <p class="val">@TempData["inviterName"]</p>
+                        }
+                    </div>
+                </div>
+                <div class="flex flex-3">
+                    <div>
+                        <div class="form-group required">
+                            @Html.LabelFor(x => x.LastName, new { @class = "lbl" })
+                            @Html.TextBoxFor(x => x.LastName)
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group required">
+                            @Html.LabelFor(x => x.FirstName, new { @class = "lbl" })
+                            @Html.TextBoxFor(x => x.FirstName)
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.MiddleName, new { @class = "lbl" })
+                            @Html.TextBoxFor(x => x.MiddleName)
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-2">
+                    <div class="wrap-email">
+                        <div class="input mauto form-group required">
+                            @Html.LabelFor(x => x.Email, new { @class = "lbl" })
+                            @Html.TextBoxFor(x => x.Email)
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Login, new { @class = "lbl" })
+                            @Html.TextBoxFor(x => x.Login)
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-2">
+                    <div class="form-group required">
+                        @Html.LabelFor(x => x.Password, new { @class = "lbl" })
+                        @Html.PasswordFor(x => x.Password)
+                    </div>
+                    <div class="form-group required">
+                        @Html.LabelFor(x => x.ConfirmPassword, new { @class = "lbl" })
+                        @Html.PasswordFor(x => x.ConfirmPassword)
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Recaptcha(useSsl: Recaptcha.Web.SslBehavior.AlwaysUseSsl)
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-grad" form="reg-form">
+                    @Resources.Resource.SignUpText
+                </button>
+            </div>
+            if (!ViewData.ModelState.IsValid)
+            {
+                @Html.ValidationSummary(false)
+            }
             }
         </div>
-        <div class="flex-input">
-            <div class="input">
-                @Html.LabelFor(x => x.LastName, new { @class = "lbl" })
-                @Html.TextBoxFor(x => x.LastName)
-                <div class="required-icon"></div>
-            </div>
-            <div class="input">
-                @Html.LabelFor(x => x.FirstName, new { @class = "lbl" })
-                @Html.TextBoxFor(x => x.FirstName)
-                <div class="required-icon"></div>
-                @*<p class="error-msg">@Html.ValidationMessageFor(m => m.FirstName)</p>*@
-            </div>
-            <div class="input">
-                @Html.LabelFor(x => x.MiddleName, new { @class = "lbl" })
-                @Html.TextBoxFor(x => x.MiddleName)
-            </div>
+        <div class="reg-link-block">
+            <a href="@Url.Action("In", "Sign")" class="btn btn-bordered btn-sm">@Resources.Resource.InEntryBtnText</a>
+            <a href="@Url.Action("restore", "sign")" class="btn btn-bordered btn-sm">@Resources.Resource.RestoreText</a>
         </div>
-        <div class="wrap-email">
-            <div class="input mauto">
-                @Html.LabelFor(x => x.Email, new { @class = "lbl" })
-                @Html.TextBoxFor(x => x.Email)
-                <div class="required-icon"></div>
-                @*<p class="error-msg">@Html.ValidationMessageFor(m => m.Email)</p>*@
-            </div>
-        </div>
-        <div class="flex-input-bg">
-            <div class="flex-input">
-                <div class="input">
-                    @Html.LabelFor(x => x.Login, new { @class = "lbl" })
-                    @Html.TextBoxFor(x => x.Login)
-                </div>
-                <div class="input">
-                    @Html.LabelFor(x => x.Password, new { @class = "lbl" })
-                    @Html.PasswordFor(x => x.Password)
-                    <div class="required-icon"></div>
-                    @*<p class="error-msg">@Html.ValidationMessageFor(m => m.Password)</p>*@
-                </div>
-                <div class="input">
-                    @Html.LabelFor(x => x.ConfirmPassword, new { @class = "lbl" })
-                    @Html.PasswordFor(x => x.ConfirmPassword)
-                    <div class="required-icon"></div>
-                    @*<p class="error-msg">@Html.ValidationMessageFor(m => m.ConfirmPassword)</p>*@
-                </div>
-            </div>
-        </div>
-        @*<div class="captcha"></div>*@
-        @Html.Recaptcha(useSsl: Recaptcha.Web.SslBehavior.AlwaysUseSsl)
-        <button type="submit" class="page-link" form="reg-form">
-            <span data-text="@Resources.Resource.SignUpText">@Resources.Resource.SignUpText</span>
-        </button>
-        if (!ViewData.ModelState.IsValid)
-        {
-            @Html.ValidationSummary(false)
-        }
-    }
-
-    <div class="link-block">
-        <a href="@Url.Action("In", "Sign")">@Resources.Resource.InEntryBtnText</a>
-        <a href="@Url.Action("restore", "sign")">@Resources.Resource.RestoreText</a>
     </div>
 </div>

@@ -14,157 +14,152 @@
         "XRP": "@(TempData["w_xrp"])"
     };
 </script>
-<div class="perevod-block">
-    <p class="page-title">
-        <img src="~/Areas/lk/Content/img/toolbar-icon-4-3.png" alt="">@Resources.Resource.WithdrawalTitle
-    </p>
 
-    <div class="error-msg" style="color:red;margin-bottom:10px">
-        @Html.ValidationSummary(false)
-    </div>
-    <div class="form-block">
-        @using (Html.BeginForm("Withdraw", "Home", FormMethod.Post, new { id = "form_vivod" }))
-        {
-            <div class="valuta">
-                <div>
-                    <img src="~/Areas/lk/Content/img/valuta-1.png" alt="">
-                    <p>Bitcoin</p>
-                    <b>- $ @(Convert.ToDecimal(TempData["btc_usd"]).ToString("N2"))</b>
-                </div>
-                <div>
-                    <img src="~/Areas/lk/Content/img/valuta-2.png" alt="">
-                    <p>Ethereum</p>
-                    <b>- $ @(Convert.ToDecimal(TempData["eth_usd"]).ToString("N2"))</b>
-                </div>
-                <div>
-                    <img src="~/Areas/lk/Content/img/valuta-3.png" alt="">
-                    <p>Litecoin</p>
-                    <b>- $ @(Convert.ToDecimal(TempData["ltc_usd"]).ToString("N2"))</b>
-                </div>
-                <div>
-                    <img src="~/Areas/lk/Content/img/valuta-4.png" alt="">
-                    <p>Bitcoin Cash</p>
-                    <b>- $ @(Convert.ToDecimal(TempData["bch_usd"]).ToString("N2"))</b>
-                </div>
-                <div>
-                    <img src="~/Areas/lk/Content/img/valuta-5.png" alt="">
-                    <p>Ripple</p>
-                    <b>- $ @(Convert.ToDecimal(TempData["xrp_usd"]).ToString("N2"))</b>
-                </div>
+<div class="white-bg h-100">
+    <div class="container">
+        <div class="perevod-block">
+            <h2 class="inner-title">
+                @Resources.Resource.WithdrawalTitle
+            </h2>
+
+            <div class="error-msg" style="margin: 0 0 30px 0;">
+                @Html.ValidationSummary(false)
             </div>
-            <div class="wrap-bg-form">
-                <div class="dostupno">
-                    <p>
-                        <span data-text="@Resources.Resource.AvailableTranslation">@Resources.Resource.AvailableTranslation</span>
-                    </p>
-                    <b>$ <span class="reminder">@(Convert.ToDouble(TempData["Остаток.ВнутреннийСчет"]).ToString("N2"))</span></b>
-                </div>
-                <div class="wrap-input">
-                    <div class="input mr6">
-                        <span>@Resources.Resource.Amount</span>
-                        @Html.TextBoxFor(x => x.Sum, new { @class = "sum_input" })
-                        <a class="input_link js_transfer_all_sum">
-                            <img src="~/Areas/lk/Content/img/perevod-icon-btn.png" alt="">@Resources.Resource.WholeAmountBtn
-                        </a>
-                    </div>
-                    <div class="input">
-                        <span>@Resources.Resource.FinancPass</span>
-                        <div class="wrap-pass">
 
-                            @Html.PasswordFor(x => x.Password)
-                            <div class="sms">
-                                <b>@Resources.Resource.EmailRequiredSms1</b>
-                                <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
+            @using (Html.BeginForm("Withdraw", "Home", FormMethod.Post, new { id = "form_vivod" }))
+            {
+                <div class="valuta">
+                    <div>
+                        <img src="~/Areas/lk/Content/img/valuta-1.png" alt="">
+                        <p>Bitcoin</p>
+                        <b>$ @(Convert.ToDecimal(TempData["btc_usd"]).ToString("N2"))</b>
+                    </div>
+                    <div>
+                        <img src="~/Areas/lk/Content/img/valuta-2.png" alt="">
+                        <p>Ethereum</p>
+                        <b>$ @(Convert.ToDecimal(TempData["eth_usd"]).ToString("N2"))</b>
+                    </div>
+                    <div>
+                        <img src="~/Areas/lk/Content/img/valuta-3.png" alt="">
+                        <p>Litecoin</p>
+                        <b>$ @(Convert.ToDecimal(TempData["ltc_usd"]).ToString("N2"))</b>
+                    </div>
+                    <div>
+                        <img src="~/Areas/lk/Content/img/valuta-4.png" alt="">
+                        <p>Bitcoin Cash</p>
+                        <b>$ @(Convert.ToDecimal(TempData["bch_usd"]).ToString("N2"))</b>
+                    </div>
+                    <div>
+                        <img src="~/Areas/lk/Content/img/valuta-5.png" alt="">
+                        <p>Ripple</p>
+                        <b>$ @(Convert.ToDecimal(TempData["xrp_usd"]).ToString("N2"))</b>
+                    </div>
+                </div>
+                <div class="transfer-bg-form">
+                    <div class="dostupno flex">
+                        <p>
+                            @Resources.Resource.AvailableTranslation
+                        </p>
+                        <b>$ <span class="reminder">@(Convert.ToDouble(TempData["Остаток.ВнутреннийСчет"]).ToString("N2"))</span></b>
+                    </div>
+                    <div class="flex transfer-bg-flex">
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.Amount</label>
+                                <div class="flex">
+                                    @Html.TextBoxFor(x => x.Sum, new { @class = "sum_input" })
+                                    <a class="btn btn-bordered btn-sm m-l-10 js_transfer_all_sum">
+                                        <i class="ion-ios-arrow-round-back"></i>@Resources.Resource.WholeAmountBtn
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <a class="input_link" id="gentp">@Resources.Resource.GetPassBtn</a>
-                    </div>
-                    <div class="sms sms-m">
-                        <b>@Resources.Resource.EmailRequiredSms1</b>
-                        <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
-                    </div>
-                </div>
-            </div>
-            <div class="valuta-info">
-                <div class="select-block">
-                    <span>@Resources.Resource.Currency</span>
-                    @Html.DropDownListFor(x => x.Currency, new SelectListItem[]
-                    {
-                        new SelectListItem { Text = "Bitcoin",Value = "BTC"},
-                        new SelectListItem { Text = "Ethereum",Value = "ETH"},
-                        new SelectListItem { Text = "Litecoin",Value = "LTC"},
-                        new SelectListItem { Text = "BitcoinCash",Value = "BCH"},
-                        new SelectListItem { Text = "Ripple",Value = "XRP"},
-                    }, Resources.Resource.NotChosen, new { id = "crypptoaccount", @class = "myslimSelect5" })
-                    <script>
-                        var mySlimSelect5 = new SlimSelect({
-                            select: '.myslimSelect5',
-                            showSearch: false,
-                            onChange: calc /*(info) => {
-                                var v = $('.sum_input').val();
-                                $('.crypptoconvert').html(v + ' ' + '<span>' + info.value + '</span>');
-                                if (addresses) {
-                                    $('#inp_address').val(addresses[info.value]);
-                                }
-                            }*/
-                        })
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.Currency</label>
+                                <div class="form-group-select">
+                                    @Html.DropDownListFor(x => x.Currency, new SelectListItem[]
+                                {
+                                    new SelectListItem { Text = "Bitcoin",Value = "BTC"},
+                                    new SelectListItem { Text = "Ethereum",Value = "ETH"},
+                                    new SelectListItem { Text = "Litecoin",Value = "LTC"},
+                                    new SelectListItem { Text = "BitcoinCash",Value = "BCH"},
+                                    new SelectListItem { Text = "Ripple",Value = "XRP"},
+                                }, Resources.Resource.NotChosen, new { id = "crypptoaccount", @class = "myslimSelect5" })
+                                    <i class="ion-ios-arrow-down"></i>
+                                </div>
+                                <script>
+                                    $('.myslimSelect5').change(function () {
+                                        calc();
+                                    });
 
-                        $('.sum_input').on('input change paste', calc);
-                        function calc() {
+                                    $('.sum_input').on('input change paste', calc);
 
+                                    function calc() {
+                                        $('.crypptoconvert').html('');
+                                        var s = $('.sum_input').val().replace(',', '.');
+                                        var rate = 0.0;
 
-                            $('.crypptoconvert').html('');
-                            var s = $('.sum_input').val();
-                            var rate = 0.0;
+                                        var curr = $("option:selected", $('#crypptoaccount')).attr('value');
 
-                            var curr = $('#crypptoaccount').val();
-                            if (curr == 'BTC') {
-                                rate = @(TempData["usd_btc"].ToString().Replace(',','.')) * 1.0;
-                            }
-                            else if (curr == 'ETH') {
-                                rate = @(TempData["usd_eth"].ToString().Replace(',', '.')) * 1.0;
-                            }
-                            else if (curr == 'LTC') {
-                                rate = @(TempData["usd_ltc"].ToString().Replace(',', '.')) * 1.0;
-                            }
-                            else if (curr == 'BCH') {
-                                rate = @(TempData["usd_bch"].ToString().Replace(',', '.')) * 1.0;
-                            }
-                            else if (curr == 'XRP') {
-                                rate = @(TempData["usd_xrp"].ToString().Replace(',', '.')) * 1.0;
-                            }
+                                        if (curr == 'BTC') {
+                                            rate = @(TempData["usd_btc"].ToString().Replace(',','.')) * 1.0;
+                                        }
+                                        else if (curr == 'ETH') {
+                                            rate = @(TempData["usd_eth"].ToString().Replace(',', '.')) * 1.0;
+                                        }
+                                        else if (curr == 'LTC') {
+                                            rate = @(TempData["usd_ltc"].ToString().Replace(',', '.')) * 1.0;
+                                        }
+                                        else if (curr == 'BCH') {
+                                            rate = @(TempData["usd_bch"].ToString().Replace(',', '.')) * 1.0;
+                                        }
+                                        else if (curr == 'XRP') {
+                                            rate = @(TempData["usd_xrp"].ToString().Replace(',', '.')) * 1.0;
+                                        }
 
-                            if (addresses) {
-                                $('#inp_address').val(addresses[curr]);
-                            }
+                                        if (addresses) {
+                                            $('#inp_address').val(addresses[curr]);
+                                        }
 
-                            var total = Math.round(s * rate * 1000000) / 1000000;
-                            if (total > 0) {
-                                $('.crypptoconvert').html(total + ' ' + '<span>' + curr + '</span>');
-                            }
-                        }
-                    </script>
-                </div>
-                <div class="price_inp">
-                    <p class="price crypptoconvert"></p>
-                    <div class="input">
-                        <span>@Resources.Resource.WalletAddress</span>
-                        @Html.TextBoxFor(x => x.WalletAddress, new { id = "inp_address" })
-                    </div>
-                </div>
-            </div>
-            @*<div class="textarea-block">
-                    <div class="wrap-check">
-                        <div class="checkbox">
-                            <input type="checkbox" id="check1">
-                            <label for="check1">Текст соглашения</label>
-                            <div class="check"></div>
+                                        var total = Math.round(s * rate * 1000000) / 1000000;
+                                        if (total > 0) {
+                                            $('.crypptoconvert').html(total + ' ' + '<span>' + curr + '</span>');
+                                        }
+                                    }
+                                </script>
+                            </div>
                         </div>
                     </div>
-                </div>*@
-            <button type="submit" class="page-link" form="form_vivod">
-                <span data-text="@Resources.Resource.WithdrawBtn">@Resources.Resource.WithdrawBtn</span>
-            </button>
-        }
+                    <div class="flex transfer-bg-flex">
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.FinancPass</label>
+                                <div class="flex">
+                                    @Html.PasswordFor(x => x.Password)
+                                    <a class="btn btn-bordered btn-sm m-l-10" id="gentp">@Resources.Resource.GetPassBtn</a>
+                                </div>
+                                <div class="sms">
+                                    <p>@Resources.Resource.EmailRequiredSms1</p>
+                                    <p>@Resources.Resource.EmailRequiredSms2 <strong class="timer">00:00:00</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label>@Resources.Resource.WalletAddress</label>
+                                @Html.TextBoxFor(x => x.WalletAddress, new { id = "inp_address" })
+                            </div>
+                        </div>
+                    </div>
+                    <p class="price crypptoconvert"></p>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-grad" form="form_vivod">
+                        @Resources.Resource.WithdrawBtn
+                    </button>
+                </div>
+            }
+        </div>
     </div>
 </div>

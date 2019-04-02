@@ -8,24 +8,24 @@
 }
 
 <div class="reviews-page">
-    <div class="reviews-bg">
-        <div class="reviews-content">
-            <p class="page-title">
-                <span data-text="@Resources.Resource.ReviewsTitle">@Resources.Resource.ReviewsTitle</span>
-            </p>
-            <div class="bread">
-                <a href="/">@Resources.Resource.HomePage</a>
-                <i>/</i>
-                <a>@Resources.Resource.ReviewsTitle</a>
-            </div>
+    <div class="inner-page-top" style="background-image: url(/Content/img/inner-page-top-partnership.jpg)">
+        <div class="container">
+            <h2>@Resources.Resource.ReviewsTitle</h2>
         </div>
     </div>
-    <div class="reviews-content">
+    <div class="bread">
+        <div class="container">
+            <a href="/">@Resources.Resource.HomePage</a>
+            <i>/</i>
+            <span>@Resources.Resource.ReviewsTitle</span>
+        </div>
+    </div>
+    <div class="reviews-content" style="padding-top: 50px;">
 
         @if (Items != null)
         {
             <ul class="reviews-list">
-                @foreach (var item in Items.OrderByDescending(x=>x.ReviewDate))
+                @foreach (var item in Items.OrderByDescending(x => x.ReviewDate))
                 {
                     <li>
                         <div class="img">

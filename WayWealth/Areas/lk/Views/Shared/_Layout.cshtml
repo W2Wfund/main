@@ -22,23 +22,22 @@
 @section FootSection{
     @if (notifications.Count > 0)
     {
-        <div class="wrap-modal active">
+        <div class="wrap-modal flex">
             @foreach (var item in notifications.ToList())
             {
-                <div class="modal modal_2">
-                    <img class="logo" src="~/Areas/lk/Content/img/modal-logo.png" alt="">
-                    @if (item.IsSuccess)
-                    {
-                        <img src="~/Areas/lk/Content/img/correct3.png" class="modal-icon" alt="">
-                    }
-                    else
-                    {
-                        <img src="~/Areas/lk/Content/img/modal-error.png" class="modal-icon" alt="">
-                    }
+            <div class="modal">
+                @if (item.IsSuccess)
+                {
+                    <i class="ion-ios-checkmark modal-icon"></i>
+                }
+                else
+                {
+                    <i class="ion-ios-close modal-icon modal-icon-close"></i>
+                }
 
-                    <b>@Html.Raw(item.Message)</b>
-                    <a class="page-link close-modal-btn"><span data-text="@Resources.Resource.Close">@Resources.Resource.Close</span></a>
-                </div>
+                <p class="m-b-30">@Html.Raw(item.Message)</p>
+                <a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>
+            </div>
                 notifications.Remove(item);
             }
         </div>

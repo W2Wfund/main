@@ -3,39 +3,42 @@
     ViewBag.Title = Resources.Resource.GoogleAuthTitle;
 }
 
-<div class="reg-block sign-block">
-    <p class="page-title">
-        @Resources.Resource.GoogleAuthTitle
-    </p>
+<div class="white-bg">
+    <div class="container">
+        <div class="reg-block sign-block two-factor-auth">
 
-    <div>
-        @using (Html.BeginForm("TwoFactorAuthenticate", "Sign", FormMethod.Post, new { id = "confirm-form" }))
-        {
-        <div align="center">
-            <p>
-                @Resources.Resource.GoogleAuthEnterCode
-            </p>
-        </div>
-        
-        <br />
+            <h2 class="section-title">
+                @Resources.Resource.GoogleAuthTitle
+            </h2>
 
-            <div class="input mauto">
-                @Html.LabelFor(x => x.CodeDigit, new { @class = "lbl" })
-                @Html.TextBoxFor(x => x.CodeDigit)
-                <p class="error-msg">
-                    @Html.ValidationMessageFor(x => x.CodeDigit)
-                </p>
+            <div>
+                @using (Html.BeginForm("TwoFactorAuthenticate", "Sign", FormMethod.Post, new { id = "confirm-form" }))
+                {
+                    <center>
+                        <p>
+                            @Resources.Resource.GoogleAuthEnterCode
+                        </p>
+                    </center>
+
+                    <div class="form-group">
+                        @Html.LabelFor(x => x.CodeDigit, new { @class = "lbl" })
+                        @Html.TextBoxFor(x => x.CodeDigit)
+                        <p class="error-msg">
+                            @Html.ValidationMessageFor(x => x.CodeDigit)
+                        </p>
+                    </div>
+
+                    <button type="submit" class="btn btn-grad btn-block" form="confirm-form">
+                        <span data-text="@Resources.Resource.Confirm">@Resources.Resource.Confirm</span>
+                    </button>
+                    if (!ViewData.ModelState.IsValid)
+                    {
+                        @Html.ValidationSummary(true)
+                    }
+                }
+
             </div>
 
-            <button type="submit" class="page-link" form="confirm-form">
-                <span data-text="@Resources.Resource.Confirm">@Resources.Resource.Confirm</span>
-            </button>
-            if (!ViewData.ModelState.IsValid)
-            {
-                @Html.ValidationSummary(true)
-            }
-        }
-
+        </div>
     </div>
-
 </div>

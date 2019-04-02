@@ -9,171 +9,157 @@
     var Partners = ViewBag.Partners as IEnumerable<Partner>;
     var PageInfo = ViewBag.PageInfo as WayWealth.Areas.lk.ViewModels.PageInfo;
 }
-<div class="partner-block">
-    <p class="page-title">
-        <img src="~/Areas/lk/Content/img/toolbar-icon-5-1.png" alt="">@Resources.Resource.MyPartnersTitle
-    </p>
-    <div class="filter-block">
-        <div class="add_sum search_partner_form">
-            <p>@Resources.Resource.LastnameLogin</p>
-            @using (Html.BeginForm("Partners", "Home", FormMethod.Get, new { id = "search_partner_form" }))
-            {
-                <div class="input">
-                    @Html.TextBoxFor(x => x.SearchText, new { id = "searchText" })
+<div class="white-bg h-100">
+    <div class="container">
+        <div class="partner-block">
+            <h2 class="inner-title">
+                @Resources.Resource.MyPartnersTitle
+            </h2>
+            <div class="filter-block">
+                <div class="add_sum search_partner_form form-group">
+                    <label>@Resources.Resource.LastnameLogin</label>
+                    @using (Html.BeginForm("Partners", "Home", FormMethod.Get, new { id = "search_partner_form" }))
+                    {
+                        <div class="input">
+                            @Html.TextBoxFor(x => x.SearchText, new { id = "searchText" })
+                        </div>
+                        <button type="submit" class="btn btn-grad btn-sm" form="search_partner_form">
+                            @Resources.Resource.Search
+                        </button>
+                    }
                 </div>
-                <button type="submit" class="page-link" form="search_partner_form">
-                    <span data-text="@Resources.Resource.Search">@Resources.Resource.Search</span>
-                </button>
+            </div>
+            @if (Partners != null)
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Resources.Resource.Number
+                            </th>
+                            <th>
+                                @Resources.Resource.DateReg
+                            </th>
+                            <th>
+                                @Resources.Resource.Fio
+                            </th>
+                            <th>
+                                @Resources.Resource.Login
+                            </th>
+                            <th>
+                                @Resources.Resource.InvestedAmount
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            var numb = 0;
+                        }
+                        @foreach (var p in Partners)
+                        {
+                            <tr>
+                                <td data-text="@Resources.Resource.Number">
+                                    <p>@(PageInfo.PageSize * (PageInfo.PageNumber - 1) + ++numb)</p>
+                                </td>
+                                <td data-text="@Resources.Resource.DateReg">
+                                    <p>@p.CreationDate</p>
+                                </td>
+                                <td data-text="@Resources.Resource.Fio">
+                                    <p>@p.ObjectName</p>
+                                </td>
+                                <td data-text="@Resources.Resource.Login">
+                                    <p>@p.Login</p>
+                                </td>
+                                <td data-text="@Resources.Resource.InvestedAmount">
+                                    <p>$ @((p.BalanceInvestments ?? 0).ToString("N2"))</p>
+                                </td>
+                                <td class="btn_td">
+                                    <a class="subtable_btn"></a>
+                                </td>
+                            </tr>
+
+                            if (Investments.Any(x => x.PartnerId == p.id_object))
+                            {
+                                <tr class="children-table">
+                                    <td class="colspan" colspan="6">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        @Resources.Resource.DateCreat
+                                                    </th>
+                                                    <th>
+                                                        @Resources.Resource.DateFinish
+                                                    </th>
+                                                    <th>
+                                                        @Resources.Resource.StatusTable
+                                                    </th>
+                                                    <th>
+                                                        @Resources.Resource.InvestAmount
+                                                    </th>
+                                                    <th>
+                                                        @Resources.Resource.CurrentYield
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+                                                @foreach (var item in Investments.Where(x => x.PartnerId == p.id_object).OrderBy(x => x.StartDate))
+                                                {
+                                                    var status = item.Status;
+                                                    switch (item.Status)
+                                                    {
+                                                        case "Завершен":
+                                                            status = Resources.Resource.Completed;
+                                                            break;
+                                                        case "Активен":
+                                                            status = Resources.Resource.Active;
+                                                            break;
+                                                    }
+
+                                                    <tr>
+                                                        <td data-text="@Resources.Resource.DateCreat">
+                                                            <p>@item.StartDate.Value.ToShortDateString()</p>
+                                                        </td>
+                                                        <td data-text="@Resources.Resource.DateFinish">
+                                                            <p>@item.EndDate.Value.ToShortDateString()</p>
+                                                        </td>
+                                                        <td data-text="@Resources.Resource.StatusTable">
+                                                            @if (item.Status == "Активен")
+                                                            {
+                                                                <b class="activen">@status</b>
+                                                            }
+                                                            else if (item.Status == "Завершен")
+                                                            {
+                                                                <b class="completed">@status</b>
+                                                            }
+                                                        </td>
+                                                        <td data-text="@Resources.Resource.InvestAmount">
+                                                            <p>$ @((item.Sum ?? 0).ToString("N2"))</p>
+                                                        </td>
+                                                        <td data-text="@Resources.Resource.CurrentYield">
+                                                            <p>$ @((item.SumIncome ?? 0).ToString("N2"))</p>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            }
+
+                        }
+                    </tbody>
+                </table>
+
+                if (PageInfo != null && PageInfo.TotalPages > 1)
+                {
+                    <div style="margin-bottom: 20px;">
+                        @Html.PageLinks(PageInfo, null, x => Url.Action("partners", new { page = x, SearchText = Model.SearchText }))
+                    </div>
+                }
             }
         </div>
     </div>
-    @if (Partners != null)
-    {
-        <table class="mb30" data-tablesaw-mode="swipe" data-tablesaw-minimap>
-            <thead>
-                <tr>
-                    <th data-tablesaw-priority="persist">
-                        <p class="caption">
-                            <span data-text="@Resources.Resource.Number">@Resources.Resource.Number</span>
-                        </p>
-                    </th>
-                    <th data-tablesaw-priority="1">
-                        <p class="caption">
-                            <span data-text="@Resources.Resource.DateReg">@Resources.Resource.DateReg</span>
-                        </p>
-                    </th>
-                    <th data-tablesaw-priority="2">
-                        <p class="caption">
-                            <span data-text="@Resources.Resource.Fio">@Resources.Resource.Fio</span>
-                        </p>
-                    </th>
-                    <th data-tablesaw-priority="3">
-                        <p class="caption">
-                            <span data-text="@Resources.Resource.Login">@Resources.Resource.Login</span>
-                        </p>
-                    </th>
-                    <th data-tablesaw-priority="4">
-                        <p class="caption">
-                            <span data-text="@Resources.Resource.InvestedAmount">@Resources.Resource.InvestedAmount</span>
-                        </p>
-                    </th>
-                    <th class="btn_th" data-tablesaw-priority="5"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @{
-                    var numb = 0;
-                }
-                @foreach (var p in Partners)
-                {
-                    <tr>
-                        <td>
-                            <p>@(PageInfo.PageSize * (PageInfo.PageNumber - 1) + ++numb)</p>
-                        </td>
-                        <td>
-                            <p>@p.CreationDate</p>
-                        </td>
-                        <td>
-                            <p>@p.ObjectName</p>
-                        </td>
-                        <td>
-                            <p>@p.Login</p>
-                        </td>
-                        <td>
-                            <p>$ @((p.BalanceInvestments ?? 0).ToString("N2"))</p>
-                        </td>
-                        <td class="btn_td">
-                            <a class="subtable_btn"></a>
-                        </td>
-                    </tr>
-
-                    if (Investments.Any(x => x.PartnerId == p.id_object))
-                    {
-                        <tr class="children-table">
-                            <td class="colspan" colspan="6">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                <p class="caption">
-                                                    <span data-text="@Resources.Resource.DateCreat">@Resources.Resource.DateCreat</span>
-                                                </p>
-                                            </th>
-                                            <th>
-                                                <p class="caption">
-                                                    <span data-text="@Resources.Resource.DateFinish">@Resources.Resource.DateFinish</span>
-                                                </p>
-                                            </th>
-                                            <th>
-                                                <p class="caption">
-                                                    <span data-text="@Resources.Resource.StatusTable">@Resources.Resource.StatusTable</span>
-                                                </p>
-                                            </th>
-                                            <th>
-                                                <p class="caption">
-                                                    <span data-text="@Resources.Resource.InvestAmount">@Resources.Resource.InvestAmount</span>
-                                                </p>
-                                            </th>
-                                            <th>
-                                                <p class="caption">
-                                                    <span data-text="@Resources.Resource.CurrentYield">@Resources.Resource.CurrentYield</span>
-                                                </p>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @foreach (var item in Investments.Where(x => x.PartnerId == p.id_object).OrderBy(x => x.StartDate))
-                                        {
-                                            var status = item.Status;
-                                            switch (item.Status)
-                                            {
-                                                case "Завершен":
-                                                    status = Resources.Resource.Completed;
-                                                    break;
-                                                case "Активен":
-                                                    status = Resources.Resource.Active;
-                                                    break;
-                                            }
-
-                                            <tr>
-                                                <td>
-                                                    <p>@item.StartDate.Value.ToShortDateString()</p>
-                                                </td>
-                                                <td>
-                                                    <p>@item.EndDate.Value.ToShortDateString()</p>
-                                                </td>
-                                                <td>
-                                                    @if (item.Status == "Активен")
-                                                    {
-                                                        <p class="activen">@status</p>
-                                                    }
-                                                    else if (item.Status == "Завершен")
-                                                    {
-                                                        <p class="completed">@status</p>
-                                                    }
-                                                </td>
-                                                <td>
-                                                    <p>$ @((item.Sum ?? 0).ToString("N2"))</p>
-                                                </td>
-                                                <td>
-                                                    <p>$ @((item.SumIncome ?? 0).ToString("N2"))</p>
-                                                </td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                    }
-
-                }
-            </tbody>
-        </table>
-
-        if (PageInfo != null && PageInfo.TotalPages > 1)
-        {
-            @Html.PageLinks(PageInfo, null, x => Url.Action("partners", new { page = x, SearchText = Model.SearchText }))
-        }
-    }
 </div>

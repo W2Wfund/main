@@ -4,55 +4,52 @@
     ViewBag.Title = Resources.Resource.InHeader;
 }
 
-<div class="reg-block sign-block">
-    <p class="page-title">
-        @Resources.Resource.InHeader
-    </p>
-    @using (Html.BeginForm("In", "Sign", FormMethod.Post, new { id = "reg-form" }))
-    {
-        <div class="wrap-id">
-            <div class="input mauto">
-                @Html.LabelFor(x => x.Login, new { @class = "lbl" })
-                @Html.TextBoxFor(x => x.Login)
-                <p class="error-msg">
-                    @Html.ValidationMessageFor(x => x.Login)
-                </p>
-            </div>
+<div class=" white-bg">
+    <div class="container">
+        <div class="reg-block sign-block">
+            <h2 class="section-title">@Resources.Resource.InHeader</h2>
+            @using (Html.BeginForm("In", "Sign", FormMethod.Post, new { id = "reg-form" }))
+            {
+                <div class="wrap-id">
+                    <div class="input mauto form-group">
+                        @Html.LabelFor(x => x.Login, new { @class = "lbl" })
+                        @Html.TextBoxFor(x => x.Login)
+                        <p class="error-msg">
+                            @Html.ValidationMessageFor(x => x.Login)
+                        </p>
+                    </div>
+                </div>
+                <div class="wrap-pass">
+                    <div class="input mauto form-group">
+                        @Html.LabelFor(x => x.Password, new { @class = "lbl" })
+                        @Html.PasswordFor(x => x.Password)
+                        <p class="error-msg">@Html.ValidationMessageFor(m => m.Password)</p>
+                    </div>
+                </div>
+                @Html.Recaptcha(useSsl: Recaptcha.Web.SslBehavior.AlwaysUseSsl)
+                <div class="wrap-check">
+                    <label class="checkbox">
+                        @Html.CheckBoxFor(x => x.IsPersistent, new { id = "check1" })
+                        <span></span>
+                        @Resources.Resource.InRememberChkText
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-grad btn-block" form="reg-form">
+                    @Resources.Resource.InEntryBtnText
+                </button>
+                if (!ViewData.ModelState.IsValid)
+                {
+                    @Html.ValidationSummary(true)
+                }
+            }
         </div>
-        <div class="wrap-pass">
-            <div class="input mauto">
-                @Html.LabelFor(x => x.Password, new { @class = "lbl" })
-                @Html.PasswordFor(x => x.Password, new { style = "border-color:#e1e1e1;" })
-                <p class="error-msg">@Html.ValidationMessageFor(m => m.Password)</p>
-            </div>
+        <div class="reg-link-block">
+            <a href="@Url.Action("restore", "sign")" class="btn btn-bordered btn-sm">
+                @Resources.Resource.RestoreText
+            </a>
+            <a href="@Url.Action("up", "sign")" class="btn btn-bordered btn-sm">
+                @Resources.Resource.SignUpText
+            </a>
         </div>
-        @Html.Recaptcha(useSsl: Recaptcha.Web.SslBehavior.AlwaysUseSsl)
-        <button type="submit" class="page-link" form="reg-form">
-            <span data-text="@Resources.Resource.InEntryBtnText">@Resources.Resource.InEntryBtnText</span>
-        </button>
-        <div class="wrap-check" style="margin-top: 15px;">
-            <div class="checkbox">
-                @Html.CheckBoxFor(x => x.IsPersistent, new { id = "check1" })
-                <label for="check1">
-                    @Resources.Resource.InRememberChkText
-                </label>
-                <div class="check"></div>
-            </div>
-        </div>
-
-        if (!ViewData.ModelState.IsValid)
-        {
-            @Html.ValidationSummary(true)
-        }
-    }
-
-    <div class="link-block">
-        <a href="@Url.Action("restore", "sign")">
-            @Resources.Resource.RestoreText
-        </a>
-        <a href="@Url.Action("up", "sign")">
-            @Resources.Resource.SignUpText
-        </a>
     </div>
 </div>
-

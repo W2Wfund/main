@@ -1,50 +1,46 @@
 ﻿@model WayWealth.Areas.lk.ViewModels.Home.HistoryView
+<div class="form-group">
+    <label>@Resources.Resource.CashFlowItem</label>
+    <div class="form-group-select">
+        @{
+            List<SelectListItem> items = new List<SelectListItem>();
 
-<p style="" class="w100">@Resources.Resource.CashFlowItem</p>
+            if (Model.account == "Остаток.ВнутреннийСчет")
+            {
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleReplenishment, Value = "Пополнение счета" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheInvestmentProgram, Value = "Открытие инвест программы" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheCamulativeProgram, Value = "Открытие накопит программы" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleClosingTheInvestmentProgram, Value = "Закрытие инвест программы" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleWithdrawal, Value = "Вывод средств" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleTransferToPartner, Value = "Перевод партнеру" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleCharity, Value = "Благотворительность" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleChangeInvestment, Value = "Пополнение/изменение инвест программы" });
+            }
+            else if (Model.account == "Остаток.ИнвестиционныйСчет")
+            {
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheInvestmentProgram, Value = "Открытие инвест программы" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleClosingTheInvestmentProgram, Value = "Закрытие инвест программы" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleReplenishInvest, Value = "Пополнение инвест программы" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleBonusInvestment, Value = "Бонусная инвест программа" });
+            }
+            else if (Model.account == "Остаток.Проценты")
+            {
+                items.Add(new SelectListItem { Text = Resources.Resource.AticlePercent, Value = "Начисление процентов" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleTransferToInnerAccount, Value = "Перевод на лицевой счет" });
+            }
+            else if (Model.account == "Остаток.Вознаграждения")
+            {
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleRefReward, Value = "Реферальное вознаграждение" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleCamulativeReward, Value = "Вознаграждение по накопительной программе" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleStructReward, Value = "Вознаграждение со структуры" });
+                items.Add(new SelectListItem { Text = Resources.Resource.AticleTransferToInnerAccount, Value = "Перевод на лицевой счет" });
+            }
+        }
 
-@*@Html.DropDownListFor(x => x.article, new SelectList(articles, "Value", "ObjectName"),
-    Resources.Resource.ShowAll, new { @class = "w235 myslimSelect3" })*@
-@{
-    List<SelectListItem> items = new List<SelectListItem>();
+        @Html.DropDownListFor(x => x.article, items,
+            Resources.Resource.ShowAll, new { @class = "w235 myslimSelect3" })
+        <i class="ion-ios-arrow-down"></i>
+    </div>
+</div>
 
-    if (Model.account == "Остаток.ВнутреннийСчет")
-    {
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleReplenishment, Value = "Пополнение счета" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheInvestmentProgram, Value = "Открытие инвест программы" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheCamulativeProgram, Value = "Открытие накопит программы" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleClosingTheInvestmentProgram, Value = "Закрытие инвест программы" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleWithdrawal, Value = "Вывод средств" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleTransferToPartner, Value = "Перевод партнеру" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleCharity, Value = "Благотворительность" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleChangeInvestment, Value = "Пополнение/изменение инвест программы" });
-    }
-    else if (Model.account == "Остаток.ИнвестиционныйСчет")
-    {
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheInvestmentProgram, Value = "Открытие инвест программы" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleClosingTheInvestmentProgram, Value = "Закрытие инвест программы" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleReplenishInvest, Value = "Пополнение инвест программы" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleBonusInvestment, Value = "Бонусная инвест программа" });
-    }
-    else if (Model.account == "Остаток.Проценты")
-    {
-        items.Add(new SelectListItem { Text = Resources.Resource.AticlePercent, Value = "Начисление процентов" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleTransferToInnerAccount, Value = "Перевод на лицевой счет" });
-    }
-    else if (Model.account == "Остаток.Вознаграждения")
-    {
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleRefReward, Value = "Реферальное вознаграждение" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleCamulativeReward, Value = "Вознаграждение по накопительной программе" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleStructReward, Value = "Вознаграждение со структуры" });
-        items.Add(new SelectListItem { Text = Resources.Resource.AticleTransferToInnerAccount, Value = "Перевод на лицевой счет" });
-    }
-}
 
-@Html.DropDownListFor(x => x.article, items, 
-    Resources.Resource.ShowAll, new { @class = "w235 myslimSelect3" })
-
-<script>
-    var mySlimSelect3 = new SlimSelect({
-        select: '.myslimSelect3',
-        showSearch: false
-    })
-</script>

@@ -7,15 +7,16 @@
 <ul class="ul2">
     @foreach (var item in Model)
     {
+        decimal percent2 = 0;
         decimal percent = 0;
         decimal count = item.Count ?? 0;
         if (counts > 0)
         {
             percent = count / counts;
+            percent2 = (int)Math.Round(percent*100, 0);
         }
         <li>
-            <a style="width: @percent%; @(percent > 0?"padding: 0 28px;": "")">
-            <i>
+            <strong style="width: @percent2%;">
                 @if (culture == "ru-RU")
                 {
                     @item.ObjectName
@@ -24,7 +25,7 @@
                 {
                     @item.ObjectNameEng
                 }
-            </i></a>
+            </strong>
             <span class="@(item.id_object == choise.PollVariantId ? "active" : "")">@(percent.ToString("P2"))</span>
         </li>
     }

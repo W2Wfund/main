@@ -9,46 +9,60 @@
 }
 
 <div class="news-page">
-    <div class="news-bg">
-        <div class="news-content">
-            <p class="page-title">
-                <span data-text="@Resources.Resource.NewsTitle">@Resources.Resource.NewsTitle</span>
-            </p>
-            <div class="bread">
-                <a href="/">@Resources.Resource.HomePage</a>
-                <i>/</i>
-                <a>@Resources.Resource.NewsTitle</a>
-            </div>
+    <div class="inner-page-top" style="background-image: url(/Content/img/inner-page-top-news.jpg)">
+        <div class="container">
+            <h2>@Resources.Resource.NewsTitle</h2>
+        </div>
+    </div>
+    <div class="bread">
+        <div class="container">
+            <a href="/">@Resources.Resource.HomePage</a>
+            <i>/</i>
+            <span>@Resources.Resource.NewsTitle</span>
         </div>
     </div>
     @if (Items != null)
     {
-        <div class="news-content">
+        <div class="container">
             <ul class="news-list">
                 @foreach (var item in Items.OrderByDescending(x => x.CreationDate))
                 {
                     <li>
-                        <a href="@Url.Action("news", "home", new {id= item.id_object})">
+                        <div class="img-box">
                             <img src="@Url.Action("img", "home", new { area = "", id=item.Image })" alt="">
-                            <b>
-                                @if (culture == "ru-RU")
-                                {
-                                    @item.ObjectName
-                                }
-                                else
-                                {
-                                    @item.ObjectNameEng
-                                }
-                            </b>
-                            <p>@item.PublishDate.Value.ToShortDateString()</p>
+                        </div>
+                        <a href="@Url.Action("news", "home", new {id= item.id_object})" class="link">
+                            @if (culture == "ru-RU")
+                            {
+                                @item.ObjectName
+                            }
+                            else
+                            {
+                                @item.ObjectNameEng
+                            }
+                        </a>
+                        <time class="date">
+                            <i class="ion ion-md-calendar"></i>@item.PublishDate.Value.ToShortDateString()
+                        </time>
+                        <a href="@Url.Action("news", "home", new {id= item.id_object})" class="btn btn-bordered">
+                            @if (culture == "ru-RU")
+                            {
+                                @Resources.Resource.MoreBtn
+                            }
+                            else
+                            {
+                                @Resources.Resource.MoreBtn
+                            }
                         </a>
                     </li>
                 }
             </ul>
         </div>
     }
-    @if (PageInfo != null && PageInfo.TotalPages > 1)
-    {
-        @Html.PageLinks(PageInfo, null, x => Url.Action("news", new { page = x }))
-    }
+        <div class="container">
+            @if (PageInfo != null && PageInfo.TotalPages > 1)
+            {
+                @Html.PageLinks(PageInfo, null, x => Url.Action("news", new { page = x }))
+            }
+        </div>
 </div>

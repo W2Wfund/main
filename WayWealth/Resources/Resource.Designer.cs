@@ -655,7 +655,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на отмена.
+        ///   Ищет локализованную строку, похожую на Отмена.
         /// </summary>
         public static string Cancellation {
             get {
@@ -781,7 +781,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на подтвердить.
+        ///   Ищет локализованную строку, похожую на Подтвердить.
         /// </summary>
         public static string Confirm {
             get {
@@ -3068,11 +3068,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на поиск.
+        ///   Ищет локализованную строку, похожую на Поиск.
         /// </summary>
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выберите сумму инвестиции.
+        /// </summary>
+        public static string SelectInvestSumm {
+            get {
+                return ResourceManager.GetString("SelectInvestSumm", resourceCulture);
             }
         }
         

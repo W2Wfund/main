@@ -9,85 +9,78 @@
         "Остаток.ВнутреннийСчет": "@( TempData["Остаток.ВнутреннийСчет"])"
     };
 </script>
-<div class="perevod-block">
-    <p class="page-title">
-        <img src="~/Areas/lk/Content/img/toolbar-icon-4-2.png" alt="">@Resources.Resource.MoneyTransactionTitle
-    </p>
-    @*<div class="error-msg">
-        @Html.ValidationSummary(false)
-    </div>*@
-    <div class="btn-block">
-        <a href="@Url.Action("transfer", "home")" class="page-link"><span data-text="@Resources.Resource.PersonalAccountBtn">@Resources.Resource.PersonalAccountBtn</span></a>
-        <a class="page-link active"><span data-text="@Resources.Resource.PartnerBtn">@Resources.Resource.PartnerBtn</span></a>
-    </div>
-    <div class="perevod-select">
-        <div class="tab-account active">
-            <p>@Resources.Resource.UsernameId</p>
-            @Html.TextBoxFor(x => x.Login, new { id="login" })
-            <script>
-                $('#login').change(function () {
-                    $('#login_hidden').val($(this).val());
-                })
-            </script> 
-        </div>
-    </div>
+<div class="white-bg h-100">
+    <div class="container">
+        <div class="perevod-block">
+            <h2 class="inner-title">
+                @Resources.Resource.MoneyTransactionTitle
+            </h2>
+            <div class="text-center m-b-20">
+                <a href="@Url.Action("transfer", "home")" class="btn btn-bordered btn-sm m-r-10 m-l-10 m-b-10">@Resources.Resource.PersonalAccountBtn</a>
+                <a class="btn btn-grad btn-sm m-r-10 m-l-10 m-b-10">@Resources.Resource.PartnerBtn</a>
+            </div>
 
-    <div class="form-block">
 
-        @using (Html.BeginForm("transfer2", "home", FormMethod.Post, new { id = "form_perevod", area = "lk" }))
-        {
-            @Html.HiddenFor(x => x.Login, new { id = "login_hidden" })
-            <div class="wrap-bg-form">
-                <div class="dostupno">
-                    <p>
-                        <span data-text="@Resources.Resource.AvailableTranslation">@Resources.Resource.AvailableTranslation</span>
-                    </p>
-                    <b>$ <span class="reminder">@(Convert.ToDouble(TempData["Остаток.ВнутреннийСчет"]).ToString("N2"))</span></b>
+
+            <div class="text-center">
+                <div class="form-group form-group-inline perevod-partner-id">
+                    <label>@Resources.Resource.UsernameId</label>
+                    @Html.TextBoxFor(x => x.Login, new { id = "login" })
+                    <script>
+                        $('#login').change(function () {
+                            $('#login_hidden').val($(this).val());
+                        })
+                    </script>
                 </div>
-                <div class="wrap-input">
-                    <div class="input mr6">
-                        <span>@Resources.Resource.Amount</span>
-                        @Html.TextBoxFor(x => x.Sum, new { @class = "sum_input" })
-                        <a class="input_link js_transfer_all_sum">
-                            <img src="~/Areas/lk/Content/img/perevod-icon-btn.png" alt="">@Resources.Resource.WholeAmountBtn
-                        </a>
-                    </div>
-                    <div class="input">
-                        <span>@Resources.Resource.FinancPass</span>
-                        <div class="wrap-pass">
+            </div>
 
-                            @Html.PasswordFor(x => x.Password)
+            @using (Html.BeginForm("transfer2", "home", FormMethod.Post, new { id = "form_perevod", area = "lk" }))
+            {
+                @Html.HiddenFor(x => x.Login, new { id = "login_hidden" })
+            <div class="transfer-bg-form">
+                <div class="dostupno flex">
+                    <p>
+                        @Resources.Resource.AvailableTranslation
+                    </p>
+                    <b>$ <span id="reminder" class="reminder">@(Convert.ToDouble(TempData["Остаток.ВнутреннийСчет"]).ToString("N2"))</span></b>
+                </div>
+                <div class="flex transfer-bg-flex">
+                    <div>
+                        <div class="form-group">
+                            <label>@Resources.Resource.Amount</label>
+                            <div class="flex">
+                                @Html.TextBoxFor(x => x.Sum, new { @class = "sum_input" })
+                                <a class="btn btn-bordered btn-sm m-l-10  js_transfer_all_sum">
+                                    <i class="ion-ios-arrow-round-back"></i>@Resources.Resource.WholeAmountBtn
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label>@Resources.Resource.FinancPass</label>
+                            <div class="flex">
+                                @Html.PasswordFor(x => x.Password)
+                                <a class="btn btn-bordered btn-sm m-l-10" id="gentp">@Resources.Resource.GetPassBtn</a>
+                            </div>
                             <div class="sms">
                                 <b>@Resources.Resource.EmailRequiredSms1</b>
                                 <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
                             </div>
                         </div>
-                        <a class="input_link" id="gentp">@Resources.Resource.GetPassBtn</a>
-                    </div>
-                    <div class="sms sms-m">
-                        <b>@Resources.Resource.EmailRequiredSms1</b>
-                        <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
                     </div>
                 </div>
             </div>
-            <div class="textarea-block">
-                <p>@Resources.Resource.Description</p>
+            <div class="textarea-block form-group">
+                <label>@Resources.Resource.Description</label>
                 @Html.TextAreaFor(x => x.Desctiption)
-                @*<div class="wrap-check">
-                    <div class="checkbox">
-                        <input type="checkbox" id="check1" onchange="document.getElementById('submit_btn').disabled = !this.checked;">
-                        <label for="check1">Текст соглашения</label>
-                        <div class="check"></div>
-                    </div>
-                </div>*@
             </div>
-            @*<button type="submit" class="page-link" form="form_perevod" id="submit_btn" disabled="disabled">
-                <span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span>
-            </button>*@
-             <button type="submit" class="page-link" form="form_perevod" id="submit_btn">
-                <span data-text="@Resources.Resource.TransferBtn">@Resources.Resource.TransferBtn</span>
-            </button>
-        }
+            <div class="text-center">
+                <button type="submit" class="btn btn-grad" form="form_perevod" id="submit_btn">
+                    @Resources.Resource.TransferBtn
+                </button>
+            </div>
+            }
+        </div>
     </div>
-
 </div>
