@@ -134,7 +134,11 @@ namespace WayWealth.Controllers
 
         public ActionResult ChangeCulture(string lang)
         {
-            string returnUrl = Request.UrlReferrer.AbsolutePath;
+            if(Request.UrlReferrer == null)
+            {
+                return Redirect(Url.Action("index"));
+            }
+
             // Список культур
             var cultures = new List<string>() { "ru", "en" };
             if (!cultures.Contains(lang))
@@ -150,10 +154,11 @@ namespace WayWealth.Controllers
                 cookie = new HttpCookie("lang");
                 cookie.HttpOnly = false;
                 cookie.Value = lang;
-                cookie.Expires = DateTime.Now.AddYears(1);
+                DateTime nu = DateTime.Now;
+                cookie.Expires = nu.AddYears(1);
             }
             Response.Cookies.Add(cookie);
-            return Redirect(returnUrl);
+            return Redirect(Request.UrlReferrer.AbsolutePath ?? Url.Action("index"));
         }
 
 

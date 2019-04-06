@@ -121,7 +121,7 @@
     <value>Восстановление доступа</value>
   </data>
   <data name="AccountBalance" xml:space="preserve">
-    <value>Остаток на счете</value>
+    <value>Остаток</value>
   </data>
   <data name="AccountBalances" xml:space="preserve">
     <value>Остатки на счетах:</value>
@@ -139,19 +139,19 @@
     <value>Сумма</value>
   </data>
   <data name="AmountComing" xml:space="preserve">
-    <value>Сумма Приход</value>
+    <value>Поступления</value>
   </data>
   <data name="AmountConsumption" xml:space="preserve">
-    <value>Сумма Расход</value>
+    <value>Списания</value>
   </data>
   <data name="AmountPaid" xml:space="preserve">
     <value>Сумма выплаченных</value>
   </data>
   <data name="AmountPeriod" xml:space="preserve">
-    <value>Сумма Приход за период</value>
+    <value>Поступления за период</value>
   </data>
   <data name="AmountPeriod2" xml:space="preserve">
-    <value>Сумма Расход за период</value>
+    <value>Списания за период</value>
   </data>
   <data name="AmountProgram" xml:space="preserve">
     <value>Сумма по программе</value>
@@ -253,7 +253,7 @@
     <value>Кошельки криптовалют</value>
   </data>
   <data name="CumulativeText" xml:space="preserve">
-    <value>Накопительная программа:</value>
+    <value>Объем по бинару для вознаграждения:</value>
   </data>
   <data name="Currency" xml:space="preserve">
     <value>Валюта</value>
@@ -763,16 +763,16 @@
     <value>Оставьте ваш отзыв</value>
   </data>
   <data name="footer_slogan1" xml:space="preserve">
-    <value>Платформа Way To Wealth рада предоставить Вам возможность не только зарабатывать высокий фиксированный доход, но и благодаря совместной финансовой грамотности, строить бизнес вместе по пути современной цифровой экономики</value>
+    <value>Платформа Way To Wealth рада предоставить Вам возможность не только зарабатывать высокий и стабильный доход, но и строить бизнес вместе  благодаря совместной финансовой грамотности на пути в мир современной цифровой экономики.</value>
   </data>
   <data name="footer_slogan2" xml:space="preserve">
     <value>Пополнение и вывод инвестиционных средств осуществляется в криптовалютах:</value>
   </data>
   <data name="footer_slogan3" xml:space="preserve">
-    <value>Информация, содержащаяся на этом сайте, и видео-презентациях носит общий характер. Это не совет или рекомендация инвестировать в W2W. Она была подготовлена без учета ваших индивидуальных целей, финансовой ситуации или конкретных потребностей. Соответственно, перед принятием инвестиционного решения, Вы должны оценить свои собственные цели, финансовую ситуацию и потребность.</value>
+    <value>Информация, содержащаяся на этом сайте, и видео-презентациях носит общий характер. Это не совет или рекомендация по инвестированию в платформу Way To Wealth.  Она была подготовлена без учета Ваших индивидуальных целей, финансовых ситуации или конкретных потребностей. Соответственно, перед принятием инвестиционного решения, Вы должны оценить свои собственные цели, финансовую ситуацию и потребность.</value>
   </data>
   <data name="footer_slogan4" xml:space="preserve">
-    <value>По всем вопросам обращайтесь</value>
+    <value>По всем вопросам обращайтесь:</value>
   </data>
   <data name="menu_about" xml:space="preserve">
     <value>О компании</value>
@@ -1313,7 +1313,7 @@
   <data name="ReviewIsEmpty" xml:space="preserve">
     <value>Введите текст отзыва!</value>
   </data>
-  <data name="2FAChanged" xml:space="preserve">
+  <data name="FAChanged" xml:space="preserve">
     <value>Настройки двухфакторной аутентификации изменены!</value>
   </data>
   <data name="CodeDigit" xml:space="preserve">

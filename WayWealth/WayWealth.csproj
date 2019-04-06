@@ -235,12 +235,14 @@
     <Content Include="Areas\lk\Content\img\fb.png" />
     <Content Include="Areas\lk\Content\img\fb2.png" />
     <Content Include="Areas\lk\Content\img\filter.png" />
+    <Content Include="Areas\lk\Content\img\footer-logo-2.png" />
     <Content Include="Areas\lk\Content\img\footer-logo.png" />
     <Content Include="Areas\lk\Content\img\footer-m.jpg" />
     <Content Include="Areas\lk\Content\img\footer.jpg" />
     <Content Include="Areas\lk\Content\img\info.png" />
     <Content Include="Areas\lk\Content\img\instagram.png" />
     <Content Include="Areas\lk\Content\img\instagram2.png" />
+    <Content Include="Areas\lk\Content\img\logo-2.png" />
     <Content Include="Areas\lk\Content\img\logo.png" />
     <Content Include="Areas\lk\Content\img\minus.png" />
     <Content Include="Areas\lk\Content\img\modal-error.png" />
@@ -417,6 +419,7 @@
     <Content Include="Content\img\favicon.png" />
     <Content Include="Content\img\fb.png" />
     <Content Include="Content\img\fb2.png" />
+    <Content Include="Content\img\footer-logo-2.png" />
     <Content Include="Content\img\footer-logo.png" />
     <Content Include="Content\img\footer-m.jpg" />
     <Content Include="Content\img\footer.jpg" />
@@ -467,6 +470,7 @@
     <Content Include="Content\img\invest-page.jpg" />
     <Content Include="Content\img\invest-referal-bg.jpg" />
     <Content Include="Content\img\invest-strategiya.png" />
+    <Content Include="Content\img\logo-2.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\main-about-block-bg.jpg" />
     <Content Include="Content\img\main-footer-bg.jpg" />
@@ -477,8 +481,11 @@
     <Content Include="Content\img\news-open-img.jpg" />
     <Content Include="Content\img\news-page.jpg" />
     <Content Include="Content\img\open-menu.png" />
+    <Content Include="Content\img\package-img-1-1.png" />
     <Content Include="Content\img\package-img-1.png" />
+    <Content Include="Content\img\package-img-2-1.png" />
     <Content Include="Content\img\package-img-2.png" />
+    <Content Include="Content\img\package-img-3-1.png" />
     <Content Include="Content\img\package-img-3.png" />
     <Content Include="Content\img\page-about-icon-1.png" />
     <Content Include="Content\img\page-about-icon-2.png" />

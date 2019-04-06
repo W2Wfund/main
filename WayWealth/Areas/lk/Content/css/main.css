@@ -239,12 +239,13 @@ a, button {
     border-bottom: 1px solid #b4b5b9;
     width: 100%;
     padding: 0;
+    resize: none;
 }
 
 .form-group textarea {
-    min-height: 120px;
-    height: 120px;
-    resize: vertical;
+    min-height: 60px;
+    height: 60px;
+    //resize: vertical;
     padding: 11px 0;
 }
 
@@ -316,7 +317,7 @@ body {
     font-family: 'Montserrat','OpenSans', sans-serif;
     font-weight: 300;
     background-color: #FFF;
-    color: #74737d;
+    color: #53525a;
     margin: 0;
     min-height: 100%;
     line-height: 1.2;
@@ -421,7 +422,7 @@ header .menu li a:hover:after {
 
 header .logo {
     width: 144px;
-    margin: 15px 0 12px 0;
+    margin: 12px 0;
 }
 
 header .lk-lang-block {
@@ -736,6 +737,10 @@ footer .logo {
     display: inline-block;
 }
 
+footer .logo img {
+    height: 45px;
+}
+
 footer .secure {
     display: flex;
     align-items: center;
@@ -796,6 +801,7 @@ footer .text.white {
 footer .crypto {
     display: inline-block;
     margin: 15px 0 40px 0;
+    vertical-align: top;
 }
 
 footer .crypto li {
@@ -1142,11 +1148,13 @@ a.copy_link i {
 
 .swiper-news .link {
     margin: 20px 0 0 0;
-    display: inline-block;
+    display: block;
     font-size: 14px;
     line-height: 1.5;
     font-weight: 400;
     color: #25272b;
+    height: 42px;
+    overflow: hidden;
 }
 
 .swiper-news .link:hover {
@@ -1934,19 +1942,47 @@ a.copy_link i {
     line-height: 1.4;
 }
 
+.charity-block {
+    padding: 50px 0;
+}
 
+.charity-block .swiper-pagination {
+    margin: 30px 0 0 0;
+}
 
+.swiper-charity-inner .img {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
 
+.swiper-charity-inner .img img {
+    position: absolute;
+    max-width: 90%;
+    max-height: 100%;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
 
+.swiper-charity-inner .title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #31333c;
+    margin: 30px 0;
+    padding: 0 15px;
+}
 
+.swiper-charity-inner .btn i {
+    font-size: 20px;
+    margin: 0 5px 0 0;
+}
 
-
-
-
-
-
-
-.someclass {
+html body > jdiv {
+    display: block;
+    overflow: auto;
 }
 
 @media only screen and (max-width: 1340px) {
@@ -2013,7 +2049,7 @@ a.copy_link i {
         opacity: 1;
     }
     header .logo {
-        margin: 15px auto 12px 0;
+        margin: 12px auto 12px 0;
     }
     header .bottom-block b {
         margin-left: 5px;
@@ -2124,7 +2160,6 @@ a.copy_link i {
         margin: -8px 0 0 0;
     }
     header .logo {
-        margin: 15px auto 10px 0;
         width: 105px;
     }
     header .top-block {
@@ -2445,6 +2480,9 @@ a.copy_link i {
     }
     .profile-flex-1 .verif {
         margin-left: 0;
+    }
+    .charity-block {
+        padding: 30px 0;
     }
 }/*767*/
 

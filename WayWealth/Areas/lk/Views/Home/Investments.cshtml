@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 }
-                <div class="add_sum">
+               @*<div class="add_sum">
                     <div class="form-group">
                         <label>@Resources.Resource.AddSum</label>
                         @using (Html.BeginForm("UnionInvestments", "home", new { area = "lk" }, FormMethod.Post, new { id = "form_addSum" }))
@@ -47,7 +47,7 @@
                             </button>
                         }
                     </div>
-                </div>
+                </div>*@
             </div>
             @if (Investments != null && Investments.Count() > 0)
             {
@@ -85,11 +85,11 @@
                                     @Resources.Resource.Program
                                 </p>
                             </th>
-                            <th>
+                           @*<th>
                                 <p class="caption">
                                     @Resources.Resource.AutoRenewalTable
                                 </p>
-                            </th>
+                            </th>*@
                             <th></th>
                         </tr>
                     </thead>
@@ -107,96 +107,98 @@
                                     break;
                             }
 
-                            <tr>
-                                <td data-text="@Resources.Resource.Selection">
-                                    @if (item.Status == "Активен")
-                                    {
-                                        <label class="checkbox single">
-                                            <input type="checkbox" id="@("check" + item.id_object)" value="@item.id_object">
-                                            <label for="@("check" + item.id_object)"></label>
-                                            <span></span>
-                                        </label>
-                                    }
-                                </td>
-                                <td data-text="@Resources.Resource.DateCreat">
-                                    <p>@item.StartDate.Value.ToShortDateString()</p>
-                                </td>
-                                <td data-text="@Resources.Resource.DateFinish">
-                                    <p>@item.EndDate.Value.ToShortDateString()</p>
-                                </td>
-                                <td data-text="@Resources.Resource.Amount">
-                                    <p>$ @item.Sum.Value.ToString("N2")</p>
-                                </td>
-                                <td data-text="@Resources.Resource.StatusTable">
-                                    @if (item.Status == "Активен")
-                                    {
-                                        <strong class="activen">@status</strong>
-                                    }
-                                    else if (item.Status == "Завершен")
-                                    {
-                                        <strong class="completed">@status</strong>
-                                    }
-                                    else
-                                    {
-                                        <strong>@status</strong>
-                                    }
-                                </td>
-                                <td data-text="@Resources.Resource.Program">
-                                    <p>@item.ProgramName</p>
-                                </td>
-                                <td data-text="@Resources.Resource.AutoRenewalTable">
-                                    @if (item.Status != "Завершен")
-                                    {
-                                        if (item.IsProlonged ?? false)
-                                        {
-                                            <a href="@Url.Action("SetProlonged", new { id = item.id_object, isProlonged = false })" class="prolonged2">
-                                                <i class="ion-ios-checkmark"></i>
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("SetProlonged", new { id = item.id_object, isProlonged = true })" class="prolonged1">
-                                                <i class="ion-ios-square-outline"></i>
-                                            </a>
-                                        }
-                                    }
-                                </td>
-                                <td class="btn_td" data-text="">
-                                    <a class="subtable_btn btn btn-bordered btn-xs"><i class="ion-ios-add"></i></a>
-                                </td>
-                            </tr>
-                            <tr class="children-table">
-                                <td class="colspan" colspan="8">
-                                    <div class="wrap-childTable">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        <p class="caption">
-                                                            @Resources.Resource.Number
-                                                        </p>
-                                                    </th>
-                                                    <th>
-                                                        <p class="caption">
-                                                            @Resources.Resource.Date
-                                                        </p>
-                                                    </th>
-                                                    @*<th>
-                                                        <p class="caption">
-                                                            @Resources.Resource.CurrentYield
-                                                        </p>
-                                                    </th>*@
-                                                    <th>
-                                                        <p class="caption">
-                                                            @Resources.Resource.Amount
-                                                        </p>
-                                                    </th>
-                                                    <th>
-                                                        <p class="caption">
-                                                            @Resources.Resource.StatusTable
-                                                        </p>
-                                                    </th>
-                                                </tr>
+                        <tr>
+                            <td data-text="@Resources.Resource.Selection">
+                                @if (item.Status == "Активен")
+                                {
+                                    <label class="checkbox single">
+                                        <input type="checkbox" id="@("check" + item.id_object)" value="@item.id_object">
+                                        <label for="@("check" + item.id_object)"></label>
+                                        <span></span>
+                                    </label>
+                                }
+                            </td>
+                            <td data-text="@Resources.Resource.DateCreat">
+                                <p>@item.StartDate.Value.ToShortDateString()</p>
+                            </td>
+                            <td data-text="@Resources.Resource.DateFinish">
+                                <p>@item.EndDate.Value.ToShortDateString()</p>
+                            </td>
+                            <td data-text="@Resources.Resource.Amount">
+                                <p>$ @item.Sum.Value.ToString("N2")</p>
+                            </td>
+                            <td data-text="@Resources.Resource.StatusTable">
+                                @if (item.Status == "Активен")
+                                {
+                                    <strong class="activen">@status</strong>
+                                }
+                                else if (item.Status == "Завершен")
+                                {
+                                    <strong class="completed">@status</strong>
+                                }
+                                else
+                                {
+                                    <strong>@status</strong>
+                                }
+                            </td>
+                            <td data-text="@Resources.Resource.Program">
+                                <p>@item.ProgramName</p>
+                            </td>
+                            @*
+            <td data-text="@Resources.Resource.AutoRenewalTable">
+                @if (item.Status != "Завершен")
+                {
+                    if (item.IsProlonged ?? false)
+                    {
+                        <a href="@Url.Action("SetProlonged", new { id = item.id_object, isProlonged = false })" class="prolonged2">
+                            <i class="ion-ios-checkmark"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("SetProlonged", new { id = item.id_object, isProlonged = true })" class="prolonged1">
+                            <i class="ion-ios-square-outline"></i>
+                        </a>
+                    }
+                }
+            </td>
+            *@
+            <td class="btn_td" data-text="">
+                <a class="subtable_btn btn btn-bordered btn-xs"><i class="ion-ios-add"></i></a>
+            </td>
+        </tr>
+            <tr class="children-table">
+                <td class="colspan" colspan="8">
+                    <div class="wrap-childTable">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <p class="caption">
+                                            @Resources.Resource.Number
+                                        </p>
+                                    </th>
+                                    <th>
+                                        <p class="caption">
+                                            @Resources.Resource.Date
+                                        </p>
+                                    </th>
+                                    @*<th>
+                                        <p class="caption">
+                                            @Resources.Resource.CurrentYield
+                                        </p>
+                                    </th>*@
+                            <th>
+                                <p class="caption">
+                                    @Resources.Resource.Amount
+                                </p>
+                            </th>
+                            <th>
+                                <p class="caption">
+                                    @Resources.Resource.StatusTable
+                                </p>
+                            </th>
+                        </tr>
                                             </thead>
                                             <tbody>
                                                 @{
@@ -274,9 +276,9 @@
                             <th>
                                 <p>@Resources.Resource.AmountPaid %</p>
                             </th>
-                            <th>
+                            @*<th>
                                 <p>@Resources.Resource.AmountRefunded</p>
-                            </th>
+                            </th>*@
                             <th></th>
                         </tr>
                     </thead>
@@ -297,9 +299,9 @@
                                 <td data-text="@Resources.Resource.AmountPaid %">
                                     <p>$ @((item.SumIncome ?? 0).ToString("N2"))</p>
                                 </td>
-                                <td data-text="@Resources.Resource.AmountRefunded">
+                                @*<td data-text="@Resources.Resource.AmountRefunded">
                                     <p>$ @item.RecalcSum.Value.ToString("N2")</p>
-                                </td>
+                                </td>*@
                                 <td data-text="" class="text-center">
                                     <a class="btn btn-grad btn-xs btn-block m-b-5 page-link" href="@Url.Action("ConfirmTerminating", "home", new { area ="lk", investmentId  = @item.id_object} )">@Resources.Resource.Confirm</a>
                                     <a class="btn btn-bordered btn-xs btn-block page-link cancel" href="@Url.Action("CancelTerminating", "home", new { area ="lk", investmentId  = @item.id_object} )">@Resources.Resource.Cancellation</a>

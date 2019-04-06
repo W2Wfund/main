@@ -17,12 +17,12 @@
     </div>
     <div class="about-block-1 white-bg">
         <div class="container">
-            <p>
+            <p class="animated">
                 <i class="ion-ios-information"></i>
-                Отличительной особенностью криптовалютного рынка является его высокая волатильность. Даже самые стабильные и надежные монеты могут изменяться в цене на 15-30% в неделю, поэтому в таких условиях правильнее и безусловно выгоднее формировать инвестиционный
+                Отличительной особенностью криптовалютного рынка является его высокая волатильность. Даже самые стабильные и надежные монеты могут изменяться в цене на 15-30% в неделю, поэтому в таких условиях правильнее и, безусловно, выгоднее формировать инвестиционный
                 портфель из разных активов и инструментов.
             </p>
-            <p>
+            <p class="animated">
                 Благодаря сбалансированному портфелю Платформа Way to Wealth создает стабильную доходность своим Партнерам.
             </p>
         </div>
@@ -31,17 +31,17 @@
         <div class="container">
             <h3 class="section-title yellow">Стратегии Инвестирования</h3>
             <div class="flex">
-                <div class="chart-wrap">
+                <div class="chart-wrap animated">
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </div>
-                <div>
+                <div class="animated" style="transition-delay: 0.3s;">
                     <ul class="tabs-btns">
                         <li>Активное управление</li>
                         <li>Пассивное управление</li>
                         <li>Резервный фонд</li>
                     </ul>
                     <ul class="tabs">
-                        <li>
+                        <li class="active">
                             <h4>Активное управление</h4>
                             <ul>
                                 <li>
@@ -58,9 +58,15 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="active">
+                        <li>
                             <h4>Пассивное управление</h4>
                             <ul>
+                                <li>
+                                    Еженедельная реструктуризация портфеля из ТОП-30 по капитализации криптовалют
+                                </li>
+                                <li>
+                                    Вложения  криптовалюты с минимальной стоимостью, которые могут возрасти в ближайшем будущем в цене
+                                </li>
                                 <li>
                                     Pre ICO и SAFT
                                 </li>
@@ -126,33 +132,33 @@
         <div class="about-page">
             <div class="about-block-3">
                 <div class="container">
-                    <h3 class="section-title">Что нужно, чтобы начать получать инвестиционный доход</h3>
+                    <h3 class="section-title">Чтобы начать получать инвестиционный доход, нужно:</h3>
                     <ul>
-                        <li>
+                        <li class="animated animated-2">
                             <i><img src="~/Content/img/invest-icon-1-2.png" alt="" /></i>
                             <p>
-                                Регистрация на сайте платформы Way To Wealth
+                                Регистрация на сайте Платформы Way To Wealth
                             </p>
                         </li>
-                        <li>
+                        <li class="animated animated-2" style="transition-delay:0.3s;">
                             <i><img src="~/Content/img/invest-icon-2-2.png" alt="" /></i>
                             <p>
                                 Выбор подходящего тарифного плана
                             </p>
                         </li>
-                        <li>
+                        <li class="animated animated-2" style="transition-delay:0.6s;">
                             <i><img src="~/Content/img/invest-icon-3-2.png" alt="" /></i>
                             <p>
                                 Формирование инвестиции
                             </p>
                         </li>
-                        <li>
+                        <li class="animated animated-2" style="transition-delay:0.9s;">
                             <i><img src="~/Content/img/invest-icon-4-2.png" alt="" /></i>
                             <p>
                                 Получение стабильных фиксированных выплат
                             </p>
                         </li>
-                        <li>
+                        <li class="animated animated-2" style="transition-delay:1.2s;">
                             <i><img src="~/Content/img/invest-icon-5-2.png" alt="" /></i>
                             <p>
                                 Формирование уверенности в будущем
@@ -162,10 +168,10 @@
                 </div>
             </div>
         </div>
-        <div class="invest-block-4 invest-block">
+        <div class="invest-block-4 invest-block" id="packages">
             <div class="container">
-                <h3 class="section-title">Инвестиционные пакеты</h3>
-                <div class="swiper-container swiper-invest-packages invest-packages">
+                <h3 class="section-title">Инвестиционные портфели</h3>
+                <div class="swiper-container swiper-invest-packages invest-packages animated">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
                             <div class="invest-package">
@@ -173,12 +179,14 @@
                                     <p>START</p>
                                     <div>
                                         <div class="img-box">
-                                            <img src="~/Content/img/package-img-1.png" alt="">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
                                         </div>
                                         <p>Сумма инвестиции:</p>
                                         <div>100 $</div>
                                         <p>Доходность</p>
                                         <div>0% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>90$</div>
                                     </div>
                                     <a href="@Url.Action("up", "sign")">Выбрать</a>
                                 </div>
@@ -190,12 +198,14 @@
                                     <p>Partner</p>
                                     <div>
                                         <div class="img-box">
-                                            <img src="~/Content/img/package-img-1.png" alt="">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
                                         </div>
                                         <p>Сумма инвестиции:</p>
                                         <div>500 $</div>
                                         <p>Доходность</p>
                                         <div>20% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>400$</div>
                                     </div>
                                     <a href="@Url.Action("up", "sign")">Выбрать</a>
                                 </div>
@@ -207,12 +217,14 @@
                                     <p>Invest</p>
                                     <div>
                                         <div class="img-box">
-                                            <img src="~/Content/img/package-img-1.png" alt="">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
                                         </div>
                                         <p>Сумма инвестиции:</p>
                                         <div>1 000 $</div>
                                         <p>Доходность</p>
                                         <div>30% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>900$</div>
                                     </div>
                                     <a href="@Url.Action("up", "sign")">Выбрать</a>
                                 </div>
@@ -224,12 +236,14 @@
                                     <p>Invest 3</p>
                                     <div>
                                         <div class="img-box">
-                                            <img src="~/Content/img/package-img-2.png" alt="">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
                                         </div>
                                         <p>Сумма инвестиции:</p>
                                         <div>3 000 $</div>
                                         <p>Доходность</p>
                                         <div>35% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>2700$</div>
                                     </div>
                                     <a href="@Url.Action("up", "sign")">Выбрать</a>
                                 </div>
@@ -241,12 +255,14 @@
                                     <p>Invest 5</p>
                                     <div>
                                         <div class="img-box">
-                                            <img src="~/Content/img/package-img-2.png" alt="">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
                                         </div>
                                         <p>Сумма инвестиции:</p>
                                         <div>5 000 $</div>
                                         <p>Доходность</p>
                                         <div>40% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>4500$</div>
                                     </div>
                                     <a href="@Url.Action("up", "sign")">Выбрать</a>
                                 </div>
@@ -258,12 +274,14 @@
                                     <p>Invest 7</p>
                                     <div>
                                         <div class="img-box">
-                                            <img src="~/Content/img/package-img-2.png" alt="">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
                                         </div>
                                         <p>Сумма инвестиции:</p>
                                         <div>7 000 $</div>
                                         <p>Доходность</p>
                                         <div>45% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>6300$</div>
                                     </div>
                                     <a href="@Url.Action("up", "sign")">Выбрать</a>
                                 </div>
@@ -274,14 +292,58 @@
                                 <div>
                                     <p>Invest 10</p>
                                     <div>
-                                        @*<div class="img-box">
-                                            <img src="~/Content/img/package-img-3.png" alt="">
-                                        </div>*@
-                                        <span>* При владении портфеля «Invest 10» доступны два дополнительных портфеля: «Invest 15» 15000$ и «Invest 20» 20000$</span>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* При владении портфеля «Invest 10» доступны два дополнительных портфеля: «Invest 15» 15000$ и «Invest 20» 20000$</span>*@
                                         <p>Сумма инвестиции:</p>
                                         <div>10 000 $</div>
                                         <p>Доходность</p>
                                         <div>50% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>9000$</div>
+                                    </div>
+                                    <a href="@Url.Action("up", "sign" )">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package red extra">
+                                <div>
+                                    <p>Invest 15</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* При владении портфеля «Invest 10» доступны два дополнительных портфеля: «Invest 15» 15000$ и «Invest 20» 20000$</span>*@
+                                        <p>Сумма инвестиции:</p>
+                                        <div>15 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>50% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>9000$</div>
+                                        <p class="extra">* Доступен владельцам портфеля «INVEST 10»</p>
+                                    </div>
+                                    <a href="@Url.Action("up", "sign")">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package red extra">
+                                <div>
+                                    <p>Invest 20</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* При владении портфеля «Invest 10» доступны два дополнительных портфеля: «Invest 15» 15000$ и «Invest 20» 20000$</span>*@
+                                        <p>Сумма инвестиции:</p>
+                                        <div>20 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>50% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>9000$</div>
+                                        <p class="extra">* Доступен владельцам портфеля «INVEST 10»</p>
                                     </div>
                                     <a href="@Url.Action("up", "sign")">Выбрать</a>
                                 </div>
@@ -311,25 +373,25 @@
         <div class="container">
             <h3 class="section-title yellow">Преимущества</h3>
             <ul>
-                <li>
+                <li class="animated animated-2">
                     <i class="ion-ios-calendar"></i>
-                    Ежедневные начисления на инвестиционные пакеты
+                    Ежедневные начисления на инвестиционные портфели
                 </li>
-                <li>
+                <li class="animated animated-2" style="transition-delay:0.3s;">
                     <i class="ion-ios-cash"></i>
                     Возможность еженедельного вывода начисленных дивидендов
                 </li>
-                <li>
+                <li class="animated animated-2" style="transition-delay:0.6s;">
                     <i class="ion-ios-repeat"></i>
                     Легкость перехода на тарифный план с более выгодными условиями, при увеличении инвестиций
                 </li>
-                <li>
+                <li class="animated animated-2" style="transition-delay:0.9s;">
                     <i class="ion-ios-person-add"></i>
-                    Возможность стать Партнером платформы, не имея достаточно средств для покупки инвестиционного пакета
+                    Возможность стать Партнером Платформы не имея достаточно средств для покупки инвестиционного портфеля
                 </li>
-                <li>
+                <li class="animated animated-2" style="transition-delay:1.2s;">
                     <i class="ion-ios-git-network"></i>
-                    Возможность заработка с инвестиций, которые были сделаны по Вашей или Ваших Партнеров рекомендаций.
+                    Возможность заработка с личных инвестиций, а также благодаря использованию партнерской программы
                 </li>
             </ul>
         </div>
@@ -337,11 +399,11 @@
     <div class="invest-block-6 invest-block white-bg">
         <div class="container">
             <h3 class="section-title">О блокчейне</h3>
-            <img src="~/Content/img/blockchain-new.png" alt="">
-            <div class="text">
+            <img src="~/Content/img/blockchain-new.png" alt="" class="animated">
+            <div class="text animated" style="transition-delay:0.3s;">
                 <p>
                     <b>Блокчейн</b> — это современная технология записи и хранения информации, работающая по принципу распределенной базы данных: информация копируется и хранится не на централизованном сервере, а на многомиллионных компьютерах пользователей,
-                    входящих в систему блокчейна. Эта технология ыла создана в 2009 году, вместе с криптовалютой биткоин. Ее создателем принято считать Сатоши Накамото, раскрыть личность которого до сих пор никому не удалось. Блокчейн общедоступен
+                    входящих в систему блокчейна. Эта технология была создана в 2009 году вместе с криптовалютой биткоин. Ее создателем принято считать Сатоши Накамото, раскрыть личность которого до сих пор никому не удалось. Блокчейн общедоступен
                     и одновременно защищен. Это обеспечивается благодаря:
                 </p>
                 <ul>
@@ -364,7 +426,7 @@
     <div class="invest-block-7 invest-block">
         <div class="container">
             <h3 class="section-title yellow">О криптовалютах</h3>
-            <div class="swiper-container swiper-invest">
+            <div class="swiper-container swiper-invest animated">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="img">

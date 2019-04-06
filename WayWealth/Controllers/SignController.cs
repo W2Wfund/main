@@ -143,8 +143,6 @@ namespace WayWealth.Controllers
         [HttpGet]
         public ActionResult Up(string inviter)
         {
-            if (User != null)
-                return Redirect(Url.Action("index", "home", new { area = "lk" }));
 
             // Если не указан в ссылке Inviter тогда пробуем найти его в куки
             if (string.IsNullOrWhiteSpace(inviter))
@@ -182,8 +180,6 @@ namespace WayWealth.Controllers
         [HttpPost]
         public ActionResult Up(UpView model, string inviter)
         {
-            if (User != null)
-                return Redirect(Url.Action("index", "home", new { area = "lk" }));
 
             if (!CheckCaptcha())
                 return View(model);

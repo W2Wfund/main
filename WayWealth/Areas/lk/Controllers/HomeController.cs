@@ -880,7 +880,7 @@ namespace WayWealth.Areas.lk.Controllers
                             Session.Remove("GoogleAuthUserUniqueKey");
                         }
 
-                        Session.AddNotification(new Notification(true, Resources.Resource.ProfileTitle, Resources.Resource._2FAChanged));
+                        Session.AddNotification(new Notification(true, Resources.Resource.ProfileTitle, Resources.Resource.FAChanged));
                         return RedirectToAction("TwoFactorAuth", "home", new { area = "lk" });
                     }
                     else
@@ -1634,7 +1634,7 @@ namespace WayWealth.Areas.lk.Controllers
                             var inv = new Marketing.ArrayOfUnsignedInt();
                             inv.AddRange(items);
 
-                            // Объединение инвест пакетов
+                            // Объединение инвест портфелей
                             marketing.UnionInvestments(
                                 companyId: 5,
                                 partnerId: this.User.id_object,

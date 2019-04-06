@@ -207,16 +207,19 @@ $(function () {
     
     var swiper3 = new Swiper('.swiper-charity3', {
         //loop: true,
-        slidesPerView: 3,
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
+        slidesPerView: 4,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
         },
         breakpoints: {
-            1240: {
+            1475: {
+                slidesPerView: 3
+            },
+            810: {
                 slidesPerView: 2
             },
-            650: {
+            575: {
                 slidesPerView: 1
             }
         }

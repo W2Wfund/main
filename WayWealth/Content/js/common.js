@@ -21,12 +21,20 @@ $(function() {
 			el: '.swiper-pagination',
 			clickable: true,
         },
+        autoplay: {
+            delay: 8000,
+            disableOnInteraction: false,
+        },
         autoHeight: true,
 		speed: 500
 	});
     var swiper3 = new Swiper('.swiper-invest', {
         autoHeight: true,
         speed: 500,
+        autoplay: {
+            delay: 8000,
+            disableOnInteraction: false,
+        },
         pagination: {
             el: '.swiper-pagination-invest',
             clickable: true,
@@ -37,8 +45,17 @@ $(function() {
             el: '.swiper-pagination-packages',
             clickable: true,
         },
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
         slidesPerView: 'auto',
         speed: 500
+    });
+    $(".swiper-invest-packages").hover(function () {
+        (this).swiper.autoplay.stop();
+    }, function () {
+        (this).swiper.autoplay.start();
     });
     var swiper5 = new Swiper('.swiper-news-m', {
         autoHeight: true,
@@ -355,11 +372,22 @@ $(function() {
 	}, {
 		offset:'80%'
 	});
-	$('.reviews-page .reviews-content').waypoint(function(){
-		$('.reviews-page .reviews-content').addClass('on');
-	}, {
-		offset:'80%'
-	});
+    $('.reviews-page .reviews-content').waypoint(function () {
+        $('.reviews-page .reviews-content').addClass('on');
+    }, {
+        offset: '80%'
+    });
+
+    $('.animated').waypoint(function () {
+        $(this.element).addClass('on');
+    }, {
+        offset: '90%'
+    });
+    $('.inner-page-top').waypoint(function () {
+        $(this.element).addClass('on');
+    }, {
+        offset: '100%'
+    });
 
 	$('.scroll_up').click(function(event) {
 		$('body,html').animate({

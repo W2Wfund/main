@@ -27,7 +27,7 @@
             <ul class="news-list">
                 @foreach (var item in Items.OrderByDescending(x => x.CreationDate))
                 {
-                    <li>
+                    <li class="animated animated-2">
                         <div class="img-box">
                             <img src="@Url.Action("img", "home", new { area = "", id=item.Image })" alt="">
                         </div>

@@ -67,7 +67,7 @@
                 <ul>
                     @foreach (var a in Items.OrderByDescending(x => x.CreationDate).Take(3))
                     {
-                    <li>
+                    <li class="animated">
                         <div class="img-box">
                             <img src="@Url.Action("img", "home", new { area = "", id=a.Image })" alt="" />
                         </div>
