@@ -1743,12 +1743,12 @@ header .bottom-block b {
     padding: 12px 15px;
     /*background: rgba(238,180,34,.2);*/
     background: rgba(194, 117, 39, 0.2);
-    background: -moz-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(205,205,205,0.25)), color-stop(50%, rgba(115,115,115,0.25)), color-stop(100%, rgba(205,205,205,0.25)));
-    background: -webkit-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
-    background: -o-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
-    background: -ms-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
-    background: linear-gradient(to right, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: -moz-linear-gradient(left, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(245,192,135,0.25)), color-stop(50%, rgba(186,127,55,0.25)), color-stop(100%, rgba(245,192,135,0.25)));
+    background: -webkit-linear-gradient(left, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    background: -o-linear-gradient(left, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    background: -ms-linear-gradient(left, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    background: linear-gradient(to right, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
     font-weight: 700;
     color: #2e2d35;
 }
@@ -1756,12 +1756,12 @@ header .bottom-block b {
 .invest-packages .invest-package.orange > div > div > div {
     /*background: rgba(254,141,39,.2);*/
     background: rgba(161, 166, 170, 0.2);
-    background: -moz-linear-gradient(left, rgba(225,225,225,0.4) 0%, rgba(175,175,175,0.4) 50%, rgba(225,225,225,0.4) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(225,225,225,0.4)), color-stop(50%, rgba(175,175,175,0.4)), color-stop(100%, rgba(225,225,225,0.4)));
-    background: -webkit-linear-gradient(left, rgba(225,225,225,0.4) 0%, rgba(175,175,175,0.4) 50%, rgba(225,225,225,0.4) 100%);
-    background: -o-linear-gradient(left, rgba(225,225,225,0.4) 0%, rgba(175,175,175,0.4) 50%, rgba(225,225,225,0.4) 100%);
-    background: -ms-linear-gradient(left, rgba(225,225,225,0.4) 0%, rgba(175,175,175,0.4) 50%, rgba(225,225,225,0.4) 100%);
-    background: linear-gradient(to right, rgba(225,225,225,0.4) 0%, rgba(175,175,175,0.4) 50%, rgba(225,225,225,0.4) 100%);
+    background: -moz-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(205,205,205,0.25)), color-stop(50%, rgba(115,115,115,0.25)), color-stop(100%, rgba(205,205,205,0.25)));
+    background: -webkit-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: -o-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: -ms-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: linear-gradient(to right, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
 }
 
 .invest-packages .invest-package.red > div > div > div {

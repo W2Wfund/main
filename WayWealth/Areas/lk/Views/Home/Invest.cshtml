@@ -4,37 +4,385 @@
 
     ViewBag.Title = "Invest";
     Layout = "~/Areas/lk/Views/Shared/_Layout.cshtml";
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 }
 
 <div class="white-bg h-100">
     <div class="container">
         <form id="invest-inner-form">
             <h2 class="inner-title">@Resources.Resource.InvestTitle</h2>
-            <div class="form-group form-group-inline">
-                <label>@Resources.Resource.SelectInvestSumm</label>
-                <div class="form-group-select">
-                    <select>
-                        <option selected disabled>@Resources.Resource.SelectInvestSumm</option>
-                        <option>100 $</option>
-                        <option>500 $</option>
-                        <option>1 000 $</option>
-                        <option>3 000 $</option>
-                        <option>5 000 $</option>
-                        <option>7 000 $</option>
-                        <option>10 000 $</option>
-                        <option>15 000 $</option>
-                        <option>20 000 $</option>
-                    </select>
-                    <i class="ion-ios-arrow-down"></i>
+            @if (culture == "ru-RU")
+            {
+                <div class="swiper-container swiper-invest-packages invest-packages animated">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="invest-package">
+                                <div>
+                                    <p>START</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
+                                        </div>
+                                        <p>Сумма инвестиции:</p>
+                                        <div>100 $</div>
+                                        <p>Доходность</p>
+                                        <div>0% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>90$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package">
+                                <div>
+                                    <p>Partner</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
+                                        </div>
+                                        <p>Сумма инвестиции:</p>
+                                        <div>500 $</div>
+                                        <p>Доходность</p>
+                                        <div>20% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>400$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package">
+                                <div>
+                                    <p>Invest</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
+                                        </div>
+                                        <p>Сумма инвестиции:</p>
+                                        <div>1 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>30% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>900$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package orange">
+                                <div>
+                                    <p>Invest 3</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
+                                        </div>
+                                        <p>Сумма инвестиции:</p>
+                                        <div>3 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>35% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>2700$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package orange">
+                                <div>
+                                    <p>Invest 5</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
+                                        </div>
+                                        <p>Сумма инвестиции:</p>
+                                        <div>5 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>40% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>4500$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package orange">
+                                <div>
+                                    <p>Invest 7</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
+                                        </div>
+                                        <p>Сумма инвестиции:</p>
+                                        <div>7 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>45% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>6300$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package red">
+                                <div>
+                                    <p>Invest 10</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* При владении портфеля «Invest 10» доступны два дополнительных портфеля: «Invest 15» 15000$ и «Invest 20» 20000$</span>*@
+                                        <p>Сумма инвестиции:</p>
+                                        <div>10 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>50% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>9000$</div>
+                                    </div>
+                                    <a href="@Url.Action("up", "sign" )">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package red extra">
+                                <div>
+                                    <p>Invest 15</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* При владении портфеля «Invest 10» доступны два дополнительных портфеля: «Invest 15» 15000$ и «Invest 20» 20000$</span>*@
+                                        <p>Сумма инвестиции:</p>
+                                        <div>15 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>50% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>13500$</div>
+                                        <p class="extra">* Доступен владельцам портфеля «INVEST 10»</p>
+                                    </div>
+                                    <a class="btn-invest-show">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package red extra">
+                                <div>
+                                    <p>Invest 20</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* При владении портфеля «Invest 10» доступны два дополнительных портфеля: «Invest 15» 15000$ и «Invest 20» 20000$</span>*@
+                                        <p>Сумма инвестиции:</p>
+                                        <div>20 000 $</div>
+                                        <p>Доходность</p>
+                                        <div>50% годовых</div>
+                                        <p>Объем бинара</p>
+                                        <div>18000$</div>
+                                        <p class="extra">* Доступен владельцам портфеля «INVEST 10»</p>
+                                    </div>
+                                    <a class="btn-invest-show">Выбрать</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-packages"></div>
                 </div>
-            </div>
-            <div>
-                <button type="button" class="btn btn-grad btn-sm m-b-30 btn-invest-show">@Resources.Resource.InvestTitle</button>
-            </div>
+            }
+            else
+            {
+                <div class="swiper-container swiper-invest-packages invest-packages animated">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="invest-package">
+                                <div>
+                                    <p>START</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
+                                        </div>
+                                        <p>Investment sum:</p>
+                                        <div>100 $</div>
+                                        <p>Profitability</p>
+                                        <div>0% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>90$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package">
+                                <div>
+                                    <p>Partner</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
+                                        </div>
+                                        <p>Investment sum:</p>
+                                        <div>500 $</div>
+                                        <p>Profitability</p>
+                                        <div>20% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>400$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package">
+                                <div>
+                                    <p>Invest</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-1-1.png" alt="">
+                                        </div>
+                                        <p>Investment sum:</p>
+                                        <div>1 000 $</div>
+                                        <p>Profitability</p>
+                                        <div>30% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>900$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package orange">
+                                <div>
+                                    <p>Invest 3</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
+                                        </div>
+                                        <p>Investment sum:</p>
+                                        <div>3 000 $</div>
+                                        <p>Profitability</p>
+                                        <div>35% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>2700$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package orange">
+                                <div>
+                                    <p>Invest 5</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
+                                        </div>
+                                        <p>Investment sum:</p>
+                                        <div>5 000 $</div>
+                                        <p>Profitability</p>
+                                        <div>40% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>4500$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package orange">
+                                <div>
+                                    <p>Invest 7</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-2-1.png" alt="">
+                                        </div>
+                                        <p>Investment sum:</p>
+                                        <div>7 000 $</div>
+                                        <p>Profitability</p>
+                                        <div>45% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>6300$</div>
+                                    </div>
+                                    <a class="btn-invest-show">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package red">
+                                <div>
+                                    <p>Invest 10</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* While owning the «Invest 10» package, two additional packages are available: «Invest 15» 15000$ and «Invest 20» 20000$</span>*@
+                                        <p>Investment sum:</p>
+                                        <div>10 000 $</div>
+                                        <p>Profitability</p>
+                                        <div>50% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>9000$</div>
+                                    </div>
+                                    <a href="@Url.Action(" up", "sign" )">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package red extra">
+                                <div>
+                                    <p>Invest 15</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* While owning the «Invest 10» package, two additional packages are available: «Invest 15» 15000$ and «Invest 20» 20000$</span>*@
+                                        <p>Investment sum:</p>
+                                        <div>15 000 $</div>
+                                        <p>Profitability</p>
+                                        <div>50% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>13500$</div>
+                                        <p class="extra">* Available when owning «Invest 10» package</p>
+                                    </div>
+                                    <a class="btn-invest-show">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="invest-package red extra">
+                                <div>
+                                    <p>Invest 20</p>
+                                    <div>
+                                        <div class="img-box">
+                                            <img src="~/Content/img/package-img-3-1.png" alt="">
+                                        </div>
+                                        @*<span>* While owning the «Invest 10» package, two additional packages are available: «Invest 15» 15000$ and «Invest 20» 20000$</span>*@
+                                        <p>Investment sum:</p>
+                                        <div>20 000 $</div>
+                                        <p>Profitability</p>
+                                        <div>50% per annum</div>
+                                        <p>Binary volume</p>
+                                        <div>18000$</div>
+                                        <p class="extra">* Available when owning «Invest 10» package</p>
+                                    </div>
+                                    <a class="btn-invest-show">Select</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination swiper-pagination-packages"></div>
+                </div>
+            }
             <div class="invest-inner-accept">
-                <div class="info-block"><!------------Текст в блоке исправить на корректный и перенести в языковые файлы!!!!!------------>
+                <div class="info-block">
                     <i class="ion-ios-information"></i>
-                    <strong>Внимание!</strong> После подтверждения выбранная сумма будет переведена на инвестиционный счет и заблокирована для вывода на год.
+                    <strong>@Resources.Resource.ConfirmWarning</strong> @Resources.Resource.ConfirmTxt
                 </div>
                 <button type="button" class="btn btn-grad btn-sm m-r-10">@Resources.Resource.Confirm</button>
                 <button type="button" class="btn btn-bordered btn-sm btn-invest-hide">@Resources.Resource.Cancellation</button>
@@ -44,11 +392,9 @@
 </div>
 <script>
     $('.btn-invest-show').click(function () {
-        $(this).stop().hide();
         $('.invest-inner-accept').show();
     });
     $('.btn-invest-hide').click(function () {
-        $('.btn-invest-show').show();
         $('.invest-inner-accept').hide();
     });
 </script>

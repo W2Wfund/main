@@ -1985,6 +1985,178 @@ html body > jdiv {
     overflow: auto;
 }
 
+.invest-packages {
+    margin: -15px -20px 0 -20px;
+}
+
+.invest-packages .invest-package {
+    width: 340px;
+    text-align: center;
+    font-size: 18px;
+    padding: 15px 40px 0 40px;
+}
+
+.invest-packages .invest-package > div {
+    border-radius: 6px;
+    /*background: #eeb422;*/
+    background: #c27527;
+    background: -moz-linear-gradient(left, #f5c087 0%, #ba7f37 50%, #f5c087 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, #f5c087), color-stop(50%, #ba7f37), color-stop(100%, #f5c087));
+    background: -webkit-linear-gradient(left, #f5c087 0%, #ba7f37 50%, #f5c087 100%);
+    background: -o-linear-gradient(left, #f5c087 0%, #ba7f37 50%, #f5c087 100%);
+    background: -ms-linear-gradient(left, #f5c087 0%, #ba7f37 50%, #f5c087 100%);
+    background: linear-gradient(to right, #f5c087 0%, #ba7f37 50%, #f5c087 100%);
+    box-shadow: 5px 5px 20px 0 rgba(0, 0, 0, 0.35);
+}
+
+.invest-packages .invest-package.orange > div {
+    /*background: #fe8d27;*/
+    background: #a1a6aa;
+    background: -moz-linear-gradient(left, #cdcdcd 0%, #737373 50%, #cdcdcd 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, #cdcdcd), color-stop(50%, #737373), color-stop(100%, #cdcdcd));
+    background: -webkit-linear-gradient(left, #e1e1e1 0%, #737373 50%, #e1e1e1 100%);
+    background: -o-linear-gradient(left, #cdcdcd 0%, #737373 50%, #cdcdcd 100%);
+    background: -ms-linear-gradient(left, #cdcdcd 0%, #737373 50%, #cdcdcd 100%);
+    background: linear-gradient(to right, #cdcdcd 0%, #737373 50%, #cdcdcd 100%);
+}
+
+.invest-packages .invest-package.red > div {
+    /*background: #bb1f2d;*/
+    background: #fcc223;
+    background: -moz-linear-gradient(left, #fff171 0%, #fff171 3%, #613403 50%, #fff171 97%, #fff171 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, #fff171), color-stop(3%, #fff171), color-stop(50%, #613403), color-stop(97%, #fff171), color-stop(100%, #fff171));
+    background: -webkit-linear-gradient(left, #fff171 0%, #fff171 3%, #613403 50%, #fff171 97%, #fff171 100%);
+    background: -o-linear-gradient(left, #fff171 0%, #fff171 3%, #613403 50%, #fff171 97%, #fff171 100%);
+    background: -ms-linear-gradient(left, #fff171 0%, #fff171 3%, #613403 50%, #fff171 97%, #fff171 100%);
+    background: linear-gradient(to right, #fff171 0%, #fff171 3%, #613403 50%, #fff171 97%, #fff171 100%);
+}
+
+.invest-packages .invest-package > div > p {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    padding: 15px;
+}
+
+.invest-packages .invest-package > div > a {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    padding: 15px;
+    display: block;
+}
+
+.invest-packages .invest-package > div > a:hover {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255,255,255,0.3), 0 0 15px rgba(255,255,255,0.4), 0 0 25px rgba(255,255,255,0.5);
+}
+
+.invest-packages .invest-package > div > div {
+    margin: 0 -20px;
+    border-radius: 6px;
+    background: #fff;
+    padding: 50px 0 60px 0;
+    box-shadow: 0 10px 0 0 rgba(0, 0, 0, 0.1), 5px 10px 15px 0 rgba(0, 0, 0, 0.35);
+}
+
+.invest-packages .invest-package > div > div > div {
+    padding: 12px 15px;
+    /*background: rgba(238,180,34,.2);*/
+    background: rgba(194, 117, 39, 0.2);
+    background: -moz-linear-gradient(left, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(245,192,135,0.25)), color-stop(50%, rgba(186,127,55,0.25)), color-stop(100%, rgba(245,192,135,0.25)));
+    background: -webkit-linear-gradient(left, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    background: -o-linear-gradient(left, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    background: -ms-linear-gradient(left, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    background: linear-gradient(to right, rgba(245,192,135,0.25) 0%, rgba(186,127,55,0.25) 50%, rgba(245,192,135,0.25) 100%);
+    font-weight: 700;
+    color: #2e2d35;
+}
+
+.invest-packages .invest-package.orange > div > div > div {
+    /*background: rgba(254,141,39,.2);*/
+    background: rgba(161, 166, 170, 0.2);
+    background: -moz-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(205,205,205,0.25)), color-stop(50%, rgba(115,115,115,0.25)), color-stop(100%, rgba(205,205,205,0.25)));
+    background: -webkit-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: -o-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: -ms-linear-gradient(left, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+    background: linear-gradient(to right, rgba(205,205,205,0.25) 0%, rgba(115,115,115,0.25) 50%, rgba(205,205,205,0.25) 100%);
+}
+
+.invest-packages .invest-package.red > div > div > div {
+    /*background: rgba(187, 31, 45, 0.2);*/
+    background: rgba(252, 194, 35, 0.2);
+    background: -moz-linear-gradient(left, rgba(255,241,113,0.2) 0%, rgba(255,241,113,0.2) 3%, rgba(97,52,3,0.2) 50%, rgba(255,241,113,0.2) 97%, rgba(255,241,113,0.2) 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,241,113,0.2)), color-stop(3%, rgba(255,241,113,0.2)), color-stop(50%, rgba(97,52,3,0.2)), color-stop(97%, rgba(255,241,113,0.2)), color-stop(100%, rgba(255,241,113,0.2)));
+    background: -webkit-linear-gradient(left, rgba(255,241,113,0.2) 0%, rgba(255,241,113,0.2) 3%, rgba(97,52,3,0.2) 50%, rgba(255,241,113,0.2) 97%, rgba(255,241,113,0.2) 100%);
+    background: -o-linear-gradient(left, rgba(255,241,113,0.2) 0%, rgba(255,241,113,0.2) 3%, rgba(97,52,3,0.2) 50%, rgba(255,241,113,0.2) 97%, rgba(255,241,113,0.2) 100%);
+    background: -ms-linear-gradient(left, rgba(255,241,113,0.2) 0%, rgba(255,241,113,0.2) 3%, rgba(97,52,3,0.2) 50%, rgba(255,241,113,0.2) 97%, rgba(255,241,113,0.2) 100%);
+    background: linear-gradient(to right, rgba(255,241,113,0.2) 0%, rgba(255,241,113,0.2) 3%, rgba(97,52,3,0.2) 50%, rgba(255,241,113,0.2) 97%, rgba(255,241,113,0.2) 100%);
+}
+
+.invest-packages .invest-package > div > div p {
+    padding: 12px 15px;
+}
+
+.invest-packages .invest-package > div > div p.extra {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: -58px;
+}
+
+.invest-packages .invest-package > div > div span {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    display: block;
+    text-transform: uppercase;
+    padding: 0 15px;
+    height: 90px;
+    position: relative;
+    z-index: 1;
+}
+
+.invest-packages .invest-package > div > div span:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: -1;
+    background: #f9fafc url(../img/package-img-3.png) no-repeat center top;
+    background-size: 60px;
+    opacity: 0.2;
+}
+
+.invest-packages .invest-package .img-box {
+    margin: 0 auto 30px auto;
+    width: 60px;
+    border-radius: 50%;
+    border: 1px solid #ba7e37;
+    background: transparent !important;
+    padding: 18px;
+    height: 60px;
+}
+
+.invest-packages .invest-package.orange .img-box {
+    border-color: #afafaf;
+}
+
+.invest-packages .invest-package.red .img-box {
+    border-color: #e9bf18;
+}
+
+.swiper-invest-packages .swiper-slide {
+    width: 340px;
+}
+
+.swiper-invest-packages .swiper-pagination {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
 @media only screen and (max-width: 1340px) {
     header .menu li a {
         padding: 0 10px;
@@ -2585,6 +2757,34 @@ html body > jdiv {
     }
     .two-factor-auth-inner {
         font-size: 14px;
+    }
+    .invest-packages .invest-package > div > div span {
+        font-size: 10px;
+        padding: 0 15px;
+        height: 75px;
+        margin: -15px 0 0 0;
+    }
+
+    .invest-packages .invest-package .img-box {
+        margin: -15px auto 15px auto;
+    }
+
+    .invest-packages .invest-package > div > div {
+        margin: 0 -15px;
+    }
+
+    .invest-packages .invest-package {
+        width: 300px;
+        font-size: 16px;
+        padding: 15px 30px 0 30px;
+    }
+
+    .swiper-invest-packages .swiper-slide {
+        width: 300px;
+    }
+
+    .invest-packages {
+        margin: -15px -15px 0 -15px;
     }
 }/*483*/
 

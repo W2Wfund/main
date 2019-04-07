@@ -1367,4 +1367,10 @@
   <data name="SelectInvestSumm" xml:space="preserve">
     <value>Выберите сумму инвестиции</value>
   </data>
+  <data name="ConfirmTxt" xml:space="preserve">
+    <value>Внимание! После подтверждения, с Вашего лицевoго счета будет списана сумма для открытия выбранного Вами инвестиционного портфеля!</value>
+  </data>
+  <data name="ConfirmWarning" xml:space="preserve">
+    <value>Внимание!</value>
+  </data>
 </root>

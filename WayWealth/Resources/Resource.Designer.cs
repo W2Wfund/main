@@ -808,6 +808,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Внимание! После подтверждения, с Вашего лицевoго счета будет списана сумма для открытия выбранного Вами инвестиционного портфеля!.
+        /// </summary>
+        public static string ConfirmTxt {
+            get {
+                return ResourceManager.GetString("ConfirmTxt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Внимание!.
+        /// </summary>
+        public static string ConfirmWarning {
+            get {
+                return ResourceManager.GetString("ConfirmWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Подвтердите ваш Email.
         /// </summary>
         public static string ConfirmYourEmail {

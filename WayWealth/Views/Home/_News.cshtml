@@ -28,16 +28,18 @@
                                         }
                                     </a>
                                     <p class="date"><i class="ion ion-md-calendar"></i>@article.PublishDate.Value.ToShortDateString()</p>
-                                    <a href="@Url.Action("news", "home", new { id = @article.id_object })" class="btn btn-bordered">
-                                        @if (culture == "ru-RU")
-                                        {
-                                            @Resources.Resource.MoreBtn
-                                        }
-                                        else
-                                        {
-                                            @Resources.Resource.MoreBtn
-                                        }
-                                    </a>
+                                    <div class="text-center">
+                                        <a href="@Url.Action("news", "home", new { id = @article.id_object })" class="btn btn-bordered">
+                                            @if (culture == "ru-RU")
+                                            {
+                                                @Resources.Resource.MoreBtn
+                                            }
+                                            else
+                                            {
+                                                @Resources.Resource.MoreBtn
+                                            }
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         }

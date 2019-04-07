@@ -44,16 +44,18 @@
                         <time class="date">
                             <i class="ion ion-md-calendar"></i>@item.PublishDate.Value.ToShortDateString()
                         </time>
-                        <a href="@Url.Action("news", "home", new {id= item.id_object})" class="btn btn-bordered">
-                            @if (culture == "ru-RU")
-                            {
-                                @Resources.Resource.MoreBtn
-                            }
-                            else
-                            {
-                                @Resources.Resource.MoreBtn
-                            }
-                        </a>
+                        <div class="text-center">
+                            <a href="@Url.Action("news", "home", new {id= item.id_object})" class="btn btn-bordered">
+                                @if (culture == "ru-RU")
+                                {
+                                    @Resources.Resource.MoreBtn
+                                }
+                                else
+                                {
+                                    @Resources.Resource.MoreBtn
+                                }
+                            </a>
+                        </div>
                     </li>
                 }
             </ul>

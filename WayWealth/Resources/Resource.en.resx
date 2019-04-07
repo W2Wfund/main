@@ -763,16 +763,16 @@
     <value>Leave your feedback</value>
   </data>
   <data name="footer_slogan1" xml:space="preserve">
-    <value>Way to Wealth platform is glad to give you an opportunity not only to earn the high fixed income, but also thanks to joint financial literacy, to build business together on the way of modern digital economy.</value>
+    <value>The Way To Wealth platform is pleased to provide you with an opportunity not only to earn a high and stable income, but also to build a business together through joint financial literacy on the path to the world of the modern digital economy.</value>
   </data>
   <data name="footer_slogan2" xml:space="preserve">
     <value>Replenishment and withdrawal of investment means is carried out in cryptocurrencies:</value>
   </data>
   <data name="footer_slogan3" xml:space="preserve">
-    <value>Information which is contained on this website and the video presentations has the general character. It is not council or the recommendation to invest in W2W. She has been prepared without taking into account your individual purposes, a financial situation or specific needs. Respectively, before adoption of the investment decision, you have to assess the own purposes, a financial situation and requirement.</value>
+    <value>The information contained on this site and video presentations is general in nature.  This is not a tip or recommendation for investing in the Way To Wealth platform.  It was prepared without considering your individual goals, financial situation or specific needs.  Accordingly, before making an investment decision, you should evaluate your own goals, financial situation and need.</value>
   </data>
   <data name="footer_slogan4" xml:space="preserve">
-    <value>All questions address</value>
+    <value>All questions address:</value>
   </data>
   <data name="menu_about" xml:space="preserve">
     <value>About company</value>
@@ -1366,5 +1366,11 @@
   </data>
   <data name="SelectInvestSumm" xml:space="preserve">
     <value>Select investment amount</value>
+  </data>
+  <data name="ConfirmTxt" xml:space="preserve">
+    <value>After confirmation, the amount for opening your chosen investment portfolio will be deducted from your personal account!</value>
+  </data>
+  <data name="ConfirmWarning" xml:space="preserve">
+    <value>Attention!</value>
   </data>
 </root>

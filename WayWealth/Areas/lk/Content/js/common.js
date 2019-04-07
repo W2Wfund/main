@@ -244,6 +244,23 @@ $(function () {
             clickable: true
         },
     });
+    var swiper7 = new Swiper('.swiper-invest-packages', {
+        pagination: {
+            el: '.swiper-pagination-packages',
+            clickable: true,
+        },
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        slidesPerView: 'auto',
+        speed: 500
+    });
+    $(".swiper-invest-packages").hover(function () {
+        (this).swiper.autoplay.stop();
+    }, function () {
+        (this).swiper.autoplay.start();
+    });
     $('.charity-btn').click(function (event) {
         $('.charity-btn').removeClass('active');
         $(this).addClass('active');
