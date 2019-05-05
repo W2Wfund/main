@@ -51,5 +51,17 @@ namespace W2W.ModelKBT.Entities
 
         [Property(Name = "СсылкаНаКонтрагента/Логин")]
         public string PartnerLogin { get; set; }
+
+        [Property(Name = "СуммаЛевоеПлечо")]
+        public decimal? PartnerLeftShoulderInvestSum { get; set; }
+
+        [Property(Name = "СуммаПравоеПлечо")]
+        public decimal? PartnerRightShoulderInvestSum { get; set; }
+
+        [Property(Name = "БинарЛевоеПлечо")]
+        public decimal? PartnerBinaryLeftShoulderSum { get; set; }
+
+        [Property(Name = "БинарПравоеПлечо")]
+        public decimal? PartnerBinaryRightShoulderSum { get; set; }
     }
 }

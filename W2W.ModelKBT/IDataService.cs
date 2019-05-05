@@ -17,6 +17,7 @@ namespace W2W.ModelKBT
         IEnumerable<Partner> GetPartners(uint id_object, string searchText);
         IEnumerable<Partner> GetPartners();
         IEnumerable<Partner> GetPartners(uint rootId);
+        IEnumerable<Partner> GetSandboxPartners(uint id_object);
         Partner GetPartnerByEmail(string email);
         void UpdatePartnerPassword(uint id_client, string password);
         void UpdatePartnerEmail(uint id_client, string email);
@@ -54,8 +55,11 @@ namespace W2W.ModelKBT
             string walletBitcoinCash,
             string walletRipple);
         void UpdatePartnerEmailConfirmation(uint id_client, bool? emailConfirmation);
+        void SetPartnerMarketPlaceStatus(uint partnerId, bool status);
         void UpdateParnterVerificationStatus(uint partnerId, string status);
         void UpdatePartnerActivity(uint partnerId, bool? isActive);
+        void UpdatePartnerInvestSum(bool isLeftShoulder, decimal shoulderSum, decimal binarySum, uint id_place);
+        void UpdatePartnerBinarySum(decimal leftSum, decimal rightSum, uint id_place);
 
         void AddReview(uint id_client, string review);
         IEnumerable<Article> GetNews();
@@ -203,5 +207,9 @@ namespace W2W.ModelKBT
 
         IEnumerable<Notice> GetUnreadedNotices(uint partnerId);
         void SetNoticeAsReaded(uint messageId);
+        IEnumerable<NewInvestProgram> GetInvestPrograms();
+        NewInvestProgram GetInvestProgram(uint id);
+
+        NewInvestProgram GetNewInvestProgram(decimal sum);
     }
 }

@@ -53,5 +53,13 @@ namespace WayWealth.Areas.lk.ViewModels.Home
         public string PartnerLogin { get; set; }
         
         public uint? PartnerInviterId { get; set; }
+
+        public decimal? PartnerLeftShoulderInvestSum { get; set; }
+
+        public decimal? PartnerRightShoulderInvestSum { get; set; }
+
+        public decimal? PartnerBinaryLeftShoulderSum { get; set; }
+
+        public decimal? PartnerBinaryRightShoulderSum { get; set; }
     }
 }

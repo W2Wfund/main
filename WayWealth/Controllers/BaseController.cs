@@ -16,6 +16,7 @@ using NLog;
 using W2W.ModelKBT;
 using WayWealth.Helpers;
 using WayWealth.Infrastructure.Auth;
+using W2W.Marketing;
 
 namespace WayWealth.Controllers
 {
@@ -47,10 +48,12 @@ namespace WayWealth.Controllers
 
             try
             {
-                using (var marketing = new Marketing.Service1Client())
-                {
-                    return marketing.IsAllowCreateNewPlace(93, this.User.id_object);
-                }
+                /*return false;*/ var marketing = new Service1();
+                return marketing.IsAllowCreateNewPlace(93, this.User.id_object);
+                /*using (var marketing = new Marketing.Service1Client())
+                 {
+                     return marketing.IsAllowCreateNewPlace(93, this.User.id_object);
+                 }*/
             }
             catch
             {

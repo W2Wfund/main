@@ -497,6 +497,121 @@ namespace W2W.Tests
         }
 
         [TestMethod]
+        public void UpdateParentInvestShoulderSumTest()
+        {
+            List<MarketingPlace> structure = new List<MarketingPlace>();
+            structure.Add(new MarketingPlace { id_object = 1, hash = "abc1", id_parent = 999, PartnerLeftShoulderInvestSum = 37100, PartnerRightShoulderInvestSum = 13000 });
+            structure.Add(new MarketingPlace { id_object = 10, hash = "abc10", id_parent = 1, SortPosition = 0, PartnerLeftShoulderInvestSum = 26600, PartnerRightShoulderInvestSum = 2000 });
+            structure.Add(new MarketingPlace { id_object = 11, hash = "abc11", id_parent = 1, SortPosition = 1, PartnerLeftShoulderInvestSum = 1400, PartnerRightShoulderInvestSum = 1600 });
+
+            structure.Add(new MarketingPlace { id_object = 101, hash = "abc101", id_parent = 10, SortPosition = 0, PartnerLeftShoulderInvestSum = 10100, PartnerRightShoulderInvestSum = 11000 });
+            structure.Add(new MarketingPlace { id_object = 110, hash = "abc110", id_parent = 10, SortPosition = 1, PartnerLeftShoulderInvestSum = 1000, PartnerRightShoulderInvestSum = 0 });
+
+            structure.Add(new MarketingPlace { id_object = 102, hash = "abc101", id_parent = 11, SortPosition = 0, PartnerLeftShoulderInvestSum = 300, PartnerRightShoulderInvestSum = 100 });
+            structure.Add(new MarketingPlace { id_object = 111, hash = "abc110", id_parent = 11, SortPosition = 1, PartnerLeftShoulderInvestSum = 0, PartnerRightShoulderInvestSum = 1500 });
+
+            structure.Add(new MarketingPlace { id_object = 1011, hash = "abc1011", id_parent = 110, SortPosition = 0, PartnerLeftShoulderInvestSum = 100, PartnerRightShoulderInvestSum = 0 });
+            structure.Add(new MarketingPlace { id_object = 1100, hash = "abc1100", id_parent = 101, SortPosition = 1, PartnerLeftShoulderInvestSum = 1000, PartnerRightShoulderInvestSum = 0 });
+            structure.Add(new MarketingPlace { id_object = 11002, hash = "abc11001", id_parent = 1011, SortPosition = 0, PartnerLeftShoulderInvestSum = 0, PartnerRightShoulderInvestSum = 0 });
+
+
+            structure.Add(new MarketingPlace { id_object = 1012, hash = "abc1011", id_parent = 102, SortPosition = 0, PartnerLeftShoulderInvestSum = 100, PartnerRightShoulderInvestSum = 100 });
+            structure.Add(new MarketingPlace { id_object = 1013, hash = "abc1011", id_parent = 102, SortPosition = 1, PartnerLeftShoulderInvestSum = 100, PartnerRightShoulderInvestSum = 100 });
+
+
+            structure.Add(new MarketingPlace { id_object = 1101, hash = "abc1100", id_parent = 111, SortPosition = 1, PartnerLeftShoulderInvestSum = 0, PartnerRightShoulderInvestSum = 500 });
+
+            structure.Add(new MarketingPlace { id_object = 11001, hash = "abc11001", id_parent = 1101, SortPosition = 0, PartnerLeftShoulderInvestSum = 300, PartnerRightShoulderInvestSum = 100 });
+            structure.Add(new MarketingPlace { id_object = 110010, hash = "abc110010", id_parent = 11001, SortPosition = 0, PartnerLeftShoulderInvestSum = 200, PartnerRightShoulderInvestSum = 0 });
+
+            Service1 service = new Service1();
+            var partner = new MarketingPlace { id_object = 110010, hash = "abc110010", id_parent = 11001, SortPosition = 0 };
+            var parentPlace = service.GetParent(partner, structure, 1);
+            decimal ShoulderSum = 0;
+            decimal Sum = 1000;
+            
+            while (parentPlace != null)
+            {
+                if (parentPlace.id_object == 1)
+                {
+                    break;
+                }
+                if (partner.SortPosition == 0)
+                {
+                    ShoulderSum = parentPlace.PartnerLeftShoulderInvestSum != null ? (decimal)parentPlace.PartnerLeftShoulderInvestSum : 0;
+                    parentPlace.PartnerLeftShoulderInvestSum += Sum;
+                }
+                else
+                {
+                    ShoulderSum = parentPlace.PartnerRightShoulderInvestSum != null ? (decimal)parentPlace.PartnerRightShoulderInvestSum : 0;
+                    parentPlace.PartnerRightShoulderInvestSum += Sum;
+                }
+                partner = parentPlace;
+                parentPlace = service.GetParent(parentPlace, structure, 1);
+            }
+
+            
+
+
+            Assert.AreEqual((decimal)1300,
+                service.GetParent(structure.Single(x => x.id_object == 110010),
+                structure, 1).PartnerLeftShoulderInvestSum);
+
+            Assert.AreEqual((decimal)1000,
+                service.GetParent(structure.Single(x => x.id_object == 11001),
+                structure, 1).PartnerLeftShoulderInvestSum);
+
+            Assert.AreEqual((decimal)2500,
+                service.GetParent(structure.Single(x => x.id_object == 1101),
+                structure, 1).PartnerRightShoulderInvestSum);
+
+            Assert.AreEqual((decimal)2600,
+                service.GetParent(structure.Single(x => x.id_object == 111),
+                structure, 1).PartnerRightShoulderInvestSum);
+
+            Assert.AreEqual((decimal)13000,
+                service.GetParent(structure.Single(x => x.id_object == 11),
+                structure, 1).PartnerRightShoulderInvestSum);
+
+
+            partner = new MarketingPlace { id_object = 11002, hash = "abc11001", id_parent = 1011, SortPosition = 0, PartnerLeftShoulderInvestSum = 0, PartnerRightShoulderInvestSum = 0 };
+            parentPlace = service.GetParent(partner, structure, 1);
+            while (parentPlace != null)
+            {
+                if (parentPlace.id_object == 1)
+                {
+                    break;
+                }
+                if (partner.SortPosition == 0)
+                {
+                    ShoulderSum = parentPlace.PartnerLeftShoulderInvestSum != null ? (decimal)parentPlace.PartnerLeftShoulderInvestSum : 0;
+                    parentPlace.PartnerLeftShoulderInvestSum += Sum;
+                }
+                else
+                {
+                    ShoulderSum = parentPlace.PartnerRightShoulderInvestSum != null ? (decimal)parentPlace.PartnerRightShoulderInvestSum : 0;
+                    parentPlace.PartnerRightShoulderInvestSum += Sum;
+                }
+                partner = parentPlace;
+                parentPlace = service.GetParent(parentPlace, structure, 1);
+            }
+
+
+            Assert.AreEqual((decimal)1100,
+                service.GetParent(structure.Single(x => x.id_object == 11002),
+                structure, 1).PartnerLeftShoulderInvestSum);
+
+            Assert.AreEqual((decimal)2000,
+                service.GetParent(structure.Single(x => x.id_object == 1011),
+                structure, 1).PartnerLeftShoulderInvestSum);
+
+            Assert.AreEqual((decimal)3000,
+                service.GetParent(structure.Single(x => x.id_object == 110),
+                structure, 1).PartnerRightShoulderInvestSum);
+        }
+
+
+        [TestMethod]
         public void CalcStructValueTest()
         {
             List<MarketingPlace> structure = new List<MarketingPlace>();
@@ -598,7 +713,7 @@ namespace W2W.Tests
         {
             Service1 service = new Service1();
             Assert.AreEqual(0, service.GetInvestRank(1100));
-            Assert.AreEqual(2, service.GetInvestRank(66e3));
+            Assert.AreEqual(2, service.GetInvestRank((decimal)66e3));
         }
 
 
@@ -607,7 +722,7 @@ namespace W2W.Tests
         public void TransformInfinityBonusPercentTest()
         {
             Service1 service = new Service1();
-            var chain = service.TransformInfinityBonusPercent(new List<double> { 5, 5, 0, 7, 6 });
+            var chain = service.TransformInfinityBonusPercent(new List<decimal> { 5, 5, 0, 7, 6 });
             Assert.AreEqual(chain.Count(), 5);
             Assert.AreEqual(chain.ElementAt(0), 5);
             Assert.AreEqual(chain.ElementAt(1), 0);
@@ -616,7 +731,7 @@ namespace W2W.Tests
             Assert.AreEqual(chain.ElementAt(4), 0);
 
 
-            chain = service.TransformInfinityBonusPercent(new List<double> { 0, 1, 3, 0, 5, 5 });
+            chain = service.TransformInfinityBonusPercent(new List<decimal> { 0, 1, 3, 0, 5, 5 });
             Assert.AreEqual(chain.Count(), 6);
             Assert.AreEqual(chain.ElementAt(0), 0);
             Assert.AreEqual(chain.ElementAt(1), 1);
@@ -658,7 +773,7 @@ namespace W2W.Tests
             structure.Add(13111, 1311);
 
 
-            Dictionary<uint, double> percents = new Dictionary<uint, double>();
+            Dictionary<uint, decimal> percents = new Dictionary<uint, decimal>();
             percents.Add(1, 5);
             percents.Add(11, 2);
             percents.Add(12, 3);
@@ -798,16 +913,16 @@ namespace W2W.Tests
             structure.Add(122, 12);
             structure.Add(1211, 121);
 
-            Dictionary<uint, double> investments = new Dictionary<uint, double>();
+            Dictionary<uint, decimal> investments = new Dictionary<uint, decimal>();
             investments.Add(1, 0);
-            investments.Add(11, 1e3);
-            investments.Add(12, 5e3);
+            investments.Add(11, (decimal)1e3);
+            investments.Add(12, (decimal)5e3);
             investments.Add(13, 0);
-            investments.Add(111, 1e3);
-            investments.Add(112, 2e3);
-            investments.Add(121, 1e3);
-            investments.Add(122, 3.5e3);
-            investments.Add(1211, 1e3);
+            investments.Add(111, (decimal)1e3);
+            investments.Add(112, (decimal)2e3);
+            investments.Add(121, (decimal)1e3);
+            investments.Add(122, (decimal)3.5e3);
+            investments.Add(1211, (decimal)1e3);
 
             Service1 service = new Service1();
             var values = service.CalcInvestValues(structure, investments);
@@ -826,7 +941,7 @@ namespace W2W.Tests
         [TestMethod]
         public void CalcInvestRanksTest()
         {
-            Dictionary<uint, double> values = new Dictionary<uint, double>();
+            Dictionary<uint, decimal> values = new Dictionary<uint, decimal>();
             values.Add(1, 1000);
             values.Add(11, 16000);
             values.Add(12, 36000);

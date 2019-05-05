@@ -545,4 +545,10 @@
         $('.tabs li').removeClass('active');
         $('.tabs').children('li').eq($(this).index()).addClass('active');
     });
+    function showTooltip(chart, index) {
+        var segment = chart.getDatasetMeta(0).data[index];
+        chart.tooltip._active = [segment];
+        chart.tooltip.update();
+        chart.draw();
+    }
 </script>

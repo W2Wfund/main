@@ -9,7 +9,7 @@
         <button type="submit" class="page-link js_search_input" form="form-base">
             <span data-text="@Resources.Resource.Search">@Resources.Resource.Search</span>
         </button>
-        @Html.HiddenFor(x=>x.RootId)
+        @Html.HiddenFor(x => x.RootId)
     </div>
     <div class="wrap-flex">
         <p>@Resources.Resource.ViewDisplay</p>
@@ -19,7 +19,7 @@
    new SelectListItem { Text = @Resources.Resource.List, Value = StructureViewType.List.ToString() },
         }, new { @class = "myslimSelect", onchange = "$(this).closest('form').submit()" })
 
-       
+
         <script>
             var mySlimSelect = new SlimSelect({
                 select: '.myslimSelect',
@@ -27,7 +27,7 @@
             })
         </script>
     </div>
-    <div class="wrap-flex mt20">
+    @*<div class="wrap-flex mt20">
         <p class="ml50">@Resources.Resource.Programs</p>
 
         @Html.DropDownListFor(x => x.MarketingType, new SelectListItem[]
@@ -42,5 +42,5 @@ new SelectListItem { Text = @Resources.Resource.Invest, Value = MarketingTypeVie
                 showSearch: false
             })
         </script>
-    </div>
+    </div>*@
 </form>

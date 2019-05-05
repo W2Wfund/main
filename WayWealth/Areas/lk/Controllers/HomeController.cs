@@ -26,6 +26,8 @@ using JWT;
 using Binance.Net;
 using System.Text.RegularExpressions;
 using Google.Authenticator;
+using W2W.Marketing;
+
 
 namespace WayWealth.Areas.lk.Controllers
 {
@@ -1315,26 +1317,69 @@ namespace WayWealth.Areas.lk.Controllers
         //    return View(model);
         //}
 
+
         public ActionResult Structure(StructureView model)
         {
             uint rootId = model.RootId ?? this.User.id_object;
             var root = this.DataService.GetPartner(rootId);
 
             var items = new List<MarketingPlaceView>();
+            var sandPartners = new List<MarketingPlaceView>();
+            var sandboxPartners = DataService.GetSandboxPartners(rootId);
+            foreach (var p in sandboxPartners)
+            {
+                sandPartners.Add(Mapper.Map<MarketingPlaceView>(p));
+            }
+            ViewBag.SandboxPartners = sandPartners;
 
             #region Get places
+            //decimal leftShoulderSum = 0;
+            //decimal rightShoulderSum = 0;
+
 
             if (model.MarketingType == MarketingTypeView.Camulative)
             {
                 var rootPlaces = this.DataService.GetPlaces(93, rootId);
+                uint rootPlaceId = 0;
                 if (rootPlaces.Count() > 0)
                 {
-                    var places = this.DataService.GetStructure(93,
-                        rootPlaces.OrderBy(x => x.hash.Length).First().id_object);
-
+                    var rootPlace = rootPlaces.OrderBy(x => x.hash.Length).First();
+                    rootPlaceId = rootPlace.id_object;/*rootPlaces.OrderBy(x => x.hash.Length).First().id_object;*/
+                    ViewBag.LeftShoulderSum = rootPlace.PartnerBinaryLeftShoulderSum ?? 0;
+                    ViewBag.RightShoulderSum = rootPlace.PartnerBinaryRightShoulderSum ?? 0;
+                    var places = this.DataService.GetStructure(93, rootPlaceId);
+                    places = places.OrderBy(x => x.hash.Length);
+                    /*string leftHash = "";
+                    string rightHash = "";*/
 
                     foreach (var place in places)
                     {
+                       /* if(  place.id_parent == rootPlaceId)
+                        {
+                            if(place.SortPosition == 0)
+                            {
+                                leftHash = place.hash;
+                                leftShoulderSum = place.PartnerBalanceInvestments ?? 0;
+                            }
+                            else
+                            {
+                                rightHash = place.hash;
+                                rightShoulderSum = place.PartnerBalanceInvestments ?? 0;
+                            }
+                        }
+                        else if(place.id_object != rootPlaceId)
+                        {
+                            if (leftHash.Length > 0 && place.hash.Contains(leftHash))
+                            {
+                                leftShoulderSum += place.PartnerBalanceInvestments ?? 0;
+                            }
+                            else
+                            {
+                                rightShoulderSum += place.PartnerBalanceInvestments ?? 0;
+
+                            }
+                        }*/
+
                         items.Add(Mapper.Map<MarketingPlaceView>(place));
                     }
                 }
@@ -1348,7 +1393,11 @@ namespace WayWealth.Areas.lk.Controllers
                     items.Add(Mapper.Map<MarketingPlaceView>(p));
                 }
             }
+            /*ViewBag.LeftShoulderSum = leftShoulderSum * 0.9m;
+            ViewBag.RightShoulderSum = rightShoulderSum * 0.9m;*/
             ViewBag.Items = items;
+
+
             #endregion
             #region Investments
             var investments = new Dictionary<uint, decimal>();
@@ -1536,12 +1585,105 @@ namespace WayWealth.Areas.lk.Controllers
         }
 
         #endregion
+        [HttpPost]
+        public JsonResult SetPlace(uint place_id, uint partner_id,int pos)
+        {            
+           // bool IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
+            Dictionary<string, string> jsondata = new Dictionary<string, string>();
+            jsondata.Add("close", Resources.Resource.Close);
+
+            /* if (!IsAllowCreateNewPlace)
+             {   
+                 jsondata.Add("error", "true");
+                 jsondata.Add("message", Resources.Resource.CreatePlaceIsNotAllowError);
+                 return Json(jsondata);
+             }*/
+            try
+            {
+                var marketing = new Service1();
+                //using (var marketing = new Marketing.Service1Client())
+                {
+                    var partner = DataService.GetPartner(partner_id);
+                    if(partner == null)
+                    {
+                        jsondata.Add("error", "true");
+                        jsondata.Add("message", Resources.Resource.PartnerNotFound);
+                        return Json(jsondata);
+                    }
+                    var place = DataService.GetPlace(place_id);
+                    if(place == null)
+                    {
+                        jsondata.Add("error", "true");
+                        jsondata.Add("message", Resources.Resource.FreePlaceNotFound);
+                        return Json(jsondata);
+                    }
+
+                    var investments = DataService.GetInvestments(partner.id_object, Resources.Resource.Active);
+                    decimal sum = 0;
+                    if(investments.Count() > 0)
+                    {
+                        sum = investments.First().Sum ?? 0;
+                    }
+
+                    uint newPlaceId = marketing.CreatePlace(
+                                        companyId: 5,
+                                        marketingId: 93,
+                                        partnerId: partner_id,
+                                        objectName: partner.ObjectName,
+                                        alias: partner.Login,
+                                        sum: sum,
+                                        date: DateTime.Now,
+                                        user: ConfigurationManager.AppSettings["login"],
+                                        activePlaceId:place_id,
+                                         pos: pos);
+                    if (newPlaceId > 0) {
+                        this.AuthenticationService.UpdateCookies(this.User.id_object);
+                        jsondata.Add("error", "false");
+                        jsondata.Add("message", Resources.Resource.SetPlaceSuccess);
+                        return Json(jsondata);
+                    }
+                    else
+                    {
+                        jsondata.Add("error", "true");
+                        jsondata.Add("message", Resources.Resource.CreatePlaceError);
+                    }
+                    return Json(jsondata);
+                }
+            }
+            catch (Exception exc)
+            {
+                jsondata.Add("error", "true");
+                jsondata.Add("message", exc.Message);
+                return Json(jsondata);
+            }
+        }
 
         [HttpGet]
         public ActionResult Invest(string program = "base")
         {
+            //var marketing = new Service1();
+           // marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
+
+
             ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
             ViewBag.Program = program;
+            ViewBag.Items = DataService.GetInvestPrograms();
+            ViewBag.UserBalance = User.BalanceInner > 0 ? User.BalanceInner : 0;
+            var investments = DataService.GetInvestments(User.id_object, "Активен");
+            decimal sum = 0;
+            System.Collections.ArrayList UserInvestments = new System.Collections.ArrayList();
+            if (investments.Count() > 0)
+            {
+                sum = (decimal)investments.OrderByDescending(x => x.Sum).First().Sum;
+                foreach (var item in investments)
+                {
+                    UserInvestments.Add(item.ProgramId);
+                }
+            }
+            
+            ViewBag.IsCanBuyPremium = sum > 9999;
+            
+            ViewBag.UserInvestments = UserInvestments;
 
             return View();
         }
@@ -1551,17 +1693,30 @@ namespace WayWealth.Areas.lk.Controllers
         {
             ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
             ViewBag.Program = program;
+            var investments = DataService.GetInvestments(User.id_object, "Активен");
+            NewInvestProgram investProgram = DataService.GetInvestProgram(model.InvestId);
+            if (investments.Count() > 0)
+            {
+                var currentProgram = investments.Where(x => x.ProgramId == investProgram.id_object);
+                if(currentProgram.Count() > 0)
+                {
+                    ModelState.AddModelError(string.Empty, Resources.Resource.InvestProgramDublicateError);
+                }
+            }
 
             if (ModelState.IsValid)
             {
                 try
                 {
-                    using (var marketing = new Marketing.Service1Client())
+                    var marketing = new Service1();
+                    //using (var marketing = new Marketing.Service1Client())
                     {
                         if (!ViewBag.IsAllowCreateNewPlace)
                             model.IsCreateNewPlace = false;
 
-                        if (model.Sum == 300)
+                        
+
+                        /*if (model.Sum == 300)
                         {
                             marketing.BuyCamulative(
                                 companyId: 5,
@@ -1572,17 +1727,18 @@ namespace WayWealth.Areas.lk.Controllers
                                 user: ConfigurationManager.AppSettings["login"]);
                         }
                         else
-                        {
-                            marketing.BuyInvestment(
-                                companyId: 5,
-                                camulativeMarketingId: 93,
-                                partnerId: this.User.id_object,
-                                sum: model.Sum,
-                                isProlonged: model.IsProlonged,
-                                isCreateNewPlace: model.IsCreateNewPlace,
-                                date: DateTime.Now,
-                                user: ConfigurationManager.AppSettings["login"]);
-                        }
+                        {*/
+
+                        marketing.BuyInvestment(
+                              companyId: 5,
+                              camulativeMarketingId: 93,
+                              partnerId: this.User.id_object,
+                              sum: investProgram.Sum,//model.Sum,
+                              isProlonged: model.IsProlonged,
+                              isCreateNewPlace: model.IsCreateNewPlace,
+                              date: DateTime.Now,
+                              user: ConfigurationManager.AppSettings["login"]);
+                        // }*/
                         this.AuthenticationService.UpdateCookies(this.User.id_object);
                         return RedirectToAction("investments", "home", new { area = "lk" });
                     }
@@ -1592,6 +1748,24 @@ namespace WayWealth.Areas.lk.Controllers
                     ModelState.AddModelError(string.Empty, exc.Message);
                 }
             }
+            ViewBag.Items = DataService.GetInvestPrograms();
+            ViewBag.UserBalance = User.BalanceInner > 0 ? User.BalanceInner : 0;
+            
+            decimal sum = 0;
+            System.Collections.ArrayList UserInvestments = new System.Collections.ArrayList();
+            if (investments.Count() > 0)
+            {
+                sum = (decimal)investments.OrderByDescending(x => x.Sum).First().Sum;
+                foreach (var item in investments)
+                {
+                    UserInvestments.Add(item.ProgramId);
+                }
+            }
+
+            ViewBag.IsCanBuyPremium = sum > 9999;
+
+            ViewBag.UserInvestments = UserInvestments;
+            
             return View(model);
         }
 
@@ -1629,10 +1803,12 @@ namespace WayWealth.Areas.lk.Controllers
                 {
                     try
                     {
-                        using (var marketing = new Marketing.Service1Client())
+                        var marketing = new Service1();
+                        //using (var marketing = new Marketing.Service1Client())
                         {
-                            var inv = new Marketing.ArrayOfUnsignedInt();
-                            inv.AddRange(items);
+                            //TODO tem comment
+                            uint[] inv = items.ToArray<uint>();//new Marketing.ArrayOfUnsignedInt();
+                            //inv.AddRange(items);
 
                             // Объединение инвест портфелей
                             marketing.UnionInvestments(
@@ -1666,7 +1842,8 @@ namespace WayWealth.Areas.lk.Controllers
             {
                 var investment = this.DataService.GetInvestment(investmentId);
 
-                using (var marketing = new Marketing.Service1Client())
+                var marketing = new Service1();
+                //using (var marketing = new Marketing.Service1Client())
                 {
                     marketing.TerminateInvestment(
                         companyId: 5,

@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
     ViewBag.Title = Resources.Resource.StructureTitle;
-    ViewBag.Version = 11;
+    ViewBag.Version = 9;//11
 }
 @section HeadSection{
     <link rel="stylesheet" href="~/Areas/lk/Content/css/libs.min.css?v=@ViewBag.Version">
@@ -19,7 +19,8 @@
 }
 
 @RenderBody()
-<div class="wrap-modal">
+<div class="wrap-modal" style="display:none">
+
     <div class="modal" id="searchResults">
 
     </div>

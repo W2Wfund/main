@@ -8,12 +8,13 @@ namespace WayWealth.Areas.lk.ViewModels.Home
 {
     public class InvestView
     {
-        [Display(Name = "Amount", ResourceType = typeof(Resources.Resource))]
+        /*[Display(Name = "Amount", ResourceType = typeof(Resources.Resource))]
         [Required(ErrorMessageResourceType = typeof(Resources.Resource),
                    ErrorMessageResourceName = "ValidRequired")]
         [Range(1, 100000, ErrorMessageResourceName = "ValidRange",
              ErrorMessageResourceType = typeof(Resources.Resource))]
-        public decimal Sum { get; set; }
+        public decimal Sum { get; set; }*/
+        public uint InvestId { get; set; }
 
         [Display(Name = "IsProlonged", ResourceType = typeof(Resources.Resource))]
         public bool IsProlonged { get; set; }

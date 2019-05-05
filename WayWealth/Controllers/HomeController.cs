@@ -23,7 +23,11 @@ namespace WayWealth.Controllers
 {
     public class HomeController : BaseController
     {
-        public ActionResult Index() => View();
+        //public ActionResult Index() => View();
+        public ActionResult Index() {
+            ViewBag.Items = DataService.GetInvestPrograms();
+            return View();
+        }
         public ActionResult About()
         {
             if (Request.Cookies["lang"] != null && Request.Cookies["lang"].Value == "en")
@@ -48,6 +52,13 @@ namespace WayWealth.Controllers
                 return View("FaqEn");
             return View();
         }
+        public ActionResult Disabled()
+        {
+            if (Request.Cookies["lang"] != null && Request.Cookies["lang"].Value == "en")
+                return View("DisabledEn");
+            return View();
+        }
+
         public ActionResult News(int? id, int page = 1)
         {
             var news = DataService.GetNews();

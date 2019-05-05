@@ -616,6 +616,21 @@ namespace W2W.ModelKBT
         {
             throw new NotImplementedException();
         }
+
+        public void UpdatePartnerInvestSum(bool isLeftShoulder, decimal shoulderSum, decimal binarySum, uint id_place)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdatePartnerBinarySum(decimal leftSum, decimal rightSum, uint id_place)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void  SetPartnerMarketPlaceStatus(uint partnerId, bool status)
+        {
+            throw new NotImplementedException();
+        }
         public void SetNoticeAsReaded(uint messageId)
         {
             throw new NotImplementedException();
@@ -740,6 +755,11 @@ namespace W2W.ModelKBT
                        select Clone<Partner>(x)).ToList();
 
             return Partners.Where(x => x.InviterId == id_object);
+        }
+
+        public IEnumerable<Partner> GetSandboxPartners(uint id_object)
+        {
+            throw new NotImplementedException();
         }
 
         public Partner GetPartnerByEmail(string email)
@@ -1311,6 +1331,21 @@ namespace W2W.ModelKBT
             throw new NotImplementedException();
         }
         public void SetPlaceChildCount(uint placeId, int? count)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<NewInvestProgram> GetInvestPrograms()
+        {
+            throw new NotImplementedException();
+        }
+
+        public NewInvestProgram GetInvestProgram(uint id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public NewInvestProgram GetNewInvestProgram(decimal sum)
         {
             throw new NotImplementedException();
         }

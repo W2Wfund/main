@@ -1591,6 +1591,7 @@ a.copy_link i {
     z-index: 999;
     background: rgba(0,0,0,0.5);
     padding: 30px 0;
+   /* display: none;*/
 }
 
 .wrap-modal .modal {
@@ -1616,6 +1617,10 @@ a.copy_link i {
     line-height: 58px;
     font-size: 36px;
     color: #33bf10;
+}
+
+.wrap-modal.active {
+    display: block;
 }
 
 .modal-icon.modal-icon-close {
@@ -2795,5 +2800,943 @@ html body > jdiv {
     }
     #form_filter {
         display: block !important;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.validation-summary-errors{
+    color: red;
+    padding: 10px;
+}
+
+.tree-block .all_tree_btn:hover span {
+    background: -webkit-gradient(linear, left top, left bottom, from(#facd52), color-stop(44%, #f2c54b), color-stop(85%, #543d03), to(#3d2c02));
+    background: -webkit-linear-gradient(top, #facd52 0%, #f2c54b 44%, #543d03 85%, #3d2c02 100%);
+    background: -o-linear-gradient(top, #facd52 0%, #f2c54b 44%, #543d03 85%, #3d2c02 100%);
+    background: linear-gradient(to bottom, #facd52 0%, #f2c54b 44%, #543d03 85%, #3d2c02 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tree-block {
+    padding: 30px 25px 100px;
+    min-height: 100%;
+}
+
+    .tree-block .tree-tools {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        font-size: 16px;
+        color: #4B4B4B;
+        margin-bottom: 25px;
+    }
+
+        .tree-block .tree-tools p {
+            margin-right: 10px;
+        }
+
+        .tree-block .tree-tools input, .tree-block .tree-tools select {
+            width: 235px;
+            height: 31px;
+            border: 2px solid #eec556;
+            -webkit-border-radius: 14.5px;
+            border-radius: 14.5px;
+            padding: 0 15px;
+            outline: none;
+            font-size: 18px;
+            margin-right: 20px;
+        }
+
+        .tree-block .tree-tools .wrap-flex {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-align-items: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .tree-block .tree-tools .page-link {
+            margin: 0 20px 0 0;
+            width: 126px;
+            height: 31px;
+            line-height: 31px;
+            padding: 0;
+            outline: none;
+            border: none;
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+            .tree-block .tree-tools .page-link span {
+                line-height: 31px;
+            }
+
+        .tree-block .tree-tools select {
+            margin-right: 0;
+            width: 155px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("../img/select-arrow.png");
+            background-repeat: no-repeat;
+            background-position: -webkit-calc(100% - 15px) center;
+            background-position: calc(100% - 15px) center;
+        }
+
+        .tree-block .tree-tools .select2 {
+            width: 335px;
+        }
+
+        .tree-block .tree-tools .ml50 {
+            margin-left: 20px;
+        }
+
+    .tree-block .all_tree_btn {
+        width: 295px;
+        height: 45px;
+        line-height: 45px;
+        background-color: #C6C6C6;
+        display: block;
+        -webkit-border-radius: 22.5px;
+        border-radius: 22.5px;
+        padding-left: 60px;
+        background-image: url("../img/all_tree_btn.png");
+        background-repeat: no-repeat;
+        background-position: 22px center;
+        font-size: 16px;
+        font-weight: bold;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 35px;
+    }
+
+        .tree-block .all_tree_btn span {
+            color: #3D3C3A;
+            position: relative;
+            line-height: 1;
+        }
+
+        .tree-block .all_tree_btn:hover span:after {
+            background: none;
+            display: inline-block;
+            content: attr(data-text);
+            left: 0;
+            right: 0;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            z-index: -1;
+            text-shadow: 0px 1px 0.9px rgba(1, 2, 2, 0.86);
+        }
+
+    .tree-block .scale-block {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        margin-bottom: 60px;
+    }
+
+        .tree-block .scale-block .all_tree_btn {
+            margin-bottom: 0;
+            margin-right: 25px;
+        }
+
+        .tree-block .scale-block p {
+            margin-right: 35px;
+            font-size: 16px;
+            line-height: 1;
+            color: #4B4B4B;
+        }
+
+        .tree-block .scale-block .scale-pips {
+            max-width: 730px;
+            width: 100%;
+            position: relative;
+            margin: 15px 0 0;
+        }
+
+            .tree-block .scale-block .scale-pips.ui-slider {
+                -webkit-border-radius: 8px;
+                border-radius: 8px;
+                background-image: -webkit-gradient(linear, left bottom, left top, from(#a48637), to(#eec657));
+                background-image: -webkit-linear-gradient(bottom, #a48637 0%, #eec657 100%);
+                background-image: -o-linear-gradient(bottom, #a48637 0%, #eec657 100%);
+                background-image: linear-gradient(0deg, #a48637 0%, #eec657 100%);
+                border: none;
+                height: 8px;
+            }
+
+            .tree-block .scale-block .scale-pips .ui-slider-handle {
+                -webkit-border-radius: 22px;
+                border-radius: 22px;
+                height: 22px;
+                width: 22px;
+                top: -8px;
+                margin-left: -4px;
+                border: 4px solid #e8c154;
+                -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.66);
+                box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.66);
+                outline: none;
+                background-color: #E71C39;
+                z-index: 3;
+            }
+
+                .tree-block .scale-block .scale-pips .ui-slider-handle.ui-state-active {
+                    background-color: #e71c39;
+                }
+
+            .tree-block .scale-block .scale-pips .ui-slider-pip {
+                top: -3px;
+                z-index: 2;
+            }
+
+                .tree-block .scale-block .scale-pips .ui-slider-pip:hover .ui-slider-label {
+                    font-weight: 400 !important;
+                }
+
+                .tree-block .scale-block .scale-pips .ui-slider-pip:last-child {
+                    margin-left: -16px;
+                }
+
+                .tree-block .scale-block .scale-pips .ui-slider-pip .ui-slider-label {
+                    display: block;
+                    font-size: 16px;
+                    line-height: 1;
+                    width: 60px;
+                    position: relative;
+                    top: -30px;
+                    left: 7px;
+                    font-family: "OpenSans", sans-serif;
+                    color: #292929;
+                    font-weight: 400 !important;
+                }
+
+                .tree-block .scale-block .scale-pips .ui-slider-pip.ui-slider-pip-selected-initial {
+                    font-weight: normal;
+                }
+
+                .tree-block .scale-block .scale-pips .ui-slider-pip.ui-slider-pip-selected {
+                    font-weight: 400 !important;
+                }
+
+                .tree-block .scale-block .scale-pips .ui-slider-pip.ui-slider-pip-selected, .tree-block .scale-block .scale-pips .ui-slider-pip.ui-slider-pip-selected-initial {
+                    color: #434d5a;
+                }
+
+            .tree-block .scale-block .scale-pips .ui-slider-line {
+                width: 14px;
+                height: 14px;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background-image: -webkit-gradient(linear, left bottom, left top, from(#a48637), to(#eec657));
+                background-image: -webkit-linear-gradient(bottom, #a48637 0%, #eec657 100%);
+                background-image: -o-linear-gradient(bottom, #a48637 0%, #eec657 100%);
+                background-image: linear-gradient(0deg, #a48637 0%, #eec657 100%);
+            }
+
+    .tree-block .lists-block ul {
+        font-size: 18px;
+        color: #4B4B4B;
+    }
+
+        .tree-block .lists-block ul li {
+            position: relative;
+        }
+
+            .tree-block .lists-block ul li span {
+                margin-left: 20px;
+            }
+
+    .tree-block .tree2 {
+        overflow-x: scroll;
+        width: 78%;/*100%;*/
+        min-height: 650px;
+        display: inline-block;
+        float:left;
+    }
+    .tree-block .tree-sandbox {
+        width: 20%;
+        display: inline-block;
+        float: left;
+        border: 2px solid #CBA849;
+        padding: 10px 10px;
+        border-radius: 10px;
+        margin-left: 10px;
+    }
+
+    .tree-block .tree2 ul {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .tree-block .tree-sandbox p {
+        font-size: 16px;
+        font-weight: bold;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #CBA849;
+        margin-bottom: 7px;
+    }
+
+            .tree-block .tree2 ul.scale-100 {
+                -webkit-transform: scale(1);
+                -ms-transform: scale(1);
+                transform: scale(1);
+            }
+
+            .tree-block .tree2 ul.scale-90 {
+                zoom: 90%;
+            }
+
+            .tree-block .tree2 ul.scale-80 {
+                zoom: 80%;
+            }
+
+            .tree-block .tree2 ul.scale-70 {
+                zoom: 70%;
+            }
+
+            .tree-block .tree2 ul.scale-60 {
+                zoom: 60%;
+            }
+
+            .tree-block .tree2 ul.scale-50 {
+                zoom: 50%;
+            }
+
+            .tree-block .tree2 ul.scale-40 {
+                zoom: 40%;
+            }
+
+            .tree-block .tree2 ul.scale-30 {
+                zoom: 30%;
+            }
+
+            .tree-block .tree2 ul.scale-20 {
+                zoom: 20%;
+            }
+
+            .tree-block .tree2 ul.scale-10 {
+                zoom: 10%;
+            }
+
+            .tree-block .tree2 ul.scale-0 {
+                -webkit-transform: scale(0);
+                -ms-transform: scale(0);
+                transform: scale(0);
+            }
+
+            .tree-block .tree2 ul li {
+                margin: 0 10px;
+            }
+
+                .tree-block .tree2 ul li > ul {
+                    display: none;
+                }
+
+                    .tree-block .tree2 ul li > ul li {
+                        position: relative;
+                    }
+
+                        .tree-block .tree2 ul li > ul li:after {
+                            content: "";
+                            display: block;
+                            width: -webkit-calc(100% + 20px);
+                            width: calc(100% + 20px);
+                            height: 2px;
+                            background-color: #a6a6a6;
+                            position: absolute;
+                            top: -10px;
+                            left: -10px;
+                        }
+
+                        .tree-block .tree2 ul li > ul li:before {
+                            content: "";
+                            display: block;
+                            width: 2px;
+                            height: 10px;
+                            background-color: #a6a6a6;
+                            position: absolute;
+                            top: -10px;
+                            left: 0;
+                            right: 0;
+                            margin: 0 auto;
+                        }
+
+                        .tree-block .tree2 ul li > ul li:first-child:after {
+                            content: "";
+                            display: block;
+                            width: -webkit-calc(50% + 10px);
+                            width: calc(50% + 10px);
+                            left: 50%;
+                            height: 2px;
+                            background-color: #a6a6a6;
+                            position: absolute;
+                            top: -10px;
+                        }
+
+                        .tree-block .tree2 ul li > ul li:first-child:before {
+                            content: "";
+                            display: block;
+                            width: 2px;
+                            height: 10px;
+                            background-color: #a6a6a6;
+                            position: absolute;
+                            top: -10px;
+                            left: 0;
+                            right: 0;
+                            margin: 0 auto;
+                        }
+
+                        .tree-block .tree2 ul li > ul li:last-child:after {
+                            content: "";
+                            display: block;
+                            width: -webkit-calc(50% + 10px);
+                            width: calc(50% + 10px);
+                            right: 50%;
+                            height: 2px;
+                            background-color: #a6a6a6;
+                            position: absolute;
+                            top: -10px;
+                        }
+
+                        .tree-block .tree2 ul li > ul li:last-child:before {
+                            content: "";
+                            display: block;
+                            width: 2px;
+                            height: 10px;
+                            background-color: #a6a6a6;
+                            position: absolute;
+                            top: -10px;
+                            left: 0;
+                            right: 0;
+                            margin: 0 auto;
+                        }
+
+                        .tree-block .tree2 ul li > ul li:1only-child:after {
+                            display: none;
+                        }
+
+            .tree-block .tree2 ul.open_ul li > ul {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+            }
+
+            .tree-block .tree2 ul li > ul.active {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+            }
+
+            .tree-block .tree2 .item {
+                display: block;
+                width: 217px;
+                height: 75px;
+                margin: 0 auto 35px;
+            }
+
+            .tree-block .tree2 .item.active p, .tree-block .tree2 .item:hover p {
+                border: 3px solid #EEC657;
+                line-height: 45px;
+            }
+
+            .tree-block .tree2 .item.active .flex i, .tree-block .tree2 .item:hover .flex i {
+                border: 3px solid #EEC657;
+                border-top: none;
+            }
+
+            .tree-block .tree-sandbox li:hover {
+                border: 3px solid #EEC657;
+                cursor: pointer;
+            }
+
+            .tree-block .tree2 .item.active .flex i:after, .tree-block .tree2 .item:hover .flex i:after {
+                display: block;
+            }
+
+            .tree-block .tree2 .item p, .tree-block .tree-sandbox li {
+                background-color: #DADADA;
+                width: 100%;
+                height: 51px;
+                line-height: 51px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 700;
+                color: #3D3C3A;
+                -webkit-border-radius: 17px;
+                border-radius: 17px;
+                -webkit-border-bottom-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+            .tree-block .tree-sandbox li {
+                -webkit-border-radius: 17px;
+                border-radius: 17px;
+                margin-bottom: 7px;
+                border: 3px solid transparent;
+            }
+
+                .tree-block .tree2 .item .flex {
+                    width: 90px;
+                    height: 24px;
+                    display: -webkit-box;
+                    display: -webkit-flex;
+                    display: -ms-flexbox;
+                    display: flex;
+                    margin-left: auto;
+                }
+
+                .tree-block .tree2 .item .flex.active i {
+                    background-image: url("../img/tree-icon2.png");
+                }
+
+                .tree-block .tree2 .item .flex span {
+                    width: 42px;
+                    background-color: #292929;
+                    -webkit-border-bottom-left-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    position: relative;
+                    color: #fff;
+                    font-size: 16px;
+                    text-align: center;
+                    line-height: 20px;
+                }
+
+                    .tree-block .tree2 .item .flex span:after {
+                        content: "";
+                        display: block;
+                        width: 20px;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        right: -20px;
+                        background-color: #292929;
+                        z-index: -1;
+                    }
+
+                .tree-block .tree2 .item .flex i {
+                    width: 48px;
+                    background-color: #DADADA;
+                    background-image: url("../img/tree-icon.png");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    -webkit-border-bottom-left-radius: 15px;
+                    border-bottom-left-radius: 15px;
+                    -webkit-border-bottom-right-radius: 15px;
+                    border-bottom-right-radius: 15px;
+                    position: relative;
+                }
+
+                    .tree-block .tree2 .item .flex i:after {
+                        content: "";
+                        display: none;
+                        width: 100%;
+                        height: 3px;
+                        background-color: #DADADA;
+                        position: absolute;
+                        top: -3px;
+                        left: 0;
+                        right: 0;
+                    }
+
+        .tree-block .tree2 .scroll-btn {
+            width: 90px;
+            height: 81px;
+            position: fixed;
+            bottom: 126px;
+            left: 10px;
+            background-color: #DFDFDF;
+            -webkit-border-radius: 25px;
+            border-radius: 25px;
+            padding: 8px;
+        }
+
+            .tree-block .tree2 .scroll-btn a {
+                display: block;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+
+            .tree-block .tree2 .scroll-btn .scroll-btn-up {
+                width: 22px;
+                height: 13px;
+                background-image: url("../img/scroll-btn-up-1.png");
+                background-size: contain;
+                margin: 0 auto 8px;
+            }
+
+                .tree-block .tree2 .scroll-btn .scroll-btn-up:hover {
+                    background-image: url("../img/scroll-btn-up-2.png");
+                }
+
+            .tree-block .tree2 .scroll-btn .scroll-btn-down {
+                width: 22px;
+                height: 13px;
+                background-image: url("../img/scroll-btn-down-1.png");
+                background-size: contain;
+                margin: 0 auto;
+            }
+
+                .tree-block .tree2 .scroll-btn .scroll-btn-down:hover {
+                    background-image: url("../img/scroll-btn-down-2.png");
+                }
+
+            .tree-block .tree2 .scroll-btn .scroll-btn-left {
+                width: 23px;
+                height: 23px;
+                background-image: url("../img/scroll-btn-left-1.png");
+                background-size: contain;
+            }
+
+                .tree-block .tree2 .scroll-btn .scroll-btn-left:hover {
+                    background-image: url("../img/scroll-btn-left-2.png");
+                }
+
+            .tree-block .tree2 .scroll-btn .scroll-btn-right {
+                width: 23px;
+                height: 23px;
+                background-image: url("../img/scroll-btn-right-1.png");
+                background-size: contain;
+            }
+
+                .tree-block .tree2 .scroll-btn .scroll-btn-right:hover {
+                    background-image: url("../img/scroll-btn-right-2.png");
+                }
+
+            .tree-block .tree2 .scroll-btn div {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-justify-content: space-between;
+                -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                justify-content: space-between;
+                margin-bottom: 8px;
+            }
+
+.jstree-default .jstree-themeicon {
+    display: none;
+}
+
+.jstree-default .jstree-clicked {
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: #DDD;
+}
+
+.jstree-default .jstree-anchor {
+    height: 45px;
+    line-height: 45px;
+    padding: 0 25px 0 55px;
+    -webkit-border-radius: 22.5px;
+    border-radius: 22.5px;
+}
+
+.jstree-default .jstree-hovered {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    background-color: #DDD;
+}
+
+.jstree-default .jstree-icon {
+    background-image: url("../img/tree-arrow2.png");
+    width: 26px;
+    height: 18px;
+    background-position: center;
+}
+
+.jstree-default .jstree-closed > .jstree-ocl {
+    background-position: center;
+}
+
+.jstree-default .jstree-icon:empty {
+    width: 26px;
+    height: 18px;
+    line-height: 18px;
+    position: absolute;
+    left: 12px;
+    top: 13.5px;
+}
+
+.jstree-default .jstree-open > .jstree-ocl {
+    background-position: center;
+    background-image: url("../img/tree-arrow.png");
+}
+
+.jstree-default .jstree-leaf .jstree-anchor {
+    padding: 0 25px;
+}
+
+.jstree-default .jstree-node {
+    margin-left: 40px;
+    background: none;
+}
+
+.tree-info {
+    background-color: #3D3C3A;
+    padding: 20px;
+    display: none;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+    .tree-info.active {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+    .tree-info > div {
+        /*salih width: 33.33%;*/
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .tree-info span {
+        font-size: 18px;
+        color: #E2BD52;
+        line-height: 1;
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .tree-info p {
+        color: #fff;
+        font-size: 18px;
+        line-height: 1;
+    }
+
+
+
+.ss-main {
+    margin-left: 15px;
+    width: 100%;
+    max-width: 220px;
+}
+
+    .ss-main .ss-single-selected {
+        font-family: "OpenSans", sans-serif;
+        color: #4B4B4B;
+        font-size: 18px;
+        height: 31px;
+        -webkit-border-radius: 15px;
+        border-radius: 15px;
+        padding: 0 25px;
+        border: 2px solid #CBA849;
+    }
+
+        .ss-main .ss-single-selected.ss-open-below {
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+        }
+
+        .ss-main .ss-single-selected .ss-arrow {
+            margin-right: 0 !important;
+        }
+
+    .ss-main .ss-content {
+        border: 2px solid #EFC657;
+        -webkit-border-radius: 15px;
+        border-radius: 15px;
+    }
+
+        .ss-main .ss-content .ss-list .ss-option.ss-disabled {
+            background-color: #3D3C3A;
+            color: #d4af4b;
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+        }
+
+            .ss-main .ss-content .ss-list .ss-option.ss-disabled:hover {
+                background-color: #3D3C3A;
+            }
+
+        .ss-main .ss-content .ss-list .ss-option:hover {
+            background-color: #D4AF4B;
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+        }
+
+    .ss-main.myslimSelect2 {
+        width: 370px;
+        max-width: 100%;
+    }
+
+.tree-block .tree-shoulders {
+    text-align: center;
+    margin-bottom: 15px;
+}
+    .tree-block .tree-shoulders span {
+        font-size: 14px;
+        font-weight: bold;
+        border: 2px solid #CBA849;
+        padding: 10px 10px;
+        border-radius: 10px;
+        display: inline-block;
+    }
+        .tree-block .tree-shoulders span:first-child{
+            margin-right: 10px;
+        }
+
+
+        @media only screen and (max-width: 1240px) {
+            .tree-block .tree-tools {
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+        .tree-block .tree-tools .wrap-flex.mt20 {
+            margin-top: 20px;
+        }
+
+            .tree-block .tree-tools .wrap-flex.mt20 .ml50 {
+                margin-left: 0;
+            }
+
+    .tree-block .scale-block {
+        display: block;
+    }
+
+        .tree-block .scale-block .all_tree_btn {
+            margin-bottom: 20px;
+        }
+
+        .tree-block .scale-block p {
+            margin-right: 0;
+            margin-bottom: 40px;
+        }
+}
+
+@media only screen and (max-width: 992px) {
+    .tree-block {
+        padding: 10px;
+    }
+
+        .tree-block .tree-tools {
+            display: block;
+            margin-bottom: 0;
+        }
+
+            .tree-block .tree-tools .wrap-flex {
+                display: block;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .tree-block .tree-tools .page-link {
+                margin: 0 auto;
+            }
+
+            .tree-block .tree-tools input, .tree-block .tree-tools select {
+                margin: 5px 0;
+            }
+
+            .tree-block .tree-tools .select2 {
+                width: 100%;
+                max-width: 335px;
+            }
+
+        .tree-block .scale-block {
+            margin-bottom: 30px;
+        }
+
+            .tree-block .scale-block p {
+                text-align: center;
+            }
+
+            .tree-block .scale-block .scale-pips {
+                width: 85%;
+                margin: 0 auto;
+            }
+
+            .tree-block .scale-block .all_tree_btn {
+                margin: 0 auto 20px;
+            }
+
+        .tree-block .tree2 .scroll-btn {
+            display: none;
+        }
+
+        .tree-block .all_tree_btn {
+            margin: 0 auto 20px;
+        }
+
+    .tree-info {
+        padding: 5px;
+    }
+
+        .tree-info > div {
+            width: 100%;
+            display: none;
+        }
+
+            .tree-info > div:first-child {
+                display: block;
+            }
+
+        .tree-info.on > div {
+            display: block;
+        }
+
+        .tree-info span, .tree-info p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .tree-info.active {
+            display: block;
+        }
+
+    .lists-block {
+        overflow: scroll;
+        width: 100%;
+        min-height: 650px;
+    }
+
+    .ss-main.myslimSelect2 {
+        max-width: 370px;
+        width: 100%;
+        margin: 0;
     }
 }

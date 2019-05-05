@@ -9,19 +9,19 @@
             {
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleReplenishment, Value = "Пополнение счета" });
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheInvestmentProgram, Value = "Открытие инвест программы" });
-                items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheCamulativeProgram, Value = "Открытие накопит программы" });
+                //items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheCamulativeProgram, Value = "Открытие накопит программы" });
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleClosingTheInvestmentProgram, Value = "Закрытие инвест программы" });
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleWithdrawal, Value = "Вывод средств" });
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleTransferToPartner, Value = "Перевод партнеру" });
-                items.Add(new SelectListItem { Text = Resources.Resource.AticleCharity, Value = "Благотворительность" });
-                items.Add(new SelectListItem { Text = Resources.Resource.AticleChangeInvestment, Value = "Пополнение/изменение инвест программы" });
+                //items.Add(new SelectListItem { Text = Resources.Resource.AticleCharity, Value = "Благотворительность" });
+                //items.Add(new SelectListItem { Text = Resources.Resource.AticleChangeInvestment, Value = "Пополнение/изменение инвест программы" });
             }
             else if (Model.account == "Остаток.ИнвестиционныйСчет")
             {
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleOpeningTheInvestmentProgram, Value = "Открытие инвест программы" });
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleClosingTheInvestmentProgram, Value = "Закрытие инвест программы" });
-                items.Add(new SelectListItem { Text = Resources.Resource.AticleReplenishInvest, Value = "Пополнение инвест программы" });
-                items.Add(new SelectListItem { Text = Resources.Resource.AticleBonusInvestment, Value = "Бонусная инвест программа" });
+                //items.Add(new SelectListItem { Text = Resources.Resource.AticleReplenishInvest, Value = "Пополнение инвест программы" });
+                //items.Add(new SelectListItem { Text = Resources.Resource.AticleBonusInvestment, Value = "Бонусная инвест программа" });
             }
             else if (Model.account == "Остаток.Проценты")
             {
@@ -31,7 +31,7 @@
             else if (Model.account == "Остаток.Вознаграждения")
             {
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleRefReward, Value = "Реферальное вознаграждение" });
-                items.Add(new SelectListItem { Text = Resources.Resource.AticleCamulativeReward, Value = "Вознаграждение по накопительной программе" });
+                //items.Add(new SelectListItem { Text = Resources.Resource.AticleCamulativeReward, Value = "Вознаграждение по накопительной программе" });
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleStructReward, Value = "Вознаграждение со структуры" });
                 items.Add(new SelectListItem { Text = Resources.Resource.AticleTransferToInnerAccount, Value = "Перевод на лицевой счет" });
             }

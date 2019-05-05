@@ -267,7 +267,7 @@ $(function () {
         $('#fondid').val($(this).data("id"));
     });
     if ($('div').is('#lists')) {
-        $('#lists').jstree();
+        $('#lists').jstree(/*{ "plugins": ["dnd", "changed"]}*/);
         $('#lists').addClass('open_all');
     }
     $('.all_tree_btn').click(function (event) {
@@ -288,21 +288,22 @@ $(function () {
         }
     });
 
-    $('.close-modal-btn').click(function (e) {
+    $('body').on('click', '.close-modal-btn', function (e) {
+        
         $('.wrap-modal').fadeOut();
         $('#searchResults').empty();
-        setTimeout(function () {
+        /*setTimeout(function () {
             $(e.target).closest('.modal').remove();
-        },600);
+        },600);*/
     });
 
     $('.wrap-modal').click(function (e) {
         if ($(e.target).hasClass('wrap-modal')) {
             $('.wrap-modal').fadeOut();
             $('#searchResults').empty();
-            setTimeout(function () {
+            /*setTimeout(function () {
                 $(e.target).find('.modal').remove();
-            }, 600);
+            }, 600);*/
         }
     });
 
@@ -332,11 +333,17 @@ $(function () {
         var investments = $(item).parent().data('investments');
         var rewards = $(item).parent().data('rewards');
         var structrewards = $(item).parent().data('struct-rewards');
+        var leftShoulderSum = $(item).parent().data('left-sum');
+        var rightShoulderSum = $(item).parent().data('right-sum');
+        //var position = $(item).parent().data('pos');
+        //var parentId = $(item).parent().data('parent');
 
         $('.tree-info .name, .tree-info .deep, .tree-info .investments, .tree-info .rewards, .tree-info .filled').empty();
         $('.tree-info .levelvalue').empty();
         $('.tree-info .structvalue').empty();
         $('.tree-info .structrewards').empty();
+        $('.tree-info .left-sum').empty();
+        $('.tree-info .right-sum').empty();
         $('.tree-info .loginorid').empty();
 
 
@@ -349,6 +356,8 @@ $(function () {
         $('.tree-info .investments').append('$ ' + investments);
         $('.tree-info .rewards').append('$' + rewards);
         $('.tree-info .structrewards').append('$' + structrewards);
+        $('.tree-info .right-sum').append('$' + rightShoulderSum);
+        $('.tree-info .left-sum').append('$' + leftShoulderSum);
     }
 
   
@@ -578,6 +587,38 @@ $(function () {
 
     $('.sum_input').on('input', function () {
         $(this).val($(this).val().replace('.', ','));
+    });
+
+    $('.tree-sandbox ul li').draggable({ revert: "invalid" });
+    $(".tree-block .tree2 li.ui-state-free").droppable({
+        drop: function (event, ui) {
+            if (!$(this).hasClass('ui-state-free')) {
+                return;
+            }
+
+            if (confirm($("#confirm-set-partner").val())) {
+                var partner_id = ui.draggable.attr('data-id'); 
+                $(this).find('a p').html(ui.draggable.html());
+                ui.draggable.remove();
+                $(this).removeClass('ui-state-free');
+                var data = { place_id: $(this).find('a').data('parent'), partner_id: partner_id, pos: $(this).find('a').data('pos') };                
+                $.post('/lk/SetPlace', data, function (response) {
+                    if (response.error) {
+                        $('.wrap-modal').fadeIn();
+                        $('#searchResults').html(response.message);
+                        //alert(response.message);
+                    }
+                    else {
+                        $('.wrap-modal').fadeIn();
+                        $('#searchResults').html(response.message);
+                        //alert(response.message);
+                    }
+
+                    var content = '<i class="ion-ios-' + (response.error ? 'close' : 'checkmark') + ' modal-icon"></i><p class="m-b-30">' + response.message+'</p><a class="btn btn-bordered btn-sm close-modal-btn" >'+response.close+'</a >';
+
+                }, 'json');
+            }
+        }        
     });
 
 });

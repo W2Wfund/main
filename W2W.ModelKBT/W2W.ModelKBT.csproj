@@ -54,6 +54,7 @@
     <Compile Include="Entities\Charity.cs" />
     <Compile Include="Entities\DictItem.cs" />
     <Compile Include="Entities\ExpectedPayment.cs" />
+    <Compile Include="Entities\NewInvestProgram.cs" />
     <Compile Include="Entities\KbtFile.cs" />
     <Compile Include="Entities\InnerTransfer.cs" />
     <Compile Include="Entities\Investment.cs" />

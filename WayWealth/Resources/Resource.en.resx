@@ -879,9 +879,6 @@
   <data name="RankSP" xml:space="preserve">
     <value>S.P.</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value>P.P.</value>
-  </data>
   <data name="LevelValue" xml:space="preserve">
     <value>Sum of level investments</value>
   </data>
@@ -1372,5 +1369,68 @@
   </data>
   <data name="ConfirmWarning" xml:space="preserve">
     <value>Attention!</value>
+  </data>
+  <data name="InvestPackageBinaryVolume" xml:space="preserve">
+    <value>Binary volume</value>
+  </data>
+  <data name="InvestPackageExtra" xml:space="preserve">
+    <value>Available when owning «Invest 10» package</value>
+  </data>
+  <data name="InvestPackagePerTitle" xml:space="preserve">
+    <value>per annum</value>
+  </data>
+  <data name="InvestPackageProfitabilityTitle" xml:space="preserve">
+    <value>Profitability</value>
+  </data>
+  <data name="InvestPackageSelect" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="InvestPackageSumTitle" xml:space="preserve">
+    <value>Investment sum</value>
+  </data>
+  <data name="InvestPackageTitle" xml:space="preserve">
+    <value>Investment packages</value>
+  </data>
+  <data name="CreatePlaceIsNotAllowError" xml:space="preserve">
+    <value>There are no places in the investment program</value>
+  </data>
+  <data name="CreatePlaceError" xml:space="preserve">
+    <value>An error has occurred. Move partner to the specified location failed. Try again.</value>
+  </data>
+  <data name="FreePlaceNotFound" xml:space="preserve">
+    <value>Free place not found</value>
+  </data>
+  <data name="PartnerNotFound" xml:space="preserve">
+    <value>Partner not found</value>
+  </data>
+  <data name="FreePlace" xml:space="preserve">
+    <value>Free place</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>Partners to distribution</value>
+  </data>
+  <data name="ConfirmSetPartnerOnPlace" xml:space="preserve">
+    <value>Are you sure you want to put a partner in this place?</value>
+  </data>
+  <data name="SetPlaceSuccess" xml:space="preserve">
+    <value>Distributed successfully</value>
+  </data>
+  <data name="LeftShoulderSum" xml:space="preserve">
+    <value>The volume of the left shoulder</value>
+  </data>
+  <data name="RightShoulderSum" xml:space="preserve">
+    <value>The volume of the right shoulder</value>
+  </data>
+  <data name="BuyInvestError" xml:space="preserve">
+    <value>You do not have enough money to buy!</value>
+  </data>
+  <data name="InvestProgramDublicateError" xml:space="preserve">
+    <value>You already have such an investment package!</value>
+  </data>
+  <data name="LeftShoulderInvestSum" xml:space="preserve">
+    <value>Left shoulder sum</value>
+  </data>
+  <data name="RighShoulderInvestSum" xml:space="preserve">
+    <value>Right shoulder sum</value>
   </data>
 </root>

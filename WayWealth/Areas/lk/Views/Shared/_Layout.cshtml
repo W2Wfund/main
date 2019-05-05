@@ -20,28 +20,38 @@
 </div>
 
 @section FootSection{
+
+
     @if (notifications.Count > 0)
     {
-        <div class="wrap-modal flex">
-            @foreach (var item in notifications.ToList())
+    <div class="wrap-modal flex">
+        @foreach (var item in notifications.ToList())
+        {
+        <div class="modal">
+            @if (item.IsSuccess)
             {
-            <div class="modal">
-                @if (item.IsSuccess)
-                {
-                    <i class="ion-ios-checkmark modal-icon"></i>
-                }
-                else
-                {
-                    <i class="ion-ios-close modal-icon modal-icon-close"></i>
-                }
-
-                <p class="m-b-30">@Html.Raw(item.Message)</p>
-                <a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>
-            </div>
-                notifications.Remove(item);
+                <i class="ion-ios-checkmark modal-icon"></i>
             }
-        </div>
+            else
+            {
+                <i class="ion-ios-close modal-icon modal-icon-close"></i>
+            }
 
+            <p class="m-b-30">@Html.Raw(item.Message)</p>
+            <a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>
+        </div>
+        notifications.Remove(item);
+
+        }
+    </div>
+            }
+            else
+            {
+            <div class="wrap-modal flex" style="display:none">
+                <div class="modal" id="searchResults"></div>
+            </div>
+            }
+
+
+        <script src="~/Areas/lk/Content/js/common.js?v=@ViewBag.Version"></script>
     }
-    <script src="~/Areas/lk/Content/js/common.js?v=@ViewBag.Version"></script>
-}

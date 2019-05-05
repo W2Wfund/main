@@ -182,6 +182,9 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="W2W.Marketing">
+      <HintPath>..\W2W.Marketing\W2W.Marketing\bin\W2W.Marketing.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
       <Private>True</Private>
@@ -578,21 +581,16 @@
     <Content Include="Content\fonts\ionicons\ionicons.ttf" />
     <Content Include="Content\fonts\ionicons\ionicons.woff" />
     <Content Include="Content\fonts\ionicons\ionicons.woff2" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <None Include="Service References\Marketing\configuration91.svcinfo" />
-    <None Include="Service References\Marketing\configuration.svcinfo">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Marketing\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\Marketing\Service11.disco" />
     <Content Include="Views\Shared\Calc.cshtml" />
     <Content Include="Areas\lk\Views\Home\Polls.cshtml" />
     <Content Include="Areas\lk\Views\Home\Review.cshtml" />
@@ -714,6 +712,11 @@
     <Compile Include="Jobs\RippleIncomeChecker.cs" />
     <Compile Include="Jobs\TaskSheduler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Resource.en.Designer.cs">
       <DependentUpon>Resource.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -723,11 +726,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resource.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\Marketing\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\Sign\InView.cs" />
     <Compile Include="ViewModels\Sign\RestoreView.cs" />
@@ -793,35 +791,9 @@
     <Content Include="Views\Home\_Layout.cshtml" />
     <Content Include="Views\Home\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_BaseLayout.cshtml" />
-    <Content Include="Service References\Marketing\WayWealth.Marketing.BuyCamulativeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Marketing\WayWealth.Marketing.BuyInvestmentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Marketing\WayWealth.Marketing.CancelWithdrawalResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Marketing\WayWealth.Marketing.ConfirmWithdrawalResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Marketing\WayWealth.Marketing.CreateTechPlaceResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Marketing\WayWealth.Marketing.PayInvestPercentsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Marketing\WayWealth.Marketing.TerminateInvestmentResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\Marketing\WayWealth.Marketing.UnionInvestmentsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\Marketing\Service11.wsdl" />
-    <None Include="Service References\Marketing\Service11.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Sign\TwoFactorAuthenticate.cshtml" />
+    <Content Include="Views\Home\Disabled.cshtml" />
+    <Content Include="Views\Home\DisabledEn.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -844,9 +816,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\Resource.en.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.en.Designer.cs</LastGenOutput>
@@ -862,9 +831,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\Marketing\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

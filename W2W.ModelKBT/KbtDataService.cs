@@ -120,7 +120,7 @@ namespace W2W.ModelKBT
         public void UpdateGoogleAuthKey(uint id_client,
               string GoogleAuthKey,
               bool? GoogleAuthEnabled)
-        { 
+        {
             using (var client = new WebDataClient())
             {
                 var values = new Dictionary<string, object>();
@@ -155,6 +155,37 @@ namespace W2W.ModelKBT
                 client.SetObjectValue(id_client, "Изображение", path);
             }
         }
+
+        public void UpdatePartnerInvestSum(bool isLeftShoulder, decimal shoulderSum, decimal binarySum, uint id_place)
+        {
+            using (var client = new WebDataClient())
+            {
+                var values = new Dictionary<string, object>();
+                if (isLeftShoulder)
+                {
+                    values.Add("БинарЛевоеПлечо", binarySum);
+                    values.Add("СуммаЛевоеПлечо", shoulderSum);
+                }
+                else
+                {
+                    values.Add("БинарПравоеПлечо", binarySum);
+                    values.Add("СуммаПравоеПлечо", shoulderSum);
+                }
+                client.SetObjectValues(id_place, values);
+            }
+        }
+
+        public void UpdatePartnerBinarySum(decimal leftSum, decimal rightSum, uint id_place)
+        {
+            using (var client = new WebDataClient())
+            {
+                var values = new Dictionary<string, object>();
+                values.Add("БинарЛевоеПлечо", leftSum);
+                values.Add("БинарПравоеПлечо", rightSum);
+                client.SetObjectValues(id_place, values);
+            }
+        }
+
         public IEnumerable<Partner> GetPartners(uint id_object, string searchText)
         {
             using (var client = new WebDataClient())
@@ -177,6 +208,20 @@ namespace W2W.ModelKBT
             {
                 var query = base.CreateQueryItem<Partner>("Контрагент", Level.All);
                 query.AddPlace(rootId, 0, 180);
+                return base.GetList<Partner>(query);
+            }
+        }
+
+        public IEnumerable<Partner> GetSandboxPartners(uint id_object)
+        {
+            using (var client = new WebDataClient())
+            {
+                var query = base.CreateQueryItem<Partner>("Контрагент", Level.All);
+                query.AddConditionItem(Union.And, "СсылкаНаСпонсора", Operator.Equal, id_object);
+                query.AddConditionItem(Union.And, "ЕстьМаркетинговоеМесто", Operator.Equal, false);
+                query.AddConditionItem(Union.And, "Остаток.ВнутреннийСчет", Operator.More, 0);
+                query.AddConditionItem(Union.And, "СтатусВерификации", Operator.Equal, "Верифицирован");
+
                 return base.GetList<Partner>(query);
             }
         }
@@ -220,6 +265,10 @@ namespace W2W.ModelKBT
                 values.AddValueOrDefault("СсылкаНаСпонсора", inviterId);
                 values.AddValueOrDefault("РедакторОбъекта", null);
                 values.AddValueOrDefault("ПерсональныйНомерКонтрагента", GetId());
+                values.Add("ЕстьМаркетинговоеМесто", false);
+                values.Add("СуммаЛевоеПлечо", 0);
+                values.Add("СуммаПравоеПлечо", 0);
+
                 if (inviterId > 0)
                     return client.InsertObject(inviterId, "ФизическоеЛицо", values);
                 else
@@ -237,12 +286,12 @@ namespace W2W.ModelKBT
                 client.SetObjectValues(id_client, values);
             }
         }
-        public void UpdateParnterVerificationStatus(uint partnerId, string status)
+        public void SetPartnerMarketPlaceStatus(uint partnerId, bool status)
         {
             using (var client = new WebDataClient())
             {
                 var values = new Dictionary<string, object>();
-                values.Add("СтатусВерификации", status);
+                values.Add("ЕстьМаркетинговоеМесто", status);
                 client.SetObjectValues(partnerId, values);
             }
         }
@@ -252,6 +301,15 @@ namespace W2W.ModelKBT
             {
                 var values = new Dictionary<string, object>();
                 values.Add("Активный", isActive);
+                client.SetObjectValues(partnerId, values);
+            }
+        }
+        public void UpdateParnterVerificationStatus(uint partnerId, string status)
+        {
+            using (var client = new WebDataClient())
+            {
+                var values = new Dictionary<string, object>();
+                values.Add("СтатусВерификации", status);
                 client.SetObjectValues(partnerId, values);
             }
         }
@@ -284,6 +342,8 @@ namespace W2W.ModelKBT
         {
             var query = CreateQueryItem<MarketingPlace>("МаркетинговоеМесто", Level.All);
             query.AddConditionItem(Union.And, "СсылкаНаМаркетинг", Operator.Equal, marketingId);
+            //add
+            query.AddConditionItem(Union.And, "Активно", Operator.Equal, true);
             return base.GetList<MarketingPlace>(query);
         }
         public IEnumerable<MarketingPlace> GetPlaces(uint marketingId, uint partnerId)
@@ -291,6 +351,8 @@ namespace W2W.ModelKBT
             var query = CreateQueryItem<MarketingPlace>("МаркетинговоеМесто", Level.All);
             query.AddConditionItem(Union.And, "СсылкаНаМаркетинг", Operator.Equal, marketingId);
             query.AddConditionItem(Union.And, "СсылкаНаКонтрагента", Operator.Equal, partnerId);
+            //add
+            query.AddConditionItem(Union.And, "Активно", Operator.Equal, true);
             return base.GetList<MarketingPlace>(query);
         }
         public void SetPlaceChildCount(uint placeId, int? count)
@@ -339,6 +401,8 @@ namespace W2W.ModelKBT
             query.AddType("МаркетинговоеМесто", Level.All);
             query.AddConditionItem(Union.None, "СсылкаНаМаркетинг", Operator.Equal, marketingId);
             query.AddConditionItem(Union.And, "СсылкаНаКонтрагента", Operator.Equal, partnerId);
+            //add
+            query.AddConditionItem(Union.And, "Активно", Operator.Equal, true);
 
             using (var client = new WebDataClient())
             {
@@ -352,6 +416,9 @@ namespace W2W.ModelKBT
             query.AddType("МаркетинговоеМесто", Level.All);
             query.AddConditionItem(Union.None, "СсылкаНаМаркетинг", Operator.Equal, marketingId);
             query.AddConditionItem(Union.And, "СсылкаНаКонтрагента/СсылкаНаСпонсора", Operator.Equal, partnerId);
+            //add
+            query.AddConditionItem(Union.And, "Активно", Operator.Equal, true);
+
             query.AddConditionItem(Union.And, "СуммаВхода", Operator.More, 0);
 
             using (var client = new WebDataClient())
@@ -369,6 +436,9 @@ namespace W2W.ModelKBT
         {
             var query = CreateQueryItem<MarketingPlace>("МаркетинговоеМесто", Level.All);
             query.AddConditionItem(Union.And, "СсылкаНаМаркетинг", Operator.Equal, marketingId);
+            //add
+            query.AddConditionItem(Union.And, "Активно", Operator.Equal, true);
+
             query.AddPlace(rootId, 0, 180);
             return this.GetList<MarketingPlace>(query);
         }
@@ -769,7 +839,7 @@ namespace W2W.ModelKBT
             if (partnerId != null)
                 query.AddConditionItem(Union.And, "СсылкаНаКонтрагента", Operator.Equal, partnerId);
 
-            if(!string.IsNullOrWhiteSpace(account))
+            if (!string.IsNullOrWhiteSpace(account))
                 query.AddConditionItem(Union.And, "НазваниеСчета", Operator.Equal, account);
 
             if (!string.IsNullOrWhiteSpace(article))
@@ -785,10 +855,10 @@ namespace W2W.ModelKBT
 
             return this.GetList<InnerTransfer>(query);
         }
-       public uint AddPayment(TransferDirection direction, uint companyId, 
-            uint partnerId, uint orderId, string article,
-           DateTime paymentDate, decimal sum, PaymentMethod paymentMethod, RateOfNDS rateOfNds, string desctiption, decimal paymentComission,
-           string user)
+        public uint AddPayment(TransferDirection direction, uint companyId,
+             uint partnerId, uint orderId, string article,
+            DateTime paymentDate, decimal sum, PaymentMethod paymentMethod, RateOfNDS rateOfNds, string desctiption, decimal paymentComission,
+            string user)
         {
             using (WebDataClient client = new WebDataClient())
             {
@@ -805,7 +875,7 @@ namespace W2W.ModelKBT
                     desctiption,
                     user);
 
-                if(paymentComission > 0)
+                if (paymentComission > 0)
                     client.SetObjectValue(id_payment, "КомиссияЗаВывод", paymentComission);
 
                 return id_payment;
@@ -863,7 +933,7 @@ namespace W2W.ModelKBT
 
             if (date == DateTime.Today)
                 date = date.Date.Add(System.DateTime.Now.TimeOfDay);
-            
+
             var values = new Dictionary<string, object>();
             if (!string.IsNullOrEmpty(accountName))
                 values.Add("НазваниеСчета", accountName);
@@ -887,7 +957,7 @@ namespace W2W.ModelKBT
             values.Add("ВылютаВывода", currency);
             values.Add("ПлатежнаяСистема", paymentSystem);
             values.Add("СуммаВВалюте", currencySum);
-            
+
 
             switch (paymentMethod)
             {
@@ -1143,7 +1213,7 @@ namespace W2W.ModelKBT
             col.AddConditionItem(Union.Or, "Прочитано", Operator.Equal, false);
             query.AddConditionItem(Union.And, "СсылкаНаКонтрагента", Operator.Equal, partnerId);
             return base.GetList<Notice>(query);
-        } 
+        }
         public void SetNoticeAsReaded(uint messageId)
         {
             using (var client = new WebDataClient())
@@ -1152,6 +1222,27 @@ namespace W2W.ModelKBT
                 values.Add("Прочитано", true);
                 client.SetObjectValues(messageId, values);
             }
+        }
+
+        public IEnumerable<NewInvestProgram> GetInvestPrograms()
+        {
+            var query = CreateQueryItem<NewInvestProgram>("ИнвестиционнаяПрограммаНовая", Level.All);
+            query.AddOrder("Сумма", Direction.Asc);
+            return base.GetList<NewInvestProgram>(query);
+        }
+
+        public NewInvestProgram GetInvestProgram(uint id)
+        {
+            var query = CreateQueryItem<NewInvestProgram>("ИнвестиционнаяПрограммаНовая", Level.All);
+            query.AddConditionItem(Union.None, "id_object", Operator.Equal, id);
+            return base.GetInstance<NewInvestProgram>(query);
+        }
+
+        public NewInvestProgram GetNewInvestProgram(decimal sum)
+        {
+            var query = CreateQueryItem<NewInvestProgram>("ИнвестиционнаяПрограммаНовая", Level.All);
+            query.AddConditionItem(Union.None, "Сумма", Operator.Equal, sum);
+            return base.GetInstance<NewInvestProgram>(query);
         }
     }
 }

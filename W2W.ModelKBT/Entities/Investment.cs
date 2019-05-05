@@ -40,6 +40,9 @@ namespace W2W.ModelKBT.Entities
         [Property(Name = "СсылкаНаПрограмму/Название")]
         public string ProgramName { get; set; }
 
+        [Property(Name = "СсылкаНаПрограмму")]
+        public uint ProgramId { get; set; }
+
         [Property(Name = "Пролонгация")]
         public bool? IsProlonged { get; set; }
     }

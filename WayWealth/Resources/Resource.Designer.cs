@@ -628,6 +628,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на У вас недостаточно средств для покупки или пакет с такием номиналом у Вас уже имеется!.
+        /// </summary>
+        public static string BuyInvestError {
+            get {
+                return ResourceManager.GetString("BuyInvestError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Калькулятор доходности.
         /// </summary>
         public static string CalcTitle {
@@ -808,6 +817,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы уверены что хотите поставить партнера в это место?.
+        /// </summary>
+        public static string ConfirmSetPartnerOnPlace {
+            get {
+                return ResourceManager.GetString("ConfirmSetPartnerOnPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Внимание! После подтверждения, с Вашего лицевoго счета будет списана сумма для открытия выбранного Вами инвестиционного портфеля!.
         /// </summary>
         public static string ConfirmTxt {
@@ -885,6 +903,24 @@ namespace Resources {
         public static string CreateNewPlace {
             get {
                 return ResourceManager.GetString("CreateNewPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Произошла ошибка. Переместить партнера в указанное место не получилось. Попробуйте еще раз..
+        /// </summary>
+        public static string CreatePlaceError {
+            get {
+                return ResourceManager.GetString("CreatePlaceError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Нет мест в инвестиционной программе.
+        /// </summary>
+        public static string CreatePlaceIsNotAllowError {
+            get {
+                return ResourceManager.GetString("CreatePlaceIsNotAllowError", resourceCulture);
             }
         }
         
@@ -1501,6 +1537,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Свободное место.
+        /// </summary>
+        public static string FreePlace {
+            get {
+                return ResourceManager.GetString("FreePlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Свободное место не найдено.
+        /// </summary>
+        public static string FreePlaceNotFound {
+            get {
+                return ResourceManager.GetString("FreePlaceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Фонд.
         /// </summary>
         public static string Fund {
@@ -1762,6 +1816,78 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Объем бинара.
+        /// </summary>
+        public static string InvestPackageBinaryVolume {
+            get {
+                return ResourceManager.GetString("InvestPackageBinaryVolume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Доступен владельцам портфеля «INVEST 10».
+        /// </summary>
+        public static string InvestPackageExtra {
+            get {
+                return ResourceManager.GetString("InvestPackageExtra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на годовых.
+        /// </summary>
+        public static string InvestPackagePerTitle {
+            get {
+                return ResourceManager.GetString("InvestPackagePerTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Доходность.
+        /// </summary>
+        public static string InvestPackageProfitabilityTitle {
+            get {
+                return ResourceManager.GetString("InvestPackageProfitabilityTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбрать.
+        /// </summary>
+        public static string InvestPackageSelect {
+            get {
+                return ResourceManager.GetString("InvestPackageSelect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сумма инвестиции.
+        /// </summary>
+        public static string InvestPackageSumTitle {
+            get {
+                return ResourceManager.GetString("InvestPackageSumTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Инвестиционные портфели.
+        /// </summary>
+        public static string InvestPackageTitle {
+            get {
+                return ResourceManager.GetString("InvestPackageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на У вас уже есть такой инвестиционый пакет!.
+        /// </summary>
+        public static string InvestProgramDublicateError {
+            get {
+                return ResourceManager.GetString("InvestProgramDublicateError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Срок инвестирования.
         /// </summary>
         public static string InvestTerm {
@@ -1839,6 +1965,24 @@ namespace Resources {
         public static string LastNews {
             get {
                 return ResourceManager.GetString("LastNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оборот левого плеча.
+        /// </summary>
+        public static string LeftShoulderInvestSum {
+            get {
+                return ResourceManager.GetString("LeftShoulderInvestSum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Объем левого плеча.
+        /// </summary>
+        public static string LeftShoulderSum {
+            get {
+                return ResourceManager.GetString("LeftShoulderSum", resourceCulture);
             }
         }
         
@@ -2510,6 +2654,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Партнер не найден.
+        /// </summary>
+        public static string PartnerNotFound {
+            get {
+                return ResourceManager.GetString("PartnerNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поиск партнера.
         /// </summary>
         public static string PartnerSearch {
@@ -3014,6 +3167,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Оборот правого плеча.
+        /// </summary>
+        public static string RighShoulderInvestSum {
+            get {
+                return ResourceManager.GetString("RighShoulderInvestSum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Объем правого плеча.
+        /// </summary>
+        public static string RightShoulderSum {
+            get {
+                return ResourceManager.GetString("RightShoulderSum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Обязательно указывайте Destination Tag! Иначе мы не сможем распознать источник платежа.
         /// </summary>
         public static string RippleTagRequirement {
@@ -3055,6 +3226,15 @@ namespace Resources {
         public static string Saldo {
             get {
                 return ResourceManager.GetString("Saldo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Партнеры к распределению.
+        /// </summary>
+        public static string Sandbox {
+            get {
+                return ResourceManager.GetString("Sandbox", resourceCulture);
             }
         }
         
@@ -3109,6 +3289,15 @@ namespace Resources {
         public static string Selection {
             get {
                 return ResourceManager.GetString("Selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Распределен успешно.
+        /// </summary>
+        public static string SetPlaceSuccess {
+            get {
+                return ResourceManager.GetString("SetPlaceSuccess", resourceCulture);
             }
         }
         

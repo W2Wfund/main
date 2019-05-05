@@ -112,11 +112,22 @@ namespace W2W.ModelKBT.Entities
         [Property(Name = "Настройки.ПроцентПриПополнении")]
         public decimal? Settings_ReplenishmentPercent { get; set; }
 
+        [Property(Name = "Настройки.НомерРабочегоДняРасчет")]
+        public int? Settings_StartPayWorkDay { get; set; }
+
         [Property(Name = "GoogleAuthKey")]
         public string GoogleAuthKey { get; set; }
 
         [Property(Name = "GoogleAuthEnabled")]
         public bool? GoogleAuthEnabled { get; set; }
 
+        [Property(Name = "ЕстьМаркетинговоеМесто")]
+        public bool? IsHasMarketPlace { get; set; }
+        
+        [Property(Name = "СуммаЛевоеПлечо")]
+        public decimal? SumLeftTreeSide { get; set; }
+
+        [Property(Name = "СуммаПравоеПлечо")]
+        public decimal? SumRightTreeSide { get; set; }
     }
 }

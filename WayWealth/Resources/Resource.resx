@@ -1373,4 +1373,67 @@
   <data name="ConfirmWarning" xml:space="preserve">
     <value>Внимание!</value>
   </data>
+  <data name="InvestPackageBinaryVolume" xml:space="preserve">
+    <value>Объем бинара</value>
+  </data>
+  <data name="InvestPackageExtra" xml:space="preserve">
+    <value>Доступен владельцам портфеля «INVEST 10»</value>
+  </data>
+  <data name="InvestPackagePerTitle" xml:space="preserve">
+    <value>годовых</value>
+  </data>
+  <data name="InvestPackageProfitabilityTitle" xml:space="preserve">
+    <value>Доходность</value>
+  </data>
+  <data name="InvestPackageSelect" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="InvestPackageSumTitle" xml:space="preserve">
+    <value>Сумма инвестиции</value>
+  </data>
+  <data name="InvestPackageTitle" xml:space="preserve">
+    <value>Инвестиционные портфели</value>
+  </data>
+  <data name="CreatePlaceIsNotAllowError" xml:space="preserve">
+    <value>Нет мест в инвестиционной программе</value>
+  </data>
+  <data name="CreatePlaceError" xml:space="preserve">
+    <value>Произошла ошибка. Переместить партнера в указанное место не получилось. Попробуйте еще раз.</value>
+  </data>
+  <data name="FreePlaceNotFound" xml:space="preserve">
+    <value>Свободное место не найдено</value>
+  </data>
+  <data name="PartnerNotFound" xml:space="preserve">
+    <value>Партнер не найден</value>
+  </data>
+  <data name="FreePlace" xml:space="preserve">
+    <value>Свободное место</value>
+  </data>
+  <data name="Sandbox" xml:space="preserve">
+    <value>Партнеры к распределению</value>
+  </data>
+  <data name="ConfirmSetPartnerOnPlace" xml:space="preserve">
+    <value>Вы уверены что хотите поставить партнера в это место?</value>
+  </data>
+  <data name="SetPlaceSuccess" xml:space="preserve">
+    <value>Распределен успешно</value>
+  </data>
+  <data name="LeftShoulderSum" xml:space="preserve">
+    <value>Объем левого плеча</value>
+  </data>
+  <data name="RightShoulderSum" xml:space="preserve">
+    <value>Объем правого плеча</value>
+  </data>
+  <data name="BuyInvestError" xml:space="preserve">
+    <value>У вас недостаточно средств для покупки или пакет с такием номиналом у Вас уже имеется!</value>
+  </data>
+  <data name="InvestProgramDublicateError" xml:space="preserve">
+    <value>У вас уже есть такой инвестиционый пакет!</value>
+  </data>
+  <data name="LeftShoulderInvestSum" xml:space="preserve">
+    <value>Оборот левого плеча</value>
+  </data>
+  <data name="RighShoulderInvestSum" xml:space="preserve">
+    <value>Оборот правого плеча</value>
+  </data>
 </root>
