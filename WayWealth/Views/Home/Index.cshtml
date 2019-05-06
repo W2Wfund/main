@@ -100,7 +100,7 @@
                                 <p>@Resources.Resource.InvestPackageSumTitle:</p>
                                 <div>@item.Sum $</div>
                                 <p>@Resources.Resource.InvestPackageProfitabilityTitle</p>
-                                <div>@(item.YearPercent * 100)% @Resources.Resource.InvestPackagePerTitle</div>
+                                <div>@Math.Round((item.YearPercent * 100))% @Resources.Resource.InvestPackagePerTitle</div>
                                 <p>@Resources.Resource.InvestPackageBinaryVolume</p>
                                 <div>@((Int32)item.Sum * 0.9) $</div>
                                 @if (item.Sum > 10000)
@@ -498,8 +498,8 @@
             <li>
                 <div class="img">
                     <img src="~/Content/img/about-block-icon-1.png" />
-                    </ div >
-                    < h3 class="caption">
+                    </div>
+                    <h3 class="caption">
                     @Resources.Resource.Experience
                     </h3>
                     <p class="desc">@Resources.Resource.ExperienceDesc</p>
@@ -507,8 +507,8 @@
             <li>
                 <div class="img">
                     <img src="~/Content/img/about-block-icon-2.png" />
-                    </ div >
-                    < h3 class="caption">
+                    </div>
+                    <h3 class="caption">
                     @Resources.Resource.RiskDiversification1 @Resources.Resource.RiskDiversification2
                     </h3>
                     <p class="desc">@Resources.Resource.RiskDiversificationDesc</p>
@@ -516,8 +516,8 @@
             <li>
                 <div class="img">
                     <img src="~/Content/img/about-block-icon-3.png" />
-                    </ div >
-                    < h3 class="caption">
+                    </div>
+                    <h3 class="caption">
                     @Resources.Resource.Benefits
                     </h3>
                     <p class="desc">@Resources.Resource.BenefitsDesc</p>
@@ -525,8 +525,8 @@
             <li>
                 <div class="img">
                     <img src="~/Content/img/about-block-icon-4.png" />
-                    </ div >
-                    < h3 class="caption">
+                    </div>
+                    <h3 class="caption">
                     @Resources.Resource.Opportunities
                     </h3>
                     <p class="desc">@Resources.Resource.OpportunitiesDesc</p>
