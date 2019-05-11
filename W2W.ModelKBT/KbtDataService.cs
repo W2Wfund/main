@@ -237,7 +237,7 @@ namespace W2W.ModelKBT
                 foreach (var item in items)
                     idList.Add(item.Value<int>("ПерсональныйНомерКонтрагента"));
 
-                for (var i = 100; i < int.MaxValue; i++)
+                for (var i = 576/*100*/; i < int.MaxValue; i++)
                     if (!idList.Contains(i))
                         return i;
                 return 0;

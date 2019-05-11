@@ -847,7 +847,7 @@
     <value>Дата</value>
   </data>
   <data name="PassErrMess" xml:space="preserve">
-    <value>Недопустимое значение поля "Пароль". Пароль должен состоять из комбинации латинских букв верхнего и нижнего регистров, цифр общей длинной не менее6 символов (пример, uE2x32)</value>
+    <value>Недопустимое значение поля "Пароль". Пароль должен состоять из комбинации латинских букв верхнего и нижнего регистров, цифр общей длинной не менее 6 символов (пример, uE2x32)</value>
   </data>
   <data name="CaptchaIsEmpty" xml:space="preserve">
     <value>Подтвердите что вы не робот</value>
@@ -1435,5 +1435,8 @@
   </data>
   <data name="RighShoulderInvestSum" xml:space="preserve">
     <value>Оборот правого плеча</value>
+  </data>
+  <data name="TreeSpace" xml:space="preserve">
+    <value>Мест</value>
   </data>
 </root>

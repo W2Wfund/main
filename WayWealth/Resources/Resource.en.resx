@@ -1433,4 +1433,7 @@
   <data name="RighShoulderInvestSum" xml:space="preserve">
     <value>Right shoulder sum</value>
   </data>
+  <data name="TreeSpace" xml:space="preserve">
+    <value>Space</value>
+  </data>
 </root>

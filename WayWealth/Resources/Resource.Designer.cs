@@ -2672,7 +2672,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Недопустимое значение поля &quot;Пароль&quot;. Пароль должен состоять из комбинации латинских букв верхнего и нижнего регистров, цифр общей длинной не менее6 символов (пример, uE2x32).
+        ///   Ищет локализованную строку, похожую на Недопустимое значение поля &quot;Пароль&quot;. Пароль должен состоять из комбинации латинских букв верхнего и нижнего регистров, цифр общей длинной не менее 6 символов (пример, uE2x32).
         /// </summary>
         public static string PassErrMess {
             get {
@@ -3478,6 +3478,15 @@ namespace Resources {
         public static string Tree {
             get {
                 return ResourceManager.GetString("Tree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Мест.
+        /// </summary>
+        public static string TreeSpace {
+            get {
+                return ResourceManager.GetString("TreeSpace", resourceCulture);
             }
         }
         

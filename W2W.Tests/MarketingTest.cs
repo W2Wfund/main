@@ -992,5 +992,25 @@ namespace W2W.Tests
             Assert.AreEqual(200, service.GetRefAward(1000, 1200));
             Assert.AreEqual(0, service.GetRefAward(2000, 800));
         }
+
+        [TestMethod]
+        public void countWorkDays()
+        {
+            DateTime date = DateTime.ParseExact("2019-04-25", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            int countAddDay = 6;
+            
+            var service = new Service1();
+            countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
+            DateTime startDate = date.AddDays(countAddDay);
+            Assert.AreEqual(263, service.countWorkDays(startDate));
+
+            date = DateTime.ParseExact("2019-05-14", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            countAddDay = 6;
+            
+            countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
+            startDate = date.AddDays(countAddDay);
+            Assert.AreEqual(262, service.countWorkDays(startDate));
+        }
+
     }
 }

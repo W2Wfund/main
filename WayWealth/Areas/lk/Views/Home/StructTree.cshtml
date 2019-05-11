@@ -5,6 +5,7 @@
     Layout = "~/Areas/lk/Views/Home/_StructLayout.cshtml";
     var Items = ViewBag.Items as IEnumerable<MarketingPlaceView>;
     var first = Items.OrderBy(p => p.hash.Length).FirstOrDefault();
+    var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
 
     var Investments = ViewBag.Investments as Dictionary<uint, decimal>;
     var Rewards = ViewBag.Rewards as Dictionary<uint, decimal>;
@@ -14,50 +15,84 @@
     var SandboxPartners = ViewBag.SandboxPartners as IEnumerable<MarketingPlaceView>;
 }
 
-<div class="tree-block">
-    @Html.Partial("_StructTools", Model)
-    <div class="scale-block">
-        <a class="all_tree_btn"><span data-text="@Resources.Resource.ExpandStructure">@Resources.Resource.ExpandStructure</span></a>
-        <p>@Resources.Resource.Scale</p>
-        <div id="scale-range" class="scale-pips"></div>
-    </div>
+@if (culture == "ru-RU")
+{
+    <div class="tree-block-lang ru"></div>
+}
+else
+{
+    <div class="tree-block-lang"></div>
+}
 
-    <div class="tree-shoulders">
-        <span>@Resources.Resource.LeftShoulderSum : $ @ViewBag.LeftShoulderSum.ToString("N2")</span>
-        <span>@Resources.Resource.RightShoulderSum : $ @ViewBag.RightShoulderSum.ToString("N2")</span>
+
+<div class="tree-block">
+    <div class="container">
+        @Html.Partial("_StructTools", Model)
+        @if (SandboxPartners.Count() > 0)
+        {
+            <div class="tree-sandbox">
+                <p>@Resources.Resource.Sandbox</p>
+                <ul>
+                    @foreach (var item in SandboxPartners)
+                    {
+                        <li data-id="@item.PartnerId">
+                            <span>@item.PartnerLogin</span> / ($ @item.PartnerBalanceInvestments)
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        <div class="scale-block">
+            <a class="all_tree_btn btn btn-bordered btn-sm">@Resources.Resource.ExpandStructure</a>
+            <div>
+                <p>@Resources.Resource.Scale</p>
+                <div id="scale-range" class="scale-pips"></div>
+            </div>
+        </div>
+        <div class="tree-shoulders">
+            <span>@Resources.Resource.LeftShoulderSum : $ @ViewBag.LeftShoulderSum.ToString("N2")</span>
+            <span>@Resources.Resource.RightShoulderSum : $ @ViewBag.RightShoulderSum.ToString("N2")</span>
+        </div>
     </div>
     <div class="tree-content">
-    <div class="tree2">
-        @helper CreateItems(MarketingPlaceView place, IEnumerable<MarketingPlaceView> structure, int level,
-                                                                                                Dictionary<uint, decimal> investments,
-                                                                                                Dictionary<uint, decimal> rewards,
-                                                                                                Dictionary<int, decimal> levelvalue,
-                                                                                                Dictionary<uint, decimal> structvalue,
-                                                                                                Dictionary<uint, decimal> structrewards)
-        {
-            <a class="item"
-               data-name="@place.ObjectName"
-               data-deep="@level"
-               data-filled="@place.FilledLevels"
-               data-loginorid="@(string.IsNullOrWhiteSpace(place.PartnerLogin) ? place.PartnerPersonalId.ToString() : place.PartnerPersonalId.ToString() + " / " + place.PartnerLogin)"
-               data-level-value="@((levelvalue.ContainsKey(level) ? levelvalue[level] : 0).ToString("N2"))"
-               data-investments="@((investments.ContainsKey(place.PartnerId ?? 0) ? investments[place.PartnerId ?? 0] : 0).ToString("N2"))"
-               data-rewards="@((rewards.ContainsKey(place.id_object) ? rewards[place.id_object] : 0 ).ToString("N2"))"
-               data-struct-value="@((structvalue.ContainsKey(place.id_object) ? structvalue[place.id_object] : 0).ToString("N2"))"
-               data-struct-rewards="@((structrewards.ContainsKey(place.id_object) ? structrewards[place.id_object] : 0).ToString("N2"))"
-               data-left-sum="@((place.PartnerLeftShoulderInvestSum != null ? (decimal)place.PartnerLeftShoulderInvestSum : 0).ToString("N2"))"
-               data-right-sum="@((place.PartnerRightShoulderInvestSum != null ? (decimal)place.PartnerRightShoulderInvestSum : 0).ToString("N2"))"
-               data-pos="@place.SortPosition"
-               data-parent="@place.id_parent">
-                <p>
-                    @*(string.IsNullOrWhiteSpace(place.Rank) ? place.ShortName : place.ShortName + " (" + place.Rank + ")")*@
-                    @place.ShortName
-                </p>
-                <div class="flex">
-                    <span>@(String.IsNullOrEmpty(place.hash) ? 0 : structure.Count(x => x.hash.StartsWith(place.hash)) - 1)</span>
+        <div class="tree2">
+            @helper CreateItems(MarketingPlaceView place, IEnumerable<MarketingPlaceView> structure, int level,
+                Dictionary<uint, decimal> investments,
+                Dictionary<uint, decimal> rewards,
+                Dictionary<int, decimal> levelvalue,
+                Dictionary<uint, decimal> structvalue,
+                Dictionary<uint, decimal> structrewards)
+            {
+                <div class="item"
+                        data-name="@place.ObjectName"
+                        data-deep="@level"
+                        data-filled="@place.FilledLevels"
+                        data-loginorid="@(string.IsNullOrWhiteSpace(place.PartnerLogin) ? place.PartnerPersonalId.ToString() : place.PartnerPersonalId.ToString() + " / " + place.PartnerLogin)"
+                        data-level-value="@((levelvalue.ContainsKey(level) ? levelvalue[level] : 0).ToString("N2"))"
+                        data-investments="@((investments.ContainsKey(place.PartnerId ?? 0) ? investments[place.PartnerId ?? 0] : 0).ToString("N2"))"
+                        data-rewards="@((rewards.ContainsKey(place.id_object) ? rewards[place.id_object] : 0 ).ToString("N2"))"
+                        data-struct-value="@((structvalue.ContainsKey(place.id_object) ? structvalue[place.id_object] : 0).ToString("N2"))"
+                        data-struct-rewards="@((structrewards.ContainsKey(place.id_object) ? structrewards[place.id_object] : 0).ToString("N2"))"
+                        data-left-sum="@((place.PartnerLeftShoulderInvestSum != null ? (decimal)place.PartnerLeftShoulderInvestSum : 0).ToString("N2"))"
+                        data-right-sum="@((place.PartnerRightShoulderInvestSum != null ? (decimal)place.PartnerRightShoulderInvestSum : 0).ToString("N2"))"
+                        data-pos="@place.SortPosition"
+                        data-parent="@place.id_parent">
+                    <div class="item-inner">
+                        @if(String.IsNullOrEmpty(place.hash)) {
+                            <img src="~/Content/img/tree-logo.png" />
+                        } else {
+                            <img src="~/Content/img/tree-logo-dark.png" />
+                        }
+                        @*(string.IsNullOrWhiteSpace(place.Rank) ? place.ShortName : place.ShortName + " (" + place.Rank + ")")*@
+                        @*(string.IsNullOrWhiteSpace(place.Rank) ? place.ShortName : place.ShortName + " (" + place.Rank + ")")*@
+                        @*@place.ShortName*@
+                        <p>@place.PartnerLogin</p>
+                        <span>@Resources.Resource.TreeSpace @(String.IsNullOrEmpty(place.hash) ? 0 : structure.Count(x => x.hash.StartsWith(place.hash)) - 1)</span>
+                    </div>
                     <i></i>
+                    <div class="tree2-left-sum">L - $ @((place.PartnerLeftShoulderInvestSum != null ? (decimal)place.PartnerLeftShoulderInvestSum : 0).ToString("N2"))</div>
+                    <div class="tree2-right-sum">R - $ @((place.PartnerRightShoulderInvestSum != null ? (decimal)place.PartnerRightShoulderInvestSum : 0).ToString("N2"))</div>
                 </div>
-            </a>
 
 var childs = structure
     .Where(p => p.id_parent == place.id_object)
@@ -100,8 +135,12 @@ if (place.id_object > 0 /*&& level <= 5*/)
         freePlace.SortPosition = 0;
         freePlace.id_parent = place.id_object;
         tempChilds.Add(freePlace);
-        freePlace.SortPosition = 1;
-        tempChilds.Add(freePlace);
+        MarketingPlaceView freePlace1 = new MarketingPlaceView();
+        freePlace1.id_parent = place.id_object;
+        freePlace1.ObjectName = Resources.Resource.FreePlace;
+        freePlace1.FilledLevels = 0;
+        freePlace1.SortPosition = 1;
+        tempChilds.Add(freePlace1);
         countChildren = 2;
     }
     else
@@ -116,49 +155,35 @@ else
 
 if (countChildren > 0)
 {
+                    <ul>
+                        @foreach (var child in tempChilds/*childs*/)
+                        {
+                            <li class="@(child.id_object > 0 ? "" : "ui-state-free") ">
+                                @CreateItems(child, structure, level + 1, investments, rewards, levelvalue, structvalue, structrewards)
+                            </li>
+                        }
+                    </ul>
+                }
+            }
+
+            @if (Items != null && Items.Count() > 0)
+            {
                 <ul>
-                    @foreach (var child in tempChilds/*childs*/)
-                    {
-                        <li class="@(child.id_object > 0 ? "" : "ui-state-free") ">
-                            @CreateItems(child, structure, level + 1, investments, rewards, levelvalue, structvalue, structrewards)
-                        </li>
-                    }
+                    <li>
+
+                        @CreateItems(first, Items, 0, Investments, Rewards, LevelValue, StructValue, StructRewards)
+                    </li>
                 </ul>
             }
-        }
-
-        @if (Items != null && Items.Count() > 0)
-        {
-            <ul>
-                <li>
-
-                    @CreateItems(first, Items, 0, Investments, Rewards, LevelValue, StructValue, StructRewards)
-                </li>
-            </ul>
-        }
-        <div class="scroll-btn">
-            <a class="scroll-btn-up"></a>
-            <div>
-                <a class="scroll-btn-left"></a>
-                <a class="scroll-btn-right"></a>
-            </div>
-            <a class="scroll-btn-down"></a>
         </div>
     </div>
-    <div class="tree-sandbox">
-        <p>@Resources.Resource.Sandbox</p>
-        @if (SandboxPartners.Count() > 0)
-        {
-        <ul>
-            @foreach (var item in SandboxPartners)
-            {
-                <li data-id="@item.PartnerId">
-                    @item.ShortName / ($ @item.PartnerBalanceInvestments)
-                </li>
-            }
-        </ul>
-        }
-    </div>
+    <div class="tree2-scroll-btn">
+        <div class="tree2-scroll-left">
+            <i class="ion ion-ios-arrow-back"></i>
+        </div>
+        <div class="tree2-scroll-right">
+            <i class="ion ion-ios-arrow-forward"></i>
+        </div>
     </div>
 </div>
 <input type="hidden" id="confirm-set-partner" value="@Resources.Resource.ConfirmSetPartnerOnPlace" />

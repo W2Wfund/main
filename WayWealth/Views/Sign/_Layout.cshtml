@@ -41,22 +41,21 @@ else
 @section FootSection{
     @if (notifications.Count > 0)
     {
-        <div class="wrap-modal active">
+        <div class="wrap-modal flex active">
             @foreach (var item in notifications.ToList())
             {
-                <div class="modal modal_2">
-                    <img class="logo" src="~/Areas/lk/Content/img/modal-logo.png" alt="">
+                <div class="modal">
                     @if (item.IsSuccess)
                     {
-                        <img src="~/Areas/lk/Content/img/correct3.png" class="modal-icon" alt="">
+                        <i class="ion-ios-checkmark modal-icon"></i>
                     }
                     else
                     {
-                        <img src="~/Areas/lk/Content/img/modal-error.png" class="modal-icon" alt="">
+                        <i class="ion-ios-close modal-icon modal-icon-close"></i>
                     }
 
-                    <b>@Html.Raw(item.Message)</b>
-                    <a class="page-link close-modal-btn"><span data-text="@Resources.Resource.Close">@Resources.Resource.Close</span></a>
+                    <p class="m-b-30">@Html.Raw(item.Message)</p>
+                    <a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>
                 </div>
                 notifications.Remove(item);
             }
@@ -64,7 +63,7 @@ else
 
     }
 
-
+    <script></script>
 
     <script src="~/Areas/lk/Content/js/common.js?v=@ViewBag.Version"></script>
 }

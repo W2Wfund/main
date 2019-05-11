@@ -21,7 +21,7 @@
                 @Html.ValidationSummary()
             </div>
             <div class="filter-block">
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("investments", "home", FormMethod.Post, new { id = "form_filter" }))
                 {
                     <div class="form-group">
                         <label>@Resources.Resource.StatusLbl</label>
@@ -33,21 +33,24 @@
                              }, Resources.Resource.NotChosen,  new { @class = "myslimSelect", id="status" })
                             <i class="ion-ios-arrow-down"></i>
                         </div>
+                        <button type="submit" class="btn btn-grad btn-sm" form="form_filter">
+                            @Resources.Resource.Search
+                        </button>
                     </div>
                 }
-               @*<div class="add_sum">
-                    <div class="form-group">
-                        <label>@Resources.Resource.AddSum</label>
-                        @using (Html.BeginForm("UnionInvestments", "home", new { area = "lk" }, FormMethod.Post, new { id = "form_addSum" }))
-                        {
-                            <input type="text" name="sum">
-                            <input type="hidden" name="investments" />
-                            <button type="submit" class="btn btn-grad btn-sm" form="form_addSum">
-                                <span data-text="@Resources.Resource.Combine">@Resources.Resource.Combine</span>
-                            </button>
-                        }
-                    </div>
-                </div>*@
+                @*<div class="add_sum">
+            <div class="form-group">
+                <label>@Resources.Resource.AddSum</label>
+                @using (Html.BeginForm("UnionInvestments", "home", new { area = "lk" }, FormMethod.Post, new { id = "form_addSum" }))
+                {
+                    <input type="text" name="sum">
+                    <input type="hidden" name="investments" />
+                    <button type="submit" class="btn btn-grad btn-sm" form="form_addSum">
+                        <span data-text="@Resources.Resource.Combine">@Resources.Resource.Combine</span>
+                    </button>
+                }
+            </div>
+        </div>*@
             </div>
             @if (Investments != null && Investments.Count() > 0)
             {

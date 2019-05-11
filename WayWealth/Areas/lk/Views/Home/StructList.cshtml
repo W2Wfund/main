@@ -14,28 +14,32 @@
 }
 
 <div class="tree-block">
-    @Html.Partial("_StructTools", Model)
-    <a class="all_tree_btn"><span data-text="@Resources.Resource.ExpandStructure">@Resources.Resource.ExpandStructure</span></a>
-    <div id="lists" class="lists-block">
-        @helper CreateItems(MarketingPlaceView place, IEnumerable<MarketingPlaceView> structure, int level,
-                                                                                        Dictionary<uint, decimal> investments,
-                                                                                        Dictionary<uint, decimal> rewards,
-                                                                                        Dictionary<int, decimal> levelvalue,
-                                                                                        Dictionary<uint, decimal> structvalue,
-                                                                                        Dictionary<uint, decimal> structrewards)
-        {
+    <div class="container">
+        @Html.Partial("_StructTools", Model)
+        <a class="all_tree_btn btn btn-bordered btn-sm m-b-30">@Resources.Resource.ExpandStructure</a>
+        <div id="lists" class="lists-block">
+            @helper CreateItems(MarketingPlaceView place, IEnumerable<MarketingPlaceView> structure, int level,
+                                                                                                                            Dictionary<uint, decimal> investments,
+                                                                                                                            Dictionary<uint, decimal> rewards,
+                                                                                                                            Dictionary<int, decimal> levelvalue,
+                                                                                                                            Dictionary<uint, decimal> structvalue,
+                                                                                                                            Dictionary<uint, decimal> structrewards)
+            {
                 <ul>
-                    <li
-                       data-name="@place.ObjectName"
-                       data-deep="@level"
-                       data-filled="@place.FilledLevels"
-                       data-loginorid="@(string.IsNullOrWhiteSpace(place.PartnerLogin) ? place.PartnerPersonalId.ToString() : place.PartnerPersonalId.ToString() + " / " + place.PartnerLogin)"
-                       data-level-value="@((levelvalue.ContainsKey(level) ? levelvalue[level] : 0).ToString("N2"))"
-                       data-investments="@((investments.ContainsKey(place.PartnerId.Value) ? investments[place.PartnerId.Value] : 0).ToString("N2"))"
-                       data-rewards="@((rewards.ContainsKey(place.id_object) ? rewards[place.id_object] : 0 ).ToString("N2"))"
-                       data-struct-value="@((structvalue.ContainsKey(place.id_object) ? structvalue[place.id_object] : 0).ToString("N2"))"
-                       data-struct-rewards="@((structrewards.ContainsKey(place.id_object) ? structrewards[place.id_object] : 0).ToString("N2"))">
-                       @(string.IsNullOrWhiteSpace(place.Rank) ? place.ShortName : place.ShortName + " (" + place.Rank + ")")
+                    <li data-name="@place.ObjectName"
+                        data-deep="@level"
+                        data-filled="@place.FilledLevels"
+                        data-loginorid="@(string.IsNullOrWhiteSpace(place.PartnerLogin) ? place.PartnerPersonalId.ToString() : place.PartnerPersonalId.ToString() + " / " + place.PartnerLogin)"
+                        data-level-value="@((levelvalue.ContainsKey(level) ? levelvalue[level] : 0).ToString("N2"))"
+                        data-investments="@((investments.ContainsKey(place.PartnerId.Value) ? investments[place.PartnerId.Value] : 0).ToString("N2"))"
+                        data-rewards="@((rewards.ContainsKey(place.id_object) ? rewards[place.id_object] : 0 ).ToString("N2"))"
+                        data-struct-value="@((structvalue.ContainsKey(place.id_object) ? structvalue[place.id_object] : 0).ToString("N2"))"
+                        data-struct-rewards="@((structrewards.ContainsKey(place.id_object) ? structrewards[place.id_object] : 0).ToString("N2"))"
+                        data-left-sum="@((place.PartnerLeftShoulderInvestSum != null ? (decimal)place.PartnerLeftShoulderInvestSum : 0).ToString("N2"))"
+                        data-right-sum="@((place.PartnerRightShoulderInvestSum != null ? (decimal)place.PartnerRightShoulderInvestSum : 0).ToString("N2"))"
+                        >
+                        @place.ShortName
+                        @*(string.IsNullOrWhiteSpace(place.Rank) ? place.ShortName : place.ShortName + " (" + place.Rank + ")")*@
 
                         @if (structure.Any(x => x.id_parent == place.id_object))
                         {
@@ -51,11 +55,12 @@
                         }
                     </li>
                 </ul>
-}
-        @if (Items != null && Items.Count() > 0)
-        {
-            @CreateItems(Items.OrderBy(p => p.hash.Length).First(), Items, 0, Investments, Rewards, LevelValue, StructValue, StructRewards)
-        }
+            }
+            @if (Items != null && Items.Count() > 0)
+            {
+                @CreateItems(Items.OrderBy(p => p.hash.Length).First(), Items, 0, Investments, Rewards, LevelValue, StructValue, StructRewards)
+            }
+        </div>
     </div>
 </div>
 @if (Model.MarketingType == MarketingTypeView.Camulative)

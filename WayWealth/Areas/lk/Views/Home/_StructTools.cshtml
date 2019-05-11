@@ -3,44 +3,50 @@
 @using WayWealth.Areas.lk.ViewModels.Home
 
 <form class="tree-tools">
-    <div class="wrap-flex">
-        <p>@Resources.Resource.PartnerSearch</p>
+    <div class="form-group">
+        <label>@Resources.Resource.PartnerSearch</label>
         <input type="text" class="search_input">
-        <button type="submit" class="page-link js_search_input" form="form-base">
-            <span data-text="@Resources.Resource.Search">@Resources.Resource.Search</span>
-        </button>
         @Html.HiddenFor(x => x.RootId)
+        <button type="submit" class="btn btn-grad btn-sm js_search_input" form="form-base">
+            @Resources.Resource.Search
+        </button>
     </div>
-    <div class="wrap-flex">
-        <p>@Resources.Resource.ViewDisplay</p>
-        @Html.DropDownListFor(x => x.ViewType, new SelectListItem[]
-        {
-   new SelectListItem { Text = @Resources.Resource.Tree, Value = StructureViewType.Tree.ToString() },
-   new SelectListItem { Text = @Resources.Resource.List, Value = StructureViewType.List.ToString() },
-        }, new { @class = "myslimSelect", onchange = "$(this).closest('form').submit()" })
 
 
-        <script>
+    <div class="form-group">
+        <label>@Resources.Resource.ViewDisplay</label>
+        <div class="form-group-select">
+            @Html.DropDownListFor(x => x.ViewType, new SelectListItem[]
+            {
+                new SelectListItem { Text = @Resources.Resource.Tree, Value = StructureViewType.Tree.ToString() },
+                new SelectListItem { Text = @Resources.Resource.List, Value = StructureViewType.List.ToString() },
+            }, new { @class = "myslimSelect", onchange = "$(this).closest('form').submit()" })
+            <i class="ion-ios-arrow-down"></i>
+        </div>
+        
+
+
+        <!--script>
             var mySlimSelect = new SlimSelect({
                 select: '.myslimSelect',
                 showSearch: false
             })
-        </script>
+        </script-->
     </div>
     @*<div class="wrap-flex mt20">
-        <p class="ml50">@Resources.Resource.Programs</p>
+                <p class="ml50">@Resources.Resource.Programs</p>
 
-        @Html.DropDownListFor(x => x.MarketingType, new SelectListItem[]
-        {
-new SelectListItem { Text = @Resources.Resource.Camulative, Value = MarketingTypeView.Camulative.ToString() },
-new SelectListItem { Text = @Resources.Resource.Invest, Value = MarketingTypeView.Invest.ToString() },
-        }, new { @class = "select2 myslimSelect2", onchange = "$(this).closest('form').submit()" })
+                @Html.DropDownListFor(x => x.MarketingType, new SelectListItem[]
+                {
+        new SelectListItem { Text = @Resources.Resource.Camulative, Value = MarketingTypeView.Camulative.ToString() },
+        new SelectListItem { Text = @Resources.Resource.Invest, Value = MarketingTypeView.Invest.ToString() },
+                }, new { @class = "select2 myslimSelect2", onchange = "$(this).closest('form').submit()" })
 
-        <script>
-            var mySlimSelect2 = new SlimSelect({
-                select: '.myslimSelect2',
-                showSearch: false
-            })
-        </script>
-    </div>*@
+                <script>
+                    var mySlimSelect2 = new SlimSelect({
+                        select: '.myslimSelect2',
+                        showSearch: false
+                    })
+                </script>
+            </div>*@
 </form>

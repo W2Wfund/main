@@ -1335,6 +1335,8 @@ namespace WayWealth.Areas.lk.Controllers
             #region Get places
             //decimal leftShoulderSum = 0;
             //decimal rightShoulderSum = 0;
+            ViewBag.LeftShoulderSum = 0;
+            ViewBag.RightShoulderSum = 0;
 
 
             if (model.MarketingType == MarketingTypeView.Camulative)
@@ -1661,8 +1663,8 @@ namespace WayWealth.Areas.lk.Controllers
         [HttpGet]
         public ActionResult Invest(string program = "base")
         {
-            //var marketing = new Service1();
-           // marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
+           // var marketing = new Service1();
+        //    marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
 
 
             ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();

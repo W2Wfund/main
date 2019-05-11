@@ -7,24 +7,16 @@
 }
 
 <div class="wrap-table">
-    <table class="table2">
+    <table class="table">
         <thead>
             <tr>
-                <th>
-                    <p class="caption">
-                        <span data-text="@Resources.Resource.Fio2">@Resources.Resource.Fio2</span>
-                    </p>
-                </th>
+                <th>@Resources.Resource.Fio2</th>
                 @*<th>
                         <p class="caption">
                             <span data-text="@Resources.Resource.DepthLocation">@Resources.Resource.DepthLocation</span>
                         </p>
                     </th>*@
-                <th>
-                    <p class="caption">
-                        <span data-text="@Resources.Resource.Choose">@Resources.Resource.Choose</span>
-                    </p>
-                </th>
+                <th>@Resources.Resource.Choose</th>
             </tr>
         </thead>
         <tbody>
@@ -33,9 +25,9 @@
                 foreach (var i in ViewBag.Items)
                 {
                     <tr>
-                        <td>@i.ObjectName</td>
+                        <td data-text="@Resources.Resource.Fio2">@i.ObjectName</td>
                         @*<td>@i.id_object</td>*@
-                        <td>
+                        <td data-text="@Resources.Resource.Choose">
                             @Html.ActionLink(Resources.Resource.Choose, "Structure", new { RootId = @i.id_object })
                         </td>
                     </tr>
@@ -52,14 +44,4 @@
         searchText = Model
     }), "#searchResults")
 }
-<a class="page-link close-modal-btn"><span data-text="@Resources.Resource.Close">@Resources.Resource.Close</span></a>
-
-<script type="text/javascript">
-    $('.close-modal-btn').click(function (event) {
-        $('.wrap-modal').removeClass('active');
-        $('#searchResults').empty();
-        $('body').removeClass('overflow');
-    });
-</script>
-
-
+<a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>

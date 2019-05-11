@@ -1607,6 +1607,10 @@ a.copy_link i {
     line-height: 1.5;
 }
 
+.wrap-modal #searchResults {
+    padding: 0 0 30px 0;
+}
+
 .modal-icon {
     width: 60px;
     height: 60px;
@@ -1617,6 +1621,10 @@ a.copy_link i {
     line-height: 58px;
     font-size: 36px;
     color: #33bf10;
+}
+
+.modal-icon.ion-ios-close {
+    color: #bf1010;
 }
 
 .wrap-modal.active {
@@ -2064,6 +2072,18 @@ html body > jdiv {
     box-shadow: 0 10px 0 0 rgba(0, 0, 0, 0.1), 5px 10px 15px 0 rgba(0, 0, 0, 0.35);
 }
 
+.invest-packages .invest-package.selected > div > div {
+    box-shadow: 0 10px 0 0 rgba(0, 0, 0, 0.1), 5px 10px 15px 0 rgba(0, 0, 0, 0.35), inset 0 0 0 5px #dba464;
+}
+
+.invest-packages .invest-package.orange.selected > div > div {
+    box-shadow: 0 10px 0 0 rgba(0, 0, 0, 0.1), 5px 10px 15px 0 rgba(0, 0, 0, 0.35), inset 0 0 0 5px #919191;
+}
+
+.invest-packages .invest-package.red.selected > div > div {
+    box-shadow: 0 10px 0 0 rgba(0, 0, 0, 0.1), 5px 10px 15px 0 rgba(0, 0, 0, 0.35), inset 0 0 0 5px #d4c13c;
+}
+
 .invest-packages .invest-package > div > div > div {
     padding: 12px 15px;
     /*background: rgba(238,180,34,.2);*/
@@ -2145,6 +2165,11 @@ html body > jdiv {
     height: 60px;
 }
 
+.invest-packages .invest-package.selected .img-box {
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+}
+
 .invest-packages .invest-package.orange .img-box {
     border-color: #afafaf;
 }
@@ -2162,6 +2187,574 @@ html body > jdiv {
     margin-bottom: 30px;
 }
 
+.tree-tools .form-group {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+    margin-right: 25px;
+}
+
+.tree-tools .form-group + .form-group {
+    margin-right: 0;
+}
+
+.tree-tools .form-group label {
+    margin: 5px 15px 5px 0;
+}
+
+.tree-tools .form-group .btn {
+    margin-left: 15px;
+}
+
+.tree-block {
+    padding: 30px 0;
+    min-height: 100%;
+}
+
+.tree-block .jstree-anchor {
+    display: inline-block;
+    padding: 0 20px;
+    height: 42px;
+    line-height: 40px;
+    border-radius: 21px;
+    border: 1px solid #b4b5b9;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 20px 0;
+    cursor: default;
+    background: transparent;
+}
+
+.tree-block .jstree-anchor:hover {
+    background: #e4e3ea;
+}
+
+.tree-block .jstree-anchor i {
+    display: none;
+}
+
+.tree-block #lists .jstree-ocl, .tree2 .item i {
+    background: none;
+    display: inline-block;
+    text-align: center;
+    height: 42px;
+    width: 42px;
+    line-height: 40px;
+    border-radius: 21px;
+    border: 1px solid #b4b5b9;
+    margin: 0 10px 20px 0;
+    position: relative;
+    background: #fff;
+    z-index: 3;
+    box-shadow: 0 0 0 10px #fff;
+}
+
+.tree-block #lists .jstree-ocl:before, .tree-block #lists .jstree-ocl:after, .tree2 .item i:before, .tree2 .item i:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.3s;
+    content: '+';
+    font-style: normal;
+    font-size: 32px;
+}
+
+.tree-block #lists .jstree-ocl:after, .tree2 .item i:after {
+    content: '-';
+    opacity: 0;
+    font-size: 42px;
+    line-height: 32px;
+}
+
+.tree-block #lists .jstree-open > .jstree-ocl:before {
+    opacity: 0;
+}
+
+.tree-block #lists .jstree-open > .jstree-ocl:after {
+    opacity: 1;
+}
+
+.tree-block #lists .jstree-leaf .jstree-ocl {
+    opacity: 0.4
+}
+
+.tree-block #lists .jstree-leaf .jstree-ocl:before, .tree-block #lists .jstree-leaf .jstree-ocl:after {
+    display: none !important;
+}
+
+.tree-block #lists .jstree-node {
+    background: none;
+    position: relative;
+    margin-left: 0;
+}
+
+.tree-block #lists .jstree-node:after {
+    position: absolute;
+    content: '';
+    left: 21px;
+    top: 62px;
+    bottom: 20px;
+    width: 1px;
+    background: #e3e5ea;
+}
+
+.tree-block #lists ul ul {
+    padding-left: 52px;
+}
+
+.lists-block {
+    overflow: auto;
+}
+
+.tree-info {
+    background: #1d1d21;
+    padding: 15px 10px 0 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+    transition-delay: 0.15s;
+    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.tree-info.active, .tree-info.stuck {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tree-info div {
+    flex-grow: 1;
+    padding: 0 8px 15px 8px;
+}
+
+.tree-info span {
+    opacity: 0.6;
+}
+
+.tree-info p {
+    font-weight: 700;
+    margin: 5px 0 0 0;
+    font-size: 16px;
+}
+
+#scale-range {
+    font-family: 'Montserrat','OpenSans', sans-serif;
+    border: none;
+    background: #e1e4e9;
+    border-radius: 0;
+    flex-grow: 1;
+    margin: 1px 0 25px 0;
+}
+
+#scale-range:before, #scale-range:after {
+    content: '';
+    background: #e1e4e9;
+    border-radius: 4px 0 0 4px;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    left: -9px;
+    position: absolute;
+    z-index: 0;
+}
+
+#scale-range:after {
+    border-radius: 0 4px 4px 0;
+    left: auto;
+    right: -9px;
+}
+
+#scale-range .ui-slider-handle {
+    margin: 0 0 0 -12px;
+    width: 24px;
+    height: 24px;
+    top: -7px;
+    border: none !important;
+    background: transparent !important;
+    cursor: pointer;
+}
+
+#scale-range .ui-slider-handle:after {
+    content: '';
+    height: 18px;
+    background: #5f616f;
+    top: 3px;
+    position: absolute;
+    transition: 0.3s;
+    width: 18px;
+    border-radius: 50%;
+    left: 3px;
+    box-shadow: 0 0 0 4px #ffffff;
+}
+
+#scale-range .ui-slider-handle:hover:after, #scale-range .ui-slider-handle.ui-state-active:after {
+    background: #dcaa20;
+}
+
+#scale-range .ui-slider-pip .ui-slider-label {
+    display: block;
+    width: 50px;
+    margin: 0 0 0 -25px;
+    color: #74737d;
+    font-weight: 400;
+}
+
+#scale-range .ui-slider-pip.ui-slider-pip-selected .ui-slider-label,
+#scale-range .ui-slider-pip.ui-slider-pip-selected-initial .ui-slider-label,
+#scale-range .ui-slider-pip:hover .ui-slider-label {
+    color: #2a292f;
+    font-weight: 700;
+}
+
+#scale-range .ui-slider-line {
+    height: 6px;
+    background: #bbbfc5;
+    top: -4px;
+}
+
+.scale-block {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 0 30px 0;
+}
+
+.scale-block > div {
+    flex-grow: 1;
+    padding: 15px 9px 0 9px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.scale-block > div > p {
+    margin: 0 30px 0 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    color: #9b9ca2;
+}
+
+.scale-block > a {
+    margin: 0 30px 0 0;
+}
+
+.tree-shoulders {
+    text-align: center;
+    margin: 0 0 15px 0;
+}
+
+.tree-shoulders span {
+    display: inline-block;
+    color: #32313a;
+    background: #eaebec;
+    padding: 12px 20px;
+    border-radius: 40px;
+    font-weight: 700;
+    margin: 0 8px 15px 8px;
+}
+
+.tree-sandbox {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+
+.tree-sandbox p {
+    float: left;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    color: #9b9ca2;
+    width: 180px;
+    margin: 5px 0;
+}
+
+.tree-sandbox ul {
+    padding: 0 0 0 180px;
+}
+
+.tree-sandbox li {
+    display: inline-block;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 36px;
+    line-height: 34px;
+    border-radius: 18px;
+    border: 1px solid #9e9fa5;
+    margin: 0 10px 10px 0;
+    padding: 0 15px;
+    font-weight: 400;
+    transition: 0.3s;
+}
+
+.tree-sandbox li:hover {
+    background: #d3d2da;
+}
+
+.tree-sandbox li.active {
+    background: #d3d2da;
+    pointer-events: none;
+}
+
+.tree2 {
+    overflow: hidden;
+    overflow-x: auto;
+    text-align: center;
+    padding: 0 0 50px 0;
+}
+
+.tree2 ul {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+.tree2 ul.scale-90 {
+    zoom: 90%;
+}
+
+.tree2 ul.scale-80 {
+    zoom: 80%;
+}
+
+.tree2 ul.scale-70 {
+    zoom: 70%;
+}
+
+.tree2 ul.scale-60 {
+    zoom: 60%;
+}
+
+.tree2 ul.scale-50 {
+    zoom: 50%;
+}
+
+.tree2 ul li {
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.tree2 ul ul {
+    display: none;
+}
+
+.tree2 ul ul.active {
+    display: block;
+}
+
+.tree2 ul ul li:before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    right: -2px;
+    height: 22px;
+    border-left: 1px solid #ccd0d6;
+    border-top: 1px solid #ccd0d6;
+    border-radius: 6px 0 0 0;
+}
+
+.tree2 ul ul li + li:before {
+    left: -2px;
+    right: 50%;
+    border-left: none;
+    border-right: 1px solid #ccd0d6;
+    border-radius: 0 6px 0 0;
+}
+
+.tree2 .item {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    transition: 0.3s;
+    border-radius: 6px;
+    width: 180px;
+    z-index: 6;
+}
+
+.tree2 .item .item-inner {
+    padding: 10px;
+}
+
+.tree2 .ui-state-free .item {
+    cursor: pointer;
+}
+
+.tree2 .ui-state-free .item:hover {
+    background: #edf0f3;
+}
+
+.tree2 .item i {
+    cursor: pointer;
+    vertical-align: top;
+    margin: 0 0 10px 0;
+}
+
+.tree2 .item i.active:before {
+    opacity: 0;
+}
+
+.tree2 .item i.active:after {
+    opacity: 1;
+}
+
+.tree2 .item img {
+    width: 80px;
+    min-width: 80px;
+    max-width: 80px;
+}
+
+.tree2 .item p {
+    font-size: 18px;
+    margin: 10px 0 5px 0;
+    font-weight: 700;
+    color: #32313a;
+    overflow: hidden;
+}
+
+.tree2 .ui-state-free .item p {
+    white-space: normal;
+}
+
+.tree2 .item span {
+    color: #8c8b98;
+    font-weight: 400;
+    display: block;
+}
+
+.tree2-left-sum, .tree2-right-sum {
+    position: absolute;
+    right: 50%;
+    bottom: 40px;
+    margin: 0 35px 0 0;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.3s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.tree2-right-sum {
+    right: auto;
+    left: 50%;
+    margin: 0 0 0 35px;
+}
+
+.tree2 .item i.active ~ .tree2-left-sum, .tree2 .item i.active ~ .tree2-right-sum {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tree2 .ui-state-free .item i, .tree2 .ui-state-filled .item i {
+    display: none;
+}
+
+.tree2-scroll-btn {
+    position: fixed;
+    left: 15px;
+    bottom: 15px;
+    z-index: 49;
+    background: #1d1d21;
+    padding: 3px;
+    border-radius: 23px;
+}
+
+.tree2-scroll-btn div {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #cda947;
+    line-height: 38px;
+    font-size: 20px;
+    color: #cda947;
+    padding: 0 3px 0 0;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tree2-scroll-btn div + div {
+    padding: 0 0 0 3px;
+    margin: 0 0 0 15px;
+}
+
+.tree2-scroll-btn div:hover {
+    color: #9b9aa7;
+}
+
+.tree2-set-tooltip {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    z-index: 100;
+    font-size: 16px;
+    box-shadow: 2px 2px 10px 0 rgba(43, 43, 47, 0.5);
+    border-radius: 6px;
+    padding: 15px 20px;
+    width: 290px;
+    color: #9b9aa7;
+    background: #1d1d21;
+    display: none;
+}
+
+.tree2-set-tooltip button {
+    font-size: 14px;
+    background: transparent;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    border: 1px solid #9b9aa7;
+    color: #9b9aa7;
+    height: 30px;
+    padding: 0 8px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tree2-set-tooltip button:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.tree2-set-tooltip p {
+    font-weight: 700;
+    margin: 6px 80px 15px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #fff;
+}
+
+.validation-summary-errors {
+    color: red;
+    padding: 10px;
+}
+
+/*------------------------------response---------------------------------*/
 @media only screen and (max-width: 1340px) {
     header .menu li a {
         padding: 0 10px;
@@ -2261,6 +2854,9 @@ html body > jdiv {
     .menu .toolbar {
         display: block;
     }
+    .tree2-scroll-btn {
+        display: none;
+    }
 }/*1199*/
 
 @media only screen and (max-width: 1100px) {
@@ -2310,6 +2906,9 @@ html body > jdiv {
     #form_filter .date-wrap {
         margin-left: 0;
         display: flex;
+    }
+    .tree-info div {
+        width: 33.33333%
     }
 }/*991*/
 
@@ -2578,7 +3177,7 @@ html body > jdiv {
     .history-block {
         padding: 30px 0;
     }
-    #form_filter .wrap-block .btn {
+    #form_filter .wrap-block .btn, .tree-tools .form-group .btn, .tree-block .all_tree_btn {
         height: 42px;
         line-height: 42px;
         border-radius: 21px;
@@ -2660,6 +3259,23 @@ html body > jdiv {
     }
     .charity-block {
         padding: 30px 0;
+    }
+    .tree-tools .form-group {
+        margin-right: 0;
+    }
+    .scale-block {
+        display: block;
+    }
+    .scale-block > div {
+        padding: 30px 9px 0 0;
+    }
+    .tree-sandbox p {
+        float: none;
+        width: auto;
+        margin: 0 0 10px 0;
+    }
+    .tree-sandbox ul {
+        padding: 0;
     }
 }/*767*/
 
@@ -2791,6 +3407,30 @@ html body > jdiv {
     .invest-packages {
         margin: -15px -15px 0 -15px;
     }
+    .tree-tools .form-group:first-of-type {
+        flex-wrap: wrap;
+    }
+    .tree-tools .form-group:first-of-type label {
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+    .tree-tools .form-group:first-of-type input {
+        width: 170px;
+    }
+    .tree-info div {
+        width: 50%;
+        padding: 0 5px 10px 5px;
+    }
+    .tree-info span {
+        font-size: 12px;
+    }
+    .tree-info p {
+        margin: 3px 0 0 0;
+        font-size: 14px;
+    }
+    .tree-info {
+        padding: 10px 10px 0 10px;
+    }
 }/*483*/
 
 @media (min-width: 767.5px) {
@@ -2800,943 +3440,5 @@ html body > jdiv {
     }
     #form_filter {
         display: block !important;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.validation-summary-errors{
-    color: red;
-    padding: 10px;
-}
-
-.tree-block .all_tree_btn:hover span {
-    background: -webkit-gradient(linear, left top, left bottom, from(#facd52), color-stop(44%, #f2c54b), color-stop(85%, #543d03), to(#3d2c02));
-    background: -webkit-linear-gradient(top, #facd52 0%, #f2c54b 44%, #543d03 85%, #3d2c02 100%);
-    background: -o-linear-gradient(top, #facd52 0%, #f2c54b 44%, #543d03 85%, #3d2c02 100%);
-    background: linear-gradient(to bottom, #facd52 0%, #f2c54b 44%, #543d03 85%, #3d2c02 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.tree-block {
-    padding: 30px 25px 100px;
-    min-height: 100%;
-}
-
-    .tree-block .tree-tools {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        font-size: 16px;
-        color: #4B4B4B;
-        margin-bottom: 25px;
-    }
-
-        .tree-block .tree-tools p {
-            margin-right: 10px;
-        }
-
-        .tree-block .tree-tools input, .tree-block .tree-tools select {
-            width: 235px;
-            height: 31px;
-            border: 2px solid #eec556;
-            -webkit-border-radius: 14.5px;
-            border-radius: 14.5px;
-            padding: 0 15px;
-            outline: none;
-            font-size: 18px;
-            margin-right: 20px;
-        }
-
-        .tree-block .tree-tools .wrap-flex {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-align-items: center;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-        }
-
-        .tree-block .tree-tools .page-link {
-            margin: 0 20px 0 0;
-            width: 126px;
-            height: 31px;
-            line-height: 31px;
-            padding: 0;
-            outline: none;
-            border: none;
-            font-size: 16px;
-            text-transform: uppercase;
-        }
-
-            .tree-block .tree-tools .page-link span {
-                line-height: 31px;
-            }
-
-        .tree-block .tree-tools select {
-            margin-right: 0;
-            width: 155px;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-image: url("../img/select-arrow.png");
-            background-repeat: no-repeat;
-            background-position: -webkit-calc(100% - 15px) center;
-            background-position: calc(100% - 15px) center;
-        }
-
-        .tree-block .tree-tools .select2 {
-            width: 335px;
-        }
-
-        .tree-block .tree-tools .ml50 {
-            margin-left: 20px;
-        }
-
-    .tree-block .all_tree_btn {
-        width: 295px;
-        height: 45px;
-        line-height: 45px;
-        background-color: #C6C6C6;
-        display: block;
-        -webkit-border-radius: 22.5px;
-        border-radius: 22.5px;
-        padding-left: 60px;
-        background-image: url("../img/all_tree_btn.png");
-        background-repeat: no-repeat;
-        background-position: 22px center;
-        font-size: 16px;
-        font-weight: bold;
-        position: relative;
-        z-index: 2;
-        margin-bottom: 35px;
-    }
-
-        .tree-block .all_tree_btn span {
-            color: #3D3C3A;
-            position: relative;
-            line-height: 1;
-        }
-
-        .tree-block .all_tree_btn:hover span:after {
-            background: none;
-            display: inline-block;
-            content: attr(data-text);
-            left: 0;
-            right: 0;
-            text-align: center;
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-            z-index: -1;
-            text-shadow: 0px 1px 0.9px rgba(1, 2, 2, 0.86);
-        }
-
-    .tree-block .scale-block {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        margin-bottom: 60px;
-    }
-
-        .tree-block .scale-block .all_tree_btn {
-            margin-bottom: 0;
-            margin-right: 25px;
-        }
-
-        .tree-block .scale-block p {
-            margin-right: 35px;
-            font-size: 16px;
-            line-height: 1;
-            color: #4B4B4B;
-        }
-
-        .tree-block .scale-block .scale-pips {
-            max-width: 730px;
-            width: 100%;
-            position: relative;
-            margin: 15px 0 0;
-        }
-
-            .tree-block .scale-block .scale-pips.ui-slider {
-                -webkit-border-radius: 8px;
-                border-radius: 8px;
-                background-image: -webkit-gradient(linear, left bottom, left top, from(#a48637), to(#eec657));
-                background-image: -webkit-linear-gradient(bottom, #a48637 0%, #eec657 100%);
-                background-image: -o-linear-gradient(bottom, #a48637 0%, #eec657 100%);
-                background-image: linear-gradient(0deg, #a48637 0%, #eec657 100%);
-                border: none;
-                height: 8px;
-            }
-
-            .tree-block .scale-block .scale-pips .ui-slider-handle {
-                -webkit-border-radius: 22px;
-                border-radius: 22px;
-                height: 22px;
-                width: 22px;
-                top: -8px;
-                margin-left: -4px;
-                border: 4px solid #e8c154;
-                -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.66);
-                box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.66);
-                outline: none;
-                background-color: #E71C39;
-                z-index: 3;
-            }
-
-                .tree-block .scale-block .scale-pips .ui-slider-handle.ui-state-active {
-                    background-color: #e71c39;
-                }
-
-            .tree-block .scale-block .scale-pips .ui-slider-pip {
-                top: -3px;
-                z-index: 2;
-            }
-
-                .tree-block .scale-block .scale-pips .ui-slider-pip:hover .ui-slider-label {
-                    font-weight: 400 !important;
-                }
-
-                .tree-block .scale-block .scale-pips .ui-slider-pip:last-child {
-                    margin-left: -16px;
-                }
-
-                .tree-block .scale-block .scale-pips .ui-slider-pip .ui-slider-label {
-                    display: block;
-                    font-size: 16px;
-                    line-height: 1;
-                    width: 60px;
-                    position: relative;
-                    top: -30px;
-                    left: 7px;
-                    font-family: "OpenSans", sans-serif;
-                    color: #292929;
-                    font-weight: 400 !important;
-                }
-
-                .tree-block .scale-block .scale-pips .ui-slider-pip.ui-slider-pip-selected-initial {
-                    font-weight: normal;
-                }
-
-                .tree-block .scale-block .scale-pips .ui-slider-pip.ui-slider-pip-selected {
-                    font-weight: 400 !important;
-                }
-
-                .tree-block .scale-block .scale-pips .ui-slider-pip.ui-slider-pip-selected, .tree-block .scale-block .scale-pips .ui-slider-pip.ui-slider-pip-selected-initial {
-                    color: #434d5a;
-                }
-
-            .tree-block .scale-block .scale-pips .ui-slider-line {
-                width: 14px;
-                height: 14px;
-                -webkit-border-radius: 50%;
-                border-radius: 50%;
-                background-image: -webkit-gradient(linear, left bottom, left top, from(#a48637), to(#eec657));
-                background-image: -webkit-linear-gradient(bottom, #a48637 0%, #eec657 100%);
-                background-image: -o-linear-gradient(bottom, #a48637 0%, #eec657 100%);
-                background-image: linear-gradient(0deg, #a48637 0%, #eec657 100%);
-            }
-
-    .tree-block .lists-block ul {
-        font-size: 18px;
-        color: #4B4B4B;
-    }
-
-        .tree-block .lists-block ul li {
-            position: relative;
-        }
-
-            .tree-block .lists-block ul li span {
-                margin-left: 20px;
-            }
-
-    .tree-block .tree2 {
-        overflow-x: scroll;
-        width: 78%;/*100%;*/
-        min-height: 650px;
-        display: inline-block;
-        float:left;
-    }
-    .tree-block .tree-sandbox {
-        width: 20%;
-        display: inline-block;
-        float: left;
-        border: 2px solid #CBA849;
-        padding: 10px 10px;
-        border-radius: 10px;
-        margin-left: 10px;
-    }
-
-    .tree-block .tree2 ul {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-    }
-
-    .tree-block .tree-sandbox p {
-        font-size: 16px;
-        font-weight: bold;
-        padding-bottom: 5px;
-        border-bottom: 2px solid #CBA849;
-        margin-bottom: 7px;
-    }
-
-            .tree-block .tree2 ul.scale-100 {
-                -webkit-transform: scale(1);
-                -ms-transform: scale(1);
-                transform: scale(1);
-            }
-
-            .tree-block .tree2 ul.scale-90 {
-                zoom: 90%;
-            }
-
-            .tree-block .tree2 ul.scale-80 {
-                zoom: 80%;
-            }
-
-            .tree-block .tree2 ul.scale-70 {
-                zoom: 70%;
-            }
-
-            .tree-block .tree2 ul.scale-60 {
-                zoom: 60%;
-            }
-
-            .tree-block .tree2 ul.scale-50 {
-                zoom: 50%;
-            }
-
-            .tree-block .tree2 ul.scale-40 {
-                zoom: 40%;
-            }
-
-            .tree-block .tree2 ul.scale-30 {
-                zoom: 30%;
-            }
-
-            .tree-block .tree2 ul.scale-20 {
-                zoom: 20%;
-            }
-
-            .tree-block .tree2 ul.scale-10 {
-                zoom: 10%;
-            }
-
-            .tree-block .tree2 ul.scale-0 {
-                -webkit-transform: scale(0);
-                -ms-transform: scale(0);
-                transform: scale(0);
-            }
-
-            .tree-block .tree2 ul li {
-                margin: 0 10px;
-            }
-
-                .tree-block .tree2 ul li > ul {
-                    display: none;
-                }
-
-                    .tree-block .tree2 ul li > ul li {
-                        position: relative;
-                    }
-
-                        .tree-block .tree2 ul li > ul li:after {
-                            content: "";
-                            display: block;
-                            width: -webkit-calc(100% + 20px);
-                            width: calc(100% + 20px);
-                            height: 2px;
-                            background-color: #a6a6a6;
-                            position: absolute;
-                            top: -10px;
-                            left: -10px;
-                        }
-
-                        .tree-block .tree2 ul li > ul li:before {
-                            content: "";
-                            display: block;
-                            width: 2px;
-                            height: 10px;
-                            background-color: #a6a6a6;
-                            position: absolute;
-                            top: -10px;
-                            left: 0;
-                            right: 0;
-                            margin: 0 auto;
-                        }
-
-                        .tree-block .tree2 ul li > ul li:first-child:after {
-                            content: "";
-                            display: block;
-                            width: -webkit-calc(50% + 10px);
-                            width: calc(50% + 10px);
-                            left: 50%;
-                            height: 2px;
-                            background-color: #a6a6a6;
-                            position: absolute;
-                            top: -10px;
-                        }
-
-                        .tree-block .tree2 ul li > ul li:first-child:before {
-                            content: "";
-                            display: block;
-                            width: 2px;
-                            height: 10px;
-                            background-color: #a6a6a6;
-                            position: absolute;
-                            top: -10px;
-                            left: 0;
-                            right: 0;
-                            margin: 0 auto;
-                        }
-
-                        .tree-block .tree2 ul li > ul li:last-child:after {
-                            content: "";
-                            display: block;
-                            width: -webkit-calc(50% + 10px);
-                            width: calc(50% + 10px);
-                            right: 50%;
-                            height: 2px;
-                            background-color: #a6a6a6;
-                            position: absolute;
-                            top: -10px;
-                        }
-
-                        .tree-block .tree2 ul li > ul li:last-child:before {
-                            content: "";
-                            display: block;
-                            width: 2px;
-                            height: 10px;
-                            background-color: #a6a6a6;
-                            position: absolute;
-                            top: -10px;
-                            left: 0;
-                            right: 0;
-                            margin: 0 auto;
-                        }
-
-                        .tree-block .tree2 ul li > ul li:1only-child:after {
-                            display: none;
-                        }
-
-            .tree-block .tree2 ul.open_ul li > ul {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-            }
-
-            .tree-block .tree2 ul li > ul.active {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-            }
-
-            .tree-block .tree2 .item {
-                display: block;
-                width: 217px;
-                height: 75px;
-                margin: 0 auto 35px;
-            }
-
-            .tree-block .tree2 .item.active p, .tree-block .tree2 .item:hover p {
-                border: 3px solid #EEC657;
-                line-height: 45px;
-            }
-
-            .tree-block .tree2 .item.active .flex i, .tree-block .tree2 .item:hover .flex i {
-                border: 3px solid #EEC657;
-                border-top: none;
-            }
-
-            .tree-block .tree-sandbox li:hover {
-                border: 3px solid #EEC657;
-                cursor: pointer;
-            }
-
-            .tree-block .tree2 .item.active .flex i:after, .tree-block .tree2 .item:hover .flex i:after {
-                display: block;
-            }
-
-            .tree-block .tree2 .item p, .tree-block .tree-sandbox li {
-                background-color: #DADADA;
-                width: 100%;
-                height: 51px;
-                line-height: 51px;
-                text-align: center;
-                font-size: 16px;
-                font-weight: 700;
-                color: #3D3C3A;
-                -webkit-border-radius: 17px;
-                border-radius: 17px;
-                -webkit-border-bottom-right-radius: 0;
-                border-bottom-right-radius: 0;
-            }
-            .tree-block .tree-sandbox li {
-                -webkit-border-radius: 17px;
-                border-radius: 17px;
-                margin-bottom: 7px;
-                border: 3px solid transparent;
-            }
-
-                .tree-block .tree2 .item .flex {
-                    width: 90px;
-                    height: 24px;
-                    display: -webkit-box;
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
-                    display: flex;
-                    margin-left: auto;
-                }
-
-                .tree-block .tree2 .item .flex.active i {
-                    background-image: url("../img/tree-icon2.png");
-                }
-
-                .tree-block .tree2 .item .flex span {
-                    width: 42px;
-                    background-color: #292929;
-                    -webkit-border-bottom-left-radius: 15px;
-                    border-bottom-left-radius: 15px;
-                    position: relative;
-                    color: #fff;
-                    font-size: 16px;
-                    text-align: center;
-                    line-height: 20px;
-                }
-
-                    .tree-block .tree2 .item .flex span:after {
-                        content: "";
-                        display: block;
-                        width: 20px;
-                        height: 100%;
-                        position: absolute;
-                        top: 0;
-                        right: -20px;
-                        background-color: #292929;
-                        z-index: -1;
-                    }
-
-                .tree-block .tree2 .item .flex i {
-                    width: 48px;
-                    background-color: #DADADA;
-                    background-image: url("../img/tree-icon.png");
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    -webkit-border-bottom-left-radius: 15px;
-                    border-bottom-left-radius: 15px;
-                    -webkit-border-bottom-right-radius: 15px;
-                    border-bottom-right-radius: 15px;
-                    position: relative;
-                }
-
-                    .tree-block .tree2 .item .flex i:after {
-                        content: "";
-                        display: none;
-                        width: 100%;
-                        height: 3px;
-                        background-color: #DADADA;
-                        position: absolute;
-                        top: -3px;
-                        left: 0;
-                        right: 0;
-                    }
-
-        .tree-block .tree2 .scroll-btn {
-            width: 90px;
-            height: 81px;
-            position: fixed;
-            bottom: 126px;
-            left: 10px;
-            background-color: #DFDFDF;
-            -webkit-border-radius: 25px;
-            border-radius: 25px;
-            padding: 8px;
-        }
-
-            .tree-block .tree2 .scroll-btn a {
-                display: block;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-
-            .tree-block .tree2 .scroll-btn .scroll-btn-up {
-                width: 22px;
-                height: 13px;
-                background-image: url("../img/scroll-btn-up-1.png");
-                background-size: contain;
-                margin: 0 auto 8px;
-            }
-
-                .tree-block .tree2 .scroll-btn .scroll-btn-up:hover {
-                    background-image: url("../img/scroll-btn-up-2.png");
-                }
-
-            .tree-block .tree2 .scroll-btn .scroll-btn-down {
-                width: 22px;
-                height: 13px;
-                background-image: url("../img/scroll-btn-down-1.png");
-                background-size: contain;
-                margin: 0 auto;
-            }
-
-                .tree-block .tree2 .scroll-btn .scroll-btn-down:hover {
-                    background-image: url("../img/scroll-btn-down-2.png");
-                }
-
-            .tree-block .tree2 .scroll-btn .scroll-btn-left {
-                width: 23px;
-                height: 23px;
-                background-image: url("../img/scroll-btn-left-1.png");
-                background-size: contain;
-            }
-
-                .tree-block .tree2 .scroll-btn .scroll-btn-left:hover {
-                    background-image: url("../img/scroll-btn-left-2.png");
-                }
-
-            .tree-block .tree2 .scroll-btn .scroll-btn-right {
-                width: 23px;
-                height: 23px;
-                background-image: url("../img/scroll-btn-right-1.png");
-                background-size: contain;
-            }
-
-                .tree-block .tree2 .scroll-btn .scroll-btn-right:hover {
-                    background-image: url("../img/scroll-btn-right-2.png");
-                }
-
-            .tree-block .tree2 .scroll-btn div {
-                display: -webkit-box;
-                display: -webkit-flex;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-justify-content: space-between;
-                -webkit-box-pack: justify;
-                -ms-flex-pack: justify;
-                justify-content: space-between;
-                margin-bottom: 8px;
-            }
-
-.jstree-default .jstree-themeicon {
-    display: none;
-}
-
-.jstree-default .jstree-clicked {
-    background: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    background-color: #DDD;
-}
-
-.jstree-default .jstree-anchor {
-    height: 45px;
-    line-height: 45px;
-    padding: 0 25px 0 55px;
-    -webkit-border-radius: 22.5px;
-    border-radius: 22.5px;
-}
-
-.jstree-default .jstree-hovered {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    background-color: #DDD;
-}
-
-.jstree-default .jstree-icon {
-    background-image: url("../img/tree-arrow2.png");
-    width: 26px;
-    height: 18px;
-    background-position: center;
-}
-
-.jstree-default .jstree-closed > .jstree-ocl {
-    background-position: center;
-}
-
-.jstree-default .jstree-icon:empty {
-    width: 26px;
-    height: 18px;
-    line-height: 18px;
-    position: absolute;
-    left: 12px;
-    top: 13.5px;
-}
-
-.jstree-default .jstree-open > .jstree-ocl {
-    background-position: center;
-    background-image: url("../img/tree-arrow.png");
-}
-
-.jstree-default .jstree-leaf .jstree-anchor {
-    padding: 0 25px;
-}
-
-.jstree-default .jstree-node {
-    margin-left: 40px;
-    background: none;
-}
-
-.tree-info {
-    background-color: #3D3C3A;
-    padding: 20px;
-    display: none;
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: distribute;
-    justify-content: space-around;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-    .tree-info.active {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: flex;
-    }
-
-    .tree-info > div {
-        /*salih width: 33.33%;*/
-        text-align: center;
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-
-    .tree-info span {
-        font-size: 18px;
-        color: #E2BD52;
-        line-height: 1;
-        display: block;
-        margin-bottom: 20px;
-    }
-
-    .tree-info p {
-        color: #fff;
-        font-size: 18px;
-        line-height: 1;
-    }
-
-
-
-.ss-main {
-    margin-left: 15px;
-    width: 100%;
-    max-width: 220px;
-}
-
-    .ss-main .ss-single-selected {
-        font-family: "OpenSans", sans-serif;
-        color: #4B4B4B;
-        font-size: 18px;
-        height: 31px;
-        -webkit-border-radius: 15px;
-        border-radius: 15px;
-        padding: 0 25px;
-        border: 2px solid #CBA849;
-    }
-
-        .ss-main .ss-single-selected.ss-open-below {
-            -webkit-border-radius: 15px;
-            border-radius: 15px;
-        }
-
-        .ss-main .ss-single-selected .ss-arrow {
-            margin-right: 0 !important;
-        }
-
-    .ss-main .ss-content {
-        border: 2px solid #EFC657;
-        -webkit-border-radius: 15px;
-        border-radius: 15px;
-    }
-
-        .ss-main .ss-content .ss-list .ss-option.ss-disabled {
-            background-color: #3D3C3A;
-            color: #d4af4b;
-            -webkit-border-radius: 15px;
-            border-radius: 15px;
-        }
-
-            .ss-main .ss-content .ss-list .ss-option.ss-disabled:hover {
-                background-color: #3D3C3A;
-            }
-
-        .ss-main .ss-content .ss-list .ss-option:hover {
-            background-color: #D4AF4B;
-            -webkit-border-radius: 15px;
-            border-radius: 15px;
-        }
-
-    .ss-main.myslimSelect2 {
-        width: 370px;
-        max-width: 100%;
-    }
-
-.tree-block .tree-shoulders {
-    text-align: center;
-    margin-bottom: 15px;
-}
-    .tree-block .tree-shoulders span {
-        font-size: 14px;
-        font-weight: bold;
-        border: 2px solid #CBA849;
-        padding: 10px 10px;
-        border-radius: 10px;
-        display: inline-block;
-    }
-        .tree-block .tree-shoulders span:first-child{
-            margin-right: 10px;
-        }
-
-
-        @media only screen and (max-width: 1240px) {
-            .tree-block .tree-tools {
-        -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    }
-
-        .tree-block .tree-tools .wrap-flex.mt20 {
-            margin-top: 20px;
-        }
-
-            .tree-block .tree-tools .wrap-flex.mt20 .ml50 {
-                margin-left: 0;
-            }
-
-    .tree-block .scale-block {
-        display: block;
-    }
-
-        .tree-block .scale-block .all_tree_btn {
-            margin-bottom: 20px;
-        }
-
-        .tree-block .scale-block p {
-            margin-right: 0;
-            margin-bottom: 40px;
-        }
-}
-
-@media only screen and (max-width: 992px) {
-    .tree-block {
-        padding: 10px;
-    }
-
-        .tree-block .tree-tools {
-            display: block;
-            margin-bottom: 0;
-        }
-
-            .tree-block .tree-tools .wrap-flex {
-                display: block;
-                text-align: center;
-                margin-bottom: 10px;
-            }
-
-            .tree-block .tree-tools .page-link {
-                margin: 0 auto;
-            }
-
-            .tree-block .tree-tools input, .tree-block .tree-tools select {
-                margin: 5px 0;
-            }
-
-            .tree-block .tree-tools .select2 {
-                width: 100%;
-                max-width: 335px;
-            }
-
-        .tree-block .scale-block {
-            margin-bottom: 30px;
-        }
-
-            .tree-block .scale-block p {
-                text-align: center;
-            }
-
-            .tree-block .scale-block .scale-pips {
-                width: 85%;
-                margin: 0 auto;
-            }
-
-            .tree-block .scale-block .all_tree_btn {
-                margin: 0 auto 20px;
-            }
-
-        .tree-block .tree2 .scroll-btn {
-            display: none;
-        }
-
-        .tree-block .all_tree_btn {
-            margin: 0 auto 20px;
-        }
-
-    .tree-info {
-        padding: 5px;
-    }
-
-        .tree-info > div {
-            width: 100%;
-            display: none;
-        }
-
-            .tree-info > div:first-child {
-                display: block;
-            }
-
-        .tree-info.on > div {
-            display: block;
-        }
-
-        .tree-info span, .tree-info p {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-
-        .tree-info.active {
-            display: block;
-        }
-
-    .lists-block {
-        overflow: scroll;
-        width: 100%;
-        min-height: 650px;
-    }
-
-    .ss-main.myslimSelect2 {
-        max-width: 370px;
-        width: 100%;
-        margin: 0;
     }
 }
