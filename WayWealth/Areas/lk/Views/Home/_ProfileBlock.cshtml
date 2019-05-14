@@ -3,7 +3,6 @@
         var site = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
         
     }
-
 <div class="white-bg">
     <div class="container">
         <div class="profile-block">
@@ -22,14 +21,13 @@
                     </span>
                     <a href="@Url.Action("replenish", "home")" class="btn btn-bordered btn-xs m-b-10">@Resources.Resource.TopUpAccount</a>
                 </div>
-
-                @if (ViewBag.CamulativePlaceCount > 0)
+                @if ( (Model.BalanceInner > 0) || (ViewBag.BalanceInvestments > 0) )
                 {
                     <p class="m-b-10">@Resources.Resource.RefLinkText</p>
                     <div>
                         <b class="js-link m-b-10 m-r-10">@(site + "reg/" + Model.PersonalId)</b>
                         <span>
-                            <a title="@Resources.Resource.CopyLink" data-href="@(site + "reg/" + Model.PersonalId)" class="copy_link btn btn-bordered btn-xs m-b-10 m-r-10" id="partnerLink">
+                            <a title="@Resources.Resource.CopyLink" data-href="@(site + "reg/" + Model.PersonalId)" class="copy_link btn btn-bordered btn-xs m-b-10 m-r-10" id="partnerLink"  data-clipboard-text="@(site + "reg/" + Model.PersonalId)">
                                 <i class="ion-md-copy"></i>
                             </a>
                             <a class="btn btn-bordered btn-xs m-b-10 m-r-10" href="@Url.Action("up", "sign", new { inviter = Model.PersonalId, area = "" })">
@@ -37,28 +35,22 @@
                             </a>
                         </span>
 
+                        
                         <script>
-                            function copyStringToClipboard(str) {
-                                var el = document.createElement('textarea');
-                                el.value = str;
-                                el.setAttribute('readonly', '');
-                                el.style = { position: 'absolute', left: '-9999px' };
-                                document.body.appendChild(el);
-                                el.select();
-                                document.execCommand('copy');
-                                document.body.removeChild(el);
-                            }
+                            var clipboard = new ClipboardJS('.btn');
+                            clipboard.on('success', function (e) {
+                                console.log(e);
+                            });
+                            clipboard.on('error', function (e) {
+                                console.log(e);
+                            });
 
                             var copyEmailBtn = document.querySelector('.copy_link');
                             copyEmailBtn.addEventListener('click', function (event) {
-                                try {
-                                    copyStringToClipboard("@(site + "reg/" + Model.PersonalId)");
-                                    window.alert("@Resources.Resource.DataCopied");
-                                } catch (err) {
-                                    console.log('Oops, unable to copy');
-                                }
-
+                                window.alert("@Resources.Resource.DataCopied");
                             });
+                            
+    
                         </script>
                     </div>
                 }

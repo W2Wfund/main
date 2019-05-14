@@ -2,7 +2,7 @@
 @using W2W.ModelKBT.Entities
 @using WayWealth.Areas.lk.Helpers
 @{
-    var Items = ViewBag.Items as IEnumerable<Partner>;
+    var Items = ViewBag.Items as IEnumerable<MarketingPlace>;//Partner
     var PageInfo = ViewBag.PageInfo as WayWealth.Areas.lk.ViewModels.PageInfo;
 }
 
@@ -28,7 +28,7 @@
                         <td data-text="@Resources.Resource.Fio2">@i.ObjectName</td>
                         @*<td>@i.id_object</td>*@
                         <td data-text="@Resources.Resource.Choose">
-                            @Html.ActionLink(Resources.Resource.Choose, "Structure", new { RootId = @i.id_object })
+                            @Html.ActionLink(Resources.Resource.Choose, "Structure", new { RootId = @i.PartnerId/*id_object*/ })
                         </td>
                     </tr>
                 }

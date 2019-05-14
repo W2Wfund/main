@@ -1004,9 +1004,30 @@ namespace W2W.Tests
             DateTime startDate = date.AddDays(countAddDay);
             Assert.AreEqual(263, service.countWorkDays(startDate));
 
+            date = DateTime.ParseExact("2019-05-06", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            countAddDay = 6;
+
+            countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
+            startDate = date.AddDays(countAddDay);
+            Assert.AreEqual(263, service.countWorkDays(startDate));
+
             date = DateTime.ParseExact("2019-05-14", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             countAddDay = 6;
             
+            countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
+            startDate = date.AddDays(countAddDay);
+            Assert.AreEqual(262, service.countWorkDays(startDate));
+
+            date = DateTime.ParseExact("2019-05-12", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            countAddDay = 6;
+
+            countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
+            startDate = date.AddDays(countAddDay);
+            Assert.AreEqual(263, service.countWorkDays(startDate));
+
+            date = DateTime.ParseExact("2018-04-30", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            countAddDay = 6;
+
             countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
             startDate = date.AddDays(countAddDay);
             Assert.AreEqual(262, service.countWorkDays(startDate));

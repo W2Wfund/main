@@ -43,10 +43,11 @@ namespace WayWealth.Areas.lk.Controllers
         public PartialViewResult ProfileBlock()
         {
             // todo: проверка баланса
-            var value = DataService.GetOwnAndRefsValue(this.User.id_object);
+            var value = DataService.GetOwnAndRefsValue(User.id_object);
             ViewBag.Rank = GetRankFull(value);
-            ViewBag.CamulativePlaceCount = DataService.GetPlaceCount(93, this.User.id_object);
-
+            ViewBag.CamulativePlaceCount = DataService.GetPlaceCount(93, User.id_object);
+            ViewBag.BalancePercents = User.BalancePercents;
+            ViewBag.BalanceInvestments = User.BalanceInvestments;
 
             ViewBag.StructSavingsBalance = DataService.GetStructSavingsBalance(this.User.id_object);
 
@@ -1247,15 +1248,29 @@ namespace WayWealth.Areas.lk.Controllers
         }
         public PartialViewResult _SearchMarketingPlaces(string searchText, int page = 1)
         {
-            var partners = this.DataService.GetPartners(this.User.id_object);
+            var rootPlaces = this.DataService.GetPlaces(93, User.id_object);
+            uint rootPlaceId = 0;
+            IEnumerable<MarketingPlace> items = rootPlaces;
+            if (rootPlaces.Count() > 0)
+            {
+                var rootPlace = rootPlaces.OrderBy(x => x.hash.Length).First();
+                rootPlaceId = rootPlace.id_object;
+                var places = this.DataService.GetStructure(93, rootPlaceId);
+                items = places.Where(p => p.ObjectName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) != -1);
+            }
+
+
+
+            //var partners = this.DataService.GetPartners(this.User.id_object);
+            
             int pageSize = 10;
-            IEnumerable<Partner> items = partners;
+            /*IEnumerable<Partner> items = partners;
             if (!string.IsNullOrWhiteSpace(searchText))
             {
                 items = partners.Where(p => p.ObjectName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) != -1);
-            }
+            }*/
                
-            ViewBag.Items = GetPage<Partner>(items, page, pageSize);
+            ViewBag.Items = GetPage<MarketingPlace>(items, page, pageSize); ;// GetPage<Partner>(items, page, pageSize);
 
             ViewBag.PageInfo = new PageInfo
             {
@@ -1322,6 +1337,24 @@ namespace WayWealth.Areas.lk.Controllers
         {
             uint rootId = model.RootId ?? this.User.id_object;
             var root = this.DataService.GetPartner(rootId);
+            if(model.RootId != null && model.RootId > 0)
+            {
+                var userRootPlaces = this.DataService.GetPlaces(93, User.id_object);
+                if (userRootPlaces.Count() > 0)
+                {
+                    var rPlaces = DataService.GetStructure(93, userRootPlaces.OrderBy(x => x.hash.Length).First().id_object);
+                    var partnerCount = rPlaces.Where(x => x.PartnerId == model.RootId).Count();
+                    if(partnerCount < 1)
+                    {
+                        return RedirectToAction("structure", "home", new { area = "lk" });
+                    }
+                }
+                else
+                {
+                    //                    Session.AddNotification(new Notification(false, Resources.Resource.ProfileTitle, exc.Message));
+                    return RedirectToAction("structure", "home", new { area = "lk" });
+                }
+            }
 
             var items = new List<MarketingPlaceView>();
             var sandPartners = new List<MarketingPlaceView>();
@@ -1663,8 +1696,12 @@ namespace WayWealth.Areas.lk.Controllers
         [HttpGet]
         public ActionResult Invest(string program = "base")
         {
-           // var marketing = new Service1();
-        //    marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
+            //var marketing = new Service1();
+            //  marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
+            string mainPath = @"C:\Users\Public\Documents";
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(mainPath + "/log.txt", true);
+            sw.WriteLine("test");
+            sw.Close();
 
 
             ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();

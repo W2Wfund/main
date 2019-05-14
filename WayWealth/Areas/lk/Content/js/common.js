@@ -312,7 +312,7 @@ $(function () {
     $('body').on('click', '.close-modal-btn', function (e) {
         $('.wrap-modal').fadeOut();
         setTimeout(function () {
-            $('#searchResults').empty();
+            $('#searchResults').empty().removeClass('search-table');
         }, 600);
     });
 
@@ -320,7 +320,7 @@ $(function () {
         if ($(e.target).hasClass('wrap-modal')) {
             $('.wrap-modal').fadeOut();
             setTimeout(function () {
-                $('#searchResults').empty();
+                $('#searchResults').empty().removeClass('search-table');
             }, 600);
         }
     });
@@ -561,7 +561,7 @@ $(function () {
             success: function (data) {
                 $('.wrap-modal').fadeIn();
                 $('#searchResults').empty();
-                $('#searchResults').append(data);
+                $('#searchResults').append(data).addClass('search-table');
             }
         });
     });
@@ -680,10 +680,10 @@ $(function () {
                 var partner_id = $('.tree-sandbox ul li.active').attr('data-id');
                 var data = { place_id: $(item).data('parent'), partner_id: partner_id, pos: $(item).data('pos') };
                 $.post('/lk/SetPlace', data, function (response) {
-                    var content = '<i class="ion-ios-' + (response.error ? 'close' : 'checkmark') + ' modal-icon"></i><p class="m-b-30">' + response.message + '</p><a class="btn btn-bordered btn-sm close-modal-btn">' + response.close + '</a>';
+                    var content = '<i class="ion-ios-' + (response.error == 'true' ? 'close' : 'checkmark') + ' modal-icon"></i><p class="m-b-30">' + response.message + '</p><a class="btn btn-bordered btn-sm close-modal-btn">' + response.close + '</a>';
                     $('#searchResults').html(content);
                     $('.wrap-modal').fadeIn();
-                    if (response.error) {
+                    if (response.error == 'true') {
                         $('body').find('.tree2-set-tooltip').fadeOut(300);
                         $('.tree-sandbox ul li').removeClass('active');
                         setTimeout(function () {

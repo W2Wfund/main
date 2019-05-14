@@ -16,28 +16,25 @@
                     <span>@Resources.Resource.TimeWallet</span>
                     <p>
                         <span class="js-link m-t-10">@Model.TempAddress</span>
-                        <a class="copy_link btn btn-bordered btn-xs m-t-10" data-href="@Model.TempAddress" title="@Resources.Resource.CopyLink">
+                        <a class="copy_link btn btn-bordered btn-xs m-t-10" data-href="@Model.TempAddress" title="@Resources.Resource.CopyLink" data-clipboard-text="@Model.TempAddress">
                             <i class="ion-md-copy"></i>
                         </a>
                     </p>
 
                     <script>
-                        var copyEmailBtn = document.querySelector('.copy_link');
-                        copyEmailBtn.addEventListener('click', function (event) {
-                            var emailLink = document.querySelector('.js-link');
-                            var range = document.createRange();
-                            range.selectNode(emailLink);
-                            window.getSelection().addRange(range);
+                            var clipboard = new ClipboardJS('.btn');
+                            clipboard.on('success', function (e) {
+                                console.log(e);
+                            });
+                            clipboard.on('error', function (e) {
+                                console.log(e);
+                            });
 
-                            try {
-                                var successful = document.execCommand('copy');
-                                var msg = successful ? 'successful' : 'unsuccessful';
+                            var copyEmailBtn = document.querySelector('.copy_link');
+                            copyEmailBtn.addEventListener('click', function (event) {
                                 window.alert("@Resources.Resource.DataCopied");
-                            } catch (err) {
-                                console.log('Oops, unable to copy');
-                            }
-                            window.getSelection().removeAllRanges();
-                        });
+                            });
+                       
                     </script>
                 </div>
                 <div class="qr-code">
