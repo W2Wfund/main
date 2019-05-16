@@ -1046,6 +1046,10 @@ footer .bottom-foot span {
     margin-right: 10px;
 }
 
+.m-r-20 {
+    margin-right: 20px;
+}
+
 a.copy_link i {
     font-size: 18px;
     margin: 0;
@@ -1317,7 +1321,8 @@ a.copy_link i {
 
 .table td {
     padding: 20px 0 20px 15px;
-    border-bottom: 1px solid #ceced4
+    border-bottom: 1px solid #ceced4;
+    text-align: left;
 }
 
 .table tr td:last-of-type {
@@ -1591,6 +1596,7 @@ a.copy_link i {
     z-index: 999;
     background: rgba(0,0,0,0.5);
     padding: 30px 0;
+    overflow-y: auto;
    /* display: none;*/
 }
 
@@ -2758,11 +2764,84 @@ html body > jdiv {
     padding: 10px;
 }
 
+.profile-progress-bar-wrap {
+    margin: -25px 0 50px 0;
+    position: relative;
+}
+
+.profile-progress-bar-wrap h3 {
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #797b86;
+}
+
+.profile-progress-bar-wrap h3 b {
+    color: #31333c;
+    font-size: 16px;
+    vertical-align: baseline;
+}
+
+.profile-progress-min, .profile-progress-max {
+    position: absolute;
+    bottom: -25px;
+    font-size: 16px;
+    color: #31333c;
+    font-weight: 700;
+}
+
+.profile-progress-min {
+    left: 0;
+}
+
+.profile-progress-max {
+    right: 0;
+}
+
+.profile-progress-bar {
+    overflow: hidden;
+    border-radius: 4px;
+    background: #dfdde4;
+}
+
+.profile-progress-bar div {
+    height: 12px;
+    background: #f3ce67;
+    background: -moz-linear-gradient(left, #f3ce67 0%, #b4943c 51%, #f3ce67 100%);
+    background: -webkit-gradient(left top, right top, color-stop(0%, #f3ce67), color-stop(51%, #b4943c), color-stop(100%, #f3ce67));
+    background: -webkit-linear-gradient(left, #f3ce67 0%, #b4943c 51%, #f3ce67 100%);
+    background: -o-linear-gradient(left, #f3ce67 0%, #b4943c 51%, #f3ce67 100%);
+    background: -ms-linear-gradient(left, #f3ce67 0%, #b4943c 51%, #f3ce67 100%);
+    background: linear-gradient(to right, #f3ce67 0%, #b4943c 51%, #f3ce67 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3ce67', endColorstr='#b4943c', GradientType=1 );
+    width: 0;
+    min-width: 5px;
+}
+
+.profile-progress-bar-val {
+    position: absolute;
+    bottom: 18px;
+    font-size: 14px;
+    color: #31333c;
+    font-weight: 700;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    margin: 0 0 0 3px;
+}
+
+.profile-progress-bar-val[style^="left: 97."], .profile-progress-bar-val[style^="left: 98."], .profile-progress-bar-val[style^="left: 99."], .profile-progress-bar-val[style^="left: 100."] {
+    left: auto !important;
+    right: 0;
+    margin: 0;
+    -webkit-transform: none;
+    transform: none;
+}
+
 /*------------------------------response---------------------------------*/
 @media only screen and (max-width: 1340px) {
     header .menu li a {
-        padding: 0 10px;
-    }
+    padding: 0 10px;
+}
 }/*1340*/
 
 @media (max-width: 1199px) {
@@ -3081,6 +3160,9 @@ html body > jdiv {
     .profile-block {
         flex-direction: column;
         padding: 30px 0;
+    }
+    .profile-progress-bar-wrap {
+        margin: -10px 0 50px 0;
     }
     .profile-block .img-box {
         width: 160px;

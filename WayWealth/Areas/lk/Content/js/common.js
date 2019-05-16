@@ -276,9 +276,23 @@ $(function () {
         speed: 500
     });
     $(".swiper-invest-packages").hover(function () {
-        (this).swiper.autoplay.stop();
+        if (!$(this).hasClass('deautoplay')) {
+            this.swiper.autoplay.stop();
+        }
     }, function () {
-        (this).swiper.autoplay.start();
+        if (!$(this).hasClass('deautoplay')) {
+            this.swiper.autoplay.start();
+        }
+    });
+    $('.btn-invest-show').click(function () {
+        $(".swiper-invest-packages").each(function () {
+            this.swiper.autoplay.stop();
+        });
+    });
+    $('.btn-invest-hide').click(function () {
+        $(".swiper-invest-packages").each(function () {
+            this.swiper.autoplay.start();
+        });
     });
     $('.charity-btn').click(function (event) {
         $('.charity-btn').removeClass('active');
@@ -314,6 +328,14 @@ $(function () {
         setTimeout(function () {
             $('#searchResults').empty().removeClass('search-table');
         }, 600);
+
+        if ($(".swiper-invest-packages").length) {
+            $('.invest-package').removeClass("selected");
+            $(".swiper-invest-packages").removeClass('deautoplay');
+            $(".swiper-invest-packages").each(function () {
+                this.swiper.autoplay.start();
+            });
+        }
     });
 
     $('.wrap-modal').click(function (e) {
@@ -322,6 +344,14 @@ $(function () {
             setTimeout(function () {
                 $('#searchResults').empty().removeClass('search-table');
             }, 600);
+
+            if ($(".swiper-invest-packages").length) {
+                $('.invest-package').removeClass("selected");
+                $(".swiper-invest-packages").removeClass('deautoplay');
+                $(".swiper-invest-packages").each(function () {
+                    this.swiper.autoplay.start();
+                });
+            }
         }
     });
 

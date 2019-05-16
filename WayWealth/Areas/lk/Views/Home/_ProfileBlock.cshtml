@@ -8,9 +8,9 @@
         <div class="profile-block">
             @if (!string.IsNullOrWhiteSpace(Model.Image))
             {
-            <div class="img-box">
-                <img class="ava" src="@Url.Action("img", "home", new { area = "", id=Model.Image })" alt="">
-            </div>
+                <div class="img-box">
+                    <img class="ava" src="@Url.Action("img", "home", new { area = "", id=Model.Image })" alt="">
+                </div>
             }
 
             <div>
@@ -21,13 +21,13 @@
                     </span>
                     <a href="@Url.Action("replenish", "home")" class="btn btn-bordered btn-xs m-b-10">@Resources.Resource.TopUpAccount</a>
                 </div>
-                @if ( (Model.BalanceInner > 0) || (ViewBag.BalanceInvestments > 0) )
+                @if ((Model.BalanceInner > 0) || (ViewBag.BalanceInvestments > 0))
                 {
                     <p class="m-b-10">@Resources.Resource.RefLinkText</p>
                     <div>
                         <b class="js-link m-b-10 m-r-10">@(site + "reg/" + Model.PersonalId)</b>
                         <span>
-                            <a title="@Resources.Resource.CopyLink" data-href="@(site + "reg/" + Model.PersonalId)" class="copy_link btn btn-bordered btn-xs m-b-10 m-r-10" id="partnerLink"  data-clipboard-text="@(site + "reg/" + Model.PersonalId)">
+                            <a title="@Resources.Resource.CopyLink" data-href="@(site + "reg/" + Model.PersonalId)" class="copy_link btn btn-bordered btn-xs m-b-10 m-r-10" id="partnerLink" data-clipboard-text="@(site + "reg/" + Model.PersonalId)">
                                 <i class="ion-md-copy"></i>
                             </a>
                             <a class="btn btn-bordered btn-xs m-b-10 m-r-10" href="@Url.Action("up", "sign", new { inviter = Model.PersonalId, area = "" })">
@@ -35,7 +35,7 @@
                             </a>
                         </span>
 
-                        
+
                         <script>
                             var clipboard = new ClipboardJS('.btn');
                             clipboard.on('success', function (e) {
@@ -49,28 +49,37 @@
                             copyEmailBtn.addEventListener('click', function (event) {
                                 window.alert("@Resources.Resource.DataCopied");
                             });
-                            
-    
+
+
                         </script>
                     </div>
+                    <div class="m-b-10">
+                        <p>
+                            @Resources.Resource.CumulativeText <b>$ @(ViewBag.StructSavingsBalance.ToString("N2"))</b>
+                        </p>
+                    </div>
                 }
-                <div class="m-b-10">
-                    <p>
-                        @Resources.Resource.CumulativeText <b>$ @(ViewBag.StructSavingsBalance.ToString("N2"))</b>
-                    </p>
-                </div>
                 <!-----
-        @if (!string.IsNullOrWhiteSpace(ViewBag.Rank))
-        {
-       <p>
-            @Resources.Resource.Qualification: <b>@ViewBag.Rank</b>
-        </p>
-        }
-        --->
-            </div>
+             @if (!string.IsNullOrWhiteSpace(ViewBag.Rank))
+             {
+            <p>
+                 @Resources.Resource.Qualification: <b>@ViewBag.Rank</b>
+             </p>
+             }
+             --->
             </div>
         </div>
+        <div class="profile-progress-bar-wrap">
+            <h3>Тут будет заголовок</h3>
+            <div class="profile-progress-bar-val" style="left: тут два знака после точки%;">тут целое значение без точки%</div>
+            <div class="profile-progress-bar">
+                <div style="width: тут два знака после точки%;"></div>
+            </div>
+            <div class="profile-progress-min">0</div>
+            <div class="profile-progress-max">20000</div>
+        </div>
     </div>
+</div>
     <div class="bills-block">
         <div class="container">
             <ul>

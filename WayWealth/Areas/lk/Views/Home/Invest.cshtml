@@ -93,6 +93,11 @@
 </div>
 <script>
     $('.btn-invest-show').click(function () {
+
+        $(this).closest('.invest-package').addClass("selected");
+
+        $(".swiper-invest-packages").addClass('deautoplay');
+        
         if($(this).hasClass('disabled')){
             var message = '<i class="ion-ios-close modal-icon modal-icon-close"></i><p class="m-b-30">@Resources.Resource.BuyInvestError</p><a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>';
             $('.wrap-modal').fadeIn();
@@ -100,18 +105,21 @@
             return false;
         }
 
-        $(function () {
-            $(".selected").each(function () {
-                $(this).removeClass("selected");
-            });
-        });
         $('#InvestId').val($(this).attr('data-id'));
 
-        $(this).parent().parent().addClass("selected");
-
         $('.invest-inner-accept').show();
+
+        $('html, body').animate({
+            scrollTop: $('.invest-inner-accept').offset().top - 100
+        }, 500);
     });
+
     $('.btn-invest-hide').click(function () {
         $('.invest-inner-accept').hide();
+        $('.invest-package').removeClass("selected");
+        $(".swiper-invest-packages").removeClass('deautoplay');
+        $('html, body').animate({
+            scrollTop: $('#invest-inner-form').offset().top
+        }, 500);
     });
  </script>
