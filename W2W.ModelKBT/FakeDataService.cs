@@ -1259,6 +1259,11 @@ namespace W2W.ModelKBT
         {
             throw new NotImplementedException();
         }
+
+        public void AddNotice(uint partnerId, string message)
+        {
+            throw new NotImplementedException();
+        }
         #region for svc
         public uint CreatePlace(
             uint marketingId,

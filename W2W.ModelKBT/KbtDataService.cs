@@ -1224,6 +1224,17 @@ namespace W2W.ModelKBT
             }
         }
 
+        public void AddNotice(uint partnerId, string message)
+        {
+            using (var client = new WebDataClient())
+            {
+                var values = new Dictionary<string, object>();
+                values.Add("Название", message);
+                values.Add("СсылкаНаКонтрагента", partnerId);
+                client.InsertObject(partnerId, "Уведомление", values);
+            }
+        }
+
         public IEnumerable<NewInvestProgram> GetInvestPrograms()
         {
             var query = CreateQueryItem<NewInvestProgram>("ИнвестиционнаяПрограммаНовая", Level.All);

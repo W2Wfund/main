@@ -180,7 +180,7 @@ namespace W2W.Tests
                     new MarketingPlace { id_object=10, hash="10", id_parent=1, SortPosition=0 },
                     new MarketingPlace { id_object=11, hash="11", id_parent=1, SortPosition=1 },
                 });
-                
+
             Assert.AreEqual((uint)10, pos.Parent.id_object);
             Assert.AreEqual(0, pos.Pos);
 
@@ -479,12 +479,12 @@ namespace W2W.Tests
             structure.Add(new MarketingPlace { id_object = 110010, hash = "abc110010", id_parent = 11001 });
 
             Service1 service = new Service1();
-            Assert.AreEqual((uint)101, 
-                service.GetParent(structure.Single(x=>x.id_object == 1011), 
+            Assert.AreEqual((uint)101,
+                service.GetParent(structure.Single(x => x.id_object == 1011),
                 structure, 1).id_object);
 
-            Assert.AreEqual((uint)11001, 
-                service.GetParent(structure.Single(x => x.id_object == 110010), 
+            Assert.AreEqual((uint)11001,
+                service.GetParent(structure.Single(x => x.id_object == 110010),
                 structure, 1).id_object);
 
             Assert.AreEqual((uint)11,
@@ -529,7 +529,7 @@ namespace W2W.Tests
             var parentPlace = service.GetParent(partner, structure, 1);
             decimal ShoulderSum = 0;
             decimal Sum = 1000;
-            
+
             while (parentPlace != null)
             {
                 if (parentPlace.id_object == 1)
@@ -550,7 +550,7 @@ namespace W2W.Tests
                 parentPlace = service.GetParent(parentPlace, structure, 1);
             }
 
-            
+
 
 
             Assert.AreEqual((decimal)1300,
@@ -998,22 +998,22 @@ namespace W2W.Tests
         {
             DateTime date = DateTime.ParseExact("2019-04-25", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             int countAddDay = 6;
-            
+
             var service = new Service1();
             countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
             DateTime startDate = date.AddDays(countAddDay);
-            Assert.AreEqual(263, service.countWorkDays(startDate));
+            Assert.AreEqual(262, service.countWorkDays(startDate));
 
             date = DateTime.ParseExact("2019-05-06", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             countAddDay = 6;
 
             countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
             startDate = date.AddDays(countAddDay);
-            Assert.AreEqual(263, service.countWorkDays(startDate));
+            Assert.AreEqual(262, service.countWorkDays(startDate));
 
             date = DateTime.ParseExact("2019-05-14", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             countAddDay = 6;
-            
+
             countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
             startDate = date.AddDays(countAddDay);
             Assert.AreEqual(262, service.countWorkDays(startDate));
@@ -1023,9 +1023,16 @@ namespace W2W.Tests
 
             countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
             startDate = date.AddDays(countAddDay);
-            Assert.AreEqual(263, service.countWorkDays(startDate));
+            Assert.AreEqual(262, service.countWorkDays(startDate));
 
             date = DateTime.ParseExact("2018-04-30", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            countAddDay = 6;
+
+            countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
+            startDate = date.AddDays(countAddDay);
+            Assert.AreEqual(261, service.countWorkDays(startDate));
+
+            date = DateTime.ParseExact("2019-05-16", "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
             countAddDay = 6;
 
             countAddDay = countAddDay > 0 ? service.countAddDaysForStartDate(date, countAddDay) : 0;
@@ -1033,5 +1040,365 @@ namespace W2W.Tests
             Assert.AreEqual(262, service.countWorkDays(startDate));
         }
 
+        [TestMethod]
+        public void countRefSum()
+        {
+            List<Investment> investments = new List<Investment>();
+            List<NewInvestProgram> investPrograms = new List<NewInvestProgram>();
+            investPrograms.Add(new NewInvestProgram { Sum = 100, DayLimit = 200, MonthLimit = 500, ReferalLimit = 50, MaxLimit = 500, id_object = 1 });
+            investPrograms.Add(new NewInvestProgram { Sum = 500, DayLimit = 1000, MonthLimit = 5000, ReferalLimit = 100, MaxLimit = 5000, id_object = 2 });
+            investPrograms.Add(new NewInvestProgram { Sum = 1000, DayLimit = 2000, MonthLimit = 10000, ReferalLimit = 500, MaxLimit = 0, id_object = 3 });
+            investPrograms.Add(new NewInvestProgram { Sum = 3000, DayLimit = 6000, MonthLimit = 30000, ReferalLimit = 0, MaxLimit = 0, id_object = 4 });
+            investPrograms.Add(new NewInvestProgram { Sum = 5000, DayLimit = 10000, MonthLimit = 50000, ReferalLimit = 0, MaxLimit = 0, id_object = 5 });
+            investPrograms.Add(new NewInvestProgram { Sum = 7000, DayLimit = 14000, MonthLimit = 70000, ReferalLimit = 0, MaxLimit = 0, id_object = 6 });
+            investPrograms.Add(new NewInvestProgram { Sum = 10000, DayLimit = 20000, MonthLimit = 100000, ReferalLimit = 0, MaxLimit = 0, id_object = 7 });
+            investPrograms.Add(new NewInvestProgram { Sum = 15000, DayLimit = 20000, MonthLimit = 100000, ReferalLimit = 0, MaxLimit = 0, id_object = 8 });
+            investPrograms.Add(new NewInvestProgram { Sum = 20000, DayLimit = 20000, MonthLimit = 100000, ReferalLimit = 0, MaxLimit = 0, id_object = 9 });
+
+            investments.Add(new Investment { Sum = 100, ProgramId = 1 });
+
+            uint referalLimit = 0;
+            decimal sumInvestments = 0;
+            uint maxLimit = 0;
+            decimal allPaymentsSum = 0;
+
+            if (investments.Count() > 0)
+            {
+                foreach (var item in investments)
+                {
+                    sumInvestments += item.Sum ?? 0;
+                }
+
+                var bigInvestment = investments.OrderByDescending(x => x.Sum).First();
+                if (bigInvestment.ProgramId > 0)
+                {
+                    var investProgram = investPrograms.Where(x => x.id_object == bigInvestment.ProgramId).FirstOrDefault();
+                    if (investProgram.ReferalLimit > 0)
+                    {
+                        referalLimit = (uint)investProgram.ReferalLimit;
+                    }
+                    if (investProgram.MaxLimit > 0)
+                    {
+                        maxLimit = (uint)investProgram.MaxLimit;
+                    }
+                }
+            }
+
+            decimal AllBinaryPayments = 100;
+            allPaymentsSum = 50;
+            allPaymentsSum += AllBinaryPayments;//150
+
+            //100
+            decimal sum = 100;
+            //bool flagIsAddPay = true;
+            decimal sumForPay = sum * 0.1m;
+            decimal extraPaySum = 0;
+
+            if (referalLimit > 0)
+            {
+                if (sumForPay > referalLimit)
+                {
+                    extraPaySum += sumForPay - referalLimit;
+                    sumForPay = referalLimit;
+                }
+            }
+            Assert.AreEqual(0, extraPaySum);
+            Assert.AreEqual(10, sumForPay);
+
+            if (maxLimit > 0 && maxLimit < (sumForPay + allPaymentsSum))
+            {
+                extraPaySum += sumForPay + allPaymentsSum - maxLimit;
+                sumForPay -= sumForPay + allPaymentsSum - maxLimit;
+            }
+            Assert.AreEqual(0, extraPaySum);
+            Assert.AreEqual(10, sumForPay);
+
+            //1000 и платежи 150
+            sum = 1000;
+            sumForPay = sum * 0.1m;
+            extraPaySum = 0;
+
+            if (referalLimit > 0)
+            {
+                if (sumForPay > referalLimit)
+                {
+                    extraPaySum += sumForPay - referalLimit;
+                    sumForPay = referalLimit;
+                }
+            }
+            Assert.AreEqual(50, extraPaySum);
+            Assert.AreEqual(50, sumForPay);
+
+            if (maxLimit > 0 && maxLimit < (sumForPay + allPaymentsSum))
+            {
+                extraPaySum += sumForPay + allPaymentsSum - maxLimit;
+                sumForPay -= sumForPay + allPaymentsSum - maxLimit;
+            }
+            Assert.AreEqual(50, extraPaySum);
+            Assert.AreEqual(50, sumForPay);
+
+            //1000  и платежи 470
+            sum = 1000;
+            sumForPay = sum * 0.1m;
+            extraPaySum = 0;
+            allPaymentsSum = 470;
+
+            if (referalLimit > 0)
+            {
+                if (sumForPay > referalLimit)
+                {
+                    extraPaySum += sumForPay - referalLimit;
+                    sumForPay = referalLimit;
+                }
+            }
+            Assert.AreEqual(50, extraPaySum);
+            Assert.AreEqual(50, sumForPay);
+
+            if (maxLimit > 0 && maxLimit < (sumForPay + allPaymentsSum))
+            {
+                extraPaySum += sumForPay + allPaymentsSum - maxLimit;
+                sumForPay -= sumForPay + allPaymentsSum - maxLimit;
+            }
+            Assert.AreEqual(70, extraPaySum);
+            Assert.AreEqual(30, sumForPay);
+
+            //add package without ref limit
+            investments.Add(new Investment { Sum = 3000, ProgramId = 4 });
+            referalLimit = 0;
+            maxLimit = 0;
+
+            if (investments.Count() > 0)
+            {
+                foreach (var item in investments)
+                {
+                    sumInvestments += item.Sum ?? 0;
+                }
+
+                var bigInvestment = investments.OrderByDescending(x => x.Sum).First();
+                if (bigInvestment.ProgramId > 0)
+                {
+                    var investProgram = investPrograms.Where(x => x.id_object == bigInvestment.ProgramId).FirstOrDefault();
+                    if (investProgram.ReferalLimit > 0)
+                    {
+                        referalLimit = (uint)investProgram.ReferalLimit;
+                    }
+                    if (investProgram.MaxLimit > 0)
+                    {
+                        maxLimit = (uint)investProgram.MaxLimit;
+                    }
+                }
+            }
+
+            //1000 и платежи 3000
+            sum = 10000;
+            sumForPay = sum * 0.1m;
+            extraPaySum = 0;
+            allPaymentsSum = 3000;
+
+            if (referalLimit > 0)
+            {
+                if (sumForPay > referalLimit)
+                {
+                    extraPaySum += sumForPay - referalLimit;
+                    sumForPay = referalLimit;
+                }
+            }
+            Assert.AreEqual(0, extraPaySum);
+            Assert.AreEqual(1000, sumForPay);
+
+            if (maxLimit > 0 && maxLimit < (sumForPay + allPaymentsSum))
+            {
+                extraPaySum += sumForPay + allPaymentsSum - maxLimit;
+                sumForPay -= sumForPay + allPaymentsSum - maxLimit;
+            }
+            Assert.AreEqual(0, extraPaySum);
+            Assert.AreEqual(1000, sumForPay);
+
+        }
+
+        [TestMethod]
+        public void checkBinareLimits()
+        {
+            List<Investment> investments = new List<Investment>();
+            List<NewInvestProgram> investPrograms = new List<NewInvestProgram>();
+            investPrograms.Add(new NewInvestProgram { Sum = 100, DayLimit = 200, MonthLimit = 500, ReferalLimit = 50, MaxLimit = 500, id_object = 1 });
+            investPrograms.Add(new NewInvestProgram { Sum = 500, DayLimit = 1000, MonthLimit = 5000, ReferalLimit = 100, MaxLimit = 5000, id_object = 2 });
+            investPrograms.Add(new NewInvestProgram { Sum = 1000, DayLimit = 2000, MonthLimit = 10000, ReferalLimit = 500, MaxLimit = 0, id_object = 3 });
+            investPrograms.Add(new NewInvestProgram { Sum = 3000, DayLimit = 6000, MonthLimit = 30000, ReferalLimit = 0, MaxLimit = 0, id_object = 4 });
+            investPrograms.Add(new NewInvestProgram { Sum = 5000, DayLimit = 10000, MonthLimit = 50000, ReferalLimit = 0, MaxLimit = 0, id_object = 5 });
+            investPrograms.Add(new NewInvestProgram { Sum = 7000, DayLimit = 14000, MonthLimit = 70000, ReferalLimit = 0, MaxLimit = 0, id_object = 6 });
+            investPrograms.Add(new NewInvestProgram { Sum = 10000, DayLimit = 20000, MonthLimit = 100000, ReferalLimit = 0, MaxLimit = 0, id_object = 7 });
+            investPrograms.Add(new NewInvestProgram { Sum = 15000, DayLimit = 20000, MonthLimit = 100000, ReferalLimit = 0, MaxLimit = 0, id_object = 8 });
+            investPrograms.Add(new NewInvestProgram { Sum = 20000, DayLimit = 20000, MonthLimit = 100000, ReferalLimit = 0, MaxLimit = 0, id_object = 9 });
+
+            Investment investment = new Investment { Sum = 100, ProgramId = 1 };
+
+            decimal currentPaymentSum = 1000;
+            decimal partSumForPay = currentPaymentSum * 0.1m;
+            decimal extraSum = 0;
+            decimal doubleInvestSum = 200;
+            bool isCanPay = true;
+
+            PartnerInvestData partnerInvestData = new PartnerInvestData { DayBinaryPaymentsSum = 50, MonthBinaryPaymentsSum = 300, AllPaymentsSum = 350, Program = investPrograms.SingleOrDefault(x => x.id_object == investment.ProgramId) };
+            
+            //проверка дневного лимита
+            if (partSumForPay + partnerInvestData.DayBinaryPaymentsSum > partnerInvestData.Program.DayLimit)
+            {
+                isCanPay = false;
+                decimal diffDaySum = partSumForPay + partnerInvestData.DayBinaryPaymentsSum - partnerInvestData.Program.DayLimit;
+                extraSum = diffDaySum > partSumForPay ? partSumForPay : diffDaySum;
+                partSumForPay -= extraSum;
+            }
+
+            Assert.AreEqual(0, extraSum);
+            Assert.AreEqual(100, partSumForPay);
+
+            if (partSumForPay + partnerInvestData.MonthBinaryPaymentsSum > partnerInvestData.Program.MonthLimit)
+            {
+                decimal monthDiffSum = partSumForPay + partnerInvestData.MonthBinaryPaymentsSum - partnerInvestData.Program.MonthLimit;
+                extraSum += monthDiffSum > partSumForPay ? partSumForPay  : monthDiffSum;
+                partSumForPay -= monthDiffSum > partSumForPay ? partSumForPay : monthDiffSum;
+                isCanPay = false;
+            }
+
+            Assert.AreEqual(0, extraSum);
+            Assert.AreEqual(100, partSumForPay);
+
+            //проверка лимита доходности, если есть
+            if (partnerInvestData.MaxLimit > 0)
+            {
+                if (partnerInvestData.AllPaymentsSum + partSumForPay > partnerInvestData.MaxLimit)
+                {
+                    isCanPay = false;
+                    decimal maxLimitDiff = partnerInvestData.AllPaymentsSum + partSumForPay - partnerInvestData.MaxLimit;
+                    extraSum += maxLimitDiff > partSumForPay ? partSumForPay : maxLimitDiff;
+                    partSumForPay -= maxLimitDiff > partSumForPay ? partSumForPay : maxLimitDiff;
+                }
+            }
+            Assert.AreEqual(0, extraSum);
+            Assert.AreEqual(100, partSumForPay);
+
+            // проверка двухкратной выплаты суммы
+            if (partSumForPay + partnerInvestData.AllPaymentsSum > doubleInvestSum)
+            {
+                isCanPay = false;
+                decimal doubleDiffSum = partSumForPay + partnerInvestData.AllPaymentsSum - doubleInvestSum;
+                extraSum += doubleDiffSum > partSumForPay ? partSumForPay : doubleDiffSum;
+                partSumForPay -= doubleDiffSum > partSumForPay ? partSumForPay : doubleDiffSum;
+            }
+            Assert.AreEqual(100, extraSum);
+            Assert.AreEqual(0, partSumForPay);
+
+            // 3000 
+            partnerInvestData.MonthBinaryPaymentsSum = 400;
+
+            currentPaymentSum = 3000;
+            partSumForPay = currentPaymentSum * 0.1m;
+            extraSum = 0;
+
+            //проверка дневного лимита
+            if (partSumForPay + partnerInvestData.DayBinaryPaymentsSum > partnerInvestData.Program.DayLimit)
+            {
+                isCanPay = false;
+                decimal diffDaySum = partSumForPay + partnerInvestData.DayBinaryPaymentsSum - partnerInvestData.Program.DayLimit;
+                extraSum = diffDaySum > partSumForPay ? partSumForPay : diffDaySum;
+                partSumForPay -= extraSum;
+            }
+
+            Assert.AreEqual(150, extraSum);
+            Assert.AreEqual(150, partSumForPay);
+
+            if (partSumForPay + partnerInvestData.MonthBinaryPaymentsSum > partnerInvestData.Program.MonthLimit)
+            {
+                decimal monthDiffSum = partSumForPay + partnerInvestData.MonthBinaryPaymentsSum - partnerInvestData.Program.MonthLimit;
+                extraSum += monthDiffSum > partSumForPay ? partSumForPay : monthDiffSum;
+                partSumForPay -= monthDiffSum > partSumForPay ? partSumForPay : monthDiffSum;
+                isCanPay = false;
+            }
+
+            Assert.AreEqual(200, extraSum);
+            Assert.AreEqual(100, partSumForPay);
+
+            //проверка лимита доходности, если есть
+            if (partnerInvestData.MaxLimit > 0)
+            {
+                if (partnerInvestData.AllPaymentsSum + partSumForPay > partnerInvestData.MaxLimit)
+                {
+                    isCanPay = false;
+                    decimal maxLimitDiff = partnerInvestData.AllPaymentsSum + partSumForPay - partnerInvestData.MaxLimit;
+                    extraSum += maxLimitDiff > partSumForPay ? partSumForPay : maxLimitDiff;
+                    partSumForPay -= maxLimitDiff > partSumForPay ? partSumForPay : maxLimitDiff;
+                }
+            }
+            Assert.AreEqual(200, extraSum);
+            Assert.AreEqual(100, partSumForPay);
+
+            // проверка двухкратной выплаты суммы
+            if (partSumForPay + partnerInvestData.AllPaymentsSum > doubleInvestSum)
+            {
+                decimal doubleDiffSum = partSumForPay + partnerInvestData.AllPaymentsSum - doubleInvestSum;
+                extraSum += doubleDiffSum > partSumForPay ? partSumForPay : doubleDiffSum;
+                partSumForPay -= doubleDiffSum > partSumForPay ? partSumForPay : doubleDiffSum;
+            }
+            Assert.AreEqual(300, extraSum);
+            Assert.AreEqual(0, partSumForPay);
+
+            //3000 и новая программа
+            investment = new Investment { Sum = 1000, ProgramId = 3 };
+            partnerInvestData = new PartnerInvestData { DayBinaryPaymentsSum = 50, MonthBinaryPaymentsSum = 1400, AllPaymentsSum = 350, Program = investPrograms.SingleOrDefault(x => x.id_object == investment.ProgramId) };
+
+            currentPaymentSum = 3000;
+            partSumForPay = currentPaymentSum * 0.1m;
+            extraSum = 0;
+            doubleInvestSum = (decimal)investment.Sum * 2;
+
+            //проверка дневного лимита
+            if (partSumForPay + partnerInvestData.DayBinaryPaymentsSum > partnerInvestData.Program.DayLimit)
+            {
+                isCanPay = false;
+                decimal diffDaySum = partSumForPay + partnerInvestData.DayBinaryPaymentsSum - partnerInvestData.Program.DayLimit;
+                extraSum = diffDaySum > partSumForPay ? partSumForPay : diffDaySum;
+                partSumForPay -= extraSum;
+            }
+
+            Assert.AreEqual(0, extraSum);
+            Assert.AreEqual(300, partSumForPay);
+
+            if (partSumForPay + partnerInvestData.MonthBinaryPaymentsSum > partnerInvestData.Program.MonthLimit)
+            {
+                decimal monthDiffSum = partSumForPay + partnerInvestData.MonthBinaryPaymentsSum - partnerInvestData.Program.MonthLimit;
+                extraSum += monthDiffSum > partSumForPay ? partSumForPay : monthDiffSum;
+                partSumForPay -= monthDiffSum > partSumForPay ? partSumForPay : monthDiffSum;
+                isCanPay = false;
+            }
+
+            Assert.AreEqual(0, extraSum);
+            Assert.AreEqual(300, partSumForPay);
+
+            //проверка лимита доходности, если есть
+            if (partnerInvestData.MaxLimit > 0)
+            {
+                if (partnerInvestData.AllPaymentsSum + partSumForPay > partnerInvestData.MaxLimit)
+                {
+                    isCanPay = false;
+                    decimal maxLimitDiff = partnerInvestData.AllPaymentsSum + partSumForPay - partnerInvestData.MaxLimit;
+                    extraSum += maxLimitDiff > partSumForPay ? partSumForPay : maxLimitDiff;
+                    partSumForPay -= maxLimitDiff > partSumForPay ? partSumForPay : maxLimitDiff;
+                }
+            }
+            Assert.AreEqual(0, extraSum);
+            Assert.AreEqual(300, partSumForPay);
+
+            // проверка двухкратной выплаты суммы
+            if (partSumForPay + partnerInvestData.AllPaymentsSum > doubleInvestSum)
+            {
+                decimal doubleDiffSum = partSumForPay + partnerInvestData.AllPaymentsSum - doubleInvestSum;
+                extraSum += doubleDiffSum > partSumForPay ? partSumForPay : doubleDiffSum;
+                partSumForPay -= doubleDiffSum > partSumForPay ? partSumForPay : doubleDiffSum;
+            }
+            Assert.AreEqual(0, extraSum);
+            Assert.AreEqual(300, partSumForPay);
+
+        }
     }
 }

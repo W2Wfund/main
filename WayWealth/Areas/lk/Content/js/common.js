@@ -505,7 +505,7 @@ $(function () {
 
 
     if ($('span').is('#reminder'))
-        $('#reminder').text(Number(balances["Остаток.Проценты"].replace(/\,/g, '.')).toFixed(2));
+        $('#reminder').text(Number(balances["Остаток.ВнутреннийСчет"].replace(/\,/g, '.')).toFixed(2));
 
     if ($('input').is('#account_hidden'))
         $('#account_hidden').val("Остаток.Проценты");
@@ -521,7 +521,7 @@ $(function () {
             url: "/lk/GenerateTransactionPassword",
             data: {},
             success: function () {
-                // ввывод таймера   
+                console.log("test");   
                 
             }
         });

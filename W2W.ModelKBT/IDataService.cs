@@ -207,6 +207,7 @@ namespace W2W.ModelKBT
 
         IEnumerable<Notice> GetUnreadedNotices(uint partnerId);
         void SetNoticeAsReaded(uint messageId);
+        void AddNotice(uint partnerId,string message);
         IEnumerable<NewInvestProgram> GetInvestPrograms();
         NewInvestProgram GetInvestProgram(uint id);
 
