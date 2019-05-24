@@ -474,6 +474,7 @@
     <Content Include="Content\img\invest-referal-bg.jpg" />
     <Content Include="Content\img\invest-strategiya.png" />
     <Content Include="Content\img\logo-2.png" />
+    <Content Include="Content\img\logo-constr.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\main-about-block-bg.jpg" />
     <Content Include="Content\img\main-footer-bg.jpg" />
@@ -552,6 +553,7 @@
     <Content Include="Content\img\tiles_bg.jpg" />
     <Content Include="Content\img\tree-logo-dark.png" />
     <Content Include="Content\img\tree-logo.png" />
+    <Content Include="Content\img\under-construction.png" />
     <Content Include="Content\img\use.png" />
     <Content Include="Content\img\vk.png" />
     <Content Include="Content\img\vk2.png" />
@@ -566,6 +568,7 @@
     <Content Include="Content\js\Chart.min.js" />
     <Content Include="Content\js\common.js" />
     <Content Include="Content\js\scripts.min.js" />
+    <Content Include="disabled.html" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\lk\Views\Home\Investments.cshtml" />

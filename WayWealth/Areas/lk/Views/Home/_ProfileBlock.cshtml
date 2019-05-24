@@ -1,7 +1,6 @@
 ﻿@model WayWealth.Infrastructure.Auth.CustomPrincipal
     @{
         var site = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
-        
     }
 <div class="white-bg">
     <div class="container">
@@ -69,7 +68,18 @@
              --->
             </div>
         </div>
-        
+        @if (Model.BalanceInvestments > 0)
+        {
+            <div class="profile-progress-bar-wrap">
+                <h3>Ваш доход на текущий день Х2</h3>
+                <div class="profile-progress-bar-val" style="left: @(ViewBag.InvestPayments.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us")))%;">@(Math.Round(ViewBag.InvestPayments))%</div>
+                <div class="profile-progress-bar">
+                    <div style="width: @(ViewBag.InvestPayments.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us")))%;"></div>
+                </div>
+                <div class="profile-progress-min">0</div>
+                <div class="profile-progress-max">@((Model.BalanceInvestments * 2).ToString("N2"))</div>
+            </div>
+        }
     </div>
 </div>
     <div class="bills-block">

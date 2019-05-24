@@ -511,7 +511,7 @@ $(function () {
         $('#account_hidden').val("Остаток.Проценты");
 
     $('.js_transfer_all_sum').click(function () {
-        $('.sum_input').val($('.reminder').text().replace('.',','));
+        $('.sum_input').val($('.reminder').text().replace('.', ','));
     });
 
     $('#gentp').click(function () {

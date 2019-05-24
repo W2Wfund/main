@@ -48,6 +48,7 @@ namespace WayWealth.Areas.lk.Controllers
             ViewBag.CamulativePlaceCount = DataService.GetPlaceCount(93, User.id_object);
             ViewBag.BalancePercents = User.BalancePercents;
             ViewBag.BalanceInvestments = User.BalanceInvestments;
+            ViewBag.InvestPayments = 0;
 
             ViewBag.StructSavingsBalance = DataService.GetStructSavingsBalance(this.User.id_object);
 
@@ -61,6 +62,37 @@ namespace WayWealth.Areas.lk.Controllers
                     DataService.SetNoticeAsReaded(item.id_object);
                 }
             }
+
+            if (User.BalanceInvestments > 0)
+            {
+                var investments = DataService.GetInvestments(User.id_object, "Активен");
+                decimal sum = 0;
+                if (investments.Count() > 0)
+                {
+                    foreach (var invest in investments)
+                    {
+                        var transfers = DataService.GetInnerTransfers(User.id_object, null, "Вознаграждение со структуры", null, null, invest.id_object, null);
+                        if (transfers.Count() > 0)
+                        {
+                            foreach (var item in transfers)
+                            {
+                                sum += item.PaymentSum ?? 0;
+                            }
+                        }
+                        var transfersRef = DataService.GetInnerTransfers(User.id_object, null, "Реферальное вознаграждение", null, null, invest.id_object, null);
+                        if (transfersRef.Count() > 0)
+                        {
+                            foreach (var item in transfersRef)
+                            {
+                                sum += item.PaymentSum ?? 0;
+                            }
+                        }
+                    }
+                }
+                ViewBag.InvestPayments = Math.Round(sum * 100 / (User.BalanceInvestments * 2),2);
+            }
+            
+
             return PartialView("_ProfileBlock", this.User);
         }
 
@@ -1696,13 +1728,8 @@ namespace WayWealth.Areas.lk.Controllers
         [HttpGet]
         public ActionResult Invest(string program = "base")
         {
-            //var marketing = new Service1();
-            //  marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
-            string mainPath = @"C:\Users\Public\Documents";
-            System.IO.StreamWriter sw = new System.IO.StreamWriter(mainPath + "/log.txt", true);
-            sw.WriteLine("test");
-            sw.Close();
-
+            //  var marketing = new Service1();
+            //    marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
 
             ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
             ViewBag.Program = program;
