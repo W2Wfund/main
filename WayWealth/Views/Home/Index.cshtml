@@ -71,7 +71,7 @@
 
 <div class="mp-prices white-bg">
     <div class="container">
-        @helper CreateItems(IEnumerable<NewInvestProgram> items)
+        @helper CreateItems(IEnumerable<NewInvestProgram> items, bool isLogin)
         {
 
             foreach (var item in items)
@@ -108,7 +108,14 @@
                                     <p class="extra">* @Resources.Resource.InvestPackageExtra</p>
                                 }
                             </div>
-                            <a href="@Url.Action("up", "sign")">@Resources.Resource.InvestPackageSelect</a>
+                            @if (isLogin)
+                            {
+                                <a href="@Url.Action("Invest", "home", new { area = "lk" })">@Resources.Resource.InvestPackageSelect</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("up", "sign")">@Resources.Resource.InvestPackageSelect</a>
+                            }
                         </div>
                     </div>
                 </div>
@@ -120,7 +127,7 @@
                 <h2 class="section-title">@Resources.Resource.InvestPackageTitle</h2>
             <div class="swiper-container swiper-invest-packages invest-packages animated">
                 <div class="swiper-wrapper">
-                    @CreateItems(items);
+                    @CreateItems(items, (bool)ViewBag.isLogin);
                     @*<div class="swiper-slide">
                         <div class="invest-package">
                             <div>

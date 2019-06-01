@@ -16,88 +16,89 @@
 <div class="white-bg h-100">
     <div class="container">
         <div id="invest-inner-form">
-        <h2 class="inner-title">@Resources.Resource.InvestTitle</h2>
-        @helper CreateItems(IEnumerable<NewInvestProgram> items, decimal UserBalance, bool IsCanBuyPremium, System.Collections.ArrayList UserInvestments)
-        {
-
-            foreach (var item in items)
+            <h2 class="inner-title">@Resources.Resource.InvestTitle</h2>
+            @helper CreateItems(IEnumerable<NewInvestProgram> items, decimal UserBalance, bool IsCanBuyPremium, System.Collections.ArrayList UserInvestments)
             {
-                var image = "package-img-1-1.png";
-                var packageClass = "";
-                if (item.Sum >= 1000 && item.Sum < 10000)
-                {
-                    image = "package-img-2-1.png";
-                    packageClass = " orange";
-                }
-                else if (item.Sum >= 10000)
-                {
-                    image = "package-img-3-1.png";
-                    packageClass = item.Sum < 15000 ? "red" : "red extra";
-                }
 
-                <div class="swiper-slide">
-                    <div class="invest-package @packageClass">
-                        <div>
-                            <p>@item.Name</p>
+                foreach (var item in items)
+                {
+                    var image = "package-img-1-1.png";
+                    var packageClass = "";
+                    if (item.Sum >= 1000 && item.Sum < 10000)
+                    {
+                        image = "package-img-2-1.png";
+                        packageClass = " orange";
+                    }
+                    else if (item.Sum >= 10000)
+                    {
+                        image = "package-img-3-1.png";
+                        packageClass = item.Sum < 15000 ? "red" : "red extra";
+                    }
+
+                    <div class="swiper-slide">
+                        <div class="invest-package @packageClass">
                             <div>
-                                <div class="img-box">
-                                    <img src="~/Content/img/@image" alt="">
+                                <p>@item.Name</p>
+                                <div>
+                                    <div class="img-box">
+                                        <img src="~/Content/img/@image" alt="">
+                                    </div>
+                                    <p>@Resources.Resource.InvestPackageSumTitle:</p>
+                                    <div>@item.Sum $</div>
+                                    <p>@Resources.Resource.InvestPackageProfitabilityTitle</p>
+                                    <div>@Math.Round((item.YearPercent * 100))% @Resources.Resource.InvestPackagePerTitle</div>
+                                    <p>@Resources.Resource.InvestPackageBinaryVolume</p>
+                                    <div>@((Int32)item.Sum * 0.9) $</div>
+                                    @if (item.Sum > 10000)
+                                    {
+                                        <p class="extra">* @Resources.Resource.InvestPackageExtra</p>
+                                    }
                                 </div>
-                                <p>@Resources.Resource.InvestPackageSumTitle:</p>
-                                <div>@item.Sum $</div>
-                                <p>@Resources.Resource.InvestPackageProfitabilityTitle</p>
-                                <div>@Math.Round((item.YearPercent * 100))% @Resources.Resource.InvestPackagePerTitle</div>
-                                <p>@Resources.Resource.InvestPackageBinaryVolume</p>
-                                <div>@((Int32)item.Sum * 0.9) $</div>
-                                @if (item.Sum > 10000)
-                                {
-                                    <p class="extra">* @Resources.Resource.InvestPackageExtra</p>
-                                }
+                                <a href="javascript:void(0);" class="btn-invest-show @((UserInvestments.Contains(item.id_object) || UserBalance < item.Sum || (!IsCanBuyPremium && item.Sum > 10000)) ?  "disabled" : "")"
+                                   data-id="@item.id_object">@Resources.Resource.InvestPackageSelect</a>
                             </div>
-                            <a href="javascript:void(0);" class="btn-invest-show @((UserInvestments.Contains(item.id_object) || UserBalance < item.Sum || (!IsCanBuyPremium && item.Sum > 10000)) ?  "disabled" : "")"
-                               data-id="@item.id_object">@Resources.Resource.InvestPackageSelect</a>
                         </div>
                     </div>
+                }
+            }
+
+            @*if (culture == "ru-RU")
+                {*@
+            <div class="swiper-container swiper-invest-packages invest-packages animated">
+                <div class="swiper-wrapper">
+                    @CreateItems(items, UserBalance, IsCanBuyPremium, UserInvestments)
+
                 </div>
-            }
-        }
-
-        @*if (culture == "ru-RU")
-        {*@
-        <div class="swiper-container swiper-invest-packages invest-packages animated">
-            <div class="swiper-wrapper">
-                @CreateItems(items, UserBalance, IsCanBuyPremium, UserInvestments)
-
+                <div class="swiper-pagination swiper-pagination-packages"></div>
             </div>
-            <div class="swiper-pagination swiper-pagination-packages"></div>
-        </div>
-        @*}*@
-        @if (!ViewData.ModelState.IsValid)
-        {
-        @Html.ValidationSummary(false)
-        }
-        <div class="invest-inner-accept">
-            <div class="info-block">
-                <i class="ion-ios-information"></i>
-                <strong>@Resources.Resource.ConfirmWarning</strong> @Resources.Resource.ConfirmTxt
-            </div>
-            @using (Html.BeginForm("Invest", "Home", FormMethod.Post))
+            @*}*@
+            @if (!ViewData.ModelState.IsValid)
             {
-                @Html.Hidden("InvestId", "")
-                <button type="submit" class="btn btn-grad btn-sm m-r-10">@Resources.Resource.Confirm</button>
-                <button type="button" class="btn btn-bordered btn-sm btn-invest-hide">@Resources.Resource.Cancellation</button>
+                @Html.ValidationSummary(false)
             }
-        </div>
+            <div class="invest-inner-accept">
+                <div class="info-block">
+                    <i class="ion-ios-information"></i>
+                    <strong>@Resources.Resource.ConfirmWarning</strong> @Resources.Resource.ConfirmTxt
+                </div>
+                @using (Html.BeginForm("Invest", "Home", FormMethod.Post))
+                {
+                    @Html.Hidden("InvestId", "")
+                    <button type="submit" class="btn btn-grad btn-sm m-r-10">@Resources.Resource.Confirm</button>
+                    <button type="button" class="btn btn-bordered btn-sm btn-invest-hide">@Resources.Resource.Cancellation</button>
+                }
+            </div>
         </div>
     </div>
 </div>
+
 <script>
     $('.btn-invest-show').click(function () {
-
+    
         $(this).closest('.invest-package').addClass("selected");
 
         $(".swiper-invest-packages").addClass('deautoplay');
-        
+
         if($(this).hasClass('disabled')){
             var message = '<i class="ion-ios-close modal-icon modal-icon-close"></i><p class="m-b-30">@Resources.Resource.BuyInvestError</p><a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>';
             $('.wrap-modal').fadeIn();
@@ -114,6 +115,10 @@
         }, 500);
     });
 
+    $('button[type="submit"]').on('click', function () { 
+        $('.loader-absolute').addClass('active');
+    })
+
     $('.btn-invest-hide').click(function () {
         $('.invest-inner-accept').hide();
         $('.invest-package').removeClass("selected");
@@ -122,4 +127,4 @@
             scrollTop: $('#invest-inner-form').offset().top
         }, 500);
     });
- </script>
+</script>

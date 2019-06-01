@@ -204,7 +204,6 @@ namespace W2W.ModelKBT
 
         decimal GetOwnAndRefsValue(uint id_partner);
 
-
         IEnumerable<Notice> GetUnreadedNotices(uint partnerId);
         void SetNoticeAsReaded(uint messageId);
         void AddNotice(uint partnerId,string message);
@@ -212,5 +211,7 @@ namespace W2W.ModelKBT
         NewInvestProgram GetInvestProgram(uint id);
 
         NewInvestProgram GetNewInvestProgram(decimal sum);
+
+        void UpdateBlockedPyment(uint id_client, decimal sum);
     }
 }

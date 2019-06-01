@@ -214,6 +214,7 @@
     <Content Include="Areas\lk\Content\img\3.png" />
     <Content Include="Areas\lk\Content\img\4.png" />
     <Content Include="Areas\lk\Content\img\5.png" />
+    <Content Include="Areas\lk\Content\img\ajax-loader.gif" />
     <Content Include="Areas\lk\Content\img\all_tree_btn.png" />
     <Content Include="Areas\lk\Content\img\amount-range-icon.png" />
     <Content Include="Areas\lk\Content\img\amount-range-icon2.png" />
@@ -245,6 +246,7 @@
     <Content Include="Areas\lk\Content\img\info.png" />
     <Content Include="Areas\lk\Content\img\instagram.png" />
     <Content Include="Areas\lk\Content\img\instagram2.png" />
+    <Content Include="Areas\lk\Content\img\loader.gif" />
     <Content Include="Areas\lk\Content\img\logo-2.png" />
     <Content Include="Areas\lk\Content\img\logo.png" />
     <Content Include="Areas\lk\Content\img\minus.png" />

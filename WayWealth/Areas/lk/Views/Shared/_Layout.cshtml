@@ -15,12 +15,34 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 }
 
-<div class="wrap-content">
-    @Html.Partial("_Toolbar")
-    <div class="content">
-        @RenderBody()
+    <div class="wrap-content">
+        <div class="loader-absolute"><div class="loader text-center"><img src="~/Areas/lk/Content/img/ajax-loader.gif"></img></div></div>
+        <style>
+            .loader-absolute {
+                top: 0;
+                left: 0%;
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                display: none;
+            }
+
+            .loader {
+                position: relative;
+                top: 45%;
+            }
+
+            .loader-absolute.active {                
+                background: rgba(0,0,0,0.5);
+                z-index: 10;
+                display:block;
+            }
+        </style>
+        @Html.Partial("_Toolbar")
+        <div class="content">
+            @RenderBody()
+        </div>
     </div>
-</div>
 
 @section FootSection{
 

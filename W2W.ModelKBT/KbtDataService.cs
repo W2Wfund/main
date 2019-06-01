@@ -1255,5 +1255,16 @@ namespace W2W.ModelKBT
             query.AddConditionItem(Union.None, "Сумма", Operator.Equal, sum);
             return base.GetInstance<NewInvestProgram>(query);
         }
+
+        public void UpdateBlockedPyment(uint id_client, decimal sum)
+        {
+            using (var client = new WebDataClient())
+            {
+                client.SetObjectValue(
+                    id_client,
+                    "ЗаблокированныйОстаток",
+                    sum);
+            }
+        }
     }
 }

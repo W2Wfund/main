@@ -2804,7 +2804,7 @@ html body > jdiv {
     background: #dfdde4;
 }
 
-.profile-progress-bar div {
+.profile-progress-bar-inner {
     height: 12px;
     background: #f3ce67;
     background: -moz-linear-gradient(left, #f3ce67 0%, #b4943c 51%, #f3ce67 100%);
@@ -2837,11 +2837,51 @@ html body > jdiv {
     transform: none;
 }
 
+.profile-progress-bar-outer {
+    position: relative;
+}
+
+.profile-progress-bar-tooltip {
+    position: absolute;
+    white-space: nowrap;
+    background: #fff;
+    border-radius: 4px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    box-shadow: 2px 2px 7px 0 rgba(0, 0, 0, 0.2);
+    padding: 5px 12px;
+    bottom: 40px;
+    font-weight: 700;
+    font-size: 16px;
+    z-index: 5;
+    transition: 0.3s;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.profile-progress-bar-outer:hover .profile-progress-bar-tooltip {
+    bottom: 25px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.profile-progress-bar-tooltip:after {
+    content: '';
+    border: 8px solid transparent;
+    border-top: 6px solid #fff;
+    position: absolute;
+    left: 50%;
+    margin: 0 0 0 -8px;
+    bottom: -14px;
+}
+
 /*------------------------------response---------------------------------*/
 @media only screen and (max-width: 1340px) {
     header .menu li a {
-    padding: 0 10px;
-}
+        padding: 0 10px;
+    }
 }/*1340*/
 
 @media (max-width: 1199px) {

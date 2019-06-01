@@ -1436,4 +1436,55 @@
   <data name="TreeSpace" xml:space="preserve">
     <value>Space</value>
   </data>
+  <data name="DocVerificationNotPassed" xml:space="preserve">
+    <value>failed</value>
+  </data>
+  <data name="DocVerificationPassed" xml:space="preserve">
+    <value>succefully passed</value>
+  </data>
+  <data name="EmailVerificationCheck" xml:space="preserve">
+    <value>Your documents have been sent for verification</value>
+  </data>
+  <data name="EmailVerificationCheckResponse" xml:space="preserve">
+    <value>Results og verification.</value>
+  </data>
+  <data name="ErrSumIsIncorrectBlocked" xml:space="preserve">
+    <value>You can not withdraw such amount, because part of it is for investment only</value>
+  </data>
+  <data name="LetterEmailVerificationCheck" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Dear user,&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;
+            Your documents {0} verification. 
+        &lt;/em&gt;
+    &lt;/p&gt;	
+    &lt;p&gt;
+        &lt;em&gt;Sincerely, the Way to Wealth platform team.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="LetterEmailVerificationCheckResponse" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Dear user,&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;
+            Your documents have been sent for verification. We will inform you about the test results.
+        &lt;/em&gt;
+    &lt;/p&gt;	
+    &lt;p&gt;
+        &lt;em&gt;Sincerely, the Way to Wealth platform team.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
 </root>

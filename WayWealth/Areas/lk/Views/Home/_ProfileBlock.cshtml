@@ -1,6 +1,7 @@
 ﻿@model WayWealth.Infrastructure.Auth.CustomPrincipal
     @{
         var site = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
+        decimal InvestPaymentsPercents = ViewBag.InvestPayments > 0 ?  Math.Round((decimal)ViewBag.InvestPayments * 100 / (Model.BalanceInvestments * 2), 2) : 0;
     }
 <div class="white-bg">
     <div class="container">
@@ -72,9 +73,12 @@
         {
             <div class="profile-progress-bar-wrap">
                 <h3>Ваш доход на текущий день Х2</h3>
-                <div class="profile-progress-bar-val" style="left: @(ViewBag.InvestPayments.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us")))%;">@(Math.Round(ViewBag.InvestPayments))%</div>
-                <div class="profile-progress-bar">
-                    <div style="width: @(ViewBag.InvestPayments.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us")))%;"></div>
+                <div class="profile-progress-bar-val" style="left: @InvestPaymentsPercents.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us")))%;">@(Math.Round(InvestPaymentsPercents))%</div>
+                <div class="profile-progress-bar-outer">
+                    <div class="profile-progress-bar">
+                        <div class="profile-progress-bar-inner" style="width: @(InvestPaymentsPercents.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us")))%;"></div>
+                    </div>
+                    <div class="profile-progress-bar-tooltip">$ @((ViewBag.InvestPayments).ToString("N2"))</div>
                 </div>
                 <div class="profile-progress-min">0</div>
                 <div class="profile-progress-max">@((Model.BalanceInvestments * 2).ToString("N2"))</div>

@@ -1027,7 +1027,7 @@
     <value>Обязательно указывайте Destination Tag! Иначе мы не сможем распознать источник платежа</value>
   </data>
   <data name="Notification" xml:space="preserve">
-    <value>Уведолмение</value>
+    <value>Уведомление</value>
   </data>
   <data name="DataCopied" xml:space="preserve">
     <value>Данные скопированы в буфер обмена</value>
@@ -1438,5 +1438,52 @@
   </data>
   <data name="TreeSpace" xml:space="preserve">
     <value>Мест</value>
+  </data>
+  <data name="EmailVerificationCheck" xml:space="preserve">
+    <value>Ваши документы отправлены на верификацию</value>
+  </data>
+  <data name="DocVerificationNotPassed" xml:space="preserve">
+    <value>не прошли</value>
+  </data>
+  <data name="DocVerificationPassed" xml:space="preserve">
+    <value>прошли</value>
+  </data>
+  <data name="EmailVerificationCheckResponse" xml:space="preserve">
+    <value>Результат верификации документов</value>
+  </data>
+  <data name="ErrSumIsIncorrectBlocked" xml:space="preserve">
+    <value>Вы не можете вывести такую сумму, т.к. часть ее только для инвестирования</value>
+  </data>
+  <data name="LetterEmailVerificationCheck" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
+    &lt;/p&gt;
+	 &lt;p&gt;
+        &lt;em&gt;Ваши документы {0} верификацию.&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
+  </data>
+  <data name="LetterEmailVerificationCheckResponse" xml:space="preserve">
+    <value>&lt;div style="width:786px;"&gt;
+    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;
+        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
+    &lt;/p&gt;
+	 &lt;p&gt;
+        &lt;em&gt;Ваши документы отправлены на верификацию. О результатах проверки мы вам сообщим.&lt;/em&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
+    &lt;/p&gt;
+&lt;/div&gt;</value>
   </data>
 </root>

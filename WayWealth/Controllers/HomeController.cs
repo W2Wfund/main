@@ -26,6 +26,7 @@ namespace WayWealth.Controllers
         //public ActionResult Index() => View();
         public ActionResult Index() {
             ViewBag.Items = DataService.GetInvestPrograms();
+            ViewBag.isLogin = this.User != null;
             return View();
         }
         public ActionResult About()
@@ -36,6 +37,8 @@ namespace WayWealth.Controllers
         }
         public ActionResult Investments()
         {
+            ViewBag.Items = DataService.GetInvestPrograms();
+            ViewBag.isLogin = this.User != null;
             if (Request.Cookies["lang"] != null && Request.Cookies["lang"].Value == "en")
                 return View("InvestmentsEn");
             return View();

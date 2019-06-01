@@ -1264,6 +1264,12 @@ namespace W2W.ModelKBT
         {
             throw new NotImplementedException();
         }
+
+        public void UpdateBlockedPyment(uint id_client, decimal sum)
+        {
+            throw new NotImplementedException();
+        }
+
         #region for svc
         public uint CreatePlace(
             uint marketingId,

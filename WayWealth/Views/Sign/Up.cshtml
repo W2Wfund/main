@@ -97,9 +97,12 @@
             }
             }
         </div>
+        @if ((bool)TempData["isLogin"] != true)
+        {
         <div class="reg-link-block">
             <a href="@Url.Action("In", "Sign")" class="btn btn-bordered btn-sm">@Resources.Resource.InEntryBtnText</a>
             <a href="@Url.Action("restore", "sign")" class="btn btn-bordered btn-sm">@Resources.Resource.RestoreText</a>
         </div>
+        }
     </div>
 </div>

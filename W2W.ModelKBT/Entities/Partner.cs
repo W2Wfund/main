@@ -79,6 +79,9 @@ namespace W2W.ModelKBT.Entities
         [Property(Name = "Остаток.Вознаграждения")]
         public decimal? BalanceRewards { get; set; }
 
+        [Property(Name = "ЗаблокированныйОстаток")]
+        public decimal? BlockedResidue { get; set; }
+
         [Property(Name = "Пол")]
         public string Gender { get; set; }
 

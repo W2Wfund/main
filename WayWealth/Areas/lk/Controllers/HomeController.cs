@@ -69,29 +69,27 @@ namespace WayWealth.Areas.lk.Controllers
                 decimal sum = 0;
                 if (investments.Count() > 0)
                 {
-                    foreach (var invest in investments)
+                    var oneInvest = investments.OrderBy(x => x.StartDate).First();
+                    var transfers = DataService.GetInnerTransfers(User.id_object, null, "Вознаграждение со структуры", oneInvest.StartDate ?? DateTime.Now, null, null, null);
+                    if (transfers.Count() > 0)
                     {
-                        var transfers = DataService.GetInnerTransfers(User.id_object, null, "Вознаграждение со структуры", null, null, invest.id_object, null);
-                        if (transfers.Count() > 0)
+                        foreach (var item in transfers)
                         {
-                            foreach (var item in transfers)
-                            {
-                                sum += item.PaymentSum ?? 0;
-                            }
+                            sum += item.PaymentSum ?? 0;
                         }
-                        var transfersRef = DataService.GetInnerTransfers(User.id_object, null, "Реферальное вознаграждение", null, null, invest.id_object, null);
-                        if (transfersRef.Count() > 0)
+                    }
+                    var transfersRef = DataService.GetInnerTransfers(User.id_object, null, "Реферальное вознаграждение", oneInvest.StartDate ?? DateTime.Now, null, null, null);
+                    if (transfersRef.Count() > 0)
+                    {
+                        foreach (var item in transfersRef)
                         {
-                            foreach (var item in transfersRef)
-                            {
-                                sum += item.PaymentSum ?? 0;
-                            }
+                            sum += item.PaymentSum ?? 0;
                         }
                     }
                 }
-                ViewBag.InvestPayments = Math.Round(sum * 100 / (User.BalanceInvestments * 2),2);
+                ViewBag.InvestPayments = sum;// Math.Round(sum * 100 / (User.BalanceInvestments * 2), 2);
             }
-            
+
 
             return PartialView("_ProfileBlock", this.User);
         }
@@ -137,7 +135,7 @@ namespace WayWealth.Areas.lk.Controllers
             int page = 1)
         {
             var items = DataService.GetInnerTransfers(
-                partnerId: (uint) User.id_object,
+                partnerId: (uint)User.id_object,
                 account: account == "all" ? null : account,
                 begin: begin,
                 end: end,
@@ -294,7 +292,13 @@ namespace WayWealth.Areas.lk.Controllers
                        user: ConfigurationManager.AppSettings["login"]), DateTime.Now);
                     #endregion
 
-                    Session.AddNotification(new Notification(true, Resources.Resource.MoneyTransactionTitle, 
+
+                    if (account == "Остаток.Вознаграждения")
+                    {
+                        DataService.UpdateBlockedPyment(User.id_object, (partner.BlockedResidue ?? 0) + model.Sum);
+                    }
+
+                    Session.AddNotification(new Notification(true, Resources.Resource.MoneyTransactionTitle,
                         Resources.Resource.OperationCompleted));
                     this.AuthenticationService.UpdateCookies(this.User.id_object);
                     return RedirectToAction("history");
@@ -355,7 +359,7 @@ namespace WayWealth.Areas.lk.Controllers
                         direction: TransferDirection.Output,
                         companyId: 5,
                         partnerId: partner.id_object,
-                        documentId: recepient.id_object, 
+                        documentId: recepient.id_object,
                         article: "Перевод партнеру",
                         date: DateTime.Now,
                         sum: model.Sum,
@@ -383,6 +387,13 @@ namespace WayWealth.Areas.lk.Controllers
                     Session.AddNotification(new Notification(true, Resources.Resource.MoneyTransactionTitle,
                         Resources.Resource.OperationCompleted));
 
+                    if (partner.BlockedResidue > 0)
+                    {
+                        decimal difSum = partner.BlockedResidue > model.Sum ? model.Sum : (decimal)partner.BlockedResidue;
+                        DataService.UpdateBlockedPyment(User.id_object, (partner.BlockedResidue ?? 0) - difSum);
+                        DataService.UpdateBlockedPyment(recepient.id_object, (recepient.BlockedResidue ?? 0) + model.Sum);
+                    }
+
                     this.AuthenticationService.UpdateCookies(this.User.id_object);
                     return RedirectToAction("history");
                 }
@@ -398,8 +409,8 @@ namespace WayWealth.Areas.lk.Controllers
                 GetModelErrors(Resources.Resource.MoneyTransactionTitle);
 
             }
-                
-                
+
+
 
             return View(model);
         }
@@ -413,7 +424,7 @@ namespace WayWealth.Areas.lk.Controllers
                 Session.AddNotification(new Notification(false, Resources.Resource.WithdrawalError, Resources.Resource.WithdrawalNotFriday));
                 return RedirectToAction("index");
             }
-            
+
             CoinBaseService service = new CoinBaseService(ConfigurationManager.AppSettings["coinbase.apikey"]);
             GetPrice(service, GetWithdrawPercent(), "BTC", "ETH", "LTC", "BCH", "XRP");
 
@@ -470,7 +481,7 @@ namespace WayWealth.Areas.lk.Controllers
                 Session.AddNotification(new Notification(false, Resources.Resource.WithdrawalError, Resources.Resource.WithdrawalNotFriday));
                 return RedirectToAction("index");
             }
-            
+
 
             if (ModelState.IsValid)
             {
@@ -493,6 +504,15 @@ namespace WayWealth.Areas.lk.Controllers
                     var partner = DataService.GetPartner(this.User.id_object);
                     if ((partner.BalanceInner ?? 0) < model.Sum)
                         throw new Exception(Resources.Resource.ErrInsufficientFun);
+
+                    if (partner.BlockedResidue > 0) {
+                        if((partner.BalanceInner - partner.BlockedResidue) < model.Sum)
+                        {
+                            throw new Exception(Resources.Resource.ErrSumIsIncorrectBlocked);
+                        }
+                    }
+
+
 
                     #region Action
 
@@ -702,7 +722,7 @@ namespace WayWealth.Areas.lk.Controllers
             }
             return View(model);
         }
-        
+
         public ActionResult CryptoInvoice(uint id)
         {
             var model = DataService.GetWebPaymentRequest(id);
@@ -718,7 +738,7 @@ namespace WayWealth.Areas.lk.Controllers
             return View();
         }
 
-        
+
         public PartialViewResult _CharityDetails(uint foundId = 0, int page = 1)
         {
             int pageSize = 10;
@@ -808,7 +828,7 @@ namespace WayWealth.Areas.lk.Controllers
                     //Session.AddNotification(new Notification(false, "Благотворительность", exc.Message));
                 }
             }
-            
+
             return View(model);
         }
 
@@ -818,7 +838,7 @@ namespace WayWealth.Areas.lk.Controllers
         [HttpGet]
         public ActionResult Settings()
         {
-            var partner = DataService.GetPartner(User.id_object);     
+            var partner = DataService.GetPartner(User.id_object);
 
             var culture = System.Threading.Thread.CurrentThread.CurrentCulture.Name;
             if (culture == "ru-RU")
@@ -857,7 +877,7 @@ namespace WayWealth.Areas.lk.Controllers
         [HttpGet]
         public ActionResult TwoFactorAuth()
         {
-            var partner = DataService.GetPartner((uint) User.id_object);
+            var partner = DataService.GetPartner((uint)User.id_object);
 
             if (!(partner.GoogleAuthEnabled ?? false))
             {
@@ -867,7 +887,7 @@ namespace WayWealth.Areas.lk.Controllers
                 var setupInfo = TwoFacAuth.GenerateSetupCode(ConfigurationManager.AppSettings["googleAuthIssuer"], partner.Email, GoogleAuthUserUniqueKey, 300, 300, true);
                 ViewBag.BarcodeImageUrl = setupInfo.QrCodeSetupImageUrl;
                 ViewBag.SetupCode = setupInfo.ManualEntryKey;
-                
+
             }
 
             ViewBag.GoogleAuthEnabled = (partner.GoogleAuthEnabled ?? false);
@@ -1000,7 +1020,7 @@ namespace WayWealth.Areas.lk.Controllers
 
         }
 
-        
+
 
         [HttpPost]
         public ActionResult ChangePassword(string newPassword, string passwordRepeat)
@@ -1095,6 +1115,10 @@ namespace WayWealth.Areas.lk.Controllers
                         DataService.UpdatePartnerPassport(this.User.id_object, passport[0], passport[1], passport[2]);
                         DataService.UpdateParnterVerificationStatus(this.User.id_object, "На проверке");
                         Session.AddNotification(new Notification(true, Resources.Resource.UploadingOfDocuments, Resources.Resource.DocumentsAreUploaded));
+                        MailService.SendMessage(
+                          to: User.Email,
+                          subject: Resources.Resource.EmailVerificationCheck,
+                          body: Resources.Resource.LetterEmailVerificationCheck);
                     }
                 }
                 catch (Exception exc)
@@ -1219,8 +1243,8 @@ namespace WayWealth.Areas.lk.Controllers
 
 
         [HttpPost]
-        public ActionResult SaveWallets(string AccountBitcoin, 
-            string AccountEthereum, string AccountLitecoin,string AccountBitcoinCash, string AccountRipple)
+        public ActionResult SaveWallets(string AccountBitcoin,
+            string AccountEthereum, string AccountLitecoin, string AccountBitcoinCash, string AccountRipple)
         {
             this.DataService.UpdatePartnerWallets(
                 id_client: this.User.id_object,
@@ -1294,14 +1318,14 @@ namespace WayWealth.Areas.lk.Controllers
 
 
             //var partners = this.DataService.GetPartners(this.User.id_object);
-            
+
             int pageSize = 10;
             /*IEnumerable<Partner> items = partners;
             if (!string.IsNullOrWhiteSpace(searchText))
             {
                 items = partners.Where(p => p.ObjectName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) != -1);
             }*/
-               
+
             ViewBag.Items = GetPage<MarketingPlace>(items, page, pageSize); ;// GetPage<Partner>(items, page, pageSize);
 
             ViewBag.PageInfo = new PageInfo
@@ -1369,14 +1393,14 @@ namespace WayWealth.Areas.lk.Controllers
         {
             uint rootId = model.RootId ?? this.User.id_object;
             var root = this.DataService.GetPartner(rootId);
-            if(model.RootId != null && model.RootId > 0)
+            if (model.RootId != null && model.RootId > 0)
             {
                 var userRootPlaces = this.DataService.GetPlaces(93, User.id_object);
                 if (userRootPlaces.Count() > 0)
                 {
                     var rPlaces = DataService.GetStructure(93, userRootPlaces.OrderBy(x => x.hash.Length).First().id_object);
                     var partnerCount = rPlaces.Where(x => x.PartnerId == model.RootId).Count();
-                    if(partnerCount < 1)
+                    if (partnerCount < 1)
                     {
                         return RedirectToAction("structure", "home", new { area = "lk" });
                     }
@@ -1421,36 +1445,36 @@ namespace WayWealth.Areas.lk.Controllers
 
                     foreach (var place in places)
                     {
-                       /* if(  place.id_parent == rootPlaceId)
-                        {
-                            if(place.SortPosition == 0)
-                            {
-                                leftHash = place.hash;
-                                leftShoulderSum = place.PartnerBalanceInvestments ?? 0;
-                            }
-                            else
-                            {
-                                rightHash = place.hash;
-                                rightShoulderSum = place.PartnerBalanceInvestments ?? 0;
-                            }
-                        }
-                        else if(place.id_object != rootPlaceId)
-                        {
-                            if (leftHash.Length > 0 && place.hash.Contains(leftHash))
-                            {
-                                leftShoulderSum += place.PartnerBalanceInvestments ?? 0;
-                            }
-                            else
-                            {
-                                rightShoulderSum += place.PartnerBalanceInvestments ?? 0;
+                        /* if(  place.id_parent == rootPlaceId)
+                         {
+                             if(place.SortPosition == 0)
+                             {
+                                 leftHash = place.hash;
+                                 leftShoulderSum = place.PartnerBalanceInvestments ?? 0;
+                             }
+                             else
+                             {
+                                 rightHash = place.hash;
+                                 rightShoulderSum = place.PartnerBalanceInvestments ?? 0;
+                             }
+                         }
+                         else if(place.id_object != rootPlaceId)
+                         {
+                             if (leftHash.Length > 0 && place.hash.Contains(leftHash))
+                             {
+                                 leftShoulderSum += place.PartnerBalanceInvestments ?? 0;
+                             }
+                             else
+                             {
+                                 rightShoulderSum += place.PartnerBalanceInvestments ?? 0;
 
-                            }
-                        }*/
+                             }
+                         }*/
 
                         items.Add(Mapper.Map<MarketingPlaceView>(place));
                     }
                 }
-                    
+
             }
             else
             {
@@ -1510,7 +1534,7 @@ namespace WayWealth.Areas.lk.Controllers
                 //    ownandflvalue[partnerId] += item.PartnerBalanceInvestments ?? 0;
                 //else
                 //    ownandflvalue.Add(partnerId, item.PartnerBalanceInvestments ?? 0);
-                
+
                 //// add to parent 
                 //if (item.PartnerInviterId != null)
                 //{
@@ -1573,7 +1597,7 @@ namespace WayWealth.Areas.lk.Controllers
               orderId: null,
               filter: null);
 
-            
+
 
             var rewards = new Dictionary<uint, decimal>();
             var structrewards = new Dictionary<uint, decimal>();
@@ -1616,7 +1640,7 @@ namespace WayWealth.Areas.lk.Controllers
 
             #endregion
             #region ranks
-            
+
             foreach (var item in items)
             {
                 //if (item.PartnerId.Value == 68)
@@ -1643,7 +1667,7 @@ namespace WayWealth.Areas.lk.Controllers
                 }
 
             }
-            
+
             // return view
             if (model.ViewType == StructureViewType.Tree)
                 return View("StructTree", model);
@@ -1653,9 +1677,9 @@ namespace WayWealth.Areas.lk.Controllers
 
         #endregion
         [HttpPost]
-        public JsonResult SetPlace(uint place_id, uint partner_id,int pos)
-        {            
-           // bool IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
+        public JsonResult SetPlace(uint place_id, uint partner_id, int pos)
+        {
+            // bool IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
             Dictionary<string, string> jsondata = new Dictionary<string, string>();
             jsondata.Add("close", Resources.Resource.Close);
 
@@ -1671,14 +1695,14 @@ namespace WayWealth.Areas.lk.Controllers
                 //using (var marketing = new Marketing.Service1Client())
                 {
                     var partner = DataService.GetPartner(partner_id);
-                    if(partner == null)
+                    if (partner == null)
                     {
                         jsondata.Add("error", "true");
                         jsondata.Add("message", Resources.Resource.PartnerNotFound);
                         return Json(jsondata);
                     }
                     var place = DataService.GetPlace(place_id);
-                    if(place == null)
+                    if (place == null)
                     {
                         jsondata.Add("error", "true");
                         jsondata.Add("message", Resources.Resource.FreePlaceNotFound);
@@ -1687,7 +1711,7 @@ namespace WayWealth.Areas.lk.Controllers
 
                     var investments = DataService.GetInvestments(partner.id_object, Resources.Resource.Active);
                     decimal sum = 0;
-                    if(investments.Count() > 0)
+                    if (investments.Count() > 0)
                     {
                         sum = investments.First().Sum ?? 0;
                     }
@@ -1701,9 +1725,10 @@ namespace WayWealth.Areas.lk.Controllers
                                         sum: sum,
                                         date: DateTime.Now,
                                         user: ConfigurationManager.AppSettings["login"],
-                                        activePlaceId:place_id,
+                                        activePlaceId: place_id,
                                          pos: pos);
-                    if (newPlaceId > 0) {
+                    if (newPlaceId > 0)
+                    {
                         this.AuthenticationService.UpdateCookies(this.User.id_object);
                         jsondata.Add("error", "false");
                         jsondata.Add("message", Resources.Resource.SetPlaceSuccess);
@@ -1730,7 +1755,7 @@ namespace WayWealth.Areas.lk.Controllers
         {
             //  var marketing = new Service1();
             //    marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
-
+            
             ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
             ViewBag.Program = program;
             ViewBag.Items = DataService.GetInvestPrograms();
@@ -1746,9 +1771,9 @@ namespace WayWealth.Areas.lk.Controllers
                     UserInvestments.Add(item.ProgramId);
                 }
             }
-            
+
             ViewBag.IsCanBuyPremium = sum > 9999;
-            
+
             ViewBag.UserInvestments = UserInvestments;
 
             return View();
@@ -1764,7 +1789,7 @@ namespace WayWealth.Areas.lk.Controllers
             if (investments.Count() > 0)
             {
                 var currentProgram = investments.Where(x => x.ProgramId == investProgram.id_object);
-                if(currentProgram.Count() > 0)
+                if (currentProgram.Count() > 0)
                 {
                     ModelState.AddModelError(string.Empty, Resources.Resource.InvestProgramDublicateError);
                 }
@@ -1780,7 +1805,7 @@ namespace WayWealth.Areas.lk.Controllers
                         if (!ViewBag.IsAllowCreateNewPlace)
                             model.IsCreateNewPlace = false;
 
-                        
+
 
                         /*if (model.Sum == 300)
                         {
@@ -1805,6 +1830,12 @@ namespace WayWealth.Areas.lk.Controllers
                               date: DateTime.Now,
                               user: ConfigurationManager.AppSettings["login"]);
                         // }*/
+
+                        if(User.BlockedResidue > 0)
+                        {
+                            decimal newBlockedResidueSum = investProgram.Sum > User.BlockedResidue ? 0 : User.BlockedResidue - investProgram.Sum;
+                            DataService.UpdateBlockedPyment(User.id_object, newBlockedResidueSum);
+                        }
                         this.AuthenticationService.UpdateCookies(this.User.id_object);
                         return RedirectToAction("investments", "home", new { area = "lk" });
                     }
@@ -1816,7 +1847,7 @@ namespace WayWealth.Areas.lk.Controllers
             }
             ViewBag.Items = DataService.GetInvestPrograms();
             ViewBag.UserBalance = User.BalanceInner > 0 ? User.BalanceInner : 0;
-            
+
             decimal sum = 0;
             System.Collections.ArrayList UserInvestments = new System.Collections.ArrayList();
             if (investments.Count() > 0)
@@ -1831,7 +1862,7 @@ namespace WayWealth.Areas.lk.Controllers
             ViewBag.IsCanBuyPremium = sum > 9999;
 
             ViewBag.UserInvestments = UserInvestments;
-            
+
             return View(model);
         }
 
@@ -1851,7 +1882,7 @@ namespace WayWealth.Areas.lk.Controllers
             if (!string.IsNullOrWhiteSpace(investments))
             {
                 List<uint> items = new List<uint>();
-                foreach (var inv in investments.Split(new char[] {';'}, StringSplitOptions.RemoveEmptyEntries))
+                foreach (var inv in investments.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     try
                     {
@@ -1917,7 +1948,8 @@ namespace WayWealth.Areas.lk.Controllers
                         investmentId: investmentId,
                         returnSum: investment.RecalcSum ?? 0,
                         date: DateTime.Now,
-                        user: ConfigurationManager.AppSettings["login"]);
+                        user: ConfigurationManager.AppSettings["login"],
+                        isNotClose:false);
 
                     Session.AddNotification(new Notification(true, Resources.Resource.TerminationAgreement,
                         Resources.Resource.TerminationConfirmation));
@@ -1970,7 +2002,7 @@ namespace WayWealth.Areas.lk.Controllers
         {
             // проверка на наличие в строке юникода, смайликов и тп
             review = Regex.Replace(review, @"\p{Cs}", "");
-            if ( String.IsNullOrEmpty(review) )
+            if (String.IsNullOrEmpty(review))
             {
                 Session.AddNotification(new Notification(true, Resources.Resource.ReviewIsEmpty,
                         Resources.Resource.ReviewIsEmpty));

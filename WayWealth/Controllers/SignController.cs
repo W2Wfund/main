@@ -143,12 +143,15 @@ namespace WayWealth.Controllers
         [HttpGet]
         public ActionResult Up(string inviter)
         {
-
+            TempData["isLogin"] = false;
             // Если не указан в ссылке Inviter тогда пробуем найти его в куки
             if (string.IsNullOrWhiteSpace(inviter))
             {
                 if (this.User != null)
+                {
                     inviter = this.User.PersonalId.ToString();
+                    TempData["isLogin"] = true;
+                }
                 else
                 {
                     var cookie = Request.Cookies["Inviter"];

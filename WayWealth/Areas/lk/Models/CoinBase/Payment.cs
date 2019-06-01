@@ -33,7 +33,11 @@ namespace KBTech.Integration.Merchant.CoinBase
         ethereum,
 
         [Description("LTC")]
-        litecoin
+        litecoin,
+
+        [Description("USDC")]
+        usdc
+
     }
     public class Balance
     {

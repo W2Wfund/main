@@ -14,6 +14,7 @@ namespace WayWealth.Infrastructure.Auth
         public decimal BalancePercents { get; set; }
         public decimal BalanceInvestments { get; set; }
         public decimal BalanceRewards { get; set; }
+        public decimal BlockedResidue { get; set; }
 
         // Адреса крипто-кошельков
         public string AccountBitcoin { get; set; }

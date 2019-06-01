@@ -1060,6 +1060,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на не прошли.
+        /// </summary>
+        public static string DocVerificationNotPassed {
+            get {
+                return ResourceManager.GetString("DocVerificationNotPassed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на прошли.
+        /// </summary>
+        public static string DocVerificationPassed {
+            get {
+                return ResourceManager.GetString("DocVerificationPassed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Загрузить аватар.
         /// </summary>
         public static string DownAva {
@@ -1137,6 +1155,24 @@ namespace Resources {
         public static string EmailRequiredSms2 {
             get {
                 return ResourceManager.GetString("EmailRequiredSms2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ваши документы отправлены на верификацию.
+        /// </summary>
+        public static string EmailVerificationCheck {
+            get {
+                return ResourceManager.GetString("EmailVerificationCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Результат верификации документов.
+        /// </summary>
+        public static string EmailVerificationCheckResponse {
+            get {
+                return ResourceManager.GetString("EmailVerificationCheckResponse", resourceCulture);
             }
         }
         
@@ -1290,6 +1326,15 @@ namespace Resources {
         public static string ErrSumIsIncorrect {
             get {
                 return ResourceManager.GetString("ErrSumIsIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы не можете вывести такую сумму, т.к. часть ее только для инвестирования.
+        /// </summary>
+        public static string ErrSumIsIncorrectBlocked {
+            get {
+                return ResourceManager.GetString("ErrSumIsIncorrectBlocked", resourceCulture);
             }
         }
         
@@ -1994,6 +2039,50 @@ namespace Resources {
         ///    &lt;p&gt;
         ///        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
         ///    &lt;/p&gt;
+        ///	 &lt;p&gt;
+        ///        &lt;em&gt;Ваши документы {0} верификацию.&lt;/em&gt;
+        ///    &lt;/p&gt;
+        ///    &lt;p&gt;
+        ///        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
+        ///    &lt;/p&gt;
+        ///&lt;/div&gt;.
+        /// </summary>
+        public static string LetterEmailVerificationCheck {
+            get {
+                return ResourceManager.GetString("LetterEmailVerificationCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;div style=&quot;width:786px;&quot;&gt;
+        ///    &lt;div style=&quot;background:#707070; border-radius:10px; padding:10px;&quot;&gt;
+        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/content/img/logo.png&quot; /&gt;
+        ///    &lt;/div&gt;
+        ///    &lt;p&gt;
+        ///        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
+        ///    &lt;/p&gt;
+        ///	 &lt;p&gt;
+        ///        &lt;em&gt;Ваши документы отправлены на верификацию. О результатах проверки мы вам сообщим.&lt;/em&gt;
+        ///    &lt;/p&gt;
+        ///    &lt;p&gt;
+        ///        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
+        ///    &lt;/p&gt;
+        ///&lt;/div&gt;.
+        /// </summary>
+        public static string LetterEmailVerificationCheckResponse {
+            get {
+                return ResourceManager.GetString("LetterEmailVerificationCheckResponse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;div style=&quot;width:786px;&quot;&gt;
+        ///    &lt;div style=&quot;background:#707070; border-radius:10px; padding:10px;&quot;&gt;
+        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/content/img/logo.png&quot; /&gt;
+        ///    &lt;/div&gt;
+        ///    &lt;p&gt;
+        ///        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
+        ///    &lt;/p&gt;
         ///    &lt;p&gt;
         ///        &lt;em&gt;
         ///            Пароль для совершения операции {0}.
@@ -2555,7 +2644,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Уведолмение.
+        ///   Ищет локализованную строку, похожую на Уведомление.
         /// </summary>
         public static string Notification {
             get {
