@@ -234,6 +234,7 @@
     <Content Include="Areas\lk\Content\img\correct.png" />
     <Content Include="Areas\lk\Content\img\correct2.png" />
     <Content Include="Areas\lk\Content\img\correct3.png" />
+    <Content Include="Areas\lk\Content\img\currency-6.png" />
     <Content Include="Areas\lk\Content\img\download.png" />
     <Content Include="Areas\lk\Content\img\en.png" />
     <Content Include="Areas\lk\Content\img\fb.png" />
@@ -289,6 +290,7 @@
     <Content Include="Areas\lk\Content\img\table-arrow-right.png" />
     <Content Include="Areas\lk\Content\img\telegram.png" />
     <Content Include="Areas\lk\Content\img\telegram2.png" />
+    <Content Include="Areas\lk\Content\img\tether.png" />
     <Content Include="Areas\lk\Content\img\tiles_bg.jpg" />
     <Content Include="Areas\lk\Content\img\toolbar-icon-1.png" />
     <Content Include="Areas\lk\Content\img\toolbar-icon-2.png" />
@@ -588,6 +590,7 @@
     <Content Include="Content\fonts\ionicons\ionicons.ttf" />
     <Content Include="Content\fonts\ionicons\ionicons.woff" />
     <Content Include="Content\fonts\ionicons\ionicons.woff2" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

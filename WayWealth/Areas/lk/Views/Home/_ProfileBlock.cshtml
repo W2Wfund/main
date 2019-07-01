@@ -1,8 +1,10 @@
 ﻿@model WayWealth.Infrastructure.Auth.CustomPrincipal
-    @{
-        var site = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
-        decimal InvestPaymentsPercents = ViewBag.InvestPayments > 0 ?  Math.Round((decimal)ViewBag.InvestPayments * 100 / (Model.BalanceInvestments * 2), 2) : 0;
-    }
+@using W2W.ModelKBT.Entities
+@{
+    var site = string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"));
+    decimal InvestPaymentsPercents = ViewBag.InvestPayments > 0 ? Math.Round((decimal)ViewBag.InvestPayments * 100 / (Model.BalanceInvestments * 2), 2) : 0;
+    var investments = ViewBag.Investments != null ? (ViewBag.Investments as IEnumerable<Investment>) : null;
+}
 <div class="white-bg">
     <div class="container">
         <div class="profile-block">
@@ -60,20 +62,20 @@
                     </div>
                 }
                 <!-----
-             @if (!string.IsNullOrWhiteSpace(ViewBag.Rank))
-             {
-            <p>
-                 @Resources.Resource.Qualification: <b>@ViewBag.Rank</b>
-             </p>
-             }
-             --->
+                 @if (!string.IsNullOrWhiteSpace(ViewBag.Rank))
+                 {
+                <p>
+                     @Resources.Resource.Qualification: <b>@ViewBag.Rank</b>
+                 </p>
+                 }
+                 --->
             </div>
         </div>
         @if (Model.BalanceInvestments > 0)
         {
             <div class="profile-progress-bar-wrap">
                 <h3>Ваш доход на текущий день Х2</h3>
-                <div class="profile-progress-bar-val" style="left: @InvestPaymentsPercents.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us")))%;">@(Math.Round(InvestPaymentsPercents))%</div>
+                <div class="profile-progress-bar-val" style="left: @InvestPaymentsPercents.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us"))%;">@(Math.Round(InvestPaymentsPercents))%</div>
                 <div class="profile-progress-bar-outer">
                     <div class="profile-progress-bar">
                         <div class="profile-progress-bar-inner" style="width: @(InvestPaymentsPercents.ToString("F2", System.Globalization.CultureInfo.CreateSpecificCulture("en-Us")))%;"></div>
@@ -86,59 +88,81 @@
         }
     </div>
 </div>
-    <div class="bills-block">
-        <div class="container">
-            <ul>
-                <li>
-                    <div class="info">
-                        <p class="caption">
-                            @Resources.Resource.PersonalAccountCaption1_1
-                            @Resources.Resource.PersonalAccountCaption1_2
-                        </p>
-                        <p class="price">$ @(Model.BalanceInner.ToString("N2"))</p>
-                        <div class="btn-block">
-                            <a href="@Url.Action("invest", "home")" class="btn btn-grad btn-sm m-b-10">@Resources.Resource.InvestBtn</a>
-                            <a href="@Url.Action("withdraw", "home")" class="btn btn-grad btn-sm m-b-10">@Resources.Resource.WithdrawBtn</a>
-                            <a href="@Url.Action("transfer2", "home")" class="btn btn-grad btn-sm">@Resources.Resource.TransferBtn</a>
-                        </div>
+<div class="bills-block">
+    <div class="container">
+        <ul>
+            <li>
+                <div class="info">
+                    <p class="caption">
+                        @Resources.Resource.PersonalAccountCaption1_1
+                        @Resources.Resource.PersonalAccountCaption1_2
+                    </p>
+                    <p class="price">$ @(Model.BalanceInner.ToString("N2"))</p>
+                    <div class="btn-block">
+                        <a href="@Url.Action("invest", "home")" class="btn btn-grad btn-sm m-b-10">@Resources.Resource.InvestBtn</a>
+                        <a href="@Url.Action("withdraw", "home")" class="btn btn-grad btn-sm m-b-10">@Resources.Resource.WithdrawBtn</a>
+                        <a href="@Url.Action("transfer2", "home")" class="btn btn-grad btn-sm">@Resources.Resource.TransferBtn</a>
                     </div>
-                </li>
-                <li>
-                    <div class="info">
-                        <p class="caption">
-                            @Resources.Resource.InvestmentAccountCaption1
-                            @Resources.Resource.InvestmentAccountCaption2
-                        </p>
-                        <p class="price">$ @(Model.BalanceInvestments.ToString("N2"))</p>
-                        <div class="btn-block">
-                            <a href="@Url.Action("investments", "home")" class="btn btn-grad btn-sm">@Resources.Resource.MyInvestmentsBtn</a>
-                        </div>
+                </div>
+            </li>
+            <li>
+                <div class="info">
+                    <p class="caption">
+                        @Resources.Resource.InvestmentAccountCaption1
+                        @Resources.Resource.InvestmentAccountCaption2
+                    </p>
+                    @*<p class="price">$ @(Model.BalanceInvestments.ToString("N2"))</p>*@
+                    @if(investments != null){
+                        <ul class="investments-price">
+                            @foreach (var oneInvest in investments)
+                            {
+                            <li>
+                                $ @(((decimal)oneInvest.Sum).ToString("N2"))
+                            </li>
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <p class="price">$ 0,00</p>
+                    }
+                    <div class="btn-block">
+                        <a href="@Url.Action("investments", "home")" class="btn btn-grad btn-sm">@Resources.Resource.MyInvestmentsBtn</a>
                     </div>
-                </li>
-                <li>
-                    <div class="info">
-                        <p class="caption">
-                            @Resources.Resource.InterestInvestmentCaption1
-                            @Resources.Resource.InterestInvestmentCaption2
-                        </p>
-                        <p class="price">$ @(Model.BalancePercents.ToString("N2"))</p>
-                        <div class="btn-block">
-                            <a href="@Url.Action("transfer", "home")" class="btn btn-grad btn-sm">@Resources.Resource.TransferBtn</a>
-                        </div>
+                </div>
+            </li>
+            <li>
+                <div class="info">
+                    <p class="caption">
+                        @Resources.Resource.InterestInvestmentCaption1
+                        @Resources.Resource.InterestInvestmentCaption2
+                    </p>
+                    <p class="price">$ @(Model.BalancePercents.ToString("N2"))</p>
+                    <div class="btn-block">
+                        <a href="@Url.Action("transfer", "home")" class="btn btn-grad btn-sm">@Resources.Resource.TransferBtn</a>
                     </div>
-                </li>
-                <li>
-                    <div class="info">
-                        <p class="caption">
-                            @Resources.Resource.MarketingRewardsCaption1
-                            @Resources.Resource.MarketingRewardsCaption2
-                        </p>
-                        <p class="price">$ @(Model.BalanceRewards.ToString("N2"))</p>
-                        <div class="btn-block">
-                            <a href="@Url.Action("transfer", "home")" class="btn btn-grad btn-sm">@Resources.Resource.TransferBtn</a>
-                        </div>
+                </div>
+            </li>
+            <li>
+                <div class="info">
+                    <p class="caption">
+                        @Resources.Resource.MarketingRewardsCaption1
+                        @Resources.Resource.MarketingRewardsCaption2
+                    </p>
+                    <p class="price">$ @(Model.BalanceRewards.ToString("N2"))</p>
+                    <div class="btn-block">
+                        <a href="@Url.Action("transfer", "home")" class="btn btn-grad btn-sm">@Resources.Resource.TransferBtn</a>
                     </div>
-                </li>
-            </ul>
-        </div>
+                </div>
+            </li>
+        </ul>
     </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var height = $('.bills-block > div > ul > li:nth-child(2)').css('height');
+        $('.bills-block  > div > ul > li .info').each(function () {
+            $(this).css('height', height)
+        });
+    });
+</script>

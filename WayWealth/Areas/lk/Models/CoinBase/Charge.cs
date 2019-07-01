@@ -15,7 +15,8 @@ namespace KBTech.Integration.Merchant.CoinBase
         bitcoincash,
         ethereum,
         litecoin,
-        usdc
+        usdc,
+        usdt
     }
 
     public class Charge<T>

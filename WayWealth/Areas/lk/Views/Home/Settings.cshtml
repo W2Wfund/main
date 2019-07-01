@@ -237,6 +237,12 @@
                                     </a>
                                     @Html.HiddenFor(x => x.AccountRipple, new { id = "AccountRipple" })
                                 </li>
+                                <li>
+                                    <a data-id="#AccountUsdt">
+                                        <img src="~/Areas/lk/Content/img/tether.png" alt=""><span>Tether</span>
+                                    </a>
+                                    @Html.HiddenFor(x => x.AccountUsdt, new { id = "AccountUsdt" })
+                                </li>
                             </ul>
                             <div>
                                 <input type="text" class="wallets-inp" value="@Model.AccountBitcoin" data-id="#AccountBitcoin">

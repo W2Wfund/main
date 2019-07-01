@@ -53,7 +53,8 @@ namespace W2W.ModelKBT
             string walletEthereum,
             string walletLitecoin,
             string walletBitcoinCash,
-            string walletRipple);
+            string walletRipple,
+            string walletUsdt);
         void UpdatePartnerEmailConfirmation(uint id_client, bool? emailConfirmation);
         void SetPartnerMarketPlaceStatus(uint partnerId, bool status);
         void UpdateParnterVerificationStatus(uint partnerId, string status);
@@ -212,6 +213,6 @@ namespace W2W.ModelKBT
 
         NewInvestProgram GetNewInvestProgram(decimal sum);
 
-        void UpdateBlockedPyment(uint id_client, decimal sum);
+        void UpdateBlockedPayment(uint id_client, decimal blockedSum, decimal sum);
     }
 }

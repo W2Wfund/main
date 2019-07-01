@@ -67,6 +67,9 @@ namespace W2W.ModelKBT.Entities
         [Property(Name = "Кошелек.Ripple")]
         public string AccountRipple { get; set; }
 
+        [Property(Name = "Кошелек.Usdt")]
+        public string AccountUsdt { get; set; }
+
         [Property(Name = "Остаток.ВнутреннийСчет")]
         public decimal? BalanceInner { get; set; }
 
@@ -81,6 +84,9 @@ namespace W2W.ModelKBT.Entities
 
         [Property(Name = "ЗаблокированныйОстаток")]
         public decimal? BlockedResidue { get; set; }
+                
+        [Property(Name = "ВнутреннийСчет.МаркетОстаток")]
+        public decimal? MarketOutputResidue { get; set; }
 
         [Property(Name = "Пол")]
         public string Gender { get; set; }

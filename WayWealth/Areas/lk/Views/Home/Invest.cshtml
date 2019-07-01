@@ -76,6 +76,7 @@
             {
                 @Html.ValidationSummary(false)
             }
+            <p class="validation-summary-errors" style="display:none;"></p>
             <div class="invest-inner-accept">
                 <div class="info-block">
                     <i class="ion-ios-information"></i>
@@ -84,7 +85,7 @@
                 @using (Html.BeginForm("Invest", "Home", FormMethod.Post))
                 {
                     @Html.Hidden("InvestId", "")
-                    <button type="submit" class="btn btn-grad btn-sm m-r-10">@Resources.Resource.Confirm</button>
+                    <button type="button" class="btn btn-grad btn-sm m-r-10 btn-invest-confirm">@Resources.Resource.Confirm</button>
                     <button type="button" class="btn btn-bordered btn-sm btn-invest-hide">@Resources.Resource.Cancellation</button>
                 }
             </div>
@@ -99,8 +100,13 @@
 
         $(".swiper-invest-packages").addClass('deautoplay');
 
-        if($(this).hasClass('disabled')){
-            var message = '<i class="ion-ios-close modal-icon modal-icon-close"></i><p class="m-b-30">@Resources.Resource.BuyInvestError</p><a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>';
+        if ($(this).hasClass('disabled')) {
+            if ($(this).parent().parent().hasClass('extra')){
+                var message = '<i class="ion-ios-close modal-icon modal-icon-close"></i><p class="m-b-30">@Resources.Resource.BuyInvestPremiumError</p>';
+            }
+            else {
+                var message = '<i class="ion-ios-close modal-icon modal-icon-close"></i><p class="m-b-30">@Resources.Resource.BuyInvestError</p><a class="btn btn-bordered btn-sm close-modal-btn">@Resources.Resource.Close</a>';
+            }
             $('.wrap-modal').fadeIn();
             $('#searchResults').html(message);
             return false;
@@ -115,9 +121,24 @@
         }, 500);
     });
 
-    $('button[type="submit"]').on('click', function () { 
+    $('.btn-invest-confirm').on('click', function () { 
+        var _this = this;
+        $(this).attr('disabled', true);
+        $('.validation-summary-errors').hide();
         $('.loader-absolute').addClass('active');
-    })
+        $.post('/lk/Invest', { investId: $('#InvestId').val() }, function (data) {
+            $(_this).attr('disabled', false);
+            $('.loader-absolute').removeClass('active');
+            if (data.error == 'true') {
+                $('.validation-summary-errors').show().html(data.message);
+            }
+            else {
+                window.location.href = '/lk/investments';
+            }
+
+        }, 'json');
+
+    });
 
     $('.btn-invest-hide').click(function () {
         $('.invest-inner-accept').hide();

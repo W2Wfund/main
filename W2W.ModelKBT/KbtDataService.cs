@@ -135,7 +135,8 @@ namespace W2W.ModelKBT
             string walletEthereum,
             string walletLitecoin,
             string walletBitcoinCash,
-            string walletRipple)
+            string walletRipple,
+            string walletUsdt)
         {
             using (var client = new WebDataClient())
             {
@@ -145,6 +146,7 @@ namespace W2W.ModelKBT
                 values.Add("Кошелек.Litecoin", walletLitecoin);
                 values.Add("Кошелек.BitcoinCash", walletBitcoinCash);
                 values.Add("Кошелек.Ripple", walletRipple);
+                values.Add("Кошелек.Usdt", walletUsdt);
                 client.SetObjectValues(id_client, values);
             }
         }
@@ -1256,14 +1258,18 @@ namespace W2W.ModelKBT
             return base.GetInstance<NewInvestProgram>(query);
         }
 
-        public void UpdateBlockedPyment(uint id_client, decimal sum)
+        public void UpdateBlockedPayment(uint id_client, decimal blockedSum, decimal sum)
         {
             using (var client = new WebDataClient())
             {
-                client.SetObjectValue(
+                var values = new Dictionary<string, object>();
+                values.Add("ЗаблокированныйОстаток", blockedSum);
+                values.Add("ВнутреннийСчет.МаркетОстаток", sum);
+                client.SetObjectValues(id_client, values);
+                /*client.SetObjectValue(
                     id_client,
                     "ЗаблокированныйОстаток",
-                    sum);
+                    sum);*/
             }
         }
     }

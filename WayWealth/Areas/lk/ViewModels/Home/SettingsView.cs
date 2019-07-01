@@ -74,6 +74,9 @@ namespace WayWealth.Areas.lk.ViewModels.Home
         [Display(Name = "Ripple")]
         public string AccountRipple { get; set; }
 
+        [Display(Name = "Usdt")]
+        public string AccountUsdt { get; set; }
+
         // Остатки на балансах
 
         // Лицевой

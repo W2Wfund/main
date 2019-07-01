@@ -628,11 +628,20 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на У вас недостаточно средств для покупки или пакет с такием номиналом у Вас уже имеется!.
+        ///   Ищет локализованную строку, похожую на У вас недостаточно средств для покупки или пакет с таким номиналом у Вас уже имеется!.
         /// </summary>
         public static string BuyInvestError {
             get {
                 return ResourceManager.GetString("BuyInvestError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы можете приобрести данный пакет только после приобретения пакета INVEST 10.
+        /// </summary>
+        public static string BuyInvestPremiumError {
+            get {
+                return ResourceManager.GetString("BuyInvestPremiumError", resourceCulture);
             }
         }
         
@@ -1330,7 +1339,8 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Вы не можете вывести такую сумму, т.к. часть ее только для инвестирования.
+        ///   Ищет локализованную строку, похожую на Вы не можете вывести указанную сумму, так как на лицевом счете у вас заблокирован остаток в размере {0}$.
+        ///Вы можете использовать данную сумму для открытия инвестиционных пакетов.
         /// </summary>
         public static string ErrSumIsIncorrectBlocked {
             get {
@@ -2033,19 +2043,17 @@ namespace Resources {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;div style=&quot;width:786px;&quot;&gt;
-        ///    &lt;div style=&quot;background:#707070; border-radius:10px; padding:10px;&quot;&gt;
-        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/content/img/logo.png&quot; /&gt;
+        ///    &lt;div style=&quot;background:#000; border-radius:10px; padding:10px;&quot;&gt;
+        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/Content/img/logo-2.png&quot; /&gt;
         ///    &lt;/div&gt;
         ///    &lt;p&gt;
-        ///        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
+        ///        &lt;em&gt;Уважаемый(-ая) {0}&lt;/em&gt;
         ///    &lt;/p&gt;
         ///	 &lt;p&gt;
-        ///        &lt;em&gt;Ваши документы {0} верификацию.&lt;/em&gt;
+        ///        &lt;em&gt;Ваши документы приняты на верификацию.&lt;/em&gt;&lt;/p&gt;&lt;p&gt;        &lt;em&gt; Срок проверки документов составляет до 5 рабочих дней.&lt;/em&gt;&lt;/p&gt;&lt;p&gt;
+        /// &lt;em&gt;Мы уведомим вас по результатам проверки документов.&lt;/em&gt;&lt;/p&gt;
         ///    &lt;/p&gt;
-        ///    &lt;p&gt;
-        ///        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
-        ///    &lt;/p&gt;
-        ///&lt;/div&gt;.
+        ///    &lt;p&gt; [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string LetterEmailVerificationCheck {
             get {
@@ -2055,14 +2063,14 @@ namespace Resources {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;div style=&quot;width:786px;&quot;&gt;
-        ///    &lt;div style=&quot;background:#707070; border-radius:10px; padding:10px;&quot;&gt;
-        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/content/img/logo.png&quot; /&gt;
+        ///    &lt;div style=&quot;background:#000; border-radius:10px; padding:10px;&quot;&gt;
+        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/Content/img/logo-2.png&quot; /&gt;
         ///    &lt;/div&gt;
         ///    &lt;p&gt;
         ///        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
         ///    &lt;/p&gt;
         ///	 &lt;p&gt;
-        ///        &lt;em&gt;Ваши документы отправлены на верификацию. О результатах проверки мы вам сообщим.&lt;/em&gt;
+        ///        &lt;em&gt;Ваши документы {0} верификацию.&lt;/em&gt;
         ///    &lt;/p&gt;
         ///    &lt;p&gt;
         ///        &lt;em&gt;С уважением, команда платформы Way to Wealth.&lt;/em&gt;
@@ -2077,8 +2085,8 @@ namespace Resources {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;div style=&quot;width:786px;&quot;&gt;
-        ///    &lt;div style=&quot;background:#707070; border-radius:10px; padding:10px;&quot;&gt;
-        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/content/img/logo.png&quot; /&gt;
+        ///    &lt;div style=&quot;background:#000; border-radius:10px; padding:10px;&quot;&gt;
+        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/Content/img/logo-2.png&quot; /&gt;
         ///    &lt;/div&gt;
         ///    &lt;p&gt;
         ///        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
@@ -2092,7 +2100,7 @@ namespace Resources {
         ///        &lt;em&gt;Пароль действителен в течении 5  минут.&lt;/em&gt;
         ///    &lt;/p&gt;
         ///    &lt;p&gt;
-        ///        &lt;em&gt;С уважением, команда платформы W [остаток строки не уместился]&quot;;.
+        ///        &lt;em&gt;С уважением, команда платформы Wa [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string LetterFinancialPassword {
             get {
@@ -2102,8 +2110,8 @@ namespace Resources {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;div style=&quot;width:786px;&quot;&gt;
-        ///    &lt;div style=&quot;background:#707070; border-radius:10px; padding:10px;&quot;&gt;
-        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/content/img/logo.png&quot; /&gt;
+        ///    &lt;div style=&quot;background:#000; border-radius:10px; padding:10px;&quot;&gt;
+        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/Content/img/logo-2.png&quot; /&gt;
         ///    &lt;/div&gt;
         ///    &lt;p&gt;
         ///        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
@@ -2120,7 +2128,7 @@ namespace Resources {
         ///    &lt;/p&gt;	
         ///    &lt;p&gt;
         ///        &lt;em&gt;
-        /// [остаток строки не уместился]&quot;;.
+        ///  [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string LetterResetAccess {
             get {
@@ -2130,8 +2138,8 @@ namespace Resources {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;div style=&quot;width:786px;&quot;&gt;
-        ///    &lt;div style=&quot;background:#707070; border-radius:10px; padding:10px;&quot;&gt;
-        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/content/img/logo.png&quot; /&gt;
+        ///    &lt;div style=&quot;background:#000; border-radius:10px; padding:10px;&quot;&gt;
+        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/Content/img/logo-2.png&quot; /&gt;
         ///    &lt;/div&gt;
         ///    &lt;p&gt;
         ///        &lt;em&gt;Уважаемый пользователь,&lt;/em&gt;
@@ -2143,7 +2151,8 @@ namespace Resources {
         ///        &lt;em&gt;Ваш адрес электронной почты указали в качестве регистрационного на платформе Way to Wealth.&lt;/em&gt;
         ///    &lt;/p&gt;
         ///	
-        ///	&lt;p&gt;        /// [остаток строки не уместился]&quot;;.
+        ///	&lt;p&gt;
+        /// [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string LetterSignUp {
             get {
@@ -2360,8 +2369,8 @@ namespace Resources {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на &lt;div style=&quot;width:786px;&quot;&gt;
-        ///    &lt;div style=&quot;background:#707070; border-radius:10px; padding:10px;&quot;&gt;
-        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/content/img/logo.png&quot; /&gt;
+        ///    &lt;div style=&quot;background:#000; border-radius:10px; padding:10px;&quot;&gt;
+        ///        &lt;img style=&quot;height:58px;margin:0 auto; display:block;&quot; src=&quot;https://w2w.fund/Content/img/logo-2.png&quot; /&gt;
         ///    &lt;/div&gt;
         ///    &lt;p&gt;
         ///        &lt;em&gt;Уважаемый пользователь, &lt;strong&gt;{0}&lt;/strong&gt;&lt;/em&gt;
@@ -2374,7 +2383,7 @@ namespace Resources {
         ///	&lt;p&gt;
         ///        &lt;em&gt;
         ///            &lt;strong&gt;Время:&lt;/strong&gt; {1}&lt;/p&gt;
-        ///        &lt;/e [остаток строки не уместился]&quot;;.
+        ///        &lt;/em [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string LoginNotifyLetter {
             get {

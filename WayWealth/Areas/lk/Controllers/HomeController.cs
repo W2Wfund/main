@@ -63,6 +63,7 @@ namespace WayWealth.Areas.lk.Controllers
                 }
             }
 
+            
             if (User.BalanceInvestments > 0)
             {
                 var investments = DataService.GetInvestments(User.id_object, "Активен");
@@ -88,6 +89,7 @@ namespace WayWealth.Areas.lk.Controllers
                     }
                 }
                 ViewBag.InvestPayments = sum;// Math.Round(sum * 100 / (User.BalanceInvestments * 2), 2);
+                ViewBag.Investments = investments;
             }
 
 
@@ -295,7 +297,7 @@ namespace WayWealth.Areas.lk.Controllers
 
                     if (account == "Остаток.Вознаграждения")
                     {
-                        DataService.UpdateBlockedPyment(User.id_object, (partner.BlockedResidue ?? 0) + model.Sum);
+                        DataService.UpdateBlockedPayment(User.id_object, (partner.BlockedResidue ?? 0)/* + model.Sum*/, (partner.MarketOutputResidue ?? 0) + model.Sum);
                     }
 
                     Session.AddNotification(new Notification(true, Resources.Resource.MoneyTransactionTitle,
@@ -387,12 +389,13 @@ namespace WayWealth.Areas.lk.Controllers
                     Session.AddNotification(new Notification(true, Resources.Resource.MoneyTransactionTitle,
                         Resources.Resource.OperationCompleted));
 
-                    if (partner.BlockedResidue > 0)
+                    if (partner.BlockedResidue > 0 || partner.MarketOutputResidue > 0)
                     {
                         decimal difSum = partner.BlockedResidue > model.Sum ? model.Sum : (decimal)partner.BlockedResidue;
-                        DataService.UpdateBlockedPyment(User.id_object, (partner.BlockedResidue ?? 0) - difSum);
-                        DataService.UpdateBlockedPyment(recepient.id_object, (recepient.BlockedResidue ?? 0) + model.Sum);
+                        decimal difMarketingSum = partner.MarketOutputResidue > model.Sum ? model.Sum : (decimal)partner.MarketOutputResidue;
+                        DataService.UpdateBlockedPayment(User.id_object, (partner.BlockedResidue ?? 0) - difSum, (partner.MarketOutputResidue ?? 0) - difMarketingSum);
                     }
+                    DataService.UpdateBlockedPayment(recepient.id_object, (recepient.BlockedResidue ?? 0) + model.Sum, (recepient.MarketOutputResidue ?? 0) + model.Sum);
 
                     this.AuthenticationService.UpdateCookies(this.User.id_object);
                     return RedirectToAction("history");
@@ -426,13 +429,14 @@ namespace WayWealth.Areas.lk.Controllers
             }
 
             CoinBaseService service = new CoinBaseService(ConfigurationManager.AppSettings["coinbase.apikey"]);
-            GetPrice(service, GetWithdrawPercent(), "BTC", "ETH", "LTC", "BCH", "XRP");
+            GetPrice(service, GetWithdrawPercent(), "BTC", "ETH", "LTC", "BCH", "XRP", "USDT");
 
             TempData["w_btc"] = User.AccountBitcoin;
             TempData["w_eth"] = User.AccountEthereum;
             TempData["w_ltc"] = User.AccountLitecoin;
             TempData["w_bch"] = User.AccountBitcoinCash;
             TempData["w_xrp"] = User.AccountRipple;
+            TempData["w_usdt"] = User.AccountUsdt;
 
             TempData["Остаток.ВнутреннийСчет"] = User.BalanceInner;
 
@@ -462,6 +466,11 @@ namespace WayWealth.Areas.lk.Controllers
                 model.Currency = "XRP";
                 model.WalletAddress = this.User.AccountRipple;
             }
+            else if (!string.IsNullOrWhiteSpace(this.User.AccountUsdt))
+            {
+                model.Currency = "USDT";
+                model.WalletAddress = this.User.AccountUsdt;
+            }
             else
             {
                 model.Currency = "BTC";
@@ -481,7 +490,7 @@ namespace WayWealth.Areas.lk.Controllers
                 Session.AddNotification(new Notification(false, Resources.Resource.WithdrawalError, Resources.Resource.WithdrawalNotFriday));
                 return RedirectToAction("index");
             }
-
+            
 
             if (ModelState.IsValid)
             {
@@ -508,8 +517,14 @@ namespace WayWealth.Areas.lk.Controllers
                     if (partner.BlockedResidue > 0) {
                         if((partner.BalanceInner - partner.BlockedResidue) < model.Sum)
                         {
-                            throw new Exception(Resources.Resource.ErrSumIsIncorrectBlocked);
+                            throw new Exception(string.Format(Resources.Resource.ErrSumIsIncorrectBlocked, partner.BlockedResidue.ToString()));
                         }
+                    }
+
+                    if (partner.MarketOutputResidue > 0)
+                    {
+                        decimal newMarketOutputResidueSum = model.Sum > partner.MarketOutputResidue ? 0 : (decimal)partner.MarketOutputResidue - model.Sum;
+                        DataService.UpdateBlockedPayment(User.id_object, (partner.BlockedResidue ?? 0), newMarketOutputResidueSum);
                     }
 
 
@@ -519,14 +534,27 @@ namespace WayWealth.Areas.lk.Controllers
                     #region currencySum
                     CoinBaseService service = new CoinBaseService(ConfigurationManager.AppSettings["coinbase.apikey"]);
                     decimal price = 0;
-                    if (model.Currency != "XRP")
+                    if (model.Currency == "XRP")
+                    {
+                        price = GetXrpUsdRate(service);
+                    }
+                    else if (model.Currency == "USDT")
+                    {
+                        price = GetUsdtUsdRate(service);
+                    }
+                    else
+                    {
+                        price = service.GetSpotPrice($"{model.Currency}-USD").Data.Amount;
+                        price = GetXrpUsdRate(service);
+                    }
+                    /*if (model.Currency != "XRP")
                     {
                         price = service.GetSpotPrice($"{model.Currency}-USD").Data.Amount;
                     }
                     else
                     {
                         price = GetXrpUsdRate(service);
-                    }
+                    }*/
 
                     var percent = GetWithdrawPercent();
                     var currencySum = model.Sum * (1 + percent) / price;
@@ -578,6 +606,17 @@ namespace WayWealth.Areas.lk.Controllers
             //var m= Servic
         }
 
+        decimal GetUsdtUsdRate(CoinBaseService service)
+        {
+            return 1;
+            /*using (var client = new BinanceClient())
+            {
+                var BTC_USDT = client.GetPrice("BTCUSDT").Data.Price;
+                var BTC_USD = service.GetSpotPrice("BTC-USD").Data.Amount;
+                return BTC_USDT > 0 ? (1 / BTC_USDT) * BTC_USD : 0;
+            }*/
+        }
+
         void GetPrice(CoinBaseService service, decimal percent, params string[] currencies)
         {
             foreach (var curr in currencies)
@@ -587,6 +626,12 @@ namespace WayWealth.Areas.lk.Controllers
                     var xrp_usd = GetXrpUsdRate(service);
                     TempData[$"xrp_usd"] = xrp_usd / (1 + percent);
                     TempData[$"usd_xrp"] = (1 + percent) / xrp_usd;
+                }
+                else if (curr == "USDT")
+                {
+                    var usdt_usd = GetUsdtUsdRate(service);
+                    TempData[$"usdt_usd"] = usdt_usd / (1 + percent);
+                    TempData[$"usd_usdt"] = (1 + percent) / usdt_usd;
                 }
                 else
                 {
@@ -642,14 +687,14 @@ namespace WayWealth.Areas.lk.Controllers
                 #region currencySum
                 CoinBaseService service = new CoinBaseService(ConfigurationManager.AppSettings["coinbase.apikey"]);
                 decimal price = 0;
-                if (model.Currency != "XRP")
-                {
-                    price = service.GetSpotPrice($"{model.Currency}-USD").Data.Amount;
-                }
-                else
-                {
-                    price = GetXrpUsdRate(service);
-                }
+                 if (model.Currency != "XRP")
+                 {
+                     price = service.GetSpotPrice($"{model.Currency}-USD").Data.Amount;
+                 }
+                 else
+                 {
+                     price = GetXrpUsdRate(service);
+                 }
 
                 var percent = GetReplenishmentPercent();
                 var currencySum = model.Sum * (1 + percent) / price;
@@ -1118,7 +1163,7 @@ namespace WayWealth.Areas.lk.Controllers
                         MailService.SendMessage(
                           to: User.Email,
                           subject: Resources.Resource.EmailVerificationCheck,
-                          body: Resources.Resource.LetterEmailVerificationCheck);
+                          body: string.Format(Resources.Resource.LetterEmailVerificationCheck, User.FirstName + " " + User.LastName));
                     }
                 }
                 catch (Exception exc)
@@ -1244,7 +1289,7 @@ namespace WayWealth.Areas.lk.Controllers
 
         [HttpPost]
         public ActionResult SaveWallets(string AccountBitcoin,
-            string AccountEthereum, string AccountLitecoin, string AccountBitcoinCash, string AccountRipple)
+            string AccountEthereum, string AccountLitecoin, string AccountBitcoinCash, string AccountRipple,string AccountUsdt)
         {
             this.DataService.UpdatePartnerWallets(
                 id_client: this.User.id_object,
@@ -1252,7 +1297,8 @@ namespace WayWealth.Areas.lk.Controllers
                 walletEthereum: AccountEthereum,
                 walletLitecoin: AccountLitecoin,
                 walletBitcoinCash: AccountBitcoinCash,
-                walletRipple: AccountRipple);
+                walletRipple: AccountRipple,
+                walletUsdt: AccountUsdt);
             this.AuthenticationService.UpdateCookies(this.User.id_object);
             return Redirect(Request.UrlReferrer.ToString());
         }
@@ -1683,12 +1729,6 @@ namespace WayWealth.Areas.lk.Controllers
             Dictionary<string, string> jsondata = new Dictionary<string, string>();
             jsondata.Add("close", Resources.Resource.Close);
 
-            /* if (!IsAllowCreateNewPlace)
-             {   
-                 jsondata.Add("error", "true");
-                 jsondata.Add("message", Resources.Resource.CreatePlaceIsNotAllowError);
-                 return Json(jsondata);
-             }*/
             try
             {
                 var marketing = new Service1();
@@ -1780,72 +1820,68 @@ namespace WayWealth.Areas.lk.Controllers
         }
 
         [HttpPost]
-        public ActionResult Invest(InvestView model, string program)
+        //public ActionResult Invest(InvestView model, string program)
+        public JsonResult Invest(uint investId)
         {
-            ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
-            ViewBag.Program = program;
+            //ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
+            //ViewBag.Program = program;
+            Dictionary<string, string> jsondata = new Dictionary<string, string>();
             var investments = DataService.GetInvestments(User.id_object, "Активен");
-            NewInvestProgram investProgram = DataService.GetInvestProgram(model.InvestId);
+            NewInvestProgram investProgram = DataService.GetInvestProgram(investId/*model.InvestId*/);
             if (investments.Count() > 0)
             {
                 var currentProgram = investments.Where(x => x.ProgramId == investProgram.id_object);
                 if (currentProgram.Count() > 0)
                 {
-                    ModelState.AddModelError(string.Empty, Resources.Resource.InvestProgramDublicateError);
+                    // ModelState.AddModelError(string.Empty, Resources.Resource.InvestProgramDublicateError);
+                    jsondata.Add("error", "true");
+                    jsondata.Add("message", Resources.Resource.InvestProgramDublicateError);
+                    return Json(jsondata);
                 }
             }
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+           // {
                 try
                 {
                     var marketing = new Service1();
                     //using (var marketing = new Marketing.Service1Client())
                     {
-                        if (!ViewBag.IsAllowCreateNewPlace)
-                            model.IsCreateNewPlace = false;
-
-
-
-                        /*if (model.Sum == 300)
-                        {
-                            marketing.BuyCamulative(
-                                companyId: 5,
-                                marketingId: 93,
-                                partnerId: this.User.id_object,
-                                sum: model.Sum,
-                                date: DateTime.Now,
-                                user: ConfigurationManager.AppSettings["login"]);
-                        }
-                        else
-                        {*/
+                        //if (!ViewBag.IsAllowCreateNewPlace)
+                          //  model.IsCreateNewPlace = false;
 
                         marketing.BuyInvestment(
                               companyId: 5,
                               camulativeMarketingId: 93,
                               partnerId: this.User.id_object,
                               sum: investProgram.Sum,//model.Sum,
-                              isProlonged: model.IsProlonged,
-                              isCreateNewPlace: model.IsCreateNewPlace,
+                              isProlonged: false/*model.IsProlonged*/,
+                              isCreateNewPlace: false/*model.IsCreateNewPlace*/,
                               date: DateTime.Now,
                               user: ConfigurationManager.AppSettings["login"]);
-                        // }*/
+                        
 
-                        if(User.BlockedResidue > 0)
+                        if(User.BlockedResidue > 0 || User.MarketOutputResidue > 0)
                         {
                             decimal newBlockedResidueSum = investProgram.Sum > User.BlockedResidue ? 0 : User.BlockedResidue - investProgram.Sum;
-                            DataService.UpdateBlockedPyment(User.id_object, newBlockedResidueSum);
+                            decimal newMarketOutputResidueSum = investProgram.Sum > User.MarketOutputResidue ? 0 : User.MarketOutputResidue - investProgram.Sum;
+                            DataService.UpdateBlockedPayment(User.id_object, newBlockedResidueSum, newMarketOutputResidueSum);
                         }
                         this.AuthenticationService.UpdateCookies(this.User.id_object);
-                        return RedirectToAction("investments", "home", new { area = "lk" });
+                        //return RedirectToAction("investments", "home", new { area = "lk" });
+                        jsondata.Add("error", "false");
+                        return Json(jsondata);
                     }
                 }
                 catch (Exception exc)
                 {
-                    ModelState.AddModelError(string.Empty, exc.Message);
+                    //ModelState.AddModelError(string.Empty, exc.Message);
+                jsondata.Add("error", "true");
+                jsondata.Add("message", exc.Message);
+                return Json(jsondata);
                 }
-            }
-            ViewBag.Items = DataService.GetInvestPrograms();
+            //}
+           /* ViewBag.Items = DataService.GetInvestPrograms();
             ViewBag.UserBalance = User.BalanceInner > 0 ? User.BalanceInner : 0;
 
             decimal sum = 0;
@@ -1863,7 +1899,7 @@ namespace WayWealth.Areas.lk.Controllers
 
             ViewBag.UserInvestments = UserInvestments;
 
-            return View(model);
+            return View(model);*/
         }
 
         public ActionResult Investments(InvestmentsView model)

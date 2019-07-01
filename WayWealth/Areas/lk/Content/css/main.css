@@ -2876,7 +2876,12 @@ html body > jdiv {
     margin: 0 0 0 -8px;
     bottom: -14px;
 }
-
+.bills-block .investments-price li{
+    font-size: 22px;
+    font-weight: 700;
+    color: #cda947;
+    padding-bottom: 5px;
+}
 /*------------------------------response---------------------------------*/
 @media only screen and (max-width: 1340px) {
     header .menu li a {
@@ -3462,6 +3467,12 @@ html body > jdiv {
         margin: 0 0 20px 0;
         font-size: 18px;
     }
+
+    .bills-block .investments-price li {
+        font-size: 18px;
+        width: 100%;
+    }
+
     .bills-block li:nth-of-type(3) .info, .bills-block li:nth-of-type(4) .info {
         padding-bottom: 45px;
     }

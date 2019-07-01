@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IService1_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://marketing.w2w.fund/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_BuyCamulative_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuyCamulative" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BuyCamulative_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuyCamulativeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BuyInvestment_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuyInvestment" />
+  </wsdl:message>
+  <wsdl:message name="IService1_BuyInvestment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuyInvestmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PayInvestPercents_InputMessage">
+    <wsdl:part name="parameters" element="tns:PayInvestPercents" />
+  </wsdl:message>
+  <wsdl:message name="IService1_PayInvestPercents_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PayInvestPercentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsAllowCreateNewPlace_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsAllowCreateNewPlace" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsAllowCreateNewPlace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsAllowCreateNewPlaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateTechPlace_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTechPlace" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateTechPlace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTechPlaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreatePlace_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePlace" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreatePlace_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePlaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateBalances_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBalances" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateBalances_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBalancesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConfirmWithdrawal_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmWithdrawal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ConfirmWithdrawal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmWithdrawalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CancelWithdrawal_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelWithdrawal" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CancelWithdrawal_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelWithdrawalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UnionInvestments_InputMessage">
+    <wsdl:part name="parameters" element="tns:UnionInvestments" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UnionInvestments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UnionInvestmentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TerminateInvestment_InputMessage">
+    <wsdl:part name="parameters" element="tns:TerminateInvestment" />
+  </wsdl:message>
+  <wsdl:message name="IService1_TerminateInvestment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TerminateInvestmentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendEmail_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmail" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SendEmail_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendEmailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="BuyCamulative">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/BuyCamulative" message="tns:IService1_BuyCamulative_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/BuyCamulativeResponse" message="tns:IService1_BuyCamulative_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BuyInvestment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/BuyInvestment" message="tns:IService1_BuyInvestment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/BuyInvestmentResponse" message="tns:IService1_BuyInvestment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PayInvestPercents">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/PayInvestPercents" message="tns:IService1_PayInvestPercents_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/PayInvestPercentsResponse" message="tns:IService1_PayInvestPercents_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsAllowCreateNewPlace">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsAllowCreateNewPlace" message="tns:IService1_IsAllowCreateNewPlace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/IsAllowCreateNewPlaceResponse" message="tns:IService1_IsAllowCreateNewPlace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTechPlace">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateTechPlace" message="tns:IService1_CreateTechPlace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateTechPlaceResponse" message="tns:IService1_CreateTechPlace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlace">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreatePlace" message="tns:IService1_CreatePlace_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreatePlaceResponse" message="tns:IService1_CreatePlace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBalances">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateBalances" message="tns:IService1_UpdateBalances_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateBalancesResponse" message="tns:IService1_UpdateBalances_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmWithdrawal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ConfirmWithdrawal" message="tns:IService1_ConfirmWithdrawal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ConfirmWithdrawalResponse" message="tns:IService1_ConfirmWithdrawal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelWithdrawal">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CancelWithdrawal" message="tns:IService1_CancelWithdrawal_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CancelWithdrawalResponse" message="tns:IService1_CancelWithdrawal_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UnionInvestments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UnionInvestments" message="tns:IService1_UnionInvestments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UnionInvestmentsResponse" message="tns:IService1_UnionInvestments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TerminateInvestment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/TerminateInvestment" message="tns:IService1_TerminateInvestment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/TerminateInvestmentResponse" message="tns:IService1_TerminateInvestment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SendEmail" message="tns:IService1_SendEmail_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SendEmailResponse" message="tns:IService1_SendEmail_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BuyCamulative">
+      <soap:operation soapAction="http://tempuri.org/IService1/BuyCamulative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyInvestment">
+      <soap:operation soapAction="http://tempuri.org/IService1/BuyInvestment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayInvestPercents">
+      <soap:operation soapAction="http://tempuri.org/IService1/PayInvestPercents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsAllowCreateNewPlace">
+      <soap:operation soapAction="http://tempuri.org/IService1/IsAllowCreateNewPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTechPlace">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateTechPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlace">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreatePlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBalances">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateBalances" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmWithdrawal">
+      <soap:operation soapAction="http://tempuri.org/IService1/ConfirmWithdrawal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelWithdrawal">
+      <soap:operation soapAction="http://tempuri.org/IService1/CancelWithdrawal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnionInvestments">
+      <soap:operation soapAction="http://tempuri.org/IService1/UnionInvestments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateInvestment">
+      <soap:operation soapAction="http://tempuri.org/IService1/TerminateInvestment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://tempuri.org/IService1/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_IService1" type="tns:IService1">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IService1_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BuyCamulative">
+      <soap:operation soapAction="http://tempuri.org/IService1/BuyCamulative" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuyInvestment">
+      <soap:operation soapAction="http://tempuri.org/IService1/BuyInvestment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PayInvestPercents">
+      <soap:operation soapAction="http://tempuri.org/IService1/PayInvestPercents" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsAllowCreateNewPlace">
+      <soap:operation soapAction="http://tempuri.org/IService1/IsAllowCreateNewPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTechPlace">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreateTechPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePlace">
+      <soap:operation soapAction="http://tempuri.org/IService1/CreatePlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBalances">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateBalances" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmWithdrawal">
+      <soap:operation soapAction="http://tempuri.org/IService1/ConfirmWithdrawal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelWithdrawal">
+      <soap:operation soapAction="http://tempuri.org/IService1/CancelWithdrawal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UnionInvestments">
+      <soap:operation soapAction="http://tempuri.org/IService1/UnionInvestments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TerminateInvestment">
+      <soap:operation soapAction="http://tempuri.org/IService1/TerminateInvestment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://tempuri.org/IService1/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://marketing.w2w.fund/Service1.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_IService1" binding="tns:BasicHttpsBinding_IService1">
+      <soap:address location="https://marketing.w2w.fund/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

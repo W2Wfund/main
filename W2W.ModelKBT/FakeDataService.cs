@@ -960,7 +960,8 @@ namespace W2W.ModelKBT
             string walletEthereum,
             string walletLitecoin,
             string walletBitcoinCash,
-            string walletRipple)
+            string walletRipple,
+            string walletUsdt)
         {
             var user = Partners.SingleOrDefault(x => x.id_object == id_client);
             user.AccountBitcoin = walletBitcoin;
@@ -968,6 +969,7 @@ namespace W2W.ModelKBT
             user.AccountLitecoin = walletLitecoin;
             user.AccountBitcoinCash = walletBitcoinCash;
             user.AccountRipple = walletRipple;
+            user.AccountUsdt = walletUsdt;
         }
 
         public uint CreatePartner(
@@ -1265,7 +1267,7 @@ namespace W2W.ModelKBT
             throw new NotImplementedException();
         }
 
-        public void UpdateBlockedPyment(uint id_client, decimal sum)
+        public void UpdateBlockedPayment(uint id_client, decimal blockedSum, decimal sum)
         {
             throw new NotImplementedException();
         }

@@ -36,7 +36,9 @@ namespace KBTech.Integration.Merchant.CoinBase
         litecoin,
 
         [Description("USDC")]
-        usdc
+        usdc,
+        [Description("USDT")]
+        usdt
 
     }
     public class Balance

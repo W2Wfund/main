@@ -1133,8 +1133,8 @@
   </data>
   <data name="LetterFinancialPassword" xml:space="preserve">
     <value>&lt;div style="width:786px;"&gt;
-    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
-        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;div style="background:#000; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/Content/img/logo-2.png" /&gt;
     &lt;/div&gt;
     &lt;p&gt;
         &lt;em&gt;Dear user,&lt;/em&gt;
@@ -1154,8 +1154,8 @@
   </data>
   <data name="LetterResetAccess" xml:space="preserve">
     <value>&lt;div style="width:786px;"&gt;
-    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
-        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;div style="background:#000; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/Content/img/logo-2.png" /&gt;
     &lt;/div&gt;
     &lt;p&gt;
         &lt;em&gt;Dear user,&lt;/em&gt;
@@ -1193,8 +1193,8 @@
   </data>
   <data name="LetterSignUp" xml:space="preserve">
     <value>&lt;div style="width:786px;"&gt;
-    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
-        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;div style="background:#000; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/Content/img/logo-2.png" /&gt;
     &lt;/div&gt;
     &lt;p&gt;
         &lt;em&gt;Dear user,&lt;/em&gt;
@@ -1250,8 +1250,8 @@
   </data>
   <data name="LoginNotifyLetter" xml:space="preserve">
     <value>&lt;div style="width:786px;"&gt;
-    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
-        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;div style="background:#000; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/Content/img/logo-2.png" /&gt;
     &lt;/div&gt;
     &lt;p&gt;
         &lt;em&gt;Dear user, &lt;strong&gt;{0}&lt;/strong&gt;&lt;/em&gt;
@@ -1449,12 +1449,13 @@
     <value>Results og verification.</value>
   </data>
   <data name="ErrSumIsIncorrectBlocked" xml:space="preserve">
-    <value>You can not withdraw such amount, because part of it is for investment only</value>
+    <value>You can't withdraw the specified amount, because your personal account has a blocked balance of {0}$.
+You can use this amount only to open investment packages.</value>
   </data>
-  <data name="LetterEmailVerificationCheck" xml:space="preserve">
+  <data name="LetterEmailVerificationCheckResponse" xml:space="preserve">
     <value>&lt;div style="width:786px;"&gt;
-    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
-        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;div style="background:#000; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/Content/img/logo-2.png" /&gt;
     &lt;/div&gt;
     &lt;p&gt;
         &lt;em&gt;Dear user,&lt;/em&gt;
@@ -1469,22 +1470,32 @@
     &lt;/p&gt;
 &lt;/div&gt;</value>
   </data>
-  <data name="LetterEmailVerificationCheckResponse" xml:space="preserve">
+  <data name="LetterEmailVerificationCheck" xml:space="preserve">
     <value>&lt;div style="width:786px;"&gt;
-    &lt;div style="background:#707070; border-radius:10px; padding:10px;"&gt;
-        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/content/img/logo.png" /&gt;
+    &lt;div style="background:#000; border-radius:10px; padding:10px;"&gt;
+        &lt;img style="height:58px;margin:0 auto; display:block;" src="https://w2w.fund/Content/img/logo-2.png" /&gt;
     &lt;/div&gt;
     &lt;p&gt;
-        &lt;em&gt;Dear user,&lt;/em&gt;
+        &lt;em&gt;Dear {0}&lt;/em&gt;
     &lt;/p&gt;
     &lt;p&gt;
         &lt;em&gt;
-            Your documents have been sent for verification. We will inform you about the test results.
+            Your documents are accepted for verification. 
         &lt;/em&gt;
-    &lt;/p&gt;	
+    &lt;/p&gt;	    &lt;p&gt;
+        &lt;em&gt;
+            The term of verification of documents is up to 5 working days.        &lt;/em&gt;
+    &lt;/p&gt;	    &lt;p&gt;
+        &lt;em&gt;
+We will notify you on the results of the verification of documents.
+        &lt;/em&gt;
+    &lt;/p&gt;
     &lt;p&gt;
-        &lt;em&gt;Sincerely, the Way to Wealth platform team.&lt;/em&gt;
+        &lt;em&gt;Sincerely, Way to Wealth.&lt;/em&gt;
     &lt;/p&gt;
 &lt;/div&gt;</value>
+  </data>
+  <data name="BuyInvestPremiumError" xml:space="preserve">
+    <value>You can purchase this package only after purchasing the package INVEST 10</value>
   </data>
 </root>
