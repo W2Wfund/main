@@ -5,7 +5,7 @@
                 Layout = "~/Views/Shared/_Layout.cshtml";
                 var action = ViewContext.RouteData.Values["action"].ToString();
                 List<Notification> notifications = (List<Notification>)Session[Notification.Key] ?? new List<Notification>();
-                ViewBag.Version = 11;
+                ViewBag.Version = 10;
 }
 @section HeadSection{
     <link rel="stylesheet" href="~/Areas/lk/Content/css/libs.min.css?v=@ViewBag.Version">

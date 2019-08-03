@@ -1007,6 +1007,24 @@ namespace W2W.ModelKBT
             query.AddConditionItem(Union.And, "id_object", Operator.Equal, id_object);
             return base.GetInstance<WebPaymentRequest>(query);
         }
+
+        public IEnumerable<WithdrawalRequest> GetWithdrawalRequests(
+            uint? partnerId,
+            DateTime? begin,
+            DateTime? end)
+        {
+            var query = base.CreateQueryItem<WithdrawalRequest>("ЗаявкаНаВыводСредств", Level.All);
+            
+            if (partnerId != null)
+                query.AddConditionItem(Union.And, "СсылкаНаКонтрагента", Operator.Equal, partnerId);
+
+            if (begin != null)
+                query.AddConditionItem(Union.And, "ДатаПлатежа", Operator.MoreOrEqual, begin);
+            if (end != null)
+                query.AddConditionItem(Union.And, "ДатаПлатежа", Operator.LessOrEqual, end);
+
+            return this.GetList<WithdrawalRequest>(query);
+        }
         public void UpdateWebPaymentRequest(uint id_object, decimal sum, decimal currencySum)
         {
             using (var client = new WebDataClient())

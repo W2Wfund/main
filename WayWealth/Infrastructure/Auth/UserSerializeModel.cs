@@ -37,5 +37,9 @@ namespace WayWealth.Infrastructure.Auth
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string MiddleName { get; set; }
+
+        public string GoogleAuthKey { get; set; }
+        public bool GoogleAuthEnabled { get; set; }
+        public string VerificationStatus { get; set; }
     }
 }

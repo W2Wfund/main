@@ -24,6 +24,8 @@ using System.Text;
 using WayWealth.Areas.lk.Helpers;
 using JWT;
 using Binance.Net;
+using Binance.Net.Objects;
+using CryptoExchange.Net.Authentication;
 using System.Text.RegularExpressions;
 using Google.Authenticator;
 using W2W.Marketing;
@@ -136,14 +138,34 @@ namespace WayWealth.Areas.lk.Controllers
         public ViewResult History(DateTime? begin, DateTime? end, string article, string account = "Остаток.ВнутреннийСчет",
             int page = 1)
         {
-            var items = DataService.GetInnerTransfers(
-                partnerId: (uint)User.id_object,
-                account: account == "all" ? null : account,
-                begin: begin,
-                end: end,
-                article: article,
-                orderId: null,
-                filter: null).OrderByDescending(x => x.PaymentDate);
+            IEnumerable<InnerTransfer> items;
+            IEnumerable<WithdrawalRequest> withdrawalItems = null;
+            if (article == "Вывод средств")
+            {
+                 items = DataService.GetWithdrawalRequests(
+                    partnerId: (uint)User.id_object,
+                    begin: begin,
+                    end: end).OrderByDescending(x => x.PaymentDate);
+                withdrawalItems = items as IEnumerable<WithdrawalRequest>;
+            }
+            else
+            {
+                 items = DataService.GetInnerTransfers(
+                    partnerId: (uint)User.id_object,
+                    account: account == "all" ? null : account,
+                    begin: begin,
+                    end: end,
+                    article: article,
+                    orderId: null,
+                    filter: null).OrderByDescending(x => x.PaymentDate);
+                if (!string.IsNullOrWhiteSpace(account))
+                {
+                    withdrawalItems = DataService.GetWithdrawalRequests(
+                    partnerId: (uint)User.id_object,
+                    begin: begin,
+                    end: end).OrderByDescending(x => x.PaymentDate);
+                }
+            }
 
             var model = new HistoryView();
             for (var i = 0; i < items.Count(); i++)
@@ -151,6 +173,15 @@ namespace WayWealth.Areas.lk.Controllers
                 items.ElementAt(i).PaymentNumber = i + 1;
                 model.TotalSumPrihod += items.ElementAt(i).DebetSum ?? 0;
                 model.TotalSumRashod += items.ElementAt(i).CreditSum ?? 0;
+
+                if(withdrawalItems != null && items.ElementAt(i).PaymentArticle == "Вывод средств")
+                {                    
+                    var obj = withdrawalItems.Where(a => a.id_object == items.ElementAt(i).id_object).Single();
+                    if (obj != null)
+                    {
+                        items.ElementAt(i).PaymentStatus = obj.ProcessedStatus;
+                    }                    
+                }
             }
 
             model.Items = GetPage<InnerTransfer>(items, page, 10);
@@ -176,6 +207,8 @@ namespace WayWealth.Areas.lk.Controllers
             TempData["Остаток.Проценты"] = this.User.BalancePercents;
             TempData["Остаток.ИнвестиционныйСчет"] = this.User.BalanceInvestments;
             TempData["Остаток.Вознаграждения"] = this.User.BalanceRewards;
+            TempData["GoogleAuthEnabled"] = this.User.GoogleAuthEnabled;
+            
             return View();
         }
 
@@ -183,6 +216,7 @@ namespace WayWealth.Areas.lk.Controllers
         public ActionResult Transfer2()
         {
             TempData["Остаток.ВнутреннийСчет"] = this.User.BalanceInner;
+            TempData["GoogleAuthEnabled"] = this.User.GoogleAuthEnabled;
             return View();
         }
 
@@ -231,16 +265,27 @@ namespace WayWealth.Areas.lk.Controllers
             {
                 try
                 {
-                    var tp = Session["TansactionPassword"] as TransactionPassword;
-                    if (tp == null || tp.Password != model.Password)
+                    if (User.GoogleAuthEnabled == true)
                     {
-                        throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
-                        // в принципе, можно сбрасывать пароль если указан неверно
-                        //Session["TansactionPassword"] = null;
+                        TwoFactorAuthenticator TwoFacAuth = new TwoFactorAuthenticator();
+                        bool isValid = TwoFacAuth.ValidateTwoFactorPIN(User.GoogleAuthKey, model.Password);
+                        if (!isValid)
+                        {
+                            throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
+                        }
                     }
-
-                    if ((DateTime.Now - tp.GenerateDate).TotalMinutes > 20)
-                        throw new Exception(Resources.Resource.ErrPasswordIsExpired);
+                    else
+                    {
+                        var tp = Session["TansactionPassword"] as TransactionPassword;
+                        if (tp == null || tp.Password != model.Password)
+                        {
+                            throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
+                            // в принципе, можно сбрасывать пароль если указан неверно
+                            //Session["TansactionPassword"] = null;
+                        }
+                        if ((DateTime.Now - tp.GenerateDate).TotalMinutes > 20)
+                            throw new Exception(Resources.Resource.ErrPasswordIsExpired);
+                    }
 
                     if (model.Sum < 0)
                         throw new Exception(Resources.Resource.ErrSumIsIncorrect);
@@ -327,16 +372,28 @@ namespace WayWealth.Areas.lk.Controllers
             {
                 try
                 {
-                    var tp = Session["TansactionPassword"] as TransactionPassword;
-                    if (tp == null || tp.Password != model.Password)
+                    if (User.GoogleAuthEnabled == true)
                     {
-                        throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
-                        // в принципе, можно сбрасывать пароль если указан неверно
-                        //Session["TansactionPassword"] = null;
+                        TwoFactorAuthenticator TwoFacAuth = new TwoFactorAuthenticator();
+                        bool isValid = TwoFacAuth.ValidateTwoFactorPIN(User.GoogleAuthKey, model.Password);
+                        if (!isValid)
+                        {
+                            throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
+                        }
                     }
+                    else
+                    {
+                        var tp = Session["TansactionPassword"] as TransactionPassword;
+                        if (tp == null || tp.Password != model.Password)
+                        {
+                            throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
+                            // в принципе, можно сбрасывать пароль если указан неверно
+                            //Session["TansactionPassword"] = null;
+                        }
 
-                    if ((DateTime.Now - tp.GenerateDate).TotalMinutes > 20)
-                        throw new Exception(Resources.Resource.ErrPasswordIsExpired);
+                        if ((DateTime.Now - tp.GenerateDate).TotalMinutes > 20)
+                            throw new Exception(Resources.Resource.ErrPasswordIsExpired);
+                    }
 
                     if (model.Sum < 0)
                         throw new Exception(Resources.Resource.ErrSumIsIncorrect);
@@ -427,7 +484,7 @@ namespace WayWealth.Areas.lk.Controllers
                 Session.AddNotification(new Notification(false, Resources.Resource.WithdrawalError, Resources.Resource.WithdrawalNotFriday));
                 return RedirectToAction("index");
             }
-
+            TempData["GoogleAuthEnabled"] = this.User.GoogleAuthEnabled;
             CoinBaseService service = new CoinBaseService(ConfigurationManager.AppSettings["coinbase.apikey"]);
             GetPrice(service, GetWithdrawPercent(), "BTC", "ETH", "LTC", "BCH", "XRP", "USDT");
 
@@ -496,16 +553,28 @@ namespace WayWealth.Areas.lk.Controllers
             {
                 try
                 {
-                    var tp = Session["TansactionPassword"] as TransactionPassword;
-                    if (tp == null || tp.Password != model.Password)
+                    if (User.GoogleAuthEnabled == true)
                     {
-                        throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
-                        // в принципе, можно сбрасывать пароль если указан неверно
-                        //Session["TansactionPassword"] = null;
+                        TwoFactorAuthenticator TwoFacAuth = new TwoFactorAuthenticator();
+                        bool isValid = TwoFacAuth.ValidateTwoFactorPIN(User.GoogleAuthKey, model.Password);
+                        if (!isValid)
+                        {
+                            throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
+                        }
                     }
+                    else
+                    {
+                        var tp = Session["TansactionPassword"] as TransactionPassword;
+                        if (tp == null || tp.Password != model.Password)
+                        {
+                            throw new Exception(Resources.Resource.ErrPasswordIsIncorrect);
+                            // в принципе, можно сбрасывать пароль если указан неверно
+                            //Session["TansactionPassword"] = null;
+                        }
 
-                    if ((DateTime.Now - tp.GenerateDate).TotalMinutes > 20)
-                        throw new Exception(Resources.Resource.ErrPasswordIsExpired);
+                        if ((DateTime.Now - tp.GenerateDate).TotalMinutes > 20)
+                            throw new Exception(Resources.Resource.ErrPasswordIsExpired);
+                    }
 
                     if (model.Sum < 0 || model.Sum < 100)
                         throw new Exception(Resources.Resource.ErrSumIsIncorrect);
@@ -545,7 +614,6 @@ namespace WayWealth.Areas.lk.Controllers
                     else
                     {
                         price = service.GetSpotPrice($"{model.Currency}-USD").Data.Amount;
-                        price = GetXrpUsdRate(service);
                     }
                     /*if (model.Currency != "XRP")
                     {
@@ -1358,7 +1426,7 @@ namespace WayWealth.Areas.lk.Controllers
                 var rootPlace = rootPlaces.OrderBy(x => x.hash.Length).First();
                 rootPlaceId = rootPlace.id_object;
                 var places = this.DataService.GetStructure(93, rootPlaceId);
-                items = places.Where(p => p.ObjectName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) != -1);
+                items = places.Where(p => p.ObjectName.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) != -1 || p.PartnerLogin.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) != -1);
             }
 
 
@@ -1793,9 +1861,9 @@ namespace WayWealth.Areas.lk.Controllers
         [HttpGet]
         public ActionResult Invest(string program = "base")
         {
-            //  var marketing = new Service1();
-            //    marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
-            
+           //   var marketing = new Service1();
+          //      marketing.PayInvestPercents(DateTime.Now, 5, "taskm");
+
             ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
             ViewBag.Program = program;
             ViewBag.Items = DataService.GetInvestPrograms();
@@ -1826,6 +1894,15 @@ namespace WayWealth.Areas.lk.Controllers
             //ViewBag.IsAllowCreateNewPlace = base.IsAllowCreateNewPlace();
             //ViewBag.Program = program;
             Dictionary<string, string> jsondata = new Dictionary<string, string>();
+
+            if(User.VerificationStatus != "Верифицирован")
+            {
+                jsondata.Add("error", "true");
+                jsondata.Add("message", Resources.Resource.VerificationError);
+                return Json(jsondata);
+            }
+
+
             var investments = DataService.GetInvestments(User.id_object, "Активен");
             NewInvestProgram investProgram = DataService.GetInvestProgram(investId/*model.InvestId*/);
             if (investments.Count() > 0)

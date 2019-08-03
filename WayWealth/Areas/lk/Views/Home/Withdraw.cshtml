@@ -104,6 +104,7 @@
                                     $('.js_transfer_all_sum').on('click', calc);
 
                                     function calc() {
+                                        $('.warning-usdt').hide();
                                         $('.crypptoconvert').html('');
                                         var s = $('.sum_input').val().replace(',', '.');
                                         var rate = 0.0;
@@ -127,6 +128,7 @@
                                         }
                                         else if (curr == 'USDT') {
                                             rate = @(TempData["usd_usdt"].ToString().Replace(',', '.')) * 1.0;
+                                            $('.warning-usdt').show();
                                         }
 
                                         if (addresses) {
@@ -139,22 +141,33 @@
                                         }
                                     }
                                 </script>
+                                <div class="warning-usdt">@Resources.Resource.WarningUsdtMessage</div>
                             </div>
                         </div>
                     </div>
                     <div class="flex transfer-bg-flex">
                         <div>
                             <div class="form-group">
-                                <label>@Resources.Resource.FinancPass</label>
-                                <div class="flex">
-                                    @Html.PasswordFor(x => x.Password)
-                                    <a class="btn btn-bordered btn-sm m-l-10" id="gentp">@Resources.Resource.GetPassBtn</a>
-                                </div>
-                                <div class="sms">
-                                    <p>@Resources.Resource.EmailRequiredSms1</p>
-                                    <p>@Resources.Resource.EmailRequiredSms2 <strong class="timer">00:00:00</strong></p>
-                                </div>
-                            </div>
+                                @if ((bool)TempData["GoogleAuthEnabled"])
+                                {
+                                    <label>@Resources.Resource.CodeDigit2fa</label>
+                                    <div class="flex">
+                                        @Html.PasswordFor(x => x.Password)
+                                    </div>
+                                }
+                                else
+                                {
+                                    <label>@Resources.Resource.FinancPass</label>
+                                    <div class="flex">
+                                        @Html.PasswordFor(x => x.Password)
+                                        <a class="btn btn-bordered btn-sm m-l-10" id="gentp">@Resources.Resource.GetPassBtn</a>
+                                    </div>
+                                    <div class="sms">
+                                        <p>@Resources.Resource.EmailRequiredSms1</p>
+                                        <p>@Resources.Resource.EmailRequiredSms2 <strong class="timer">00:00:00</strong></p>
+                                    </div>
+                                }
+                             </div>
                         </div>
                         <div>
                             <div class="form-group">

@@ -1272,6 +1272,13 @@ namespace W2W.ModelKBT
             throw new NotImplementedException();
         }
 
+        public IEnumerable<WithdrawalRequest> GetWithdrawalRequests(uint? partnerId,
+            DateTime? begin,
+            DateTime? end)
+        {
+            throw new NotImplementedException();
+        }
+
         #region for svc
         public uint CreatePlace(
             uint marketingId,

@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.Recaptcha()
+                    @Html.Recaptcha(useSsl: Recaptcha.Web.SslBehavior.AlwaysUseSsl)
                 </div>
                 <button type="submit" class="btn btn-grad btn-block" form="reg-form">
                     @Resources.Resource.Restore

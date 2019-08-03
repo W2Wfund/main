@@ -1491,4 +1491,28 @@
   <data name="BuyInvestPremiumError" xml:space="preserve">
     <value>Вы можете приобрести данный пакет только после приобретения пакета INVEST 10</value>
   </data>
+  <data name="WarningUsdtMessage" xml:space="preserve">
+    <value>Комиссия будет снята с сумы вывода</value>
+  </data>
+  <data name="CodeDigit2fa" xml:space="preserve">
+    <value>Код подтвеждения Google Authenticator</value>
+  </data>
+  <data name="StatusCancel" xml:space="preserve">
+    <value>Отменена</value>
+  </data>
+  <data name="StatusCompleted" xml:space="preserve">
+    <value>Обработана</value>
+  </data>
+  <data name="StatusInProgress" xml:space="preserve">
+    <value>Не обработана</value>
+  </data>
+  <data name="VerificationError" xml:space="preserve">
+    <value>Ожидайте прохождения верификации для возможности открытия инвестиционного пакета</value>
+  </data>
+  <data name="StatusNotPayed" xml:space="preserve">
+    <value>Не оплачен</value>
+  </data>
+  <data name="StatusPayed" xml:space="preserve">
+    <value>Оплачен</value>
+  </data>
 </root>

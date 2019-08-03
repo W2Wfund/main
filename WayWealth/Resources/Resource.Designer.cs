@@ -763,6 +763,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Код подтвеждения Google Authenticator.
+        /// </summary>
+        public static string CodeDigit2fa {
+            get {
+                return ResourceManager.GetString("CodeDigit2fa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Поле {0} обязательно.
         /// </summary>
         public static string CodeDigitRequired {
@@ -3436,11 +3445,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Отменена.
+        /// </summary>
+        public static string StatusCancel {
+            get {
+                return ResourceManager.GetString("StatusCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Обработана.
+        /// </summary>
+        public static string StatusCompleted {
+            get {
+                return ResourceManager.GetString("StatusCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Не обработана.
+        /// </summary>
+        public static string StatusInProgress {
+            get {
+                return ResourceManager.GetString("StatusInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Статус.
         /// </summary>
         public static string StatusLbl {
             get {
                 return ResourceManager.GetString("StatusLbl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Не оплачен.
+        /// </summary>
+        public static string StatusNotPayed {
+            get {
+                return ResourceManager.GetString("StatusNotPayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Оплачен.
+        /// </summary>
+        public static string StatusPayed {
+            get {
+                return ResourceManager.GetString("StatusPayed", resourceCulture);
             }
         }
         
@@ -3652,6 +3706,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ожидайте прохождения верификации для возможности открытия инвестиционного пакета.
+        /// </summary>
+        public static string VerificationError {
+            get {
+                return ResourceManager.GetString("VerificationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Верифицирован.
         /// </summary>
         public static string Verified {
@@ -3684,6 +3747,15 @@ namespace Resources {
         public static string WalletAddress {
             get {
                 return ResourceManager.GetString("WalletAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Комиссия будет снята с сумы вывода.
+        /// </summary>
+        public static string WarningUsdtMessage {
+            get {
+                return ResourceManager.GetString("WarningUsdtMessage", resourceCulture);
             }
         }
         

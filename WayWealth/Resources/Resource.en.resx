@@ -1498,4 +1498,28 @@ We will notify you on the results of the verification of documents.
   <data name="BuyInvestPremiumError" xml:space="preserve">
     <value>You can purchase this package only after purchasing the package INVEST 10</value>
   </data>
+  <data name="WarningUsdtMessage" xml:space="preserve">
+    <value>Commission will be withdrawn from the withdrawal</value>
+  </data>
+  <data name="CodeDigit2fa" xml:space="preserve">
+    <value>Verification Code Google Authenticator</value>
+  </data>
+  <data name="StatusCancel" xml:space="preserve">
+    <value>Canceled</value>
+  </data>
+  <data name="StatusCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="StatusInProgress" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="VerificationError" xml:space="preserve">
+    <value>Please wait for verification to open an investment package.</value>
+  </data>
+  <data name="StatusNotPayed" xml:space="preserve">
+    <value>Not payed</value>
+  </data>
+  <data name="StatusPayed" xml:space="preserve">
+    <value>Payed</value>
+  </data>
 </root>

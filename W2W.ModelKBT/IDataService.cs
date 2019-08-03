@@ -214,5 +214,8 @@ namespace W2W.ModelKBT
         NewInvestProgram GetNewInvestProgram(decimal sum);
 
         void UpdateBlockedPayment(uint id_client, decimal blockedSum, decimal sum);
+        IEnumerable<WithdrawalRequest> GetWithdrawalRequests(uint? partnerId,
+            DateTime? begin,
+            DateTime? end);
     }
 }

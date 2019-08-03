@@ -118,7 +118,7 @@
                             </th>
                             <th>
                                 <p class="caption">
-                                    <span >@Resources.Resource.Description</span>
+                                    <span>@Resources.Resource.Description</span>
                                 </p>
                             </th>
                             <th>
@@ -129,6 +129,9 @@
                             </th>
                             <th>
                                 @Resources.Resource.AccountBalance
+                            </th>
+                            <th>
+                                @Resources.Resource.StatusTable
                             </th>
                         </tr>
                     </thead>
@@ -184,52 +187,76 @@
                                     desc = Resources.Resource.AticleCharity + " " + item.OrderObjectName;
                                     break;
                             }
+                            string status = "";
+                            switch (item.PaymentStatus)
+                            {
+                                case "Оплачен":
+                                    status = Resources.Resource.StatusPayed;
+                                    break;
+                                case "Не оплачен":
+                                    status = Resources.Resource.StatusNotPayed;
+                                    break;
+                                case "Не обработана":
+                                    status = Resources.Resource.StatusInProgress;
+                                    break;
+                                case "Обработана":
+                                    status = Resources.Resource.StatusCompleted;
+                                    break;
+                                case "Отменена":
+                                    status = Resources.Resource.StatusCancel;
+                                    break;
+                            }
 
-                            <tr>
-                                <td data-text="@Resources.Resource.PaymentNumber">
-                                    @item.PaymentNumber
-                                </td>
-                                <td data-text="@Resources.Resource.DateOperation">
-                                    @item.PaymentDate.Value.ToString("dd.MM.yyyy HH:mm")
-                                </td>
-                                <td data-text="@Resources.Resource.Description">
-                                    @desc
-                                </td>
-                                <td data-text="@Resources.Resource.AmountComing">
+                        <tr>
+                            <td data-text="@Resources.Resource.PaymentNumber">
+                                @item.PaymentNumber
+                            </td>
+                            <td data-text="@Resources.Resource.DateOperation">
+                                @item.PaymentDate.Value.ToString("dd.MM.yyyy HH:mm")
+                            </td>
+                            <td data-text="@Resources.Resource.Description">
+                                @desc
+                            </td>
+                            <td data-text="@Resources.Resource.AmountComing">
                                     @{
-                                        if (item.PaymentDirection == "Приход")
-                                        {
-                                            @((item.PaymentSum ?? 0).ToString("N2"))
-                                        }
+                                    if (item.PaymentDirection == "Приход")
+                                    {
+                                        @((item.PaymentSum ?? 0).ToString("N2"))
                                     }
-                                </td>
-                                <td data-text="@Resources.Resource.AmountConsumption">
+                                }
+                            </td>
+                            <td data-text="@Resources.Resource.AmountConsumption">
                                     @{
-                                        if (item.PaymentDirection == "Расход")
-                                        {
-                                            @((item.PaymentSum ?? 0).ToString("N2"))
-                                        }
+                                    if (item.PaymentDirection == "Расход")
+                                    {
+                                        @((item.PaymentSum ?? 0).ToString("N2"))
                                     }
-                                </td>
-                                <td data-text="@Resources.Resource.AccountBalance">
+                                }
+                            </td>
+                            <td data-text="@Resources.Resource.AccountBalance">
                                     @((item.AccountBalance ?? 0).ToString("N2"))
                                 </td>
+    
+                                <td data-text="@Resources.Resource.StatusTable">
+                                    @status
+                                </td>
+    
                             </tr>
-                        }
+                            }
                     </tbody>
                 </table>
             }
-            @if (Model.PageInfo != null && Model.PageInfo.TotalPages > 1)
+                        @if (Model.PageInfo != null && Model.PageInfo.TotalPages > 1)
             {
                 <div style="margin-bottom: 20px;">
                     @Html.PageLinks(Model.PageInfo, null, x => Url.Action("history", new
-                   {
-                       account = Model.account,
-                       begin = Model.begin == null ? null : Model.begin.Value.ToShortDateString(),
-                       end = Model.end == null ? null : Model.end.Value.ToShortDateString(),
-                       article = Model.article,
-                       page = x
-                   }))
+                    {
+                        account = Model.account,
+                        begin = Model.begin == null ? null : Model.begin.Value.ToShortDateString(),
+                        end = Model.end == null ? null : Model.end.Value.ToShortDateString(),
+                        article = Model.article,
+                        page = x
+                    }))
                 </div>
             }
             <div class="history-total">

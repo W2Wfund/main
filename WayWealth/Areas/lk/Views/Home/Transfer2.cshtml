@@ -58,16 +58,26 @@
                     </div>
                     <div>
                         <div class="form-group">
-                            <label>@Resources.Resource.FinancPass</label>
-                            <div class="flex">
-                                @Html.PasswordFor(x => x.Password)
-                                <a class="btn btn-bordered btn-sm m-l-10" id="gentp">@Resources.Resource.GetPassBtn</a>
+                            @if ((bool)TempData["GoogleAuthEnabled"])
+                            {
+                                <label>@Resources.Resource.CodeDigit2fa</label>
+                                <div class="flex">
+                                    @Html.PasswordFor(x => x.Password)
+                                </div>
+                            }
+                            else
+                            {
+                                <label>@Resources.Resource.FinancPass</label>
+                                <div class="flex">
+                                    @Html.PasswordFor(x => x.Password)
+                                    <a class="btn btn-bordered btn-sm m-l-10" id="gentp">@Resources.Resource.GetPassBtn</a>
+                                </div>
+                                <div class="sms">
+                                    <b>@Resources.Resource.EmailRequiredSms1</b>
+                                    <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
+                                </div>
+                            }
                             </div>
-                            <div class="sms">
-                                <b>@Resources.Resource.EmailRequiredSms1</b>
-                                <b>@Resources.Resource.EmailRequiredSms2 <span class="timer">00:00:00</span></b>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
