@@ -201,6 +201,7 @@
   <ItemGroup>
     <Content Include="Areas\lk\Content\css\libs.min.css" />
     <Content Include="Areas\lk\Content\css\main.css" />
+    <Content Include="Areas\lk\Content\css\promo.css" />
     <Content Include="Areas\lk\Content\fonts\Candarabold\Candarab.ttf" />
     <Content Include="Areas\lk\Content\fonts\Candara\Candara.ttf" />
     <Content Include="Areas\lk\Content\fonts\ElMessiriBold\ElMessiri-Bold.eot" />
@@ -210,8 +211,14 @@
     <Content Include="Areas\lk\Content\fonts\OpenSans\Regular\OpenSans-Regular.svg" />
     <Content Include="Areas\lk\Content\fonts\OpenSans\SemiBold\OpenSans-SemiBold.svg" />
     <Content Include="Areas\lk\Content\img\1.png" />
+    <Content Include="Areas\lk\Content\img\1s.jpg" />
+    <Content Include="Areas\lk\Content\img\1s.png" />
     <Content Include="Areas\lk\Content\img\2.png" />
+    <Content Include="Areas\lk\Content\img\2s.jpg" />
+    <Content Include="Areas\lk\Content\img\2s.png" />
     <Content Include="Areas\lk\Content\img\3.png" />
+    <Content Include="Areas\lk\Content\img\3s.jpg" />
+    <Content Include="Areas\lk\Content\img\3s.png" />
     <Content Include="Areas\lk\Content\img\4.png" />
     <Content Include="Areas\lk\Content\img\5.png" />
     <Content Include="Areas\lk\Content\img\ajax-loader.gif" />
@@ -263,6 +270,8 @@
     <Content Include="Areas\lk\Content\img\profile-block-bg.jpg" />
     <Content Include="Areas\lk\Content\img\profile.png" />
     <Content Include="Areas\lk\Content\img\profile_ava.png" />
+    <Content Include="Areas\lk\Content\img\promo1.jpeg" />
+    <Content Include="Areas\lk\Content\img\promo2.jpeg" />
     <Content Include="Areas\lk\Content\img\qr-code.png" />
     <Content Include="Areas\lk\Content\img\reg-icon2.png" />
     <Content Include="Areas\lk\Content\img\reg_icon.png" />
@@ -325,6 +334,7 @@
     <Content Include="Areas\lk\Content\img\_tree-arrow.png" />
     <Content Include="Areas\lk\Content\js\common.js" />
     <Content Include="Areas\lk\Content\js\jquery.inputmask.bundle.min.js" />
+    <Content Include="Areas\lk\Content\js\promo.js" />
     <Content Include="Areas\lk\Content\js\scripts.min.js" />
     <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Areas\lk\Content\libs\jquery-ui\themes\base\images\ui-icons_444444_256x240.png" />

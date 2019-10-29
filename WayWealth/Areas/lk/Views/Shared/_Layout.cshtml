@@ -1,51 +1,51 @@
 ﻿@using Common.Web
 @{
-                /**/
+    /**/
 
-                Layout = "~/Views/Shared/_Layout.cshtml";
-                var action = ViewContext.RouteData.Values["action"].ToString();
-                List<Notification> notifications = (List<Notification>)Session[Notification.Key] ?? new List<Notification>();
-                ViewBag.Version = 10;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var action = ViewContext.RouteData.Values["action"].ToString();
+    List<Notification> notifications = (List<Notification>)Session[Notification.Key] ?? new List<Notification>();
+    ViewBag.Version = 10;
 }
 @section HeadSection{
     <link rel="stylesheet" href="~/Areas/lk/Content/css/libs.min.css?v=@ViewBag.Version">
     <link rel="stylesheet" href="~/Areas/lk/Content/css/main.css?v=@ViewBag.Version">
+    <link rel="stylesheet" href="~/Areas/lk/Content/css/promo.css?v=@ViewBag.Version">
     <script src="~/Areas/lk/Content/js/scripts.min.js?v=@ViewBag.Version"></script>
+    <script src="~/Areas/lk/Content/js/promo.js?v=@ViewBag.Version"></script>
     <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 }
+<div class="wrap-content">
+    <div class="loader-absolute"><div class="loader text-center"><img src="~/Areas/lk/Content/img/ajax-loader.gif"></img></div></div>
+    <style>
+        .loader-absolute {
+            top: 0;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            display: none;
+        }
 
-    <div class="wrap-content">
-        <div class="loader-absolute"><div class="loader text-center"><img src="~/Areas/lk/Content/img/ajax-loader.gif"></img></div></div>
-        <style>
-            .loader-absolute {
-                top: 0;
-                left: 0%;
-                width: 100%;
-                height: 100%;
-                position: fixed;
-                display: none;
-            }
+        .loader {
+            position: relative;
+            top: 45%;
+        }
 
-            .loader {
-                position: relative;
-                top: 45%;
-            }
-
-            .loader-absolute.active {                
-                background: rgba(0,0,0,0.5);
-                z-index: 10;
-                display:block;
-            }
-        </style>
-        @Html.Partial("_Toolbar")
-        <div class="content">
-            @RenderBody()
-        </div>
+        .loader-absolute.active {
+            background: rgba(0,0,0,0.5);
+            z-index: 10;
+            display: block;
+        }
+    </style>
+    @Html.Partial("_Toolbar")
+    <div class="content">
+        @RenderBody()
     </div>
+</div>
 
 @section FootSection{
-
 
     @if (notifications.Count > 0)
     {
@@ -80,3 +80,24 @@
 
     <script src="~/Areas/lk/Content/js/common.js?v=@ViewBag.Version"></script>
 }
+    <div class="modals" id="modals">
+        <div class="modal-content">
+            <div class="modal-wrap">
+                <button type="button" id="btnClose" class="close btn btn-bordered btn-sm modal-close">╳</button>
+                <h2 class="inner-title">Уважаемые партнеры!</h2>
+                <p>
+                    Компания W2W дарит подарки и вознаграждает своих активных партнеров.<br />
+                    Будь в тренде! Мы объявляем промоушен для рынка России.<br />
+                    Желаем удачи и новых побед!
+                </p>
+                <div class="modal-pics">
+                    <img src="~/Areas/lk/Content/img/1s.jpg">
+                    <img src="~/Areas/lk/Content/img/2s.jpg">
+                    <img src="~/Areas/lk/Content/img/3s.jpg">
+                </div>
+                <div class="text-center">
+                    <button id="btnContinue" class="close btn continue btn btn-grad">Продолжить</button>
+                </div>
+            </div>
+        </div>
+    </div>

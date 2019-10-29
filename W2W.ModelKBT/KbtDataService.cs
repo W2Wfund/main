@@ -219,9 +219,11 @@ namespace W2W.ModelKBT
             using (var client = new WebDataClient())
             {
                 var query = base.CreateQueryItem<Partner>("Контрагент", Level.All);
+                var col = query.AddConditionCollection(Union.And);
+                col.AddConditionItem(Union.None, "Остаток.ВнутреннийСчет", Operator.More, 0);
+                col.AddConditionItem(Union.Or, "Остаток.ИнвестиционныйСчет", Operator.More, 0);
                 query.AddConditionItem(Union.And, "СсылкаНаСпонсора", Operator.Equal, id_object);
                 query.AddConditionItem(Union.And, "ЕстьМаркетинговоеМесто", Operator.Equal, false);
-                query.AddConditionItem(Union.And, "Остаток.ВнутреннийСчет", Operator.More, 0);
                 query.AddConditionItem(Union.And, "СтатусВерификации", Operator.Equal, "Верифицирован");
 
                 return base.GetList<Partner>(query);
